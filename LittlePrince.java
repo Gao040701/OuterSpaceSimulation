@@ -1,0 +1,22 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+
+/**
+ * The little prince will walk around the planet and jump out of the planets
+ * when all the baobab trees are destroyed.
+ */
+public class LittlePrince extends SuperSmoothMover
+{
+    private int rotationalSpeed;
+    /**
+     * Act - do whatever the LittlePrince wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
+    public void act()
+    {
+        
+    }
+    
+    public void rotate(){
+        //setLocation (
+    }
+}

@@ -23,5 +23,6 @@ public class MyWorld extends World
         for (int i = 0; i < numOfAsteriods; i++) {
             addObject(new Asteroids(), Greenfoot.getRandomNumber(getWidth()), Greenfoot.getRandomNumber(getHeight()));
         }
+        addObject (new LittlePrince(), 100, 100);
     }
 }

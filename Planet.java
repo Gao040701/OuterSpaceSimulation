@@ -9,12 +9,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Planet extends Actor
 {
     /**
-     * Act - do whatever the Planet wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * The planets will rotate on its own and move to the right
      */
     protected int radius;
     public void act()
     {
-        // Add your action code here.
+        
+    }
+    
+    public int getRadius(){
+        return radius;
     }
 }
