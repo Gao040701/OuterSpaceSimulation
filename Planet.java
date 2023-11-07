@@ -19,7 +19,7 @@ public abstract class Planet extends SuperSmoothMover
     }
     
     public Planet() {
-        
+        radius = 20;
     }
     
     public abstract void checkCollision();

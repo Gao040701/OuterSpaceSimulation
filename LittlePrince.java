@@ -13,10 +13,11 @@ public class LittlePrince extends SuperSmoothMover
      */
     public void act()
     {
-        
+        rotate();
     }
-    
+
     public void rotate(){
-        //setLocation (
+        move(2);
+        turn(1.5);
     }
 }
