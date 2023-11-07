@@ -6,8 +6,7 @@ public class Asteroids extends Actor {
     private int count;
 
     public Asteroids() {
-        // 初始化速度
-        xSpeed = Greenfoot.getRandomNumber(5) + 1; // x 方向的速度范围在 1 到 5 之间
+        xSpeed = Greenfoot.getRandomNumber(4) + 1; // x 方向的速度范围在 1 到 3 之间
         ySpeed = Greenfoot.getRandomNumber(3) - 1; // y 方向的速度范围在 -1 到 1 之间
         count = 0; // 计数器初始化为 0
     }
@@ -29,16 +28,15 @@ public class Asteroids extends Actor {
         if (getY() < 0) {
             setLocation(Greenfoot.getRandomNumber(getWorld().getWidth()), getWorld().getHeight());
         }
-
         // 每隔一段时间改变一次速度
-        if (count >= 20 && count < 40) {
+        if (count == 200) {
             xSpeed = Greenfoot.getRandomNumber(4) + 1; // x 方向的速度范围在 1 到 3 之间
             ySpeed = Greenfoot.getRandomNumber(3) - 1; // y 方向的速度范围在 -1 到 1 之间
+            count = 0;
         }
-        if (count == 40) {
-            count = 0; // 重置计数器
+        if (count < 200) {
+            count++;
         }
-        count++; // 计数器递增
     }
 }
 

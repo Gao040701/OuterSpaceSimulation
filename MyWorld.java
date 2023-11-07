@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MyWorld extends World
 {
-    
+    private int numOfAsteriods=3;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -20,7 +20,7 @@ public class MyWorld extends World
         prepare();
     }
     private void prepare() {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < numOfAsteriods; i++) {
             addObject(new Asteroids(), Greenfoot.getRandomNumber(getWidth()), Greenfoot.getRandomNumber(getHeight()));
         }
     }
