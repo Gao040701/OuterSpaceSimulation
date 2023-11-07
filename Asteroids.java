@@ -1,6 +1,6 @@
 import greenfoot.*; 
 
-public class Asteroids extends Actor {
+public class Asteroids extends SuperSmoothMover {
     private int xSpeed;
     private int ySpeed;
     private int count;
@@ -29,14 +29,19 @@ public class Asteroids extends Actor {
             setLocation(Greenfoot.getRandomNumber(getWorld().getWidth()), getWorld().getHeight());
         }
         // 每隔一段时间改变一次速度
-        if (count == 200) {
+        if (count == 100) {
             xSpeed = Greenfoot.getRandomNumber(4) + 1; // x 方向的速度范围在 1 到 3 之间
             ySpeed = Greenfoot.getRandomNumber(3) - 1; // y 方向的速度范围在 -1 到 1 之间
+            setRandomRotation();
             count = 0;
         }
-        if (count < 200) {
+        if (count < 100) {
             count++;
         }
+    }
+    private void setRandomRotation() {
+        double rotation = Greenfoot.getRandomNumber(360); // 生成 0 到 359 之间的随机角度
+        setRotation(rotation);
     }
 }
 

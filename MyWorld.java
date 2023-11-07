@@ -1,5 +1,4 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
 /**
  * Write a description of class MyWorld here.
  * 
@@ -19,6 +18,7 @@ public class MyWorld extends World
         super(1024, 576, 1, false);
         prepare();
     }
+    
     private void prepare() {
         for (int i = 0; i < numOfAsteriods; i++) {
             addObject(new Asteroids(), Greenfoot.getRandomNumber(getWidth()), Greenfoot.getRandomNumber(getHeight()));
