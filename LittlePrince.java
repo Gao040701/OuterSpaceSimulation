@@ -3,6 +3,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * The little prince will walk around the planet and jump out of the planets
  * when all the baobab trees are destroyed.
+ * * @Zhiyu (Jennifer) Zhou
+ * @Jan 7, 2022 - v1.0
  */
 public class LittlePrince extends SuperSmoothMover
 {

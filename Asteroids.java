@@ -1,5 +1,10 @@
 import greenfoot.*; 
-
+/**
+ * Write a description of class MyWorld here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
 public class Asteroids extends SuperSmoothMover {
     private int xSpeed;
     private int ySpeed;
