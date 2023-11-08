@@ -8,18 +8,32 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class LittlePrince extends SuperSmoothMover
 {
-    private int rotationalSpeed;
+    private int speed;
     /**
      * Act - do whatever the LittlePrince wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()
     {
+<<<<<<< Updated upstream
         rotate();
     }
 
     public void rotate(){
         move(2);
         turn(1.5);
+=======
+        rotate(50);
+    }
+    
+    public void rotate(int planet){
+        // setLocation (getWorld().getWidth()/2, getWorld().getHeight()/2);
+        // setRotation(20.5);
+        // turn(speed - 90);
+        // turn(90);
+        //setLocation (getWorld().getWidth()/2, getWorld().getHeight()/2);
+        move(planet);
+        turn(20);
+>>>>>>> Stashed changes
     }
 }
