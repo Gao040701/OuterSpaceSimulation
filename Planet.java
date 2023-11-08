@@ -15,17 +15,19 @@ public abstract class Planet extends SuperSmoothMover
     protected int radius;
     protected double speed;
     public void act() {
-        
+        {
+            radius = 20;
+        }
     }
-    
+
     public Planet() {
-        radius = 20;
+        radius = 10;
     }
-    
+
     public abstract void checkCollision();
-    
+
     public int getRadius(){
         return radius;
     }
-    
+
 }
