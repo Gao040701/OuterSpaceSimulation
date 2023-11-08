@@ -13,25 +13,21 @@ public abstract class Planet extends SuperSmoothMover
      * The planets will rotate on its own and move to the right
      */
     protected int radius;
-<<<<<<< Updated upstream
     protected double speed;
     public void act() {
-        
-=======
-    public void act()
-    {
-        radius = 20;
->>>>>>> Stashed changes
+        {
+            radius = 20;
+        }
     }
-    
+
     public Planet() {
-        radius = 20;
+        radius = 10;
     }
-    
+
     public abstract void checkCollision();
-    
+
     public int getRadius(){
         return radius;
     }
-    
+
 }

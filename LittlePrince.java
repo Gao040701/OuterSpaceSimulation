@@ -15,15 +15,13 @@ public class LittlePrince extends SuperSmoothMover
      */
     public void act()
     {
-<<<<<<< Updated upstream
         rotate();
     }
 
     public void rotate(){
-        move(2);
-        turn(1.5);
-=======
-        rotate(50);
+        move(0.5);
+        turn(0.2);
+        rotate(20);
     }
     
     public void rotate(int planet){
@@ -34,6 +32,5 @@ public class LittlePrince extends SuperSmoothMover
         //setLocation (getWorld().getWidth()/2, getWorld().getHeight()/2);
         move(planet);
         turn(20);
->>>>>>> Stashed changes
     }
 }
