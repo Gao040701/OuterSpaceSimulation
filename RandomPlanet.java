@@ -55,4 +55,5 @@ public class RandomPlanet extends Planet {
         img.scale(length, length);
         setImage(img);
     }
+    
 }
