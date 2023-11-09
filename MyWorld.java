@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class MyWorld extends World
 {
     private int numOfAsteriods=3;
+    private int numOfPlanets = 1; 
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -25,6 +26,11 @@ public class MyWorld extends World
         for (int i = 0; i < numOfAsteriods; i++) {
             addObject(new Asteroids(), Greenfoot.getRandomNumber(getWidth()), Greenfoot.getRandomNumber(getHeight()));
         }
-        addObject (new LittlePrince(), 100, 100);
+        addObject(new LittlePrince(), 100, 100);
+
+        HomePlanet homePlanet = new HomePlanet();
+        addObject(homePlanet, getWidth() / 2, getHeight() / 2);
+        addObject(new RandomPlanet(), 0, Greenfoot.getRandomNumber(276) + 150);
     }
+
 }

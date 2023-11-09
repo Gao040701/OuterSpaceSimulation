@@ -12,6 +12,12 @@ public class RosePlanet extends Planet
      * Act - do whatever the RosePlanet wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    public RosePlanet() {
+        //super(radius); // ÉèÖÃRandomPlanetµÄ°ë¾¶
+        setLocation(0, Greenfoot.getRandomNumber(276) + 150);
+        speed = Greenfoot.getRandomNumber(3) + 1;
+        
+    }
     public void act()
     {
         // Add your action code here.
