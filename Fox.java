@@ -1,15 +1,15 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class test here.
+ * Write a description of class Fox here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class test extends Actor
+public class Fox extends Character
 {
     /**
-     * Act - do whatever the test wants to do. This method is called whenever
+     * Act - do whatever the Fox wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()
