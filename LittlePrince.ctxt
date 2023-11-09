@@ -1,11 +1,9 @@
 #BlueJ class context
 comment0.target=LittlePrince
-comment0.text=\r\n\ The\ little\ prince\ will\ walk\ around\ the\ planet\ and\ jump\ out\ of\ the\ planets\r\n\ when\ all\ the\ baobab\ trees\ are\ destroyed.\r\n\ @Zhiyu\ (Jennifer)\ Zhou\r\n\ @Jan\ 7,\ 2022\ -\ v1.0\r\n
+comment0.text=\n\ The\ little\ prince\ will\ walk\ around\ the\ planet\ and\ jump\ out\ of\ the\ planets\n\ when\ all\ the\ baobab\ trees\ are\ destroyed.\n\ @Zhiyu\ (Jennifer)\ Zhou\n\ @Jan\ 7,\ 2022\ -\ v1.0\n
 comment1.params=
 comment1.target=void\ act()
-comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ LittlePrince\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
-comment2.params=
-comment2.target=void\ rotate()
-comment3.params=planet
-comment3.target=void\ rotate(int)
-numComments=4
+comment1.text=\n\ Act\ -\ do\ whatever\ the\ LittlePrince\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+comment2.params=planet
+comment2.target=void\ rotate(double)
+numComments=3

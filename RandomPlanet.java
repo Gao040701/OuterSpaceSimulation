@@ -60,9 +60,4 @@ public class RandomPlanet extends Planet {
         setImage(img);
         radius = length / 2;
     }
-    
-<<<<<<< HEAD
-    
-=======
->>>>>>> 72c424b6b8025f070858740a71855b0991ff7e11
 }

@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @Zhiyu (Jennifer) Zhou
  * @Jan 7, 2022 - v1.0
  */
-public class LittlePrince extends Character
+public class LittlePrince extends Being
 {
     private int speed;
     private Planet touchingPlanet;
