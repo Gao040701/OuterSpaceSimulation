@@ -1,9 +1,14 @@
 #BlueJ class context
 comment0.target=RosePlanet
-comment0.text=\n\ Write\ a\ description\ of\ class\ RosePlanet\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ RosePlanet\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
+<<<<<<< HEAD
 comment1.target=RosePlanet()
 comment1.text=\n\ Act\ -\ do\ whatever\ the\ RosePlanet\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+=======
+comment1.target=void\ act()
+comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ RosePlanet\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+>>>>>>> 72c424b6b8025f070858740a71855b0991ff7e11
 comment2.params=
 comment2.target=void\ act()
 comment3.params=
