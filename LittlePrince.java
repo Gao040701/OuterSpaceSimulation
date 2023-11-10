@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class LittlePrince extends SuperSmoothMover
 {
+<<<<<<< Updated upstream
     private int speed;
     private Planet touchingPlanet;
     
@@ -15,6 +16,8 @@ public class LittlePrince extends SuperSmoothMover
     private int index = 0;
     private final int countNum = 7;
     private int count = 0;
+=======
+>>>>>>> Stashed changes
     
     /**
      * Act - do whatever the LittlePrince wants to do. This method is called whenever
