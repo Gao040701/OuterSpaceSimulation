@@ -16,14 +16,12 @@ public abstract class Planet extends SuperSmoothMover
     protected double speed;
     
     public void act() {
-<<<<<<< HEAD
+
         move(speed); 
         /*{
             radius = 20;
         */
-=======
-        
->>>>>>> 72c424b6b8025f070858740a71855b0991ff7e11
+
     }
     public Planet() {
         
@@ -34,10 +32,5 @@ public abstract class Planet extends SuperSmoothMover
     public int getRadius(){
         return radius;
     }
-<<<<<<< HEAD
-    
-    
-    
-=======
->>>>>>> 72c424b6b8025f070858740a71855b0991ff7e11
+
 }
