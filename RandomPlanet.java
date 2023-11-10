@@ -16,7 +16,7 @@ public class RandomPlanet extends Planet {
     
      public RandomPlanet() {
         //setLocation(0, Greenfoot.getRandomNumber(276) + 150);
-        speed = Greenfoot.getRandomNumber(3) + 1;
+        speed = Greenfoot.getRandomNumber(1) + 1;
         canSpawnNext = false;
         planets = new GreenfootImage[7];
         for (int i = 0; i < 7; i++){

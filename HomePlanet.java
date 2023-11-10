@@ -22,7 +22,7 @@ public class HomePlanet extends Planet
         img.scale(length, length);
     
         setLocation(0, Greenfoot.getRandomNumber(276) + 150);
-        speed = Greenfoot.getRandomNumber(3) + 1;
+        speed = Greenfoot.getRandomNumber(1) + 1;
         setImage(img);
     }
 
