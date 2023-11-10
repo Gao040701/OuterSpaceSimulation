@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Fox extends Being
+public class Fox extends Moving
 {
     /**
      * Act - do whatever the Fox wants to do. This method is called whenever
@@ -14,6 +14,6 @@ public class Fox extends Being
      */
     public void act()
     {
-        // Add your action code here.
+        super.act();
     }
 }
