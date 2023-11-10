@@ -9,4 +9,6 @@ comment3.params=
 comment3.target=void\ checkCollision()
 comment4.params=
 comment4.target=int\ getRadius()
-numComments=5
+comment5.params=
+comment5.target=double\ getSpeed()
+numComments=6
