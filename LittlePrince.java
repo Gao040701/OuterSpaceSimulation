@@ -10,6 +10,12 @@ public class LittlePrince extends SuperSmoothMover
 {
     private int speed;
     private Planet touchingPlanet;
+    
+    private GreenfootImage[] walkAnimation = new GreenfootImage[8];
+    private int index = 0;
+    private final int countNum = 7;
+    private int count = 0;
+    
     /**
      * Act - do whatever the LittlePrince wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -22,6 +28,12 @@ public class LittlePrince extends SuperSmoothMover
         }
     }
 
+    public LittlePrince(){
+        for (int i = 0; i < walkAnimation.length; i++){
+            walkAnimation[i] = new GreenfootImage("walkAnimation/walk"+i+".png");
+        }
+    }
+    
     public void rotate(double planet){
         move(planet);
         turn(0.5);
