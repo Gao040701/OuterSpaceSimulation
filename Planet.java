@@ -30,4 +30,8 @@ public abstract class Planet extends SuperSmoothMover
     public int getRadius(){
         return radius;
     }
+    
+    public double getSpeed(){
+        return speed;
+    }
 }
