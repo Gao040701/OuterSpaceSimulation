@@ -19,7 +19,6 @@ public class MyWorld extends World
         super(1024, 576, 1, false);
         prepare();
         
-        addObject(new RandomPlanet(), 500, 250);
     }
     
     private void prepare() {

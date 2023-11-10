@@ -45,7 +45,7 @@ public class RandomPlanet extends Planet {
             num++;
             canSpawnNext = false;
             getWorld().addObject(new RandomPlanet(), 0, Greenfoot.getRandomNumber(276) + 150);
-            System.out.println("1");
+            
         }
     
     }
