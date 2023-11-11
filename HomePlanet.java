@@ -14,6 +14,7 @@ public class HomePlanet extends Planet
      */
     private GreenfootImage img;
     private int planetImgIndex, length;
+    public static SuperStatBar HomeHpBar;
     public HomePlanet(){
         planetImgIndex = 1; // Assuming you want to use planet1.png as the image
         img = new GreenfootImage("planets/planet" + planetImgIndex + ".png");
@@ -24,6 +25,8 @@ public class HomePlanet extends Planet
         setLocation(0, Greenfoot.getRandomNumber(276) + 150);
         speed = Greenfoot.getRandomNumber(1) + 1;
         setImage(img);
+        HomeHpBar = new SuperStatBar(100, 100, this, 50, 10, -20, Color.GREEN, Color.RED, false, Color.BLACK, 1);
+
     }
 
     public void checkCollision(){
@@ -37,5 +40,6 @@ public class HomePlanet extends Planet
         if (getX() > getWorld().getWidth()) {
             getWorld().removeObject(this); // 移除当前星球对象
         }
+        HomeHpBar.moveMe();
     }
 }

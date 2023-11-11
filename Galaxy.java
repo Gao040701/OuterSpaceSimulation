@@ -11,6 +11,7 @@ public class Galaxy extends World
     private int numOfPlanets = 1; 
     private SuperStatBar clueBar;
     private int clueCount = 0;
+    
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -29,12 +30,16 @@ public class Galaxy extends World
             addObject(new Asteroids(), getAsteroidsX(), getAsteroidsY());
         }
         addObject(new LittlePrince(), 100, 100);
+        addObject(LittlePrince.PrinceHpBar,100,100);
         if (Greenfoot.getRandomNumber (2) == 0){
             addObject (new Fox(), 0 + 50, Greenfoot.getRandomNumber(276) + 200);
         }
         HomePlanet homePlanet = new HomePlanet();
+        RandomPlanet randomPlanet = new RandomPlanet();
         addObject(homePlanet, getWidth() / 2, getHeight() / 2);
-        addObject(new RandomPlanet(), 0, Greenfoot.getRandomNumber(276) + 150);
+        addObject(homePlanet.HomeHpBar,getWidth() / 2, getHeight() / 2);
+        addObject(randomPlanet, 0, Greenfoot.getRandomNumber(276) + 150);
+        addObject(randomPlanet.getHpBar(), 0, Greenfoot.getRandomNumber(276) + 150);
     }
     
     public int getAsteroidsX(){
