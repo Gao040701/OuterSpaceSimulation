@@ -116,6 +116,13 @@ public abstract class SuperSmoothMover extends Actor
     public void turnTowards (int x, int y){
         setRotation( Math.toDegrees(Math.atan2(y - getY() , x - getX())));
     }
+    
+    /**
+     * Modified by Zhiyu (Jennifer) Zhou to have double instead of int.
+     */
+    public void turnTowards (double x, double y){
+        setRotation( Math.toDegrees(Math.atan2(y - getY() , x - getX())));
+    }
 
     /**
      * A short-cut method that I (Jordan Cohen) always thought Greenfoot should have - use the
