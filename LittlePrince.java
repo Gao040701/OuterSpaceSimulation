@@ -9,6 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class LittlePrince extends Moving
 {
     private GreenfootImage[] walk = new GreenfootImage[8];
+    private GreenfootImage[] fly = new GreenfootImage[6];
     private int index, count;
     private final int countNum = 7;
     /**
@@ -18,13 +19,14 @@ public class LittlePrince extends Moving
     public void act()
     {
         super.act();
-        animate(walk);
+        if (Greenfoot.isKeyDown("space")){
+            animate(fly);
+        }else animate(walk);
     }
     
     public LittlePrince(){
-        for (int i = 0; i < 8; i++){
-            walk[i] = new GreenfootImage("walkAnimation/walk"+i+".png");
-        }
+        prepareAnimation(walk, "walkAnimation/walk");
+        prepareAnimation(fly, "flyAnimation/fly");
     }
     
     public void animate(GreenfootImage[] imgs){
@@ -38,6 +40,19 @@ public class LittlePrince extends Moving
             }
         }else{
             index = 0;
+        }
+    }
+    
+    public void prepareAnimation(GreenfootImage[] imgs, String frameName){
+        for (int i = 0; i < imgs.length; i++){
+            imgs[i] = new GreenfootImage(frameName+i+".png");
+        }
+    }
+    
+    public void prepareAnimation(GreenfootImage[] imgs, String frameName, int width, int height){
+        for (int i = 0; i < imgs.length; i++){
+            imgs[i] = new GreenfootImage(frameName+i+".png");
+            imgs[i].scale(width, height);
         }
     }
 }
