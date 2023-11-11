@@ -12,6 +12,10 @@ public class LittlePrince extends Moving
     private GreenfootImage[] fly = new GreenfootImage[6];
     private int index, count;
     private final int countNum = 7;
+    public static int maxHP = 1000; // Number of times a flower can be "Nibbled"
+    public static int HP_PER_COLLISION = 15;
+    public static SuperStatBar PrinceHpBar;
+    private int hpDecrease = 0;
     /**
      * Act - do whatever the LittlePrince wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -27,6 +31,8 @@ public class LittlePrince extends Moving
     public LittlePrince(){
         prepareAnimation(walk, "walkAnimation/walk");
         prepareAnimation(fly, "flyAnimation/fly");
+        PrinceHpBar = new SuperStatBar(100, 100, this, 100, 10, -20, Color.GREEN, Color.RED, false, Color.BLACK, 1);
+
     }
     
     public void animate(GreenfootImage[] imgs){
@@ -55,4 +61,6 @@ public class LittlePrince extends Moving
             imgs[i].scale(width, height);
         }
     }
+    
+      
 }

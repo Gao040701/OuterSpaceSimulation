@@ -13,7 +13,7 @@ public class RandomPlanet extends Planet {
     private GreenfootImage img;
     private int num=0;
     //variables for set the image;
-    
+    public static SuperStatBar RandomHpBar;
      public RandomPlanet() {
         //setLocation(0, Greenfoot.getRandomNumber(276) + 150);
         speed = Greenfoot.getRandomNumber(1) + 1;
@@ -23,6 +23,7 @@ public class RandomPlanet extends Planet {
             planets[i] = new GreenfootImage("planets/planet" + i + ".png");
         }
         randomImage();
+        RandomHpBar = new SuperStatBar(100, 100, this, 50, 10, -20, Color.GREEN, Color.RED, false, Color.BLACK, 1);
     }
 
     public void checkCollision() {
@@ -44,10 +45,12 @@ public class RandomPlanet extends Planet {
         else if(getX() > 600 && canSpawnNext && num==0) {
             num++;
             canSpawnNext = false;
-            getWorld().addObject(new RandomPlanet(), 0, Greenfoot.getRandomNumber(276) + 150);
-            
+            RandomPlanet newPlanet = new RandomPlanet();
+            getWorld().addObject(newPlanet, 0, Greenfoot.getRandomNumber(276) + 150);
+            getWorld().addObject(newPlanet.getHpBar(), 0, Greenfoot.getRandomNumber(276) + 150);
+
         }
-    
+        RandomHpBar.moveMe();
     }
 
     
@@ -59,5 +62,9 @@ public class RandomPlanet extends Planet {
         img.scale(length, length);
         setImage(img);
         radius = length / 2;
+    }
+    
+    public SuperStatBar getHpBar() {
+        return RandomHpBar;
     }
 }

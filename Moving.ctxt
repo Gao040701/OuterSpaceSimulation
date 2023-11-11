@@ -4,6 +4,7 @@ comment0.text=\n\ Write\ a\ description\ of\ class\ Moving\ here.\n\ \n\ @author
 comment1.params=
 comment1.target=void\ act()
 comment1.text=\n\ Act\ -\ do\ whatever\ the\ Character\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+<<<<<<< Updated upstream
 comment2.params=
 comment2.target=void\ rotateDetection()
 comment3.params=
@@ -15,3 +16,8 @@ comment5.target=void\ moveRandomly()
 comment6.params=
 comment6.target=void\ rotate()
 numComments=7
+=======
+comment2.params=planet
+comment2.target=void\ rotate(double)
+numComments=3
+>>>>>>> Stashed changes
