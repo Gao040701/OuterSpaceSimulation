@@ -13,6 +13,7 @@ public class LittlePrince extends Moving
     private GreenfootImage[] dig = new GreenfootImage[9];
     private int index, count;
     private final int countNum = 7;
+    public static SuperStatBar PrinceHpBar;
     /**
      * Act - do whatever the LittlePrince wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -31,6 +32,7 @@ public class LittlePrince extends Moving
         prepareAnimation(walk, "walkAnimation/walk");
         prepareAnimation(fly, "flyAnimation/fly");
         prepareAnimation(dig, "digAnimation/dig");
+        PrinceHpBar = new SuperStatBar(100, 100, this, 100, 10, -20, Color.GREEN, Color.RED, false, Color.BLACK, 1);
     }
     
     public void animate(GreenfootImage[] imgs){
