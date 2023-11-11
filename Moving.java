@@ -10,11 +10,12 @@ import java.util.ArrayList;
 public class Moving extends Being
 {
     private int speed;
-    private Planet touchingPlanet;
+    private RandomPlanet targetPlanet;
     private boolean rotateDetection = false;
     private int angle = 0;
-    private ArrayList<Planet> planets;
-    private Planet targetPlanet;
+    private ArrayList<RandomPlanet> planets;
+    //private RandomPlanet targetPlanet;
+    private LittlePrince littlePrince;
     private int mySpeed = 1;
     /**
      * Act - do whatever the Character wants to do. This method is called whenever
@@ -25,8 +26,9 @@ public class Moving extends Being
         /**
          * Add if (energy > 0)
          */
-        if (targetPlanet != null){ //&& targetPlanet.getWorld() == null
-            targetPlanet = null;
+        //if (targetPlanet != null){ //&& targetPlanet.getWorld() == null
+        if(getOneIntersectingObject(RandomPlanet.class) != null){
+            //targetPlanet = null;
             moveTowardPlanet();
             System.out.println("Touched!??");
         }
@@ -36,7 +38,10 @@ public class Moving extends Being
     }
 
     private void moveTowardPlanet(){
-        if (Galaxy.getDistance(this, targetPlanet) < 10){
+        //if (getDistance(littlePrince, targetPlanet) < 2){
+        RandomPlanet targetPlanet = (RandomPlanet)getOneIntersectingObject(RandomPlanet.class);
+        if(targetPlanet.getX() < 500 ){
+            System.out.println("NOT NULL TARGET!!!");
             rotate();
             System.out.println("Touched the planet!");
         }
@@ -44,21 +49,33 @@ public class Moving extends Being
             move (mySpeed);
         }
     }
+    
+    public static double getDistance (Actor a, Actor b){
+        double distanceBetween = Math.hypot (Math.abs(a.getX() - b.getX()), Math.abs(a.getY() - b.getY()));
+        return distanceBetween;
+     }
 
     private void targetClosestPlanet(){
         double closestTargetDistance = 0;
         double distanceToActor;
-        planets = (ArrayList<Planet>)getObjectsInRange(40, Planet.class);
+        planets = (ArrayList<RandomPlanet>)getObjectsInRange(40, RandomPlanet.class);
+        System.out.println("SIZE: " + planets.size());
         if (planets.size() == 0){
-            planets = (ArrayList<Planet>)getObjectsInRange(140, Planet.class);
+            planets = (ArrayList<RandomPlanet>)getObjectsInRange(140, RandomPlanet.class);
         }
+        if (planets.size() == 0){
+            planets = (ArrayList<RandomPlanet>)getObjectsInRange(350, RandomPlanet.class);
+        } 
+        if (planets.size() == 0){
+            planets = (ArrayList<RandomPlanet>)getWorld().getObjects(RandomPlanet.class);
+        } 
 
         if (planets.size() > 0){
             targetPlanet = planets.get(0);
-            closestTargetDistance = Galaxy.getDistance (this, targetPlanet);
+            closestTargetDistance = getDistance (littlePrince, targetPlanet);
 
-            for (Planet o : planets){
-                distanceToActor = Galaxy.getDistance(this, o);
+            for (RandomPlanet o : planets){
+                distanceToActor = getDistance(littlePrince, o);
 
                 if (distanceToActor < closestTargetDistance){
                     targetPlanet = o;
@@ -79,45 +96,42 @@ public class Moving extends Being
             }
         }
         if (getX() < 30 ){
-            setLocation(getX() + 40, getY());
+            setLocation(getX() + 50, getY());
             turn (Greenfoot.getRandomNumber(1));
             move (mySpeed);
-            System.out.println("move right");
         }
         if (getX() > 970 ){
             setLocation(getX() - 10, getY());
             turn (Greenfoot.getRandomNumber(180));
             move (mySpeed);
-            System.out.println("move left");
         }
         if (getY() < 30 ){
             setLocation(getX(), getY() + 10);
             turn (Greenfoot.getRandomNumber(270));
             move (mySpeed);
-            System.out.println("move down");
         }
         if (getY() >540 ){
             setLocation(getX(), getY() - 10);
             turn (Greenfoot.getRandomNumber(90));
             move (mySpeed);
-            System.out.println("move up");
         }
     }
-    
+
     public void rotateDetection(){
-        if (getOneIntersectingObject(Planet.class) != null){
+        if (getOneIntersectingObject(RandomPlanet.class) != null){
             rotateDetection = true;
-            touchingPlanet = (Planet)getOneIntersectingObject(Planet.class);
+            RandomPlanet touchingPlanet= (RandomPlanet)getOneIntersectingObject(RandomPlanet.class);
         }
         if (rotateDetection == true){
             //rotate(touchingPlanet.getSpeed());
             rotate();
-            move(touchingPlanet.getSpeed());
+            move(targetPlanet.getSpeed());
         }
         //rotate(119/100);
     }
 
     public void rotate(){
+        RandomPlanet touchingPlanet= (RandomPlanet)getOneIntersectingObject(RandomPlanet.class);
         int radius = touchingPlanet.getRadius();
         double radians = Math.toRadians(angle);
         int x = getX() + (int) (radius/100 * Math.cos(radians));
