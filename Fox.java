@@ -14,6 +14,6 @@ public class Fox extends Moving
      */
     public void act()
     {
-        super.act();
+        //super.act();
     }
 }

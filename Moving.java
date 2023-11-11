@@ -10,11 +10,11 @@ import java.util.ArrayList;
 public class Moving extends Being
 {
     private int speed;
-    private RandomPlanet targetPlanet;
+    private Planet targetPlanet;
     private boolean rotateDetection = false;
     private int angle = 0;
-    private ArrayList<RandomPlanet> planets;
-    //private RandomPlanet targetPlanet;
+    private ArrayList<Planet> planets;
+    //private Planet targetPlanet;
     private LittlePrince littlePrince;
     private int mySpeed = 1;
     /**
@@ -27,54 +27,36 @@ public class Moving extends Being
          * Add if (energy > 0)
          */
         //if (targetPlanet != null){ //&& targetPlanet.getWorld() == null
-        if(getOneIntersectingObject(RandomPlanet.class) != null){
-            //targetPlanet = null;
-            moveTowardPlanet();
-            System.out.println("Touched!??");
+        //if(getOneIntersectingObject(Planet.class) != null){
+        if (getOneIntersectingObject(Planet.class) != null){
+            targetPlanet = null;
+            rotate();
         }
         else{
             moveRandomly();
         }
     }
 
-    private void moveTowardPlanet(){
-        //if (getDistance(littlePrince, targetPlanet) < 2){
-        RandomPlanet targetPlanet = (RandomPlanet)getOneIntersectingObject(RandomPlanet.class);
-        if(targetPlanet.getX() < 500 ){
-            System.out.println("NOT NULL TARGET!!!");
-            rotate();
-            System.out.println("Touched the planet!");
-        }
-        else{
-            move (mySpeed);
-        }
-    }
-    
     public static double getDistance (Actor a, Actor b){
         double distanceBetween = Math.hypot (Math.abs(a.getX() - b.getX()), Math.abs(a.getY() - b.getY()));
         return distanceBetween;
-     }
+    }
 
     private void targetClosestPlanet(){
         double closestTargetDistance = 0;
         double distanceToActor;
-        planets = (ArrayList<RandomPlanet>)getObjectsInRange(40, RandomPlanet.class);
+        planets = (ArrayList<Planet>)getObjectsInRange(40, Planet.class);
         System.out.println("SIZE: " + planets.size());
+        
         if (planets.size() == 0){
-            planets = (ArrayList<RandomPlanet>)getObjectsInRange(140, RandomPlanet.class);
+            planets = (ArrayList<Planet>)getObjectsInRange(140, Planet.class);
         }
-        if (planets.size() == 0){
-            planets = (ArrayList<RandomPlanet>)getObjectsInRange(350, RandomPlanet.class);
-        } 
-        if (planets.size() == 0){
-            planets = (ArrayList<RandomPlanet>)getWorld().getObjects(RandomPlanet.class);
-        } 
 
         if (planets.size() > 0){
             targetPlanet = planets.get(0);
             closestTargetDistance = getDistance (littlePrince, targetPlanet);
 
-            for (RandomPlanet o : planets){
+            for (Planet o : planets){
                 distanceToActor = getDistance(littlePrince, o);
 
                 if (distanceToActor < closestTargetDistance){
@@ -98,7 +80,7 @@ public class Moving extends Being
         if (getX() < 30 ){
             setLocation(getX() + 50, getY());
             turn (Greenfoot.getRandomNumber(1));
-            move (mySpeed);
+            move (-mySpeed);
         }
         if (getX() > 970 ){
             setLocation(getX() - 10, getY());
@@ -118,9 +100,9 @@ public class Moving extends Being
     }
 
     public void rotateDetection(){
-        if (getOneIntersectingObject(RandomPlanet.class) != null){
+        if (getOneIntersectingObject(Planet.class) != null){
             rotateDetection = true;
-            RandomPlanet touchingPlanet= (RandomPlanet)getOneIntersectingObject(RandomPlanet.class);
+            Planet touchingPlanet= (Planet)getOneIntersectingObject(Planet.class);
         }
         if (rotateDetection == true){
             //rotate(touchingPlanet.getSpeed());
@@ -131,17 +113,18 @@ public class Moving extends Being
     }
 
     public void rotate(){
-        RandomPlanet touchingPlanet= (RandomPlanet)getOneIntersectingObject(RandomPlanet.class);
+        Planet touchingPlanet= (Planet)getOneIntersectingObject(Planet.class);
         int radius = touchingPlanet.getRadius();
         double radians = Math.toRadians(angle);
-        int x = getX() + (int) (radius/100 * Math.cos(radians));
-        int y = getY() + (int) (radius/100 * Math.sin(radians));
-        setLocation(x + touchingPlanet.getSpeed()/2, y);
-        angle += 100.0;
-        turn(touchingPlanet.getRadius()/100);
-        // move(planet);
+        int x = getX() + (int) (-radius/100 * Math.cos(radians));
+        int y = getY() + (int) (-radius/100 * Math.sin(radians));
+        setLocation(x - touchingPlanet.getSpeed(), y);
+        angle -= 100.0;
+        turn(-touchingPlanet.getRadius()/100);
+        move(touchingPlanet.getSpeed());
+        // move(touchingPlanet.getSpeed());
         // setLocation(getX(), getY());
         // setLocation(getX() + touchingPlanet.getSpeed(), getY());
-        //move(getPlanetSpeed(this));
+        // move(touchingPlanet.getSpeed());
     }
 }

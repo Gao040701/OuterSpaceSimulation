@@ -55,6 +55,14 @@ public class LittlePrince extends Moving
         }
     }
     
+    public int getPrinceX(){
+        return getX();
+    }
+    
+    public int getPrinceY(){
+        return getY();
+    }
+    
     public void prepareAnimation(GreenfootImage[] imgs, String frameName, int width, int height){
         for (int i = 0; i < imgs.length; i++){
             imgs[i] = new GreenfootImage(frameName+i+".png");

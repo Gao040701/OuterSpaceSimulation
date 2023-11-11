@@ -52,10 +52,10 @@ public class Galaxy extends World
         return getAsteroidsY;
     }
     
-    // public static double getDistance (Actor a, Actor b){
-        // double distanceBetween = Math.hypot (a.getX() - b.getX(), a.getY() - b.getY());
-        // return distanceBetween;
-    // }
+    public static double getDistance (Actor a, Actor b){
+        double distanceBetween = Math.hypot (a.getX() - b.getX(), a.getY() - b.getY());
+        return distanceBetween;
+    }
 
     public void act(){
         clueBar.update(clueCount);
