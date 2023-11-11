@@ -60,7 +60,6 @@ public class RandomPlanet extends Planet {
         length = 200 + Greenfoot.getRandomNumber(41); // 200 + 0 to 40
         img.scale(length, length);
         setImage(img);
-        radius = length / 2;
     }
     
     public SuperStatBar getHpBar() {

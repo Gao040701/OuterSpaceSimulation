@@ -28,7 +28,7 @@ public abstract class Planet extends SuperSmoothMover
     public abstract void checkCollision();
 
     public int getRadius(){
-        return radius;
+        return getImage().getHeight()/2;
     }
     
     public double getSpeed(){
