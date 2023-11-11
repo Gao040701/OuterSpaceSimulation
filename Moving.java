@@ -15,17 +15,13 @@ public class Moving extends Being
     private int angle = 0;
     private ArrayList<Planet> planets;
     private Planet targetPlanet;
-    private int mySpeed = 5;
+    private int mySpeed = 1;
     /**
      * Act - do whatever the Character wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()
     {
-        rotateDetection();
-    }
-
-    public void rotateDetection(){
         if (targetPlanet != null && targetPlanet.getWorld() == null){
             targetPlanet = null;
         }
@@ -36,8 +32,9 @@ public class Moving extends Being
         else{
             moveRandomly();
         }
-        
-        
+    }
+
+    public void rotateDetection(){
         if (getOneIntersectingObject(Planet.class) != null){
             rotateDetection = true;
             touchingPlanet = (Planet)getOneIntersectingObject(Planet.class);
