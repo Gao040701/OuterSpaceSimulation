@@ -53,7 +53,6 @@ public class RandomPlanet extends Planet {
         RandomHpBar.moveMe();
     }
 
-    
     public void randomImage(){
         planetImgIndex = Greenfoot.getRandomNumber(7);
         img = planets[planetImgIndex];
