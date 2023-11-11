@@ -1,5 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
+import java.awt.Point;
 
 /**
  * Write a description of class Moving here.
@@ -30,7 +31,12 @@ public class Moving extends Being
         //if(getOneIntersectingObject(Planet.class) != null){
         if (getOneIntersectingObject(Planet.class) != null){
             targetPlanet = null;
+            rotateDetection = true;
+        }
+
+        if (rotateDetection == true){
             rotate();
+            //pointOnCircle();
         }
         else{
             moveRandomly();
@@ -47,7 +53,7 @@ public class Moving extends Being
         double distanceToActor;
         planets = (ArrayList<Planet>)getObjectsInRange(40, Planet.class);
         System.out.println("SIZE: " + planets.size());
-        
+
         if (planets.size() == 0){
             planets = (ArrayList<Planet>)getObjectsInRange(140, Planet.class);
         }
@@ -100,10 +106,6 @@ public class Moving extends Being
     }
 
     public void rotateDetection(){
-        if (getOneIntersectingObject(Planet.class) != null){
-            rotateDetection = true;
-            Planet touchingPlanet= (Planet)getOneIntersectingObject(Planet.class);
-        }
         if (rotateDetection == true){
             //rotate(touchingPlanet.getSpeed());
             rotate();
@@ -119,12 +121,25 @@ public class Moving extends Being
         int x = getX() + (int) (-radius/100 * Math.cos(radians));
         int y = getY() + (int) (-radius/100 * Math.sin(radians));
         setLocation(x - touchingPlanet.getSpeed(), y);
-        angle -= 100.0;
-        turn(-touchingPlanet.getRadius()/100);
-        move(touchingPlanet.getSpeed());
+        angle -= 120.0;
+        turn(-radius/100);
+        //move(touchingPlanet.getSpeed());
         // move(touchingPlanet.getSpeed());
         // setLocation(getX(), getY());
         // setLocation(getX() + touchingPlanet.getSpeed(), getY());
         // move(touchingPlanet.getSpeed());
     }
+
+    // protected Point pointOnCircle() {
+        // Planet touchingPlanet= (Planet)getOneIntersectingObject(Planet.class);
+        // int radius = touchingPlanet.getRadius();
+        // double rads = Math.toRadians(angle - 180); // Make 0 point out to the right...
+        // int fullLength = Math.round(radius);
+
+        // // Calculate the outter point of the line
+        // int xPosy = Math.round((float) (Math.cos(rads) * fullLength));
+        // int yPosy = Math.round((float) (Math.sin(rads) * fullLength));
+
+        // return new Point(xPosy, yPosy);
+    // }
 }
