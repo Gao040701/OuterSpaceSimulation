@@ -41,17 +41,11 @@ public class Moving extends Being
         if (getOneIntersectingObject(Planet.class) != null){
             rotateDetection = true;
             touchingPlanet = (Planet)getOneIntersectingObject(Planet.class);
-<<<<<<< Updated upstream
-            //System.out.println("planet radius: " + touchingPlanet.getRadius());
-            rotate(touchingPlanet.getRadius()/100);
-=======
-            System.out.println("planet radius: " + touchingPlanet.getRadius()/1000);
         }
         if (rotateDetection == true){
             //rotate(touchingPlanet.getSpeed());
             rotate();
             move(touchingPlanet.getSpeed());
->>>>>>> Stashed changes
         }
         //rotate(119/100);
     }
