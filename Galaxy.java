@@ -46,6 +46,10 @@ public class Galaxy extends World
         int getAsteroidsY = Greenfoot.getRandomNumber(getHeight());
         return getAsteroidsY;
     }
+    
+    public static double getDistance (Actor a, Actor b){
+        return Math.hypot (a.getX() - b.getX(), a.getY() - b.getY());
+    }
 
     public void act(){
         clueBar.update(clueCount);
