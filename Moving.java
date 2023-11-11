@@ -16,7 +16,7 @@ public class Moving extends Being
     private int angle = 0;
     private ArrayList<Planet> planets;
     //private Planet targetPlanet;
-    private LittlePrince littlePrince;
+    protected LittlePrince littlePrince;
     private int mySpeed = 1;
     /**
      * Act - do whatever the Character wants to do. This method is called whenever
