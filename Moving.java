@@ -38,13 +38,13 @@ public class Moving extends Being
             targetPlanet = null;
             rotateDetection = true;
             double y = touchingPlanet.getY();
-            if(y == touchingPlanet.getRadius()-30){
-                point++;
-                System.out.println("Point #: " + point);
-            }
-            if(point == 2){
-                System.out.println("2!!!");
-            }
+            // if(y == touchingPlanet.getRadius()-30){
+                // point++;
+                // System.out.println("Point #: " + point);
+            // }
+            // if(point == 2){
+                // System.out.println("2!!!");
+            // }
             if (getOneIntersectingObject(Hitbox.class) != null){
                 hit++;
                 System.out.println("Hit #: " + hit);
