@@ -54,7 +54,7 @@ public class RandomPlanet extends Planet {
             getWorld().addObject(newPlanet.getHpBar(), 0, Greenfoot.getRandomNumber(276) + 150);
         }
         randomHpBar.moveMe();
-        hitbox.moveHitbox();
+        hitbox.move(speed);
     }
 
     public void randomImage(){

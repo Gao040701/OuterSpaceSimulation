@@ -50,6 +50,6 @@ public class HomePlanet extends Planet
             getWorld().removeObject(this); // 移除当前星球对象
         }
         homeHpBar.moveMe();
-        hitbox.moveHitbox();
+        hitbox.move(speed);
     }
 }
