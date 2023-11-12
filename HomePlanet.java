@@ -27,14 +27,14 @@ public class HomePlanet extends Planet
         speed = Greenfoot.getRandomNumber(1) + 1;
         setImage(img);
         homeHpBar = new SuperStatBar(100, 100, this, 50, 10, -20, Color.GREEN, Color.RED, false, Color.BLACK, 1);
-        hitbox = new Hitbox(5, 10);
+        hitbox = new Hitbox(10, 10);
     }
 
     public void addedToWorld (World w){
         w.addObject(homeHpBar, getX() / 2, getY() / 2);
         System.out.println("Added homeHpBar");
-        w.addObject(hitbox, getX()/2, getY() - getRadius()-30);
-
+        w.addObject(hitbox, getX(), getY() - getRadius());
+        System.out.println("Home X coord: " + getX()+ "Home Y coord: "+ (getY() - getRadius()));
     }
 
     public void checkCollision(){

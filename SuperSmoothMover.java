@@ -135,7 +135,7 @@ public abstract class SuperSmoothMover extends Actor
      */
     //@Override
     public void turnTowards (double x, double y){
-        setRotation( Math.toDegrees(Math.atan2(y - getY() , x - getX())));
+        setRotation(Math.toDegrees(Math.atan2(y - getY() , x - getX())));
     }
 
     /**

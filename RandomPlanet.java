@@ -25,7 +25,7 @@ public class RandomPlanet extends Planet {
         }
         randomImage();
         randomHpBar = new SuperStatBar(100, 100, this, 50, 10, -20, Color.GREEN, Color.RED, false, Color.BLACK, 1);
-        hitbox = new Hitbox(5, 10);
+        hitbox = new Hitbox(10, 10);
     }
 
     public void checkCollision() {
@@ -52,7 +52,6 @@ public class RandomPlanet extends Planet {
             RandomPlanet newPlanet = new RandomPlanet();
             getWorld().addObject(newPlanet, 0, Greenfoot.getRandomNumber(276) + 150);
             getWorld().addObject(newPlanet.getHpBar(), 0, Greenfoot.getRandomNumber(276) + 150);
-
         }
         randomHpBar.moveMe();
         hitbox.moveHitbox();
@@ -73,8 +72,8 @@ public class RandomPlanet extends Planet {
 
     public void addedToWorld (World w){
         w.addObject(randomHpBar, getX() / 2, getY() / 2);
-        w.addObject(hitbox, getX()/2, getY() - getRadius()-30);
-
+        w.addObject(hitbox, getX(), getY() - getRadius());
+        System.out.println("Random X coord: " + getX()+ "Random Y coord: "+ (getY() - getRadius()));
     }
 
     private void generateTrees(int count) {

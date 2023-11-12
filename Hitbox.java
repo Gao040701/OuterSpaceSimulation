@@ -10,10 +10,12 @@ public class Hitbox extends Actor
 {
     private Actor target;
     private int offset;
-    private Color[] filledColor;
     private GreenfootImage hitbox;
+    //private int height, width;
     public Hitbox (int width, int height){  
         hitbox = new GreenfootImage (width, height);
+        hitbox.setColor(Color.RED);
+        hitbox.fillRect(0, 0, width-1, height - 1);
         setImage(hitbox);
     }
 
