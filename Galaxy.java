@@ -30,7 +30,7 @@ public class Galaxy extends World
             addObject(new Asteroids(), getAsteroidsX(), getAsteroidsY());
         }
         addObject(new LittlePrince(), 100, 100);
-        addObject(LittlePrince.PrinceHpBar,100,100);
+        addObject(LittlePrince.PrinceHpBar,100,70);
         if (Greenfoot.getRandomNumber (2) == 0){
             addObject (new Fox(), 0 + 50, Greenfoot.getRandomNumber(276) + 200);
         }

@@ -33,6 +33,7 @@ public class LittlePrince extends Moving
         prepareAnimation(fly, "flyAnimation/fly");
         prepareAnimation(dig, "digAnimation/dig");
         PrinceHpBar = new SuperStatBar(100, 100, this, 100, 10, -20, Color.GREEN, Color.RED, false, Color.BLACK, 1);
+        
     }
     
     public void animate(GreenfootImage[] imgs){

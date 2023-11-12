@@ -40,6 +40,8 @@ public class RandomPlanet extends Planet {
             canSpawnNext = true;
             if(num==2){
                 num=0;
+                int treeCount = Greenfoot.getRandomNumber(3) + 1; // Randomly generate 1 to 3 trees
+                generateTrees(treeCount);
             }
         } 
         else if(getX() > 600 && canSpawnNext && num==0) {
@@ -53,7 +55,6 @@ public class RandomPlanet extends Planet {
         RandomHpBar.moveMe();
     }
 
-    
     public void randomImage(){
         planetImgIndex = Greenfoot.getRandomNumber(7);
         img = planets[planetImgIndex];
@@ -66,5 +67,17 @@ public class RandomPlanet extends Planet {
     
     public SuperStatBar getHpBar() {
         return RandomHpBar;
+    }
+    
+    private void generateTrees(int count) {
+        for (int i = 0; i < count; i++) {
+            BaobabTree tree = new BaobabTree(this); // Assuming you have a Tree class that accepts a planet as a parameter
+            double angle = Math.toRadians(Greenfoot.getRandomNumber(360)); // Random angle
+            int distance = Greenfoot.getRandomNumber(radius * 2); // Random distance within the planet's radius
+            int treeX = (int) (getX() + distance * Math.cos(angle));
+            int treeY = (int) (getY() + distance * Math.sin(angle));
+            getWorld().addObject(tree, treeX, treeY);
+            tree.setRotation(getRotation()); // Set tree's angle to match the planet's rotation
+        }
     }
 }
