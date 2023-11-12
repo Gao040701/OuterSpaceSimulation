@@ -121,8 +121,8 @@ public class Moving extends Being
         int radius = touchingPlanet.getRadius();
         double speed = touchingPlanet.getSpeed();
         double radians = Math.toRadians(angle);
-        double x = touchingPlanet.getX() + (int) (-radius * Math.cos(radians));
-        double y = touchingPlanet.getY() + (int) (-radius * Math.sin(radians));
+        double x = touchingPlanet.getX() + (int) (-(radius+30) * Math.cos(radians));
+        double y = touchingPlanet.getY() + (int) (-(radius+30) * Math.sin(radians));
         //setLocation(x, y);
         //setLocation(x - speed/100, y);
         angle -= 1.75;
