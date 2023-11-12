@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=Hitbox
+comment0.text=\n\ Write\ a\ description\ of\ class\ Hitbox\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=width\ height
+comment1.target=Hitbox(int,\ int)
+comment2.params=
+comment2.target=boolean\ checkCollision()
+comment3.params=
+comment3.target=void\ moveHitbox()
+comment3.text=\n\ credit\:\ borrowed\ from\ Mr.\ Cohen's\ SuperStatBar;\ modified\ by\ Zhiyu\ (Jennifer)\ Zhou\n
+comment4.params=w
+comment4.target=void\ addedToWorld(greenfoot.World)
+comment5.params=
+comment5.target=void\ act()
+numComments=6

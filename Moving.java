@@ -19,6 +19,8 @@ public class Moving extends Being
     //private Planet targetPlanet;
     protected LittlePrince littlePrince;
     private int mySpeed = 1;
+    private int hit;
+    private int point;
     /**
      * Act - do whatever the Character wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -31,10 +33,25 @@ public class Moving extends Being
         //if (targetPlanet != null){ //&& targetPlanet.getWorld() == null
         //if(getOneIntersectingObject(Planet.class) != null){
         if (getOneIntersectingObject(Planet.class) != null){
+            World world = getWorld();
+            Planet touchingPlanet= (Planet)getOneIntersectingObject(Planet.class);
             targetPlanet = null;
             rotateDetection = true;
+            double y = touchingPlanet.getY();
+            if(y == touchingPlanet.getRadius()-30){
+                point++;
+                System.out.println("Point #: " + point);
+            }
+            if(point == 2){
+                System.out.println("2!!!");
+            }
+            if (getOneIntersectingObject(Hitbox.class) != null){
+                hit++;
+                System.out.println("Hit #: " + hit);
+            }
         }
         else{
+            hit = 0;
             rotateDetection = false;
         }
 
@@ -109,64 +126,36 @@ public class Moving extends Being
         }
     }
 
-    public void rotateDetection(){
-        if (rotateDetection == true){
-            //rotate(touchingPlanet.getSpeed());
-            rotate();
-        }
-        //rotate(119/100);
-    }
-
     public void rotate(){
         Planet touchingPlanet= (Planet)getOneIntersectingObject(Planet.class);
         int radius = touchingPlanet.getRadius();
         double speed = touchingPlanet.getSpeed();
         double radians = Math.toRadians(angle);
-        double x = touchingPlanet.getX() + (int) (-(radius+30) * Math.cos(radians));
-        double y = touchingPlanet.getY() + (int) (-(radius+30) * Math.sin(radians));
+        double x = touchingPlanet.getX() + (double) ((radius+30) * Math.cos(radians));
+        double y = touchingPlanet.getY() + (double) ((radius+30) * Math.sin(radians));
         //setLocation(x, y);
         //setLocation(x - speed/100, y);
-        angle -= 1.75;
-        //turnTowards (x, y);
-        turn(-radius/15500);
-        turnTowards (x, y);
-        setLocation(x, y);
-        //turnTowards (x, y);
+        angle -= 1.5;
+        
+        turnTowards (touchingPlanet);
+        //setRotation(180);
+        System.out.println("Moving Planet x: " + x + " Moving Planet y: " + y);
         setLocation(x+speed, y);
-        //move(*(2*Math.PI*radius)/targetPlanet.getSpeed());
-        //move(touchingPlanet.getSpeed());
-        // move(touchingPlanet.getSpeed());
-        //setLocation(touchingPlanet.getX(), getY());
-        //setLocation(touchingPlanet.getX()+1, getY());
-        // setLocation(getX() + touchingPlanet.getSpeed(), getY());
-        // move(touchingPlanet.getSpeed());
     }
-
-    // protected Point pointOnCircle() {
-    // Planet touchingPlanet= (Planet)getOneIntersectingObject(Planet.class);
-    // int radius = touchingPlanet.getRadius();
-    // double rads = Math.toRadians(angle - 180); // Make 0 point out to the right...
-    // int fullLength = Math.round(radius);
-
-    // // Calculate the outter point of the line
-    // int xPosy = Math.round((float) (Math.cos(rads) * fullLength));
-    // int yPosy = Math.round((float) (Math.sin(rads) * fullLength));
-
-    // return new Point(xPosy, yPosy);
-    // }
+    
     public void prepareAnimation(GreenfootImage[] imgs, String frameName){
         for (int i = 0; i < imgs.length; i++){
             imgs[i] = new GreenfootImage(frameName+i+".png");
         }
     }
-    
+
     public void prepareAnimation(GreenfootImage[] imgs, String frameName, int width, int height){
         for (int i = 0; i < imgs.length; i++){
             imgs[i] = new GreenfootImage(frameName+i+".png");
             imgs[i].scale(width, height);
         }
     }
-    
+
     public void animate(GreenfootImage[] imgs){
         if (index < imgs.length){
             if (count == countNum){

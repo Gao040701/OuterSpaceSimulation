@@ -13,8 +13,9 @@ public class RandomPlanet extends Planet {
     private GreenfootImage img;
     private int num=0;
     //variables for set the image;
-    public static SuperStatBar RandomHpBar;
-     public RandomPlanet() {
+    private SuperStatBar randomHpBar;
+    private Hitbox hitbox;
+    public RandomPlanet() {
         //setLocation(0, Greenfoot.getRandomNumber(276) + 150);
         speed = Greenfoot.getRandomNumber(1) + 1;
         canSpawnNext = false;
@@ -23,7 +24,8 @@ public class RandomPlanet extends Planet {
             planets[i] = new GreenfootImage("planets/planet" + i + ".png");
         }
         randomImage();
-        RandomHpBar = new SuperStatBar(100, 100, this, 50, 10, -20, Color.GREEN, Color.RED, false, Color.BLACK, 1);
+        randomHpBar = new SuperStatBar(100, 100, this, 50, 10, -20, Color.GREEN, Color.RED, false, Color.BLACK, 1);
+        hitbox = new Hitbox(10, 10);
     }
 
     public void checkCollision() {
@@ -50,9 +52,9 @@ public class RandomPlanet extends Planet {
             RandomPlanet newPlanet = new RandomPlanet();
             getWorld().addObject(newPlanet, 0, Greenfoot.getRandomNumber(276) + 150);
             getWorld().addObject(newPlanet.getHpBar(), 0, Greenfoot.getRandomNumber(276) + 150);
-
         }
-        RandomHpBar.moveMe();
+        randomHpBar.moveMe();
+        hitbox.moveHitbox();
     }
 
     public void randomImage(){
@@ -63,11 +65,17 @@ public class RandomPlanet extends Planet {
         img.scale(length, length);
         setImage(img);
     }
-    
+
     public SuperStatBar getHpBar() {
-        return RandomHpBar;
+        return randomHpBar;
     }
-    
+
+    public void addedToWorld (World w){
+        w.addObject(randomHpBar, getX() / 2, getY() / 2);
+        w.addObject(hitbox, getX(), getY() - getRadius());
+        System.out.println("Random X coord: " + getX()+ "Random Y coord: "+ (getY() - getRadius()));
+    }
+
     private void generateTrees(int count) {
         for (int i = 0; i < count; i++) {
             BaobabTree tree = new BaobabTree(); // Assuming you have a Tree class that accepts a planet as a parameter

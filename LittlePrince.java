@@ -11,7 +11,7 @@ public class LittlePrince extends Moving
     private GreenfootImage[] walk = new GreenfootImage[8];
     private GreenfootImage[] fly = new GreenfootImage[6];
     private GreenfootImage[] dig = new GreenfootImage[9];
-    public static SuperStatBar PrinceHpBar;
+    private SuperStatBar princeHpBar;
     /**
      * Act - do whatever the LittlePrince wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -30,7 +30,11 @@ public class LittlePrince extends Moving
         prepareAnimation(walk, "walkAnimation/walk");
         prepareAnimation(fly, "flyAnimation/fly");
         prepareAnimation(dig, "digAnimation/dig");
-        PrinceHpBar = new SuperStatBar(100, 100, this, 100, 10, -50, Color.GREEN, Color.RED, false, Color.BLACK, 1);
+        princeHpBar = new SuperStatBar(100, 100, this, 100, 10, -50, Color.GREEN, Color.RED, false, Color.BLACK, 1);
+    }
+    
+    public void addedToWorld (World w){
+        w.addObject(princeHpBar, getX(), getY());
     }
     
     public int getPrinceX(){
