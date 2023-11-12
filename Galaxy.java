@@ -20,6 +20,7 @@ public class Galaxy extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 576, 1, false);
+        setPaintOrder (SuperStatBar.class, Asteroids.class, Being.class, Planet.class); 
         clueBar = new SuperStatBar(110, clueCount, null, 110, 10, 0, Color.RED, Color.BLACK, false, Color.BLACK, 1);
         addObject(clueBar, getWidth() - 60, 80);
         prepare();
