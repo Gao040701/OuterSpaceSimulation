@@ -30,7 +30,7 @@ public class LittlePrince extends Moving
         prepareAnimation(walk, "walkAnimation/walk");
         prepareAnimation(fly, "flyAnimation/fly");
         prepareAnimation(dig, "digAnimation/dig");
-        PrinceHpBar = new SuperStatBar(100, 100, this, 100, 10, -20, Color.GREEN, Color.RED, false, Color.BLACK, 1);
+        PrinceHpBar = new SuperStatBar(100, 100, this, 100, 10, -50, Color.GREEN, Color.RED, false, Color.BLACK, 1);
     }
     
     public int getPrinceX(){
