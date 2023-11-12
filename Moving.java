@@ -19,6 +19,7 @@ public class Moving extends Being
     //private Planet targetPlanet;
     protected LittlePrince littlePrince;
     private int mySpeed = 1;
+    private int hit;
     /**
      * Act - do whatever the Character wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -31,10 +32,18 @@ public class Moving extends Being
         //if (targetPlanet != null){ //&& targetPlanet.getWorld() == null
         //if(getOneIntersectingObject(Planet.class) != null){
         if (getOneIntersectingObject(Planet.class) != null){
+            
+            World world = getWorld();
+            Planet touchingPlanet= (Planet)getOneIntersectingObject(Planet.class);
             targetPlanet = null;
             rotateDetection = true;
+            if (getOneIntersectingObject(Hitbox.class) != null){
+                hit++;
+                System.out.println("Hit #: " + hit);
+            }
         }
         else{
+            hit = 0;
             rotateDetection = false;
         }
 
@@ -109,28 +118,19 @@ public class Moving extends Being
         }
     }
 
-    public void rotateDetection(){
-        if (rotateDetection == true){
-            //rotate(touchingPlanet.getSpeed());
-            rotate();
-        }
-        //rotate(119/100);
-    }
-
     public void rotate(){
         Planet touchingPlanet= (Planet)getOneIntersectingObject(Planet.class);
         int radius = touchingPlanet.getRadius();
         double speed = touchingPlanet.getSpeed();
         double radians = Math.toRadians(angle);
-        double x = touchingPlanet.getX() + (int) (-(radius+30) * Math.cos(radians));
-        double y = touchingPlanet.getY() + (int) (-(radius+30) * Math.sin(radians));
+        double x = touchingPlanet.getX() + (double) ((radius+30) * Math.cos(radians));
+        double y = touchingPlanet.getY() + (double) ((radius+30) * Math.sin(radians));
         //setLocation(x, y);
         //setLocation(x - speed/100, y);
-        angle -= 1.75;
+        angle -= 1.5;
         //turnTowards (x, y);
-        turn(-radius/15500);
+        //turn(radius);
         turnTowards (x, y);
-        setLocation(x, y);
         //turnTowards (x, y);
         setLocation(x+speed, y);
         //move(*(2*Math.PI*radius)/targetPlanet.getSpeed());
@@ -159,14 +159,14 @@ public class Moving extends Being
             imgs[i] = new GreenfootImage(frameName+i+".png");
         }
     }
-    
+
     public void prepareAnimation(GreenfootImage[] imgs, String frameName, int width, int height){
         for (int i = 0; i < imgs.length; i++){
             imgs[i] = new GreenfootImage(frameName+i+".png");
             imgs[i].scale(width, height);
         }
     }
-    
+
     public void animate(GreenfootImage[] imgs){
         if (index < imgs.length){
             if (count == countNum){

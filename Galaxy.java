@@ -20,27 +20,25 @@ public class Galaxy extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 576, 1, false);
-        setPaintOrder (SuperStatBar.class, Asteroids.class, Being.class, Planet.class); 
+        setPaintOrder (Hitbox.class, SuperStatBar.class, Asteroids.class, Being.class, Planet.class); 
         clueBar = new SuperStatBar(110, clueCount, null, 110, 10, 0, Color.RED, Color.BLACK, false, Color.BLACK, 1);
         addObject(clueBar, getWidth() - 60, 80);
         prepare();
     }
-
+    
+    /**
+     * Credit: Method created by Jiayi Li, modified by Zhiyu (Jennifer) Zhou
+     */
     private void prepare() {
         for (int i = 0; i < numOfAsteriods; i++) {
             addObject(new Asteroids(), getAsteroidsX(), getAsteroidsY());
         }
         addObject(new LittlePrince(), 100, 100);
-        addObject(LittlePrince.PrinceHpBar,100,100);
+        addObject(new HomePlanet(), getWidth() / 2, getHeight() / 2);
+        addObject(new RandomPlanet(), 0, Greenfoot.getRandomNumber(276) + 150);
         if (Greenfoot.getRandomNumber (2) == 0){
             addObject (new Fox(), 0 + 50, Greenfoot.getRandomNumber(276) + 200);
         }
-        HomePlanet homePlanet = new HomePlanet();
-        RandomPlanet randomPlanet = new RandomPlanet();
-        addObject(homePlanet, getWidth() / 2, getHeight() / 2);
-        addObject(homePlanet.HomeHpBar,getWidth() / 2, getHeight() / 2);
-        addObject(randomPlanet, 0, Greenfoot.getRandomNumber(276) + 150);
-        addObject(randomPlanet.getHpBar(), 0, Greenfoot.getRandomNumber(276) + 150);
     }
     
     public int getAsteroidsX(){

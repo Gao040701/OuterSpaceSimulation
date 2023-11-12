@@ -14,7 +14,6 @@ public abstract class Planet extends SuperSmoothMover
      */
     protected int radius;
     protected double speed;
-    
     public void act() {
         move(speed); 
         /*{
