@@ -20,6 +20,7 @@ public class Moving extends Being
     protected LittlePrince littlePrince;
     private int mySpeed = 1;
     private int hit;
+    private int point;
     /**
      * Act - do whatever the Character wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -32,11 +33,18 @@ public class Moving extends Being
         //if (targetPlanet != null){ //&& targetPlanet.getWorld() == null
         //if(getOneIntersectingObject(Planet.class) != null){
         if (getOneIntersectingObject(Planet.class) != null){
-            
             World world = getWorld();
             Planet touchingPlanet= (Planet)getOneIntersectingObject(Planet.class);
             targetPlanet = null;
             rotateDetection = true;
+            double y = touchingPlanet.getY();
+            if(y == touchingPlanet.getRadius()-30){
+                point++;
+                System.out.println("Point #: " + point);
+            }
+            if(point == 2){
+                System.out.println("2!!!");
+            }
             if (getOneIntersectingObject(Hitbox.class) != null){
                 hit++;
                 System.out.println("Hit #: " + hit);
