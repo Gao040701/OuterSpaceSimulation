@@ -10,7 +10,8 @@ import java.awt.Point;
  */
 public class Moving extends Being
 {
-    private int speed;
+    private int speed, index, count = 0;
+    private final int countNum = 7;
     private Planet targetPlanet;
     private boolean rotateDetection = false;
     private double angle = 0;
@@ -153,4 +154,30 @@ public class Moving extends Being
 
     // return new Point(xPosy, yPosy);
     // }
+    public void prepareAnimation(GreenfootImage[] imgs, String frameName){
+        for (int i = 0; i < imgs.length; i++){
+            imgs[i] = new GreenfootImage(frameName+i+".png");
+        }
+    }
+    
+    public void prepareAnimation(GreenfootImage[] imgs, String frameName, int width, int height){
+        for (int i = 0; i < imgs.length; i++){
+            imgs[i] = new GreenfootImage(frameName+i+".png");
+            imgs[i].scale(width, height);
+        }
+    }
+    
+    public void animate(GreenfootImage[] imgs){
+        if (index < imgs.length){
+            if (count == countNum){
+                setImage(imgs[index]);
+                index++;
+                count = 0;
+            }else{
+                count++;
+            }
+        }else{
+            index = 0;
+        }
+    }
 }

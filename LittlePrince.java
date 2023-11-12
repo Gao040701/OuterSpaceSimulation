@@ -11,8 +11,6 @@ public class LittlePrince extends Moving
     private GreenfootImage[] walk = new GreenfootImage[8];
     private GreenfootImage[] fly = new GreenfootImage[6];
     private GreenfootImage[] dig = new GreenfootImage[9];
-    private int index, count;
-    private final int countNum = 7;
     public static SuperStatBar PrinceHpBar;
     /**
      * Act - do whatever the LittlePrince wants to do. This method is called whenever
@@ -35,38 +33,11 @@ public class LittlePrince extends Moving
         PrinceHpBar = new SuperStatBar(100, 100, this, 100, 10, -20, Color.GREEN, Color.RED, false, Color.BLACK, 1);
     }
     
-    public void animate(GreenfootImage[] imgs){
-        if (index < imgs.length){
-            if (count == countNum){
-                setImage(imgs[index]);
-                index++;
-                count = 0;
-            }else{
-                count++;
-            }
-        }else{
-            index = 0;
-        }
-    }
-    
-    public void prepareAnimation(GreenfootImage[] imgs, String frameName){
-        for (int i = 0; i < imgs.length; i++){
-            imgs[i] = new GreenfootImage(frameName+i+".png");
-        }
-    }
-    
     public int getPrinceX(){
         return getX();
     }
     
     public int getPrinceY(){
         return getY();
-    }
-    
-    public void prepareAnimation(GreenfootImage[] imgs, String frameName, int width, int height){
-        for (int i = 0; i < imgs.length; i++){
-            imgs[i] = new GreenfootImage(frameName+i+".png");
-            imgs[i].scale(width, height);
-        }
     }
 }
