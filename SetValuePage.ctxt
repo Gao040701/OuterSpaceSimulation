@@ -1,7 +1,11 @@
 #BlueJ class context
 comment0.target=SetValuePage
-comment0.text=\n\ Write\ a\ description\ of\ class\ SetValuePage\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=
 comment1.target=SetValuePage()
-comment1.text=\n\ Constructor\ for\ objects\ of\ class\ SetValuePage.\n\ \n
-numComments=2
+comment2.params=
+comment2.target=void\ prepare()
+comment3.params=
+comment3.target=void\ act()
+comment4.params=
+comment4.target=void\ updateValueButton()
+numComments=5

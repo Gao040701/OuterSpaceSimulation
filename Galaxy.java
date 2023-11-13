@@ -7,7 +7,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Galaxy extends World
 {
-    public static int numOfAsteriods=3;
+    public int numOfAsteroids;
     private int numOfPlanets = 1; 
     private SuperStatBar clueBar;
     private int clueCount = 0;
@@ -18,10 +18,11 @@ public class Galaxy extends World
      * Constructor for objects of class MyWorld.
      * 
      */
-    public Galaxy()
+    public Galaxy(int numOfAsteriods)
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 576, 1, false);
+        this.numOfAsteroids = numOfAsteroids;
         background.scale(1024, 576);
         setBackground(background);
         setPaintOrder (Hitbox.class, SuperStatBar.class, Asteroids.class, Being.class, Planet.class); 
@@ -34,7 +35,8 @@ public class Galaxy extends World
      * Credit: Method created by Jiayi Li, modified by Zhiyu (Jennifer) Zhou
      */
     private void prepare() {
-        for (int i = 0; i < numOfAsteriods; i++) {
+        System.out.println(numOfAsteroids);
+        for (int i = 0; i < numOfAsteroids; i++) {
             addObject(new Asteroids(), getAsteroidsX(), getAsteroidsY());
         }
         addObject(new LittlePrince(), 100, 100);
