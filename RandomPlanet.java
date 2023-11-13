@@ -10,13 +10,14 @@ import java.util.List;
 public class RandomPlanet extends Planet {
     private static boolean canSpawnNext;
     private GreenfootImage[] planets = new GreenfootImage[7];
-    private int planetImgIndex, length;
+    public int planetImgIndex, length;
     private GreenfootImage img;
+    public int distance;
     private int num=0;
     //variables for set the image;
     private SuperStatBar randomHpBar;
     private Hitbox hitbox;
-    
+    private int ylocation;
     public RandomPlanet() {
         //setLocation(0, Greenfoot.getRandomNumber(276) + 150);
         speed = Greenfoot.getRandomNumber(1) + 1;
@@ -75,16 +76,17 @@ public class RandomPlanet extends Planet {
                 canSpawnNext = true;
                 if(num==2){
                     num=0;
-                    int treeCount = Greenfoot.getRandomNumber(3) + 1; // Randomly generate 1 to 3 trees
-                    generateTrees(treeCount);
                 }
             } 
             else if(getX() > 600 && canSpawnNext && num==0) {
                 num++;
                 canSpawnNext = false;
                 RandomPlanet newPlanet = new RandomPlanet();
-                getWorld().addObject(newPlanet, 0, Greenfoot.getRandomNumber(276) + 150);
+                ylocation=Greenfoot.getRandomNumber(276) + 150;
+                getWorld().addObject(newPlanet, 0, ylocation);
                 getWorld().addObject(newPlanet.getHpBar(), 0, Greenfoot.getRandomNumber(276) + 150);
+                int treeCount = Greenfoot.getRandomNumber(3) + 1; // Randomly generate 1 to 3 trees
+                generateTrees(treeCount);
             }
             randomHpBar.moveMe();
             hitbox.move((int)speed);
@@ -100,6 +102,7 @@ public class RandomPlanet extends Planet {
         length = 200 + Greenfoot.getRandomNumber(41); // 200 + 0 to 40
         img.scale(length, length);
         setImage(img);
+        radius = length/2;
     }
 
     public SuperStatBar getHpBar() {
@@ -109,7 +112,7 @@ public class RandomPlanet extends Planet {
     public void addedToWorld (World w){
         w.addObject(randomHpBar, getX() / 2, getY() / 2);
         w.addObject(hitbox, getX(), getY() - getRadius());
-        System.out.println("Random X coord: " + getX()+ "Random Y coord: "+ (getY() - getRadius()));
+        //System.out.println("Random X coord: " + getX()+ "Random Y coord: "+ (getY() - getRadius()));
     }
     
     public void checkAndRemove ()
@@ -119,18 +122,37 @@ public class RandomPlanet extends Planet {
         getWorld().removeObject(hitbox);
         getWorld().removeObject(this); // 从世界中移除我
         appear=false;
-        System.out.println(appear);
         }
     }
-    private void generateTrees(int count) {
-        for (int i = 0; i < count; i++) {
-            BaobabTree tree = new BaobabTree(); // Assuming you have a Tree class that accepts a planet as a parameter
-            double angle = Math.toRadians(Greenfoot.getRandomNumber(360)); // Random angle
-            int distance = Greenfoot.getRandomNumber(radius * 2); // Random distance within the planet's radius
-            int treeX = (int) (getX() + distance * Math.cos(angle));
-            int treeY = (int) (getY() + distance * Math.sin(angle));
-            getWorld().addObject(tree, treeX, treeY);
-            tree.setRotation(getRotation()); // Set tree's angle to match the planet's rotation
+    public void generateTrees(int count) {
+    for (int i = 0; i < count; i++) {
+        BaobabTree tree = new BaobabTree(this);
+        /*
+        double angle = Math.toRadians(Greenfoot.getRandomNumber(360));
+        distance = Math.abs(Greenfoot.getRandomNumber(length * 2)) + 5;
+
+        // 计算树相对于星球的位置
+        int treeX = getX() + (int) (distance * Math.cos(angle));
+        int treeY = getY() + (int) (distance * Math.sin(angle));
+
+        // 添加树到世界中
+        getWorld().addObject(tree, treeX, treeY);
+        */
+        int angle = Greenfoot.getRandomNumber(4);
+        if(angle==0){
+            getWorld().addObject(tree, getX(), ylocation-radius);
+        } else if(angle==1){
+            getWorld().addObject(tree, getX()+radius/2, ylocation - radius/2);
+        } else if(angle==2){
+            getWorld().addObject(tree, getX() +radius, ylocation);
+        } else if(angle==3){
+            getWorld().addObject(tree, getX(), ylocation + radius/2);
+        } else if(angle==4){
+            getWorld().addObject(tree, getX(), ylocation + radius);
         }
+        tree.setRotation(angle*45);
+        //tree.move(speed);
     }
+}
+
 }
