@@ -31,26 +31,28 @@ public class HomePlanet extends Planet
         homeHpBar = new SuperStatBar(100, 100, this, 50, 10, -20, Color.GREEN, Color.RED, false, Color.BLACK, 1);
         hitbox = new Hitbox(1, 1);
     }
+
     public void checkCollision() {
         List<Asteroids> asteroidsList = getWorld().getObjects(Asteroids.class);
         Actor actor = getOneIntersectingObject(Asteroids.class);
-    if (actor instanceof Asteroids) {
-    Asteroids a = (Asteroids) actor;
-    totalHP -= decreaseHP;
-    homeHpBar.update(totalHP);
-    getWorld().removeObject(a);
-    
-    // 在这里添加新的 Asteroids，以保持总数为三个
-    int currentAsteroids = asteroidsList.size();
-    int asteroidsToAdd = 3 - currentAsteroids;
-    
-    for (int i = 0; i < asteroidsToAdd+1; i++) {
-        int x = Greenfoot.getRandomNumber(getWorld().getWidth());
-        int y = Greenfoot.getRandomNumber(getWorld().getHeight());
-        getWorld().addObject(new Asteroids(), x, y);
+        if (actor instanceof Asteroids) {
+            Asteroids a = (Asteroids) actor;
+            totalHP -= decreaseHP;
+            homeHpBar.update(totalHP);
+            getWorld().removeObject(a);
+
+            // 在这里添加新的 Asteroids，以保持总数为三个
+            int currentAsteroids = asteroidsList.size();
+            int asteroidsToAdd = 3 - currentAsteroids;
+
+            for (int i = 0; i < asteroidsToAdd+1; i++) {
+                int x = Greenfoot.getRandomNumber(getWorld().getWidth());
+                int y = Greenfoot.getRandomNumber(getWorld().getHeight());
+                getWorld().addObject(new Asteroids(), x, y);
+            }
+        }
     }
-    }
-    }
+
     public void addedToWorld (World w){
         w.addObject(homeHpBar, getX() / 2, getY() / 2);
         System.out.println("Added homeHpBar");
@@ -58,28 +60,27 @@ public class HomePlanet extends Planet
         System.out.println("Home X coord: " + getX()+ "Home Y coord: "+ (getY() - getRadius()));
     }
 
-    
     public void checkAndRemove ()
     {
         if (getWorld() != null && totalHP <= 0 && appear) {
-        getWorld().removeObject(homeHpBar);
-        getWorld().removeObject(hitbox);
-        getWorld().removeObject(this); // 从世界中移除我
-        appear=false;
-        System.out.println(appear);
+            getWorld().removeObject(homeHpBar);
+            getWorld().removeObject(hitbox);
+            getWorld().removeObject(this); // 从世界中移除我
+            appear=false;
+            System.out.println(appear);
         }
     }
-    
+
     public void act()
     {
         if(appear){super.act();
-        // Add your action code here.
-        if (getX() > getWorld().getWidth()) {
-            getWorld().removeObject(this); // 移除当前星球对象
-        }
-        homeHpBar.moveMe();
-        hitbox.move((int)speed);
-        checkAndRemove();
+            // Add your action code here.
+            if (getX() > getWorld().getWidth()) {
+                getWorld().removeObject(this); // 移除当前星球对象
+            }
+            homeHpBar.moveMe();
+            hitbox.move((int)speed);
+            checkAndRemove();
         }
     }
 }
