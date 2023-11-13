@@ -29,7 +29,7 @@ public class HomePlanet extends Planet
         speed = Greenfoot.getRandomNumber(1) + 1;
         setImage(img);
         homeHpBar = new SuperStatBar(100, 100, this, 50, 10, -20, Color.GREEN, Color.RED, false, Color.BLACK, 1);
-        hitbox = new Hitbox(10, 10);
+        hitbox = new Hitbox(1, 1);
     }
     public void checkCollision() {
         List<Asteroids> asteroidsList = getWorld().getObjects(Asteroids.class);

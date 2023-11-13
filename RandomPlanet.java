@@ -1,5 +1,4 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-import java.util.List;
 
 /**
  * Write a description of class RandomPlanet here.
@@ -16,81 +15,46 @@ public class RandomPlanet extends Planet {
     //variables for set the image;
     private SuperStatBar randomHpBar;
     private Hitbox hitbox;
-    
     public RandomPlanet() {
         //setLocation(0, Greenfoot.getRandomNumber(276) + 150);
         speed = Greenfoot.getRandomNumber(1) + 1;
         canSpawnNext = false;
         planets = new GreenfootImage[7];
-        totalHP=Galaxy.Rhp;
-        decreaseHP=Galaxy.Rdecrease;
         for (int i = 0; i < 7; i++){
             planets[i] = new GreenfootImage("planets/planet" + i + ".png");
         }
         randomImage();
-        randomHpBar = new SuperStatBar(totalHP, totalHP, this, 50, 10, -20, Color.GREEN, Color.RED, false, Color.BLACK, 1);
-        hitbox = new Hitbox(10, 10);
-        appear=true;
+        randomHpBar = new SuperStatBar(100, 100, this, 50, 10, -20, Color.GREEN, Color.RED, false, Color.BLACK, 1);
+        hitbox = new Hitbox(1, 1);
     }
 
     public void checkCollision() {
-        List<Asteroids> asteroidsList = getWorld().getObjects(Asteroids.class);
-        Actor actor = getOneIntersectingObject(Asteroids.class);
-    if (actor instanceof Asteroids) {
-    Asteroids a = (Asteroids) actor;
-    totalHP -= decreaseHP;
-    randomHpBar.update(totalHP);
-    getWorld().removeObject(a);
-    
-    // 在这里添加新的 Asteroids，以保持总数为三个
-    int currentAsteroids = asteroidsList.size();
-    int asteroidsToAdd = 3 - currentAsteroids;
-    
-    for (int i = 0; i < asteroidsToAdd+1; i++) {
-        int x = Greenfoot.getRandomNumber(getWorld().getWidth());
-        int y = Greenfoot.getRandomNumber(getWorld().getHeight());
-        getWorld().addObject(new Asteroids(), x, y);
-    }
-    }
+        Asteroids a = (Asteroids) getOneObjectAtOffset((int) speed + getImage().getWidth() / 2, 0, Asteroids.class);
+        // 处理碰撞逻辑
     }
 
     public void act() {
-        if (!appear) {
-            return; // 如果对象不应该出现，直接返回
-        }
-        if(appear){
-                if(appear){
-                super.act();
-            }// 调用基类的 act() 方法，实现星球的基本移动逻辑
-            if (getImage() == null) {
-                // 如果图像为 null，说明已经被移除，不执行后续逻辑
-                appear =false;
-                return;
-            }
+        super.act(); // 调用基类的 act() 方法，实现星球的基本移动逻辑
 
-        if(appear){
-            if(getX() > getWorld().getWidth()){
-                getWorld().removeObject(this); // 移除当前星球对象
-            }else if (!canSpawnNext  ) {
-                canSpawnNext = true;
-                if(num==2){
-                    num=0;
-                    int treeCount = Greenfoot.getRandomNumber(3) + 1; // Randomly generate 1 to 3 trees
-                    generateTrees(treeCount);
-                }
-            } 
-            else if(getX() > 600 && canSpawnNext && num==0) {
-                num++;
-                canSpawnNext = false;
-                RandomPlanet newPlanet = new RandomPlanet();
-                getWorld().addObject(newPlanet, 0, Greenfoot.getRandomNumber(276) + 150);
-                getWorld().addObject(newPlanet.getHpBar(), 0, Greenfoot.getRandomNumber(276) + 150);
+        if(getX() > getWorld().getWidth()){
+            getWorld().removeObject(this); // 移除当前星球对象
+        }else if (!canSpawnNext  ) {
+            canSpawnNext = true;
+            if(num==2){
+                num=0;
+                int treeCount = Greenfoot.getRandomNumber(3) + 1; // Randomly generate 1 to 3 trees
+                generateTrees(treeCount);
             }
-            randomHpBar.moveMe();
-            hitbox.move((int)speed);
+        } 
+        else if(getX() > 600 && canSpawnNext && num==0) {
+            num++;
+            canSpawnNext = false;
+            RandomPlanet newPlanet = new RandomPlanet();
+            getWorld().addObject(newPlanet, 0, Greenfoot.getRandomNumber(276) + 150);
+            getWorld().addObject(newPlanet.getHpBar(), 0, Greenfoot.getRandomNumber(276) + 150);
         }
-    }
-        checkAndRemove();
+        randomHpBar.moveMe();
+        hitbox.move((int)speed);
     }
 
     public void randomImage(){
@@ -111,17 +75,7 @@ public class RandomPlanet extends Planet {
         w.addObject(hitbox, getX(), getY() - getRadius());
         System.out.println("Random X coord: " + getX()+ "Random Y coord: "+ (getY() - getRadius()));
     }
-    
-    public void checkAndRemove ()
-    {
-        if (getWorld() != null && totalHP <= 0 && appear) {
-        getWorld().removeObject(randomHpBar);
-        getWorld().removeObject(hitbox);
-        getWorld().removeObject(this); // 从世界中移除我
-        appear=false;
-        System.out.println(appear);
-        }
-    }
+
     private void generateTrees(int count) {
         for (int i = 0; i < count; i++) {
             BaobabTree tree = new BaobabTree(); // Assuming you have a Tree class that accepts a planet as a parameter
