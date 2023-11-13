@@ -7,7 +7,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class IntroAnimation extends World
 {
-    private GreenfootImage[] animation= new GreenfootImage[25];
+    private GreenfootImage[] animation= new GreenfootImage[51];
     private int index = 0;
     private final int countNum = 7;
     private int count = 0;
@@ -36,6 +36,7 @@ public class IntroAnimation extends World
             }
         }else{
             //go to game world 
+            Greenfoot.setWorld(new Galaxy());
         }
     }
 }

@@ -9,11 +9,13 @@ public class Asteroids extends SuperSmoothMover {
     private int xSpeed;
     private int ySpeed;
     private int count;
-
+    private GreenfootImage asteroid = new GreenfootImage("asteroid.png");
     public Asteroids() {
         xSpeed = Greenfoot.getRandomNumber(4) + 1; // x 方向的速度范围在 1 到 3 之间
         ySpeed = Greenfoot.getRandomNumber(3) - 1; // y 方向的速度范围在 -1 到 1 之间
         count = 0; // 计数器初始化为 0
+        asteroid.scale(50+Greenfoot.getRandomNumber(20), 40+Greenfoot.getRandomNumber(20));
+        setImage(asteroid);
     }
 
     public void act() {

@@ -3,7 +3,9 @@ import java.util.Arrays;
 /**
  * <p>New and Improved Stat Bar (Formerly Health Bar). This stat bar can be set to follow
  * an Actor or stay in one place (see constructors). This stat bar may have customized colors,
- * can hide when at full, and can have a customized border. This class aims to be as flexible
+ * can hipublic int getCurrentValue() {
+        return currentValue;
+    }de when at full, and can have a customized border. This class aims to be as flexible
  * as possible, allowing it to be simple to use for beginners (easy 0 or 2 parameter constructor)
  * while also highly flexible for those who want to provide more specific parameters (multiple bars
  * in custom colours and sizes with custom offsets and borders).</p>
@@ -173,6 +175,7 @@ public class SuperStatBar extends Actor
         this (new int[]{maxVal}, new int[]{currVal}, owner, width, height, offset, new Color[] {filledColor}, new Color[] {missingColor}, hideAtMax, borderColor, borderThickness);
 
     }
+    
 
     /**
      *  The king of all StatBar constuctors!
