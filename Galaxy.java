@@ -11,12 +11,9 @@ public class Galaxy extends World
     private int numOfPlanets = 1; 
     private SuperStatBar clueBar;
     private int clueCount = 0;
-<<<<<<< HEAD
     private GreenfootImage background = new GreenfootImage("galaxyBackground.png");
-=======
     public static final int Rhp=100;
     public static final int Rdecrease=20;
->>>>>>> ea8b7dd666644ec61c3d0fc19610f3ae6ba68c62
     /**
      * Constructor for objects of class MyWorld.
      * 
