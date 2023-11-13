@@ -55,7 +55,6 @@ public class Moving extends Being
                 hit++;
                 //timer.mark();
                 //if(timer.millisElapsed() > 1000)
-                System.out.println("Hit #: " + hit);
             }
             
         }
@@ -82,7 +81,6 @@ public class Moving extends Being
         double closestTargetDistance = 0;
         double distanceToActor;
         planets = (ArrayList<Planet>)getObjectsInRange(40, Planet.class);
-        System.out.println("SIZE: " + planets.size());
 
         if (planets.size() == 0){
             planets = (ArrayList<Planet>)getObjectsInRange(140, Planet.class);
@@ -145,7 +143,6 @@ public class Moving extends Being
         angle -= 1.5;
         turnTowards (touchingPlanet);
         turn(-90);
-        System.out.println("Moving Planet x: " + x + " Moving Planet y: " + y);
         setLocation(x+speed, y);
     }
 

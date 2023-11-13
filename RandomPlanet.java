@@ -73,9 +73,17 @@ public class RandomPlanet extends Planet {
     public void addedToWorld (World w){
         w.addObject(randomHpBar, getX() / 2, getY() / 2);
         w.addObject(hitbox, getX(), getY() - getRadius());
-        System.out.println("Random X coord: " + getX()+ "Random Y coord: "+ (getY() - getRadius()));
     }
 
+    public void checkAndRemove()
+    {
+        if (getWorld() != null && totalHP <= 0 && appear){
+        getWorld().removeObject(randomHpBar);
+        getWorld().removeObject(hitbox);
+        getWorld().removeObject(this); 
+        appear = false;
+        }
+    }
     private void generateTrees(int count) {
         for (int i = 0; i < count; i++) {
             BaobabTree tree = new BaobabTree(); // Assuming you have a Tree class that accepts a planet as a parameter

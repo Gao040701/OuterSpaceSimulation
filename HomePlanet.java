@@ -55,9 +55,7 @@ public class HomePlanet extends Planet
 
     public void addedToWorld (World w){
         w.addObject(homeHpBar, getX() / 2, getY() / 2);
-        System.out.println("Added homeHpBar");
         w.addObject(hitbox, getX(), getY() - getRadius());
-        System.out.println("Home X coord: " + getX()+ "Home Y coord: "+ (getY() - getRadius()));
     }
 
     public void checkAndRemove ()
