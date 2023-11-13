@@ -1,7 +1,7 @@
 import greenfoot.*;
 
 public class SetValuePage extends World {
-    private int numOfAsteroids;
+    public static int numOfAsteroids;
     private TextButton plusButton;
     private TextButton minusButton;
     private TextButton startButton;

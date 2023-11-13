@@ -18,7 +18,7 @@ public class Galaxy extends World
      * Constructor for objects of class MyWorld.
      * 
      */
-    public Galaxy(int numOfAsteriods)
+    public Galaxy(int numOfAsteroids)
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 576, 1, false);
@@ -35,8 +35,8 @@ public class Galaxy extends World
      * Credit: Method created by Jiayi Li, modified by Zhiyu (Jennifer) Zhou
      */
     private void prepare() {
-        System.out.println(numOfAsteroids);
-        for (int i = 0; i < numOfAsteroids; i++) {
+        System.out.println(this.numOfAsteroids); // Use this.numOfAsteroids
+        for (int i = 0; i < this.numOfAsteroids; i++) {
             addObject(new Asteroids(), getAsteroidsX(), getAsteroidsY());
         }
         addObject(new LittlePrince(), 100, 100);

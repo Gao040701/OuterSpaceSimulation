@@ -45,7 +45,7 @@ public class RandomPlanet extends Planet {
     
     // 在这里添加新的 Asteroids，以保持总数为三个
     int currentAsteroids = asteroidsList.size();
-    int asteroidsToAdd = 3 - currentAsteroids;
+    int asteroidsToAdd = SetValuePage.numOfAsteroids - currentAsteroids;
     
     for (int i = 0; i < asteroidsToAdd+1; i++) {
         int x = Greenfoot.getRandomNumber(getWorld().getWidth());
