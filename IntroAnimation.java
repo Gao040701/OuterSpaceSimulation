@@ -1,9 +1,9 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
- * Write a description of class IntroAnimation here.
+ * the animation introducing the story Le Petit Prince (The Little Prince)
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @Angela Gao 
+ * @v2 11/12/2023 
  */
 public class IntroAnimation extends World
 {

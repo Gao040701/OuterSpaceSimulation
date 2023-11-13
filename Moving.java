@@ -21,6 +21,7 @@ public class Moving extends Being
     private int mySpeed = 1;
     private int hit;
     private int point;
+    private SimpleTimer timer = new SimpleTimer();
     /**
      * Act - do whatever the Character wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -30,25 +31,32 @@ public class Moving extends Being
         /**
          * Add if (energy > 0)
          */
+
         //if (targetPlanet != null){ //&& targetPlanet.getWorld() == null
         //if(getOneIntersectingObject(Planet.class) != null){
         if (getOneIntersectingObject(Planet.class) != null){
+            hit = 0;
             World world = getWorld();
             Planet touchingPlanet= (Planet)getOneIntersectingObject(Planet.class);
             targetPlanet = null;
             rotateDetection = true;
             double y = touchingPlanet.getY();
+            int count;
+
             // if(y == touchingPlanet.getRadius()-30){
-                // point++;
-                // System.out.println("Point #: " + point);
+            // point++;
+            // System.out.println("Point #: " + point);
             // }
             // if(point == 2){
-                // System.out.println("2!!!");
+            // System.out.println("2!!!");
             // }
+            //if (y == touchingPlanet.getRadius() + 
             if (getOneIntersectingObject(Hitbox.class) != null){
                 hit++;
-                System.out.println("Hit #: " + hit);
+                //timer.mark();
+                //if(timer.millisElapsed() > 1000)
             }
+            
         }
         else{
             hit = 0;
@@ -57,9 +65,9 @@ public class Moving extends Being
 
         if (rotateDetection == true){
             rotate();
-            //pointOnCircle();
         }
         else{
+            rotateImage(90); //may need to adjust later
             moveRandomly();
         }
     }
@@ -73,7 +81,6 @@ public class Moving extends Being
         double closestTargetDistance = 0;
         double distanceToActor;
         planets = (ArrayList<Planet>)getObjectsInRange(40, Planet.class);
-        System.out.println("SIZE: " + planets.size());
 
         if (planets.size() == 0){
             planets = (ArrayList<Planet>)getObjectsInRange(140, Planet.class);
@@ -133,16 +140,12 @@ public class Moving extends Being
         double radians = Math.toRadians(angle);
         double x = touchingPlanet.getX() + (double) ((radius+30) * Math.cos(radians));
         double y = touchingPlanet.getY() + (double) ((radius+30) * Math.sin(radians));
-        //setLocation(x, y);
-        //setLocation(x - speed/100, y);
         angle -= 1.5;
-        
         turnTowards (touchingPlanet);
-        //setRotation(180);
-        System.out.println("Moving Planet x: " + x + " Moving Planet y: " + y);
+        turn(-90);
         setLocation(x+speed, y);
     }
-    
+
     public void prepareAnimation(GreenfootImage[] imgs, String frameName){
         for (int i = 0; i < imgs.length; i++){
             imgs[i] = new GreenfootImage(frameName+i+".png");
