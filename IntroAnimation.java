@@ -36,7 +36,7 @@ public class IntroAnimation extends World
             }
         }else{
             //go to game world 
-            Greenfoot.setWorld(new Galaxy());
+            Greenfoot.setWorld(new SetValuePage());
         }
     }
 }

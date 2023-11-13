@@ -65,7 +65,6 @@ public class HomePlanet extends Planet
             getWorld().removeObject(hitbox);
             getWorld().removeObject(this); // 从世界中移除我
             appear=false;
-            System.out.println(appear);
         }
     }
 
