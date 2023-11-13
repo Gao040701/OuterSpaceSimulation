@@ -22,6 +22,13 @@ public class RosePlanet extends Planet
     {
         // Add your action code here.
     }
+    public void checkAndRemove ()
+    {
+        if (totalHP == 0) 
+        {
+            getWorld().removeObject(this); // ... remove me from the World
+        }
+    }
     public void checkCollision(){
         Asteroids a = (Asteroids) getOneObjectAtOffset((int) speed + getImage().getWidth() / 2, 0, Asteroids.class);
 

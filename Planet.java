@@ -14,18 +14,25 @@ public abstract class Planet extends SuperSmoothMover
      */
     protected int radius;
     protected double speed;
+    protected int totalHP;
+    protected int decreaseHP;
+    protected boolean appear;
     public void act() {
-        move(speed); 
+       if(appear){
+           move(speed); 
         /*{
             radius = 20;
         */
+       checkCollision();
+       checkAndRemove();
+    }
     }
     public Planet() {
-        
+        appear=true;
     }
 
     public abstract void checkCollision();
-
+    public abstract void checkAndRemove();
     public int getRadius(){
         return getImage().getHeight()/2;
     }

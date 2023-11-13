@@ -7,11 +7,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Galaxy extends World
 {
-    private int numOfAsteriods=3;
+    public static int numOfAsteriods=3;
     private int numOfPlanets = 1; 
     private SuperStatBar clueBar;
     private int clueCount = 0;
-    
+    public static final int Rhp=100;
+    public static final int Rdecrease=20;
     /**
      * Constructor for objects of class MyWorld.
      * 
