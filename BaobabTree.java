@@ -9,16 +9,19 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class BaobabTree extends Stationary
 {
     private GreenfootImage baobabTree= new GreenfootImage("baobabTree.png");
+    private Planet planet;
     /**
      * Act - do whatever the BaobabTree wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()
     {
-        // Add your action code here.
+        setLocation(getX()+planet.getSpeed(), getY());
     }
-    public BaobabTree(){
+    public BaobabTree(Planet planet){
         baobabTree.scale(200,200);
         setImage(baobabTree);
+        //System.out.println("BaobabTree created!");
+        this.planet = planet;
     }
 }

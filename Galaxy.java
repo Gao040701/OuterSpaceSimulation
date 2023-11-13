@@ -13,7 +13,7 @@ public class Galaxy extends World
     private int clueCount = 0;
     private GreenfootImage background = new GreenfootImage("galaxyBackground.png");
     public static final int Rhp=100;
-    public static final int Rdecrease=20;
+    public static final int Rdecrease=10;
     /**
      * Constructor for objects of class MyWorld.
      * 
