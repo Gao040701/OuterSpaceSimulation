@@ -32,7 +32,6 @@ public class Moving extends Being
         if (checkHitPlanet()){
             targetPlanet = null;
             rotateDetection = true;
-<<<<<<< Updated upstream
             double y = touchingPlanet.getY();
             int count;
 
@@ -54,8 +53,6 @@ public class Moving extends Being
         else{
             hit = 0;
             rotateDetection = false;
-=======
->>>>>>> Stashed changes
         }
 
         if (rotateDetection == true){
