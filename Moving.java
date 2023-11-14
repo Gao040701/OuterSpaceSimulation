@@ -19,8 +19,6 @@ public class Moving extends Being
     //private Planet targetPlanet;
     protected LittlePrince littlePrince;
     private int mySpeed = 1;
-    private int hit;
-    private int point;
     private SimpleTimer timer = new SimpleTimer();
     /**
      * Act - do whatever the Character wants to do. This method is called whenever
@@ -31,35 +29,11 @@ public class Moving extends Being
         /**
          * Add if (energy > 0)
          */
-
-        //if (targetPlanet != null){ //&& targetPlanet.getWorld() == null
-        //if(getOneIntersectingObject(Planet.class) != null){
-        if (getOneIntersectingObject(Planet.class) != null){
-            hit = 0;
-            World world = getWorld();
-            Planet touchingPlanet= (Planet)getOneIntersectingObject(Planet.class);
+        if (checkHitPlanet()){
             targetPlanet = null;
             rotateDetection = true;
-            double y = touchingPlanet.getY();
-            int count;
-
-            // if(y == touchingPlanet.getRadius()-30){
-            // point++;
-            // System.out.println("Point #: " + point);
-            // }
-            // if(point == 2){
-            // System.out.println("2!!!");
-            // }
-            //if (y == touchingPlanet.getRadius() + 
-            if (getOneIntersectingObject(Hitbox.class) != null){
-                hit++;
-                //timer.mark();
-                //if(timer.millisElapsed() > 1000)
-            }
-            
         }
         else{
-            hit = 0;
             rotateDetection = false;
         }
 
@@ -67,6 +41,7 @@ public class Moving extends Being
             rotate();
         }
         else{
+            angle = 0;
             rotateImage(90); //may need to adjust later
             moveRandomly();
         }
@@ -92,7 +67,6 @@ public class Moving extends Being
 
             for (Planet o : planets){
                 distanceToActor = getDistance(littlePrince, o);
-
                 if (distanceToActor < closestTargetDistance){
                     targetPlanet = o;
                     closestTargetDistance = distanceToActor;
@@ -133,6 +107,16 @@ public class Moving extends Being
         }
     }
 
+    public boolean checkHitPlanet () {
+        RandomPlanet randomPlanet = (RandomPlanet) getOneIntersectingObject(RandomPlanet.class); //return true if intersects
+        RosePlanet rosePlanet = (RosePlanet) getOneIntersectingObject(RosePlanet.class); //return true if intersects
+        HomePlanet homePlanet = (HomePlanet) getOneIntersectingObject(HomePlanet.class); //return true if intersects
+        if ((randomPlanet!= null)||(rosePlanet != null)||(homePlanet != null)){
+            return true;
+        }
+        return false;
+    }
+
     public void rotate(){
         Planet touchingPlanet= (Planet)getOneIntersectingObject(Planet.class);
         int radius = touchingPlanet.getRadius();
@@ -141,9 +125,14 @@ public class Moving extends Being
         double x = touchingPlanet.getX() + (double) ((radius+30) * Math.cos(radians));
         double y = touchingPlanet.getY() + (double) ((radius+30) * Math.sin(radians));
         angle -= 1.5;
+        System.out.println("Angle: " + (-360-angle));
         turnTowards (touchingPlanet);
         turn(-90);
         setLocation(x+speed, y);
+        if ((-360-angle) == -360){
+            rotateDetection = false;
+            
+        }
     }
 
     public void prepareAnimation(GreenfootImage[] imgs, String frameName){

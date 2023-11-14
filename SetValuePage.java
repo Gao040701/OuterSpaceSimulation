@@ -2,6 +2,7 @@ import greenfoot.*;
 
 public class SetValuePage extends World {
     public static int numOfAsteroids;
+<<<<<<< HEAD
     public static int amountOfClues;
     public static int asteroidSpeed;
     public static int hpPerPlanet;
@@ -20,8 +21,17 @@ public class SetValuePage extends World {
     private TextButton speedLabel; // 声明为成员变量
     private TextButton hpLabel;    // 声明为成员变量
     private TextButton asteroidsLabel;
+=======
+    private TextButton plusButton;
+    private TextButton minusButton;
+    private TextButton startButton;
+    
+    private GreenfootImage setValueBG = new GreenfootImage("setValuePage.png");
+>>>>>>> f55ebe5c107ec00629aa7a62e47a6d2c4d770b6a
     public SetValuePage() {
         super(1024, 576, 1);
+        setValueBG.scale(1024, 576);
+        setBackground(setValueBG);
         prepare();
     }
 

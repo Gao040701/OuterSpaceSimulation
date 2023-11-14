@@ -26,6 +26,7 @@ public class Fox extends Moving
         }else animate(run);
     }
     
+    
     public Fox(){
         prepareAnimation(run, "foxRun/run");
         prepareAnimation(fly, "foxFly/fly");

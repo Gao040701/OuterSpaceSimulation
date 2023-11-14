@@ -16,4 +16,11 @@ public class Stationary extends Being
     {
         // Add your action code here.
     }
+    public boolean checkHitLittlePrince() {
+        LittlePrince littlePrince = (LittlePrince) getOneIntersectingObject(LittlePrince.class); //return true if intersects
+        if (littlePrince != null){
+            return true;
+        }
+        return false;
+    }
 }
