@@ -9,7 +9,7 @@ public class IntroAnimation extends World
 {
     private GreenfootImage[] animation= new GreenfootImage[100];
     private int index = 0;
-    private final int countNum = 7;
+    private final int countNum = 9;
     private int count = 0;
     public IntroAnimation()
     {    
