@@ -41,4 +41,8 @@ public abstract class Planet extends SuperSmoothMover
     public double getSpeed(){
         return speed;
     }
+    
+    public boolean hasVisited(){
+        return visited;
+    }
 }

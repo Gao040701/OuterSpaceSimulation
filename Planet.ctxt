@@ -11,4 +11,6 @@ comment4.params=
 comment4.target=int\ getRadius()
 comment5.params=
 comment5.target=double\ getSpeed()
-numComments=6
+comment6.params=
+comment6.target=boolean\ hasVisited()
+numComments=7
