@@ -77,25 +77,28 @@ public class RandomPlanet extends Planet {
     }
     
     public void checkCollision() {
-        List<Asteroids> asteroidsList = getWorld().getObjects(Asteroids.class);
-        Actor actor = getOneIntersectingObject(Asteroids.class);
-        if (actor instanceof Asteroids) {
-            Asteroids a = (Asteroids) actor;
-            totalHP -= decreaseHP;
-            randomHpBar.update(totalHP);
-            getWorld().removeObject(a);
-            
-            // 在这里添加新的 Asteroids，以保持总数为三个
-            int currentAsteroids = asteroidsList.size();
+    List<Asteroids> asteroidsList = getWorld().getObjects(Asteroids.class);
+    Actor actor = getOneIntersectingObject(Asteroids.class);
+    if (actor instanceof Asteroids) {
+        Asteroids a = (Asteroids) actor;
+        totalHP -= decreaseHP;
+        randomHpBar.update(totalHP);
+        getWorld().removeObject(a);
+
+        // 在这里添加新的 Asteroids，以保持总数为 SetValuePage.numOfAsteroids
+        int currentAsteroids = asteroidsList.size();
+        if (currentAsteroids < SetValuePage.numOfAsteroids) {
             int asteroidsToAdd = SetValuePage.numOfAsteroids - currentAsteroids;
-        
-            for (int i = 0; i < asteroidsToAdd+1; i++) {
+
+            for (int i = 0; i < asteroidsToAdd; i++) {
                 int x = Greenfoot.getRandomNumber(getWorld().getWidth());
                 int y = Greenfoot.getRandomNumber(getWorld().getHeight());
                 getWorld().addObject(new Asteroids(), x, y);
             }
         }
     }
+}
+
 
     public void randomImage(){
         planetImgIndex = Greenfoot.getRandomNumber(7);
@@ -152,30 +155,7 @@ public class RandomPlanet extends Planet {
                         break;
                 }
             }
-            /*
-            double angle = Math.toRadians(Greenfoot.getRandomNumber(360));
-            distance = Math.abs(Greenfoot.getRandomNumber(length * 2)) + 5;
-    
-            // 计算树相对于星球的位置
-            int treeX = getX() + (int) (distance * Math.cos(angle));
-            int treeY = getY() + (int) (distance * Math.sin(angle));
-    
-            // 添加树到世界中
-            getWorld().addObject(tree, treeX, treeY);
             
-            int angle = Greenfoot.getRandomNumber(4);
-            if(angle==0){
-                getWorld().addObject(tree, getX(), ylocation-radius);
-            } else if(angle==1){
-                getWorld().addObject(tree, getX()+radius/2, ylocation - radius/2);
-            } else if(angle==2){
-                getWorld().addObject(tree, getX() +radius, ylocation);
-            } else if(angle==3){
-                getWorld().addObject(tree, getX(), ylocation + radius/2);
-            } else if(angle==4){
-                getWorld().addObject(tree, getX(), ylocation + radius);
-            }
-            */
         }
     }
 }
