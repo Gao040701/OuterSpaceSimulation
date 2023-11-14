@@ -35,7 +35,6 @@ public class IntroAnimation extends World
                 count++;
             }
         }else{
-            //go to game world 
             Greenfoot.setWorld(new SetValuePage());
         }
     }

@@ -5,9 +5,12 @@ public class SetValuePage extends World {
     private TextButton plusButton;
     private TextButton minusButton;
     private TextButton startButton;
-
+    
+    private GreenfootImage setValueBG = new GreenfootImage("setValuePage.png");
     public SetValuePage() {
         super(1024, 576, 1);
+        setValueBG.scale(1024, 576);
+        setBackground(setValueBG);
         prepare();
     }
 
