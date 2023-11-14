@@ -32,30 +32,9 @@ public class Moving extends Being
         if (checkHitPlanet()){
             targetPlanet = null;
             rotateDetection = true;
-<<<<<<< Updated upstream
-            double y = touchingPlanet.getY();
-            int count;
-
-            // if(y == touchingPlanet.getRadius()-30){
-            // point++;
-            // System.out.println("Point #: " + point);
-            // }
-            // if(point == 2){
-            // System.out.println("2!!!");
-            // }
-            //if (y == touchingPlanet.getRadius() + 
-            if (getOneIntersectingObject(Hitbox.class) != null){
-                hit++;
-                //timer.mark();
-                //if(timer.millisElapsed() > 1000)
-            }
-            
         }
         else{
-            hit = 0;
             rotateDetection = false;
-=======
->>>>>>> Stashed changes
         }
 
         if (rotateDetection == true){
@@ -152,6 +131,7 @@ public class Moving extends Being
         setLocation(x+speed, y);
         if ((-360-angle) == -360){
             rotateDetection = false;
+            
         }
     }
 

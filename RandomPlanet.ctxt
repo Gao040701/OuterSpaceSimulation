@@ -13,14 +13,8 @@ comment5.params=
 comment5.target=SuperStatBar\ getHpBar()
 comment6.params=w
 comment6.target=void\ addedToWorld(greenfoot.World)
-<<<<<<< Updated upstream
 comment7.params=
 comment7.target=void\ checkAndRemove()
 comment8.params=
 comment8.target=void\ generateTrees()
 numComments=9
-=======
-comment7.params=count
-comment7.target=void\ generateTrees(int)
-numComments=8
->>>>>>> Stashed changes

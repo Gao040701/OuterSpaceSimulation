@@ -17,6 +17,7 @@ public abstract class Planet extends SuperSmoothMover
     protected int totalHP;
     protected int decreaseHP;
     protected boolean appear;
+    protected boolean visited;
     public void act() {
        if(appear){
            move(speed); 
