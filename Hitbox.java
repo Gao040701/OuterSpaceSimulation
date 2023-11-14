@@ -3,8 +3,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Hitbox here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @Zhiyu (Jennifer) Zhou
+ * @v1.0
  */
 public class Hitbox extends Actor
 {
