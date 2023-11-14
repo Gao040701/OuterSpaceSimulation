@@ -7,7 +7,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class IntroAnimation extends World
 {
-    private GreenfootImage[] animation= new GreenfootImage[51];
+    private GreenfootImage[] animation= new GreenfootImage[100];
     private int index = 0;
     private final int countNum = 7;
     private int count = 0;
