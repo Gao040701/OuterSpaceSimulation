@@ -124,6 +124,14 @@ public class RandomPlanet extends Planet {
         getWorld().removeObject(hitbox);
         getWorld().removeObject(this); // 从世界中移除我
         appear=false;
+        if(getX() <= 600){
+            num++;
+            canSpawnNext = false;
+            RandomPlanet newPlanet = new RandomPlanet();
+            ylocation=Greenfoot.getRandomNumber(276) + 150;
+            getWorld().addObject(newPlanet, 0, ylocation);
+            getWorld().addObject(newPlanet.getHpBar(), 0, Greenfoot.getRandomNumber(276) + 15);
+        }
         }
     }
     
