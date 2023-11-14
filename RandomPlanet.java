@@ -114,7 +114,10 @@ public class RandomPlanet extends Planet {
     public void addedToWorld (World w){
         w.addObject(randomHpBar, getX() / 2, getY() / 2);
         w.addObject(hitbox, getX(), getY() - getRadius());
+<<<<<<< Updated upstream
         //System.out.println("Random X coord: " + getX()+ "Random Y coord: "+ (getY() - getRadius()));
+=======
+>>>>>>> Stashed changes
     }
     
     public void checkAndRemove ()

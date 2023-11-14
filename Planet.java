@@ -24,7 +24,7 @@ public abstract class Planet extends SuperSmoothMover
             radius = 20;
         */
        checkCollision();
-       checkAndRemove();
+       //checkAndRemove();
     }
     }
     public Planet() {
@@ -32,7 +32,7 @@ public abstract class Planet extends SuperSmoothMover
     }
 
     public abstract void checkCollision();
-    public abstract void checkAndRemove();
+    //public abstract void checkAndRemove();
     public int getRadius(){
         return getImage().getHeight()/2;
     }

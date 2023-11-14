@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Hitbox
-comment0.text=\n\ Write\ a\ description\ of\ class\ Hitbox\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ Hitbox\ here.\n\ \n\ @Zhiyu\ (Jennifer)\ Zhou\n\ @v1.0\n
 comment1.params=width\ height
 comment1.target=Hitbox(int,\ int)
 comment2.params=
