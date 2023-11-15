@@ -23,19 +23,28 @@ public class Asteroids extends SuperSmoothMover {
         setLocation(getX() + xSpeed, getY() + ySpeed);
 
         // 如果星球移动到屏幕外边缘，将其放置在屏幕的另一侧
+        reLocation();
+        // 每隔一段时间改变一次速度
+        randomSpeed();
+    }
+    private void setRandomRotation() {
+        double rotation = Greenfoot.getRandomNumber(360); // 生成 0 到 359 之间的随机角度
+        setRotation(rotation);
+    }
+    
+    private void reLocation(){
         if (getX() >= getWorld().getWidth()) {
             setLocation(0, Greenfoot.getRandomNumber(getWorld().getHeight()));
-        }
-        if (getX() < 0) {
+        }else if (getX() < 0){
             setLocation(getWorld().getWidth(), Greenfoot.getRandomNumber(getWorld().getHeight()));
-        }
-        if (getY() >= getWorld().getHeight()) {
+        }else if (getY() >= getWorld().getHeight()) {
             setLocation(Greenfoot.getRandomNumber(getWorld().getWidth()), 0);
-        }
-        if (getY() < 0) {
+        }else if (getY() < 0) {
             setLocation(Greenfoot.getRandomNumber(getWorld().getWidth()), getWorld().getHeight());
         }
-        // 每隔一段时间改变一次速度
+    }
+    
+    private void randomSpeed(){
         if (count == 100) {
             xSpeed = Greenfoot.getRandomNumber(4) + 1; // x 方向的速度范围在 1 到 3 之间
             ySpeed = Greenfoot.getRandomNumber(3) - 1; // y 方向的速度范围在 -1 到 1 之间
@@ -45,9 +54,5 @@ public class Asteroids extends SuperSmoothMover {
         if (count < 100) {
             count++;
         }
-    }
-    private void setRandomRotation() {
-        double rotation = Greenfoot.getRandomNumber(360); // 生成 0 到 359 之间的随机角度
-        setRotation(rotation);
     }
 }

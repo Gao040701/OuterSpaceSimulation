@@ -7,7 +7,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Galaxy extends World
 {
-    public int numOfAsteroids;
+    public static int numOfAsteroids;
     private int numOfPlanets = 1; 
     private SuperStatBar clueBar;
     private int clueCount = 0;
