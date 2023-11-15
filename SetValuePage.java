@@ -2,9 +2,24 @@ import greenfoot.*;
 
 public class SetValuePage extends World {
     public static int numOfAsteroids;
-    private TextButton plusButton;
-    private TextButton minusButton;
+    public static int amountOfClues;
+    public static int asteroidSpeed;
+    public static int hpPerPlanet;
+
+    private TextButton plusAsteroidsButton;
+    private TextButton minusAsteroidsButton;
+    private TextButton plusCluesButton;
+    private TextButton minusCluesButton;
+    private TextButton plusSpeedButton;
+    private TextButton minusSpeedButton;
+    private TextButton plusHPButton;
+    private TextButton minusHPButton;
     private TextButton startButton;
+    
+    private TextButton cluesLabel;
+    private TextButton speedLabel; // 声明为成员变量
+    private TextButton hpLabel;    // 声明为成员变量
+    private TextButton asteroidsLabel;
     
     private GreenfootImage setValueBG = new GreenfootImage("setValuePage.png");
     public SetValuePage() {
@@ -14,50 +29,106 @@ public class SetValuePage extends World {
         prepare();
     }
 
-    private void prepare() {
-        numOfAsteroids = 0;
+    public void prepare() {
+        numOfAsteroids = 1;
+        amountOfClues = 1;
+        asteroidSpeed = 100;
+        hpPerPlanet = 100;
 
-        // 创建显示数字的 TextButton
-        TextButton valueButton = new TextButton(String.valueOf(numOfAsteroids), 30);
-        addObject(valueButton, getWidth() / 2, getHeight() / 2);
+        // 创建显示数量的 TextButton
+        asteroidsLabel = new TextButton("Number of Asteroids: " + numOfAsteroids, 50);
+        addObject(asteroidsLabel, 515, 141);
 
-        // 创建加号按钮
-        plusButton = new TextButton("+", 30);
-        addObject(plusButton, getWidth() / 2 + 50, getHeight() / 2);
+        // 创建加减号按钮和显示数量的 TextButton
+        plusAsteroidsButton = new TextButton("+", 50);
+        addObject(plusAsteroidsButton, 181, 141);
+        minusAsteroidsButton = new TextButton("-", 50);
+        addObject(minusAsteroidsButton, 849, 141);
 
-        // 创建减号按钮
-        minusButton = new TextButton("-", 30);
-        addObject(minusButton, getWidth() / 2 - 50, getHeight() / 2);
+        // 创建显示数量的 TextButton
+        cluesLabel = new TextButton("Amount of Clues: " + amountOfClues, 50);
+        addObject(cluesLabel, 515, 231);
+
+        // 创建加减号按钮和显示数量的 TextButton
+        plusCluesButton = new TextButton("+", 50);
+        addObject(plusCluesButton, 181, 231);
+        minusCluesButton = new TextButton("-", 50);
+        addObject(minusCluesButton, 849, 231);
+
+        // 创建显示数量的 TextButton
+        speedLabel = new TextButton("Asteroid Speed: " + asteroidSpeed, 50);
+        addObject(speedLabel, 515, 321);
+
+        // 创建加减号按钮和显示数量的 TextButton
+        plusSpeedButton = new TextButton("+", 50);
+        addObject(plusSpeedButton, 181, 321);
+        minusSpeedButton = new TextButton("-", 50);
+        addObject(minusSpeedButton, 849, 321);
+
+        // 创建显示数量的 TextButton
+        hpLabel = new TextButton("HP per Planet: " + hpPerPlanet, 50);
+        addObject(hpLabel, 515, 411);
+
+        // 创建加减号按钮和显示数量的 TextButton
+        plusHPButton = new TextButton("+", 50);
+        addObject(plusHPButton, 181, 411);
+        minusHPButton = new TextButton("-", 50);
+        addObject(minusHPButton, 849, 411);
 
         // 创建开始按钮
-        startButton = new TextButton("Start", 30);
-        addObject(startButton, getWidth() / 2, getHeight() / 2 + 50);
+        startButton = new TextButton("Start", 50);
+        addObject(startButton, getWidth() / 2, 500);
     }
 
     public void act() {
-        if (Greenfoot.mousePressed(plusButton)) {
-            // 处理加号按钮点击事件
+        if (Greenfoot.mousePressed(plusAsteroidsButton)) {
             if (numOfAsteroids < 6) {
                 numOfAsteroids++;
-                updateValueButton();
+                updateLabel(plusAsteroidsButton, minusAsteroidsButton, asteroidsLabel, "Number of Asteroids: ", numOfAsteroids);
             }
-        } else if (Greenfoot.mousePressed(minusButton)) {
-            // 处理减号按钮点击事件
-            if (numOfAsteroids > 0) {
+        } else if (Greenfoot.mousePressed(minusAsteroidsButton)) {
+            if (numOfAsteroids > 1) {
                 numOfAsteroids--;
-                updateValueButton();
+                updateLabel(plusAsteroidsButton, minusAsteroidsButton, asteroidsLabel, "Number of Asteroids: ", numOfAsteroids);
+            }
+        } else if (Greenfoot.mousePressed(plusCluesButton)) {
+            if (amountOfClues < 3) {
+                amountOfClues++;
+                updateLabel(plusCluesButton, minusCluesButton, cluesLabel,"Amount of Clues: ", amountOfClues);
+            }
+        } else if (Greenfoot.mousePressed(minusCluesButton)) {
+            if (amountOfClues > 1) {
+                amountOfClues--;
+                updateLabel(plusCluesButton, minusCluesButton,cluesLabel, "Amount of Clues: ", amountOfClues);
+            }
+        } else if (Greenfoot.mousePressed(plusSpeedButton)) {
+            if (asteroidSpeed < 300) {
+                asteroidSpeed += 50;
+                updateLabel(plusSpeedButton, minusSpeedButton, speedLabel, "Asteroid Speed: ", asteroidSpeed);
+            }
+        } else if (Greenfoot.mousePressed(minusSpeedButton)) {
+            if (asteroidSpeed > 100) {
+                asteroidSpeed -= 50;
+                updateLabel(plusSpeedButton, minusSpeedButton, speedLabel, "Asteroid Speed: ", asteroidSpeed);
+            }
+        } else if (Greenfoot.mousePressed(plusHPButton)) {
+            if (hpPerPlanet < 300) {
+                hpPerPlanet += 50;
+                updateLabel(plusHPButton, minusHPButton, hpLabel, "HP per Planet: ", hpPerPlanet);
+            }
+        } else if (Greenfoot.mousePressed(minusHPButton)) {
+            if (hpPerPlanet > 100) {
+                hpPerPlanet -= 50;
+                updateLabel(plusHPButton, minusHPButton, hpLabel, "HP per Planet: ", hpPerPlanet);
             }
         } else if (Greenfoot.mousePressed(startButton)) {
-            // 处理开始按钮点击事件
-            // 进入 Galaxy 场景，并将 numOfAsteroids 传递给 Galaxy
-            Galaxy galaxy = new Galaxy(numOfAsteroids);
+            Galaxy galaxy = new Galaxy(numOfAsteroids, amountOfClues, asteroidSpeed, hpPerPlanet);
             Greenfoot.setWorld(galaxy);
         }
     }
 
-    private void updateValueButton() {
-        // 更新显示数字的按钮文本
-        TextButton valueButton = getObjects(TextButton.class).get(0);
-        valueButton.updateMe(String.valueOf(numOfAsteroids));
+    private void updateLabel(TextButton plusButton, TextButton minusButton, TextButton label, String labelText, int value) {
+        label.updateMe(labelText + value);
     }
 }
+

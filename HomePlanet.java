@@ -84,9 +84,11 @@ public class HomePlanet extends Planet
         }
         hitbox.move((int)speed);
         checkAndRemove();
+        /*
         LittlePrince littlePrince = (LittlePrince) getOneIntersectingObject(LittlePrince.class); //return true if intersects
         if(littlePrince != null){
             visited = false;
         }
+        */
     }
 }
