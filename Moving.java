@@ -20,6 +20,8 @@ public class Moving extends Being
     protected LittlePrince littlePrince;
     private int mySpeed = 1;
     private SimpleTimer timer = new SimpleTimer();
+    private int passCount = 0;
+    private boolean justPassed = false;
     /**
      * Act - do whatever the Character wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -29,19 +31,13 @@ public class Moving extends Being
         /**
          * Add if (energy > 0)
          */
-        if (checkHitPlanet()){
-            targetPlanet = null;
+        if (checkHitPlanet() && passCount != 3){
             rotateDetection = true;
-        }
-        else{
-            rotateDetection = false;
-        }
-
-        if (rotateDetection == true){
             rotate();
         }
-        else{
-            angle = 0;
+        if (!checkHitPlanet()){
+            passCount = 0;
+            rotateDetection = false;
             rotateImage(90); //may need to adjust later
             moveRandomly();
         }
@@ -125,14 +121,10 @@ public class Moving extends Being
         double x = touchingPlanet.getX() + (double) ((radius+30) * Math.cos(radians));
         double y = touchingPlanet.getY() + (double) ((radius+30) * Math.sin(radians));
         angle -= 1.5;
-        System.out.println("Angle: " + (-360-angle));
         turnTowards (touchingPlanet);
         turn(-90);
         setLocation(x+speed, y);
-        if ((-360-angle) == -360){
-            rotateDetection = false;
-            
-        }
+        canFly(touchingPlanet);
     }
 
     public void prepareAnimation(GreenfootImage[] imgs, String frameName){
@@ -159,6 +151,23 @@ public class Moving extends Being
             }
         }else{
             index = 0;
+        }
+    }
+    
+    
+    public void canFly(Planet planet){
+        if (planet.getX() - 10 <= getX() && getX() <= planet.getX() + 10 && !justPassed ){
+            passCount++; 
+            System.out.println(passCount);
+            justPassed = true;
+        }
+        if (planet.getX() - 10 > getX() || getX() > planet.getX() + 10){
+            justPassed = false;
+        }
+        if(passCount >= 3){
+            rotateDetection = false;
+            setLocation(getX()-10, getY() - 10);
+            setLocation(getX()-200, getY() - 10);
         }
     }
 }
