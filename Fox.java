@@ -15,7 +15,7 @@ public class Fox extends Moving
      * Act - do whatever the Fox wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act()
+    public void act(boolean canFly, boolean canDig, boolean canRun)
     {
         //turnTowards(littlePrince);
         super.act();

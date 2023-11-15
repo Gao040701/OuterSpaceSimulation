@@ -158,7 +158,7 @@ public class Moving extends Being
     public void canFly(Planet planet){
         if (planet.getX() - 10 <= getX() && getX() <= planet.getX() + 10 && !justPassed ){
             passCount++; 
-            System.out.println(passCount);
+            //System.out.println(passCount);
             justPassed = true;
         }
         if (planet.getX() - 10 > getX() || getX() > planet.getX() + 10){
