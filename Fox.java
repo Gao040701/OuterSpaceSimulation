@@ -17,7 +17,7 @@ public class Fox extends Moving
      */
     public void act()
     {
-        //turnTowards(littlePrince);
+        turnTowards(littlePrince);
         super.act();
     }
     
