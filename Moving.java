@@ -22,6 +22,10 @@ public class Moving extends Being
     private SimpleTimer timer = new SimpleTimer();
     private int passCount = 0;
     private boolean justPassed = false;
+    
+    private GreenfootImage[] walk;
+    private GreenfootImage[] fly;
+    private GreenfootImage[] dig;
     /**
      * Act - do whatever the Character wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -34,6 +38,9 @@ public class Moving extends Being
         if (checkHitPlanet() && passCount != 3){
             rotateDetection = true;
             rotate();
+            animate(walk);
+        }else{
+            animate(fly);
         }
         if (!checkHitPlanet()){
             passCount = 0;
@@ -43,6 +50,12 @@ public class Moving extends Being
         }
     }
 
+    public Moving(GreenfootImage[] walk, GreenfootImage[] fly, GreenfootImage[] dig){
+        this.walk = walk; 
+        this.fly = fly;
+        this.dig = dig;
+    }
+    
     public static double getDistance (Actor a, Actor b){
         double distanceBetween = Math.hypot (Math.abs(a.getX() - b.getX()), Math.abs(a.getY() - b.getY()));
         return distanceBetween;
@@ -73,6 +86,7 @@ public class Moving extends Being
     }
 
     private void moveRandomly(){
+        animate(fly);
         if((getX() > 30 || getX() < 970) && (getY() > 30 || getY() < 540)){
             if (Greenfoot.getRandomNumber (100) == 50){
                 turn (Greenfoot.getRandomNumber(360));

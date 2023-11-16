@@ -14,6 +14,14 @@ public class Galaxy extends World
     private GreenfootImage background = new GreenfootImage("galaxyBackground.png");
     public static final int Rhp=100;
     public static final int Rdecrease=10;
+    
+    //animations
+    private GreenfootImage[] TLPwalk = new GreenfootImage[8];
+    private GreenfootImage[] TLPfly = new GreenfootImage[6];
+    private GreenfootImage[] TLPdig = new GreenfootImage[9];
+    private GreenfootImage[] foxRun = new GreenfootImage[8];
+    private GreenfootImage[] foxFly = new GreenfootImage[5];
+    private GreenfootImage[] foxDig = new GreenfootImage[11];
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -29,6 +37,8 @@ public class Galaxy extends World
         clueBar = new SuperStatBar(110, clueCount, null, 110, 10, 0, Color.RED, Color.BLACK, false, Color.BLACK, 1);
         addObject(clueBar, getWidth() - 60, 80);
         prepare();
+        
+        
     }
     
     /**
@@ -38,11 +48,19 @@ public class Galaxy extends World
         for (int i = 0; i < this.numOfAsteroids; i++) {
             addObject(new Asteroids(), getAsteroidsX(), getAsteroidsY());
         }
-        addObject(new LittlePrince(), 100, 100);
+        LittlePrince TLP = new LittlePrince(TLPwalk, TLPfly, TLPdig);
+        addObject(TLP, 100, 100);
+        TLP.prepareAnimation(TLPwalk, "walkAnimation/walk");
+        TLP.prepareAnimation(TLPfly, "flyAnimation/fly");
+        TLP.prepareAnimation(TLPdig, "digAnimation/dig");
         addObject(new HomePlanet(), getWidth() / 2, getHeight() / 2);
         addObject(new RandomPlanet(), 0, Greenfoot.getRandomNumber(276) + 150);
         if (Greenfoot.getRandomNumber (2) == 0){
-            addObject (new Fox(), 0 + 50, Greenfoot.getRandomNumber(276) + 200);
+            Fox fox = new Fox(foxRun, foxFly, foxDig);
+            addObject (fox, 0 + 50, Greenfoot.getRandomNumber(276) + 200);
+            fox.prepareAnimation(foxRun, "foxRun/run", fox.getImage().getWidth()*2, fox.getImage().getHeight()*2);
+            fox.prepareAnimation(foxFly, "foxFly/fly", fox.getImage().getWidth()*2, fox.getImage().getHeight()*2);
+            fox.prepareAnimation(foxDig, "foxDig/dig", fox.getImage().getWidth()*2, fox.getImage().getHeight()*2);
         }
     }
     

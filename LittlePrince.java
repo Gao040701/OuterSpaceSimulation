@@ -9,9 +9,7 @@ import java.util.List;
  */
 public class LittlePrince extends Moving
 {
-    private GreenfootImage[] walk = new GreenfootImage[8];
-    private GreenfootImage[] fly = new GreenfootImage[6];
-    private GreenfootImage[] dig = new GreenfootImage[9];
+    
     private SuperStatBar princeHpBar;
     private int totalHP;
     private int decreaseHP;
@@ -24,17 +22,10 @@ public class LittlePrince extends Moving
     {
         super.act();
         checkCollision();
-        if (Greenfoot.isKeyDown("space")){
-            animate(fly);
-        }else if (Greenfoot.isKeyDown("enter")){
-            animate(dig);
-        }else animate(walk);
     }
 
-    public LittlePrince(){
-        prepareAnimation(walk, "walkAnimation/walk");
-        prepareAnimation(fly, "flyAnimation/fly");
-        prepareAnimation(dig, "digAnimation/dig");
+    public LittlePrince(GreenfootImage[] walk, GreenfootImage[] fly, GreenfootImage[] dig){
+        super(walk, fly, dig);
         totalHP=Galaxy.Rhp;
         decreaseHP=Galaxy.Rdecrease;
         appear=true;
