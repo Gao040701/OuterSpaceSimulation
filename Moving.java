@@ -11,7 +11,7 @@ import java.awt.Point;
 public class Moving extends Being
 {
     private int speed, index, count = 0;
-    private final int countNum = 7;
+    private final int COUNT_NUM = 7;
     private Planet targetPlanet;
     private boolean rotateDetection = false;
     private double angle = 0;
@@ -22,7 +22,7 @@ public class Moving extends Being
     private SimpleTimer timer = new SimpleTimer();
     private int passCount = 0;
     private boolean justPassed = false;
-    
+
     private GreenfootImage[] walk;
     private GreenfootImage[] fly;
     private GreenfootImage[] dig;
@@ -35,18 +35,20 @@ public class Moving extends Being
         /**
          * Add if (energy > 0)
          */
-        if (checkHitPlanet() && passCount != 3){
+        if (checkHitPlanet() && passCount != 3 && !checkHitTree()){
             rotateDetection = true;
             rotate();
             animate(walk);
-        }else{
-            animate(fly);
+        }if (checkHitPlanet() && checkHitTree()){
+            animate(dig);
+            stay();
         }
-        if (!checkHitPlanet()){
+        if (!checkHitPlanet() && !checkHitTree()){
             passCount = 0;
             rotateDetection = false;
             rotateImage(90); //may need to adjust later
             moveRandomly();
+            animate(fly);
         }
     }
 
@@ -55,7 +57,7 @@ public class Moving extends Being
         this.fly = fly;
         this.dig = dig;
     }
-    
+
     public static double getDistance (Actor a, Actor b){
         double distanceBetween = Math.hypot (Math.abs(a.getX() - b.getX()), Math.abs(a.getY() - b.getY()));
         return distanceBetween;
@@ -126,6 +128,26 @@ public class Moving extends Being
         }
         return false;
     }
+    
+    public boolean checkHitTree(){
+        BaobabTree baobabTree = (BaobabTree) getOneIntersectingObject(BaobabTree.class);
+        if (baobabTree != null){
+            return true;
+        }
+        return false;
+    }
+    
+    public void stay(){
+        Planet touchingPlanet = (Planet)getOneIntersectingObject(Planet.class);
+        // int radius = touchingPlanet.getRadius();
+        double speed = touchingPlanet.getSpeed();
+        // double radians = Math.toRadians(angle);
+        // angle -= 1.5;
+        // double x = touchingPlanet.getX() + (double) ((radius+30) * Math.cos(radians));
+        // double y = touchingPlanet.getY() + (double) ((radius+30) * Math.sin(radians));
+        // setLocation(x+speed, y);
+        move(speed);
+    }
 
     public void rotate(){
         Planet touchingPlanet= (Planet)getOneIntersectingObject(Planet.class);
@@ -156,7 +178,7 @@ public class Moving extends Being
 
     public void animate(GreenfootImage[] imgs){
         if (index < imgs.length){
-            if (count == countNum){
+            if (count == COUNT_NUM){
                 setImage(imgs[index]);
                 index++;
                 count = 0;
@@ -167,8 +189,7 @@ public class Moving extends Being
             index = 0;
         }
     }
-    
-    
+
     public void canFly(Planet planet){
         if (planet.getX() - 10 <= getX() && getX() <= planet.getX() + 10 && !justPassed ){
             passCount++; 

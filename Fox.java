@@ -18,7 +18,9 @@ public class Fox extends Moving
     */
     public void act()
     {
-        turnTowards(littlePrince);
+        if (getWorld().getObjects(LittlePrince.class) != null){
+            //turnTowards(littlePrince);
+        }
         super.act();
     }
     
