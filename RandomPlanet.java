@@ -139,10 +139,6 @@ public class RandomPlanet extends Planet {
     public void checkAndRemove ()
     {
         if (getWorld() != null && totalHP <= 0) {
-            getWorld().removeObject(randomHpBar);
-            getWorld().removeObject(hitbox);
-            getWorld().removeObject(this); // 从世界中移除我
-            appear=false;
             if(getX() <= 600){
                 num++;
                 canSpawnNext = false;
@@ -151,6 +147,9 @@ public class RandomPlanet extends Planet {
                 getWorld().addObject(newPlanet, 0, ylocation);
                 getWorld().addObject(newPlanet.getHpBar(), 0, Greenfoot.getRandomNumber(276) + 15);
             }
+            removeRanPlanet();
+            appear=false;
+            return;
         }
     }
     
@@ -186,5 +185,6 @@ public class RandomPlanet extends Planet {
             }
         }
         getWorld().removeObject(this); 
+        return;
     }
 }
