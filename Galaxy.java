@@ -7,7 +7,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Galaxy extends World
 {
-    public static int numOfAsteroids;
+    private static int numOfAsteroids;
+    private static int amountOfClues;
+    private static int asteroidSpeed;
+    private static int hpPerPlanet;
     private int numOfPlanets = 1; 
     private SuperStatBar clueBar;
     private int clueCount = 0;
@@ -29,6 +32,9 @@ public class Galaxy extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 576, 1, false);
         this.numOfAsteroids = numOfAsteroids;
+        this.amountOfClues=amountOfClues;
+        this.asteroidSpeed=asteroidSpeed;
+        this.hpPerPlanet=hpPerPlanet;
         background.scale(1024, 576);
         setBackground(background);
         setPaintOrder (SuperStatBar.class, Asteroids.class, Moving.class, BaobabTree.class, Planet.class); 
@@ -70,5 +76,21 @@ public class Galaxy extends World
 
     public void act(){
         clueBar.update(clueCount);
+    }
+    
+    public static int getNumOfAsteroids(){
+        return numOfAsteroids;
+    }
+    
+    public static int getAmountOfClues(){
+        return amountOfClues;
+    }
+    
+    public static int asteroidSpeed(){
+        return asteroidSpeed;
+    }
+    
+    public static int hpPerPlanet(){
+        return hpPerPlanet;
     }
 }

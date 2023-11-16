@@ -16,7 +16,6 @@ public class HomePlanet extends Planet
     private GreenfootImage img;
     private int planetImgIndex, length;
     private SuperStatBar homeHpBar;
-    private Hitbox hitbox;
     public HomePlanet(){
         planetImgIndex = 1; // Assuming you want to use planet1.png as the image
         img = new GreenfootImage("planets/planet" + planetImgIndex + ".png");
@@ -29,7 +28,6 @@ public class HomePlanet extends Planet
         speed = Greenfoot.getRandomNumber(1) + 1;
         setImage(img);
         homeHpBar = new SuperStatBar(totalHP, totalHP, this, 50, 10, -20, Color.GREEN, Color.RED, false, Color.BLACK, 1);
-        hitbox = new Hitbox(10, 10);
     }
 
     public void checkCollision() {
@@ -55,15 +53,12 @@ public class HomePlanet extends Planet
 
     public void addedToWorld (World w){
         w.addObject(homeHpBar, getX() / 2, getY() / 2);
-        w.addObject(hitbox, getX(), getY() - getRadius());
-        w.addObject(hitbox, getX(), getY() - getRadius());
     }
 
     public void checkAndRemove ()
     {
         if (getWorld() != null && totalHP <= 0 && appear) {
             getWorld().removeObject(homeHpBar);
-            getWorld().removeObject(hitbox);
             getWorld().removeObject(this); // 从世界中移除我
             appear=false;
         }
@@ -82,7 +77,6 @@ public class HomePlanet extends Planet
             }
             homeHpBar.moveMe();
         }
-        hitbox.move((int)speed);
         checkAndRemove();
         /*
         LittlePrince littlePrince = (LittlePrince) getOneIntersectingObject(LittlePrince.class); //return true if intersects

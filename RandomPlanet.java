@@ -17,7 +17,6 @@ public class RandomPlanet extends Planet {
     private int num=0;
     //variables for set the image 
     private SuperStatBar randomHpBar;
-    private Hitbox hitbox;
     private int ylocation;
     private boolean firstGenerated = true;
     private ArrayList<BaobabTree> trees = new ArrayList<BaobabTree>();
@@ -38,7 +37,6 @@ public class RandomPlanet extends Planet {
         }
         randomImage();
         randomHpBar = new SuperStatBar(totalHP, totalHP, this, 50, 10, -20, Color.GREEN, Color.RED, false, Color.BLACK, 1);
-        hitbox = new Hitbox(10, 10);
         appear=true;
     }
 
@@ -73,7 +71,6 @@ public class RandomPlanet extends Planet {
                     getWorld().addObject(newPlanet.getHpBar(), 0, Greenfoot.getRandomNumber(276) + 150);
                 }
                 randomHpBar.moveMe();
-                hitbox.move((int)speed);
             }
         }
         checkAndRemove();
@@ -113,7 +110,7 @@ public class RandomPlanet extends Planet {
             randomHpBar.update(totalHP);
             getWorld().removeObject(a);
             int currentAsteroids = asteroidsList.size();
-            int asteroidsToAdd = Galaxy.numOfAsteroids - currentAsteroids;
+            int asteroidsToAdd = Galaxy.getNumOfAsteroids() - currentAsteroids;
             
             for (int i = 0; i < asteroidsToAdd+1; i++) {
                 int x = Greenfoot.getRandomNumber(getWorld().getWidth());
@@ -191,7 +188,6 @@ public class RandomPlanet extends Planet {
     
     public void removeRanPlanet(){
         getWorld().removeObject(randomHpBar);
-        getWorld().removeObject(hitbox);
         for (int i = 0; i < trees.size(); i++){
             if (trees.get(i) != null){ //may need to change the condition 
                 getWorld().removeObject(trees.get(i));
