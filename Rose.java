@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Rose extends Stationary
 {
+    private GreenfootImage rose = new GreenfootImage("rose.png");
     /**
      * Act - do whatever the Rose wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -17,5 +18,8 @@ public class Rose extends Stationary
         if (isTouching(LittlePrince.class)){
             Greenfoot.setWorld(new EndScreen());
         }
+    }
+    public Rose(){
+        setImage(rose);
     }
 }
