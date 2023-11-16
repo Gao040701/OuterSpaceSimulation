@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=LittlePrince
 comment0.text=\r\n\ The\ little\ prince\ will\ walk\ around\ the\ planet\ and\ jump\ out\ of\ the\ planets\r\n\ when\ all\ the\ baobab\ trees\ are\ destroyed.\r\n\ @Zhiyu\ (Jennifer)\ Zhou\ &\ Angela\ Gao\ \r\n\ @Jan\ 7,\ 2022\ -\ v1.0\r\n
-comment1.params=canFly\ canDig\ canWalk
-comment1.target=void\ act(boolean,\ boolean,\ boolean)
+comment1.params=
+comment1.target=void\ act()
 comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ LittlePrince\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
 comment2.params=walk\ fly\ dig
 comment2.target=LittlePrince(greenfoot.GreenfootImage[],\ greenfoot.GreenfootImage[],\ greenfoot.GreenfootImage[])
