@@ -158,13 +158,14 @@ public class RandomPlanet extends Planet {
     public void generateTrees() {
         for (int i = 0; i < 4; i++) {
             if (i == 0 && Greenfoot.getRandomNumber(1) == 0 && !hasFox){
-                System.out.println (hasFox);
                 Fox fox = new Fox(foxRun, foxFly, foxDig);
                 fox.prepareAnimation(foxRun, "foxRun/run", fox.getImage().getWidth()*4, fox.getImage().getHeight()*4);
                 fox.prepareAnimation(foxFly, "foxFly/fly", fox.getImage().getWidth()*4, fox.getImage().getHeight()*4);
                 fox.prepareAnimation(foxDig, "foxDig/dig", fox.getImage().getWidth()*4, fox.getImage().getHeight()*4);
-                getWorld().addObject(fox, getX(), getY() - radius);
-                hasFox = true; 
+                getWorld().addObject(fox, getX() - radius, getY() - radius);
+                
+                
+                hasFox = true;
             }else if (Greenfoot.getRandomNumber(2) == 0){
                 BaobabTree tree = new BaobabTree(this, i+1);
                 trees.add(tree);
