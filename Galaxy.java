@@ -33,12 +33,10 @@ public class Galaxy extends World
         this.numOfAsteroids = numOfAsteroids;
         background.scale(1024, 576);
         setBackground(background);
-        setPaintOrder (Hitbox.class, SuperStatBar.class, Asteroids.class, Being.class, Planet.class); 
+        setPaintOrder (SuperStatBar.class, Asteroids.class, Moving.class, BaobabTree.class, Planet.class); 
         clueBar = new SuperStatBar(110, clueCount, null, 110, 10, 0, Color.RED, Color.BLACK, false, Color.BLACK, 1);
         addObject(clueBar, getWidth() - 60, 80);
         prepare();
-        
-        
     }
     
     /**
