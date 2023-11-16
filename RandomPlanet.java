@@ -108,7 +108,7 @@ public class RandomPlanet extends Planet {
             randomHpBar.update(totalHP);
             getWorld().removeObject(a);
             int currentAsteroids = asteroidsList.size();
-            int asteroidsToAdd = Galaxy.numOfAsteroids - currentAsteroids;
+            int asteroidsToAdd = Galaxy.getNumOfAsteroids() - currentAsteroids;
             
             for (int i = 0; i < asteroidsToAdd+1; i++) {
                 int x = Greenfoot.getRandomNumber(getWorld().getWidth());
