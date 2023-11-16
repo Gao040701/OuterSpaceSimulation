@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,6 +20,7 @@ public class RandomPlanet extends Planet {
     private Hitbox hitbox;
     private int ylocation;
     private boolean firstGenerated = true;
+    private ArrayList<BaobabTree> trees = new ArrayList<BaobabTree>();
     
     public RandomPlanet() {
         //setLocation(0, Greenfoot.getRandomNumber(276) + 150);
@@ -50,7 +52,7 @@ public class RandomPlanet extends Planet {
             }
             if(appear){
                 if(getX() > getWorld().getWidth()){
-                    getWorld().removeObject(this); // 移除当前星球对象
+                    removeRanPlanet();
                     return;
                 }else if (!canSpawnNext  ) {
                     canSpawnNext = true;
@@ -78,69 +80,43 @@ public class RandomPlanet extends Planet {
     }
     
     public void checkCollision() {
-    List<Asteroids> asteroidsList = getWorld().getObjects(Asteroids.class);
-     Asteroids a =(Asteroids) getOneObjectAtOffset((int)speed + -getImage().getWidth()/2,0, Asteroids.class);//left
-     if(a==null){
-         a=(Asteroids) getOneObjectAtOffset((int)speed + getImage().getWidth()/2,0, Asteroids.class);//right
-     }
-     if(a==null){
-         a=(Asteroids) getOneObjectAtOffset((int)speed, -getImage().getWidth() / 2, Asteroids.class);//north
-     }
-     if(a==null){
-         a=(Asteroids) getOneObjectAtOffset((int)speed,  getImage().getWidth() / 2, Asteroids.class);//south
-     }
-     if(a==null){
-         a=(Asteroids) getOneObjectAtOffset((int)(speed-getImage().getWidth()*Math.sqrt(2) / 2.0), (int)(-getImage().getHeight()*Math.sqrt(2) / 2), Asteroids.class);//westnorth
-     }
-     if(a==null){
-         a=(Asteroids) getOneObjectAtOffset((int)(speed+getImage().getWidth()*Math.sqrt(2) / 2),(int)(getImage().getHeight()*Math.sqrt(2) / 2), Asteroids.class);//westsouth
-     }
-     if(a==null){
-         a=(Asteroids) getOneObjectAtOffset((int)(speed-getImage().getWidth()*Math.sqrt(2) / 2),(int)(getImage().getHeight()*Math.sqrt(2) / 2), Asteroids.class);//westsouth
-     }
-     if(a==null){
-         a=(Asteroids) getOneObjectAtOffset((int)(speed+getImage().getWidth()*Math.sqrt(2) / 2),(int)(-getImage().getHeight()*Math.sqrt(2) / 2), Asteroids.class);//westsouth
-     }
-     if(a!=null){
-        totalHP -= decreaseHP;
-        randomHpBar.update(totalHP);
-        getWorld().removeObject(a);
-        int currentAsteroids = asteroidsList.size();
-        int asteroidsToAdd = Galaxy.numOfAsteroids - currentAsteroids;
-    
-        for (int i = 0; i < asteroidsToAdd+1; i++) {
-            int x = Greenfoot.getRandomNumber(getWorld().getWidth());
-            int y = Greenfoot.getRandomNumber(getWorld().getHeight());
-            getWorld().addObject(new Asteroids(), x, y);
+        List<Asteroids> asteroidsList = getWorld().getObjects(Asteroids.class);
+        Asteroids a =(Asteroids) getOneObjectAtOffset((int)speed + -getImage().getWidth()/2,0, Asteroids.class);//left
+        if(a==null){
+            a=(Asteroids) getOneObjectAtOffset((int)speed + getImage().getWidth()/2,0, Asteroids.class);//right
         }
-     }
-     
-  
-  /*
-    List<Asteroids> asteroidsList = getWorld().getObjects(Asteroids.class);
-    Actor actor = getOneIntersectingObject(Asteroids.class);
-    
-  if (actor instanceof Asteroids) {
-        Asteroids a = (Asteroids) actor;
-        totalHP -= decreaseHP;
-        randomHpBar.update(totalHP);
-        getWorld().removeObject(a);
-
-        // 在这里添加新的 Asteroids，以保持总数为 SetValuePage.numOfAsteroids
-        int currentAsteroids = asteroidsList.size();
-        if (currentAsteroids < SetValuePage.numOfAsteroids) {
-            int asteroidsToAdd = SetValuePage.numOfAsteroids - currentAsteroids;
-
-            for (int i = 0; i < asteroidsToAdd; i++) {
+        if(a==null){
+            a=(Asteroids) getOneObjectAtOffset((int)speed, -getImage().getWidth() / 2, Asteroids.class);//north
+        }
+        if(a==null){
+            a=(Asteroids) getOneObjectAtOffset((int)speed,  getImage().getWidth() / 2, Asteroids.class);//south
+        }
+        if(a==null){
+         a=(Asteroids) getOneObjectAtOffset((int)(speed-getImage().getWidth()*Math.sqrt(2) / 2.0), (int)(-getImage().getHeight()*Math.sqrt(2) / 2), Asteroids.class);//westnorth
+        }
+        if(a==null){
+         a=(Asteroids) getOneObjectAtOffset((int)(speed+getImage().getWidth()*Math.sqrt(2) / 2),(int)(getImage().getHeight()*Math.sqrt(2) / 2), Asteroids.class);//westsouth
+        }
+        if(a==null){
+         a=(Asteroids) getOneObjectAtOffset((int)(speed-getImage().getWidth()*Math.sqrt(2) / 2),(int)(getImage().getHeight()*Math.sqrt(2) / 2), Asteroids.class);//westsouth
+        }
+        if(a==null){
+         a=(Asteroids) getOneObjectAtOffset((int)(speed+getImage().getWidth()*Math.sqrt(2) / 2),(int)(-getImage().getHeight()*Math.sqrt(2) / 2), Asteroids.class);//westsouth
+        }
+        if(a!=null){
+            totalHP -= decreaseHP;
+            randomHpBar.update(totalHP);
+            getWorld().removeObject(a);
+            int currentAsteroids = asteroidsList.size();
+            int asteroidsToAdd = Galaxy.numOfAsteroids - currentAsteroids;
+            
+            for (int i = 0; i < asteroidsToAdd+1; i++) {
                 int x = Greenfoot.getRandomNumber(getWorld().getWidth());
                 int y = Greenfoot.getRandomNumber(getWorld().getHeight());
                 getWorld().addObject(new Asteroids(), x, y);
             }
         }
     }
-    */
-}
-
 
     public void randomImage(){
         planetImgIndex = Greenfoot.getRandomNumber(7);
@@ -182,6 +158,7 @@ public class RandomPlanet extends Planet {
         for (int i = 0; i < 4; i++) {
             if (Greenfoot.getRandomNumber(2) == 0){
                 BaobabTree tree = new BaobabTree(this, i+1);
+                trees.add(tree);
                 switch (i+1){
                     case 1:
                         getWorld().addObject (tree, getX(), getY() - radius - tree.getYOffset());
@@ -197,7 +174,17 @@ public class RandomPlanet extends Planet {
                         break;
                 }
             }
-            
         }
+    }
+    
+    public void removeRanPlanet(){
+        getWorld().removeObject(randomHpBar);
+        getWorld().removeObject(hitbox);
+        for (int i = 0; i < trees.size(); i++){
+            if (trees.get(i) != null){ //may need to change the condition 
+                getWorld().removeObject(trees.get(i));
+            }
+        }
+        getWorld().removeObject(this); 
     }
 }
