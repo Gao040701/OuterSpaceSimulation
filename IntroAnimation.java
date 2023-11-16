@@ -9,7 +9,7 @@ public class IntroAnimation extends World
 {
     private GreenfootImage[] animation= new GreenfootImage[100];
     private int index = 0;
-    private final int countNum = 9;
+    private final int COUNT_NUM = 9;
     private int count = 0;
     public IntroAnimation()
     {    
@@ -27,7 +27,7 @@ public class IntroAnimation extends World
     
     public void animate(){
         if (index < animation.length){
-            if (count == countNum){
+            if (count == COUNT_NUM){
                 setBackground(animation[index]);
                 index++;
                 count = 0;

@@ -15,12 +15,17 @@ public class RandomPlanet extends Planet {
     private GreenfootImage img;
     public int distance;
     private int num=0;
-    //variables for set the image;
+    //variables for set the image 
     private SuperStatBar randomHpBar;
     private Hitbox hitbox;
     private int ylocation;
     private boolean firstGenerated = true;
     private ArrayList<BaobabTree> trees = new ArrayList<BaobabTree>();
+    
+    private static boolean hasFox = false;
+    private GreenfootImage[] foxRun = new GreenfootImage[8];
+    private GreenfootImage[] foxFly = new GreenfootImage[5];
+    private GreenfootImage[] foxDig = new GreenfootImage[11];
     
     public RandomPlanet() {
         //setLocation(0, Greenfoot.getRandomNumber(276) + 150);
@@ -155,7 +160,15 @@ public class RandomPlanet extends Planet {
     
     public void generateTrees() {
         for (int i = 0; i < 4; i++) {
-            if (Greenfoot.getRandomNumber(2) == 0){
+            if (i == 0 && Greenfoot.getRandomNumber(1) == 0 && !hasFox){
+                System.out.println (hasFox);
+                Fox fox = new Fox(foxRun, foxFly, foxDig);
+                fox.prepareAnimation(foxRun, "foxRun/run", fox.getImage().getWidth()*4, fox.getImage().getHeight()*4);
+                fox.prepareAnimation(foxFly, "foxFly/fly", fox.getImage().getWidth()*4, fox.getImage().getHeight()*4);
+                fox.prepareAnimation(foxDig, "foxDig/dig", fox.getImage().getWidth()*4, fox.getImage().getHeight()*4);
+                getWorld().addObject(fox, getX(), getY() - radius);
+                hasFox = true; 
+            }else if (Greenfoot.getRandomNumber(2) == 0){
                 BaobabTree tree = new BaobabTree(this, i+1);
                 trees.add(tree);
                 switch (i+1){

@@ -11,7 +11,7 @@ import java.awt.Point;
 public class Moving extends Being
 {
     private int speed, index, count = 0;
-    private final int countNum = 7;
+    private final int COUNT_NUM = 7;
     private Planet targetPlanet;
     private boolean rotateDetection = false;
     private double angle = 0;
@@ -156,7 +156,7 @@ public class Moving extends Being
 
     public void animate(GreenfootImage[] imgs){
         if (index < imgs.length){
-            if (count == countNum){
+            if (count == COUNT_NUM){
                 setImage(imgs[index]);
                 index++;
                 count = 0;
