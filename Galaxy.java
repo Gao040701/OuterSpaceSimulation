@@ -53,13 +53,6 @@ public class Galaxy extends World
         TLP.prepareAnimation(TLPdig, "digAnimation/dig");
         addObject(new HomePlanet(), getWidth() / 2, getHeight() / 2);
         addObject(new RandomPlanet(), 0, Greenfoot.getRandomNumber(276) + 150);
-        if (Greenfoot.getRandomNumber (2) == 0){
-            Fox fox = new Fox(foxRun, foxFly, foxDig);
-            addObject (fox, 0 + 50, Greenfoot.getRandomNumber(276) + 200);
-            fox.prepareAnimation(foxRun, "foxRun/run", fox.getImage().getWidth()*2, fox.getImage().getHeight()*2);
-            fox.prepareAnimation(foxFly, "foxFly/fly", fox.getImage().getWidth()*2, fox.getImage().getHeight()*2);
-            fox.prepareAnimation(foxDig, "foxDig/dig", fox.getImage().getWidth()*2, fox.getImage().getHeight()*2);
-        }
     }
     
     public int getAsteroidsX(){
