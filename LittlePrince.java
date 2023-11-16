@@ -18,7 +18,7 @@ public class LittlePrince extends Moving
      * Act - do whatever the LittlePrince wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act(boolean canFly, boolean canDig, boolean canWalk)
+    public void act()
     {
         super.act();
         checkCollision();
