@@ -6,6 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
+
 public class Fox extends Moving
 {
     private GreenfootImage[] foxRun = new GreenfootImage[8];
@@ -14,7 +15,7 @@ public class Fox extends Moving
     /**
      * Act - do whatever the Fox wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    */
     public void act()
     {
         if (getWorld().getObjects(LittlePrince.class) != null){
@@ -27,4 +28,5 @@ public class Fox extends Moving
         super(walk, fly, dig);
         
     }
+    
 }

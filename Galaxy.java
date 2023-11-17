@@ -15,8 +15,8 @@ public class Galaxy extends World
     private SuperStatBar clueBar;
     private int clueCount = 0;
     private GreenfootImage background = new GreenfootImage("galaxyBackground.png");
-    public static final int Rhp=100;
-    public static final int Rdecrease=10;
+    public static final int Rhp=hpPerPlanet;
+    public static final int Rdecrease=15;
     
     //animations
     private GreenfootImage[] TLPwalk = new GreenfootImage[8];
