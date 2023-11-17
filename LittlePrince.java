@@ -26,7 +26,7 @@ public class LittlePrince extends Moving
 
     public LittlePrince(GreenfootImage[] walk, GreenfootImage[] fly, GreenfootImage[] dig){
         super(walk, fly, dig);
-        totalHP=Galaxy.Rhp;
+        totalHP = Galaxy.hpPerPlanet();
         decreaseHP=Galaxy.Rdecrease;
         appear=true;
         princeHpBar = new SuperStatBar(totalHP, totalHP, this, 100, 10, -50, Color.GREEN, Color.RED, false, Color.BLACK, 1);

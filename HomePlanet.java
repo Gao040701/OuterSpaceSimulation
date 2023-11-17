@@ -22,8 +22,8 @@ public class HomePlanet extends Planet
 
         length = 200 + Greenfoot.getRandomNumber(41); // 200 + 0 to 40
         img.scale(length, length);
-        totalHP=Galaxy.Rhp;
-        decreaseHP=Galaxy.Rdecrease;
+        totalHP = Galaxy.hpPerPlanet();
+        decreaseHP = Galaxy.Rdecrease;
         setLocation(0, Greenfoot.getRandomNumber(276) + 150);
         speed = Greenfoot.getRandomNumber(1) + 1;
         setImage(img);

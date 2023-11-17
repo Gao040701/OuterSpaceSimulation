@@ -15,7 +15,8 @@ public class Galaxy extends World
     private SuperStatBar clueBar;
     private int clueCount = 0;
     private GreenfootImage background = new GreenfootImage("galaxyBackground.png");
-    public static final int Rhp=hpPerPlanet;
+    //public static final int Rhp=hpPerPlanet;
+    //final variables should be in all capital letters 
     public static final int Rdecrease=15;
     
     //animations
@@ -41,6 +42,7 @@ public class Galaxy extends World
         clueBar = new SuperStatBar(110, clueCount, null, 110, 10, 0, Color.RED, Color.BLACK, false, Color.BLACK, 1);
         addObject(clueBar, getWidth() - 60, 80);
         prepare();
+        System.out.println(hpPerPlanet);
     }
     
     /**
@@ -51,7 +53,7 @@ public class Galaxy extends World
             addObject(new Asteroids(), getAsteroidsX(), getAsteroidsY());
         }
         LittlePrince TLP = new LittlePrince(TLPwalk, TLPfly, TLPdig);
-        addObject(TLP, 100, 100);
+        addObject(TLP, 1000, 250);
         TLP.prepareAnimation(TLPwalk, "walkAnimation/walk");
         TLP.prepareAnimation(TLPfly, "flyAnimation/fly");
         TLP.prepareAnimation(TLPdig, "digAnimation/dig");

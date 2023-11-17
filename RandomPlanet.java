@@ -30,7 +30,8 @@ public class RandomPlanet extends Planet {
         //setLocation(0, Greenfoot.getRandomNumber(276) + 150);
         speed = Greenfoot.getRandomNumber(1) + 1;
         canSpawnNext = false;
-        totalHP = Galaxy.Rhp;
+        //totalHP = Galaxy.Rhp;
+        totalHP = Galaxy.hpPerPlanet();
         decreaseHP=Galaxy.Rdecrease;
         for (int i = 0; i < 7; i++){
             planets[i] = new GreenfootImage("planets/planet" + i + ".png");
@@ -75,7 +76,7 @@ public class RandomPlanet extends Planet {
         }
         checkAndRemove();
         
-        if (firstGenerated){
+        if (appear && firstGenerated){
             generateTrees();
             firstGenerated = false;
         }
@@ -163,8 +164,6 @@ public class RandomPlanet extends Planet {
                 fox.prepareAnimation(foxFly, "foxFly/fly", fox.getImage().getWidth()*4, fox.getImage().getHeight()*4);
                 fox.prepareAnimation(foxDig, "foxDig/dig", fox.getImage().getWidth()*4, fox.getImage().getHeight()*4);
                 getWorld().addObject(fox, getX() - radius, getY() - radius);
-                
-                
                 hasFox = true;
             }else if (Greenfoot.getRandomNumber(2) == 0){
                 BaobabTree tree = new BaobabTree(this, i+1);
