@@ -12,9 +12,13 @@ public class roseicon extends Stationary
      * Act - do whatever the roseicon wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    private GreenfootImage rose = new GreenfootImage("rose.png");
     public void act()
     {
         // Add your action code here.
         //add an object on the blue bar
+    }
+    public roseicon(){
+        setImage(rose);
     }
 }
