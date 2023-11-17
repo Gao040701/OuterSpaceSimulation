@@ -6,19 +6,19 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class roseicon extends Stationary
+public class Roseicon extends Stationary
 {
     /**
      * Act - do whatever the roseicon wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    private GreenfootImage rose = new GreenfootImage("rose.png");
+    private GreenfootImage rose = new GreenfootImage("roseCovered.png");
     public void act()
     {
         // Add your action code here.
         //add an object on the blue bar
     }
-    public roseicon(){
+    public Roseicon(){
         setImage(rose);
     }
 }
