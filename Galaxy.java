@@ -22,6 +22,7 @@ public class Galaxy extends World
     //animations
     private GreenfootImage[] TLPwalk = new GreenfootImage[8];
     private GreenfootImage[] TLPfly = new GreenfootImage[6];
+    private GreenfootImage[] TLPflyInverted = new GreenfootImage[6];
     private GreenfootImage[] TLPdig = new GreenfootImage[9];
     
     /**
@@ -53,11 +54,13 @@ public class Galaxy extends World
         for (int i = 0; i < this.numOfAsteroids; i++) {
             addObject(new Asteroids(), getAsteroidsX(), getAsteroidsY());
         }
-        LittlePrince TLP = new LittlePrince(TLPwalk, TLPfly, TLPdig);
-        addObject(TLP, 1000, 250);
+        LittlePrince TLP = new LittlePrince(TLPwalk, TLPfly, TLPdig, TLPflyInverted);
+        addObject(TLP, 947, 250);
         TLP.prepareAnimation(TLPwalk, "walkAnimation/walk");
         TLP.prepareAnimation(TLPfly, "flyAnimation/fly");
         TLP.prepareAnimation(TLPdig, "digAnimation/dig");
+        TLP.prepareAnimation(TLPflyInverted, "flyAnimation/fly");
+        TLP.flipVertically(TLPflyInverted);
         addObject(new HomePlanet(), getWidth() / 2, getHeight() / 2);
         addObject(new RandomPlanet(), 0, Greenfoot.getRandomNumber(276) + 150);
     }

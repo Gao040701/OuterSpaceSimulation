@@ -24,8 +24,8 @@ public class LittlePrince extends Moving
         checkCollision();
     }
 
-    public LittlePrince(GreenfootImage[] walk, GreenfootImage[] fly, GreenfootImage[] dig){
-        super(walk, fly, dig);
+    public LittlePrince(GreenfootImage[] walk, GreenfootImage[] fly, GreenfootImage[] dig, GreenfootImage[] flyInverted){
+        super(walk, fly, dig, flyInverted);
         totalHP = Galaxy.hpPerPlanet();
         decreaseHP=Galaxy.Rdecrease;
         appear=true;

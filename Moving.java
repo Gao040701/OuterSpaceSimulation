@@ -10,7 +10,7 @@ import java.awt.Point;
  */
 public class Moving extends Being
 {
-    private int speed, index, count = 0;
+    private int speed, index, count = 0, degree;
     private final int COUNT_NUM = 7;
     private Planet targetPlanet;
     private boolean rotateDetection = false;
@@ -26,6 +26,8 @@ public class Moving extends Being
     private GreenfootImage[] walk;
     private GreenfootImage[] fly;
     private GreenfootImage[] dig;
+    private GreenfootImage[] flyInverted;
+    
     /**
      * Act - do whatever the Character wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -48,14 +50,17 @@ public class Moving extends Being
             rotateDetection = false;
             rotateImage(90); //may need to adjust later
             moveRandomly();
-            animate(fly);
+            if (getRotation() < 270 && getRotation() > 90){
+                animate(flyInverted);
+            }else animate(fly);
         }
     }
 
-    public Moving(GreenfootImage[] walk, GreenfootImage[] fly, GreenfootImage[] dig){
+    public Moving(GreenfootImage[] walk, GreenfootImage[] fly, GreenfootImage[] dig, GreenfootImage[] flyInverted){
         this.walk = walk; 
         this.fly = fly;
         this.dig = dig;
+        this.flyInverted = flyInverted;
     }
 
     public static double getDistance (Actor a, Actor b){
@@ -86,7 +91,7 @@ public class Moving extends Being
             turnTowards(targetPlanet.getX(), targetPlanet.getY());
         }
     }
-
+    /*
     private void moveRandomly(){
         animate(fly);
         if((getX() > 30 || getX() < 970) && (getY() > 30 || getY() < 540)){
@@ -118,7 +123,53 @@ public class Moving extends Being
             move (mySpeed);
         }
     }
-
+    */
+    private boolean closeLeft, closeRight, closeTop, closeBottom;
+    private void checkPosition(){
+        numAtEdge = 0;
+        closeLeft = getX() < 400;
+        closeTop = getY() < 60;
+        closeRight = getX() > (getWorld().getBackground().getWidth() - 100);
+        closeBottom = getY() > (getWorld().getBackground().getHeight() - 60);
+        if (closeLeft) numAtEdge++;
+        if (closeRight) numAtEdge++;
+        if (closeTop) numAtEdge++;
+        if (closeBottom) numAtEdge++;
+    }
+    
+    private int numAtEdge, preNumAtEdge;
+    public void moveRandomly(){
+        checkPosition();
+        if (closeLeft && closeTop){
+            degree = Greenfoot.getRandomNumber(90);
+        }else if (closeLeft && closeBottom){
+            degree = Greenfoot.getRandomNumber(90) - 90;
+        }else if (closeRight && closeTop){
+            degree = Greenfoot.getRandomNumber(90) + 90;
+        }else if (closeRight && closeBottom){
+            degree = Greenfoot.getRandomNumber(90) + 180;
+        }else if (closeLeft){
+            degree = Greenfoot.getRandomNumber(180) - 90;
+        }else if (closeRight){
+            degree = Greenfoot.getRandomNumber(180) + 90;
+        }else if (closeTop){
+            degree = Greenfoot.getRandomNumber(180);
+        }else if (closeBottom){
+            degree = Greenfoot.getRandomNumber(180) + 180;
+        }else{
+            degree = Greenfoot.getRandomNumber(180) + 90;
+        }
+        if (((closeLeft || closeRight || closeTop || closeBottom) &&  numAtEdge != preNumAtEdge)){
+            setRotation(degree);
+            preNumAtEdge = numAtEdge;
+            move(mySpeed * 2);
+        }else if(Greenfoot.getRandomNumber(100) == 0){
+            setRotation(degree);
+            preNumAtEdge = numAtEdge;
+        }
+        move(mySpeed);
+    }
+    
     public boolean checkHitPlanet () {
         RandomPlanet randomPlanet = (RandomPlanet) getOneIntersectingObject(RandomPlanet.class); //return true if intersects
         RosePlanet rosePlanet = (RosePlanet) getOneIntersectingObject(RosePlanet.class); //return true if intersects
@@ -168,11 +219,23 @@ public class Moving extends Being
             imgs[i] = new GreenfootImage(frameName+i+".png");
         }
     }
-
+    
     public void prepareAnimation(GreenfootImage[] imgs, String frameName, int width, int height){
         for (int i = 0; i < imgs.length; i++){
             imgs[i] = new GreenfootImage(frameName+i+".png");
             imgs[i].scale(width, height);
+        }
+    }
+    
+    public void flipHorizontally(GreenfootImage[] imgs){
+        for (int i = 0; i < imgs.length; i++){
+            imgs[i].mirrorHorizontally();
+        }
+    }
+    
+    public void flipVertically(GreenfootImage[] imgs){
+        for (int i = 0; i < imgs.length; i++){
+            imgs[i].mirrorVertically();
         }
     }
 
@@ -193,7 +256,6 @@ public class Moving extends Being
     public void canFly(Planet planet){
         if (planet.getX() - 10 <= getX() && getX() <= planet.getX() + 10 && !justPassed ){
             passCount++; 
-            //System.out.println(passCount);
             justPassed = true;
         }
         if (planet.getX() - 10 > getX() || getX() > planet.getX() + 10){

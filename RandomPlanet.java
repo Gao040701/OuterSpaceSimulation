@@ -24,6 +24,7 @@ public class RandomPlanet extends Planet {
     private static boolean hasFox = false;
     private GreenfootImage[] foxRun = new GreenfootImage[8];
     private GreenfootImage[] foxFly = new GreenfootImage[5];
+    private GreenfootImage[] foxFlyInverted = new GreenfootImage[5];
     private GreenfootImage[] foxDig = new GreenfootImage[11];
     
     public RandomPlanet() {
@@ -95,16 +96,16 @@ public class RandomPlanet extends Planet {
             a=(Asteroids) getOneObjectAtOffset((int)speed,  getImage().getWidth() / 2, Asteroids.class);//south
         }
         if(a==null){
-         a=(Asteroids) getOneObjectAtOffset((int)(speed-getImage().getWidth()*Math.sqrt(2) / 2.0), (int)(-getImage().getHeight()*Math.sqrt(2) / 2), Asteroids.class);//westnorth
+            a=(Asteroids) getOneObjectAtOffset((int)(speed-getImage().getWidth()*Math.sqrt(2) / 2.0), (int)(-getImage().getHeight()*Math.sqrt(2) / 2), Asteroids.class);//westnorth
         }
         if(a==null){
-         a=(Asteroids) getOneObjectAtOffset((int)(speed+getImage().getWidth()*Math.sqrt(2) / 2),(int)(getImage().getHeight()*Math.sqrt(2) / 2), Asteroids.class);//westsouth
+            a=(Asteroids) getOneObjectAtOffset((int)(speed+getImage().getWidth()*Math.sqrt(2) / 2),(int)(getImage().getHeight()*Math.sqrt(2) / 2), Asteroids.class);//westsouth
         }
         if(a==null){
-         a=(Asteroids) getOneObjectAtOffset((int)(speed-getImage().getWidth()*Math.sqrt(2) / 2),(int)(getImage().getHeight()*Math.sqrt(2) / 2), Asteroids.class);//westsouth
+            a=(Asteroids) getOneObjectAtOffset((int)(speed-getImage().getWidth()*Math.sqrt(2) / 2),(int)(getImage().getHeight()*Math.sqrt(2) / 2), Asteroids.class);//westsouth
         }
         if(a==null){
-         a=(Asteroids) getOneObjectAtOffset((int)(speed+getImage().getWidth()*Math.sqrt(2) / 2),(int)(-getImage().getHeight()*Math.sqrt(2) / 2), Asteroids.class);//westsouth
+            a=(Asteroids) getOneObjectAtOffset((int)(speed+getImage().getWidth()*Math.sqrt(2) / 2),(int)(-getImage().getHeight()*Math.sqrt(2) / 2), Asteroids.class);//westsouth
         }
         if(a!=null){
             totalHP -= decreaseHP;
@@ -112,7 +113,6 @@ public class RandomPlanet extends Planet {
             getWorld().removeObject(a);
             int currentAsteroids = asteroidsList.size();
             int asteroidsToAdd = Galaxy.getNumOfAsteroids() - currentAsteroids;
-            
             for (int i = 0; i < asteroidsToAdd+1; i++) {
                 int x = Greenfoot.getRandomNumber(getWorld().getWidth());
                 int y = Greenfoot.getRandomNumber(getWorld().getHeight());
@@ -159,10 +159,14 @@ public class RandomPlanet extends Planet {
     public void generateTrees() {
         for (int i = 0; i < 4; i++) {
             if (i == 0 && Greenfoot.getRandomNumber(1) == 0 && !hasFox){
-                Fox fox = new Fox(foxRun, foxFly, foxDig);
+                Fox fox = new Fox(foxRun, foxFly, foxDig, foxFlyInverted);
                 fox.prepareAnimation(foxRun, "foxRun/run", fox.getImage().getWidth()*4, fox.getImage().getHeight()*4);
                 fox.prepareAnimation(foxFly, "foxFly/fly", fox.getImage().getWidth()*4, fox.getImage().getHeight()*4);
+                fox.prepareAnimation(foxFlyInverted, "foxFly/fly", fox.getImage().getWidth()*4, fox.getImage().getHeight()*4);
                 fox.prepareAnimation(foxDig, "foxDig/dig", fox.getImage().getWidth()*4, fox.getImage().getHeight()*4);
+                fox.flipHorizontally(foxRun);
+                fox.flipHorizontally(foxDig);
+                fox.flipVertically(foxFlyInverted);
                 getWorld().addObject(fox, getX() - radius, getY() - radius);
                 hasFox = true;
             }else if (Greenfoot.getRandomNumber(2) == 0){
