@@ -10,6 +10,7 @@ public class Asteroids extends SuperSmoothMover {
     private int ySpeed;
     private int count;
     private GreenfootImage asteroid = new GreenfootImage("asteroid.png");
+    private int worldWidth = 1024, worldHeight = 576;
     public Asteroids() {
         xSpeed = Greenfoot.getRandomNumber(4) + Galaxy.asteroidSpeed(); // x 方向的速度范围在 1 到 3 之间
         ySpeed = Greenfoot.getRandomNumber(3) - Galaxy.asteroidSpeed(); // y 方向的速度范围在 -1 到 1 之间
@@ -17,7 +18,7 @@ public class Asteroids extends SuperSmoothMover {
         asteroid.scale(75+Greenfoot.getRandomNumber(30), 60+Greenfoot.getRandomNumber(30));
         setImage(asteroid);
     }
-
+    
     public void act() {
         // 根据 x 和 y 方向的速度移动星球
         setLocation(getX() + xSpeed, getY() + ySpeed);
@@ -33,6 +34,7 @@ public class Asteroids extends SuperSmoothMover {
     }
     
     private void reLocation(){
+        /*
         if (getX() >= getWorld().getWidth()) {
             setLocation(0, Greenfoot.getRandomNumber(getWorld().getHeight()));
         }else if (getX() < 0){
@@ -42,6 +44,17 @@ public class Asteroids extends SuperSmoothMover {
         }else if (getY() < 0) {
             setLocation(Greenfoot.getRandomNumber(getWorld().getWidth()), getWorld().getHeight());
         }
+        */
+        if (atEdge()){
+            setLocation(-10, Greenfoot.getRandomNumber(400)+100);
+        }
+    }
+    
+    public boolean atEdge(){
+        if (getX() > worldWidth || getY() > worldHeight || getY() < 0){
+            return true;
+        }
+        return false;
     }
     
     private void randomSpeed(){
