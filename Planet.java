@@ -1,7 +1,4 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-import java.util.ArrayList;
-import java.util.List;
-
 //only have xSpeed and it can be random every 400 count
 //there is a distance of 700 bewtween them
 /**
@@ -15,7 +12,6 @@ public abstract class Planet extends SuperSmoothMover
     /**
      * The planets will rotate on its own and move to the right
      */
-    
     protected int radius;
     protected double speed;
     protected int totalHP;
@@ -34,7 +30,6 @@ public abstract class Planet extends SuperSmoothMover
     }
     public Planet() {
         appear=true;
-        
     }
 
     public abstract void checkCollision();
