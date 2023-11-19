@@ -10,7 +10,8 @@ import java.awt.Point;
  */
 public class Moving extends Being
 {
-    private int speed, index, count = 0, degree;
+    private int index, count = 0, degree;
+    private double speed;
     private final int COUNT_NUM = 7;
     private Planet targetPlanet;
     private RandomPlanet randomPlanet;
@@ -57,7 +58,7 @@ public class Moving extends Being
         }
         */
         randomPlanet = (RandomPlanet) getOneIntersectingObject(RandomPlanet.class);
-        planet = (Planet) getOneIntersectingObject(Planet.class); //return true if intersects
+        planet = (Planet) getOneIntersectingObject(Planet.class);
         box = (HitBox) getOneIntersectingObject(HitBox.class);
 
         if (checkHitPlanet()){
@@ -74,7 +75,7 @@ public class Moving extends Being
             }else animate(fly);
         }
     }
-
+    
     public Moving(GreenfootImage[] walk, GreenfootImage[] fly, GreenfootImage[] dig, GreenfootImage[] flyInverted){
         this.walk = walk; 
         this.fly = fly;
@@ -182,7 +183,7 @@ public class Moving extends Being
         if (((closeLeft || closeRight || closeTop || closeBottom) &&  numAtEdge != preNumAtEdge)){
             setRotation(degree);
             preNumAtEdge = numAtEdge;
-            move(mySpeed * 2);
+            move(mySpeed * 5);
         }else if(Greenfoot.getRandomNumber(100) == 0){
             setRotation(degree);
             preNumAtEdge = numAtEdge;
@@ -201,14 +202,8 @@ public class Moving extends Being
         return false;
     }
     
-    public void stay(){
-        double speed = planet.getSpeed();
-        move(speed);
-        isStaying = true;
-    }
-    
     public void rotate(){
-        double speed = planet.getSpeed();
+        speed = planet.getSpeed();
         turnTowards (planet);
         turn(-90);
         if (!checkHitTree()){
@@ -221,7 +216,7 @@ public class Moving extends Being
             canFly(planet);
             animate(walk);
         }else{
-            setLocation(planet.getX() + speed, getY());
+            setLocation(getX() + speed, getY());
             animate(dig);
             box.getBaobabTree().removeBaobabTree();
         }
