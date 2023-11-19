@@ -17,7 +17,7 @@ public class Moving extends Being
     private RandomPlanet randomPlanet;
     private Planet planet;
     private HitBox box;
-    private boolean rotateDetection = false;
+    protected boolean rotateDetection = false;
     private double angle = 0;
     private ArrayList<Planet> planets;
     protected LittlePrince littlePrince;
