@@ -167,7 +167,7 @@ public class RandomPlanet extends Planet {
                 fox.flipHorizontally(foxRun);
                 fox.flipHorizontally(foxDig);
                 fox.flipVertically(foxFlyInverted);
-                //getWorld().addObject(fox, getX() - radius, getY() - radius);
+                getWorld().addObject(fox, getX() - radius, getY() - radius);
                 hasFox = true;
             }else if (Greenfoot.getRandomNumber(2) == 0){
                 BaobabTree tree = new BaobabTree(this, i+1);
