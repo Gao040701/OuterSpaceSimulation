@@ -98,4 +98,9 @@ public class Galaxy extends World
     public static int hpPerPlanet(){
         return hpPerPlanet;
     }
+    
+    public void changeClue(int amount){
+        clueCount += amount;
+        System.out.println(clueCount);
+    }
 }

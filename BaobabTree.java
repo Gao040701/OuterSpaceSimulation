@@ -82,9 +82,10 @@ public class BaobabTree extends Stationary
     
     public void removeBaobabTree(){
         if (count == COUNT_NUM){
-            clue+=Galaxy.getAmountOfClues();
-            clueBar.update(clue);
-            System.out.println("clue"+clue);
+            if (getWorld() instanceof Galaxy){
+                Galaxy galaxy = (Galaxy)getWorld();
+                galaxy.changeClue(10);
+            }
             getWorld().removeObject(box);
             getWorld().removeObject(this);
             return;
@@ -92,10 +93,12 @@ public class BaobabTree extends Stationary
             count++;
         }
     }
+    /*
     public void addedToWorld (World w){
         w.addObject(clueBar, 964, 100);
         clueBar.update(clue);
     }
+    */
     public HitBox getBox(){
         return box;
     }
