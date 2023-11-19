@@ -19,7 +19,6 @@ public class Moving extends Being
     private boolean rotateDetection = false;
     private double angle = 0;
     private ArrayList<Planet> planets;
-    //private Planet targetPlanet;
     protected LittlePrince littlePrince;
     private int mySpeed = 1;
     private int passCount = 0;
@@ -36,26 +35,6 @@ public class Moving extends Being
         /**
          * Add if (energy > 0)
          */
-        /*
-        if (checkHitPlanet() && passCount != 3 && !checkHitTree()){
-            rotateDetection = true;
-            rotate();
-            animate(walk);
-        }
-        if (checkHitPlanet() && checkHitTree()){
-            animate(dig);
-            stay();
-        }
-        if (!checkHitPlanet() && !checkHitTree()){
-            passCount = 0;
-            rotateDetection = false;
-            rotateImage(90); //may need to adjust later
-            moveRandomly();
-            if (getRotation() < 270 && getRotation() > 90){
-                animate(flyInverted);
-            }else animate(fly);
-        }
-        */
         randomPlanet = (RandomPlanet) getOneIntersectingObject(RandomPlanet.class);
         planet = (Planet) getOneIntersectingObject(Planet.class); //return true if intersects
         box = (HitBox) getOneIntersectingObject(HitBox.class);
@@ -69,6 +48,7 @@ public class Moving extends Being
             isStaying = false;
             rotateImage(90);
             moveRandomly();
+            //targetClosestPlanet();
             if (getRotation() < 270 && getRotation() > 90){
                 animate(flyInverted);
             }else animate(fly);
@@ -108,39 +88,6 @@ public class Moving extends Being
                 }
             }
             turnTowards(targetPlanet.getX(), targetPlanet.getY());
-        }
-    }
-    */
-    /*
-    private void moveRandomly(){
-        animate(fly);
-        if((getX() > 30 || getX() < 970) && (getY() > 30 || getY() < 540)){
-            if (Greenfoot.getRandomNumber (100) == 50){
-                turn (Greenfoot.getRandomNumber(360));
-            }
-            else{
-                move (mySpeed);
-            }
-        }
-        if (getX() < 30 ){
-            setLocation(getX() + 50, getY());
-            turn (Greenfoot.getRandomNumber(1));
-            move (-mySpeed);
-        }
-        if (getX() > 970 ){
-            setLocation(getX() - 10, getY());
-            turn (Greenfoot.getRandomNumber(180));
-            move (mySpeed);
-        }
-        if (getY() < 30 ){
-            setLocation(getX(), getY() + 10);
-            turn (Greenfoot.getRandomNumber(270));
-            move (mySpeed);
-        }
-        if (getY() >540 ){
-            setLocation(getX(), getY() - 10);
-            turn (Greenfoot.getRandomNumber(90));
-            move (mySpeed);
         }
     }
     */

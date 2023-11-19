@@ -20,13 +20,13 @@ public class RandomPlanet extends Planet {
     private int ylocation;
     private boolean firstGenerated = true;
     private ArrayList<BaobabTree> trees = new ArrayList<BaobabTree>();
-    
-    private static boolean hasFox = false;
+
+    private boolean hasFox = true;
     private GreenfootImage[] foxRun = new GreenfootImage[8];
     private GreenfootImage[] foxFly = new GreenfootImage[5];
     private GreenfootImage[] foxFlyInverted = new GreenfootImage[5];
     private GreenfootImage[] foxDig = new GreenfootImage[11];
-    
+
     public RandomPlanet() {
         //setLocation(0, Greenfoot.getRandomNumber(276) + 150);
         speed = Greenfoot.getRandomNumber(1) + 1;
@@ -76,13 +76,19 @@ public class RandomPlanet extends Planet {
             }
         }
         checkAndRemove();
-        
+
         if (appear && firstGenerated){
             generateTrees();
             firstGenerated = false;
         }
+        if (Greenfoot.getRandomNumber(1600) == 0){
+            if(hasFox == true){
+                generateFox();
+                hasFox = false;
+            }  
+        }
     }
-    
+
     public void checkCollision() {
         List<Asteroids> asteroidsList = getWorld().getObjects(Asteroids.class);
         Asteroids a =(Asteroids) getOneObjectAtOffset((int)speed + -getImage().getWidth()/2,0, Asteroids.class);//left
@@ -138,7 +144,7 @@ public class RandomPlanet extends Planet {
     public void addedToWorld (World w){
         w.addObject(randomHpBar, getX() / 2, getY() / 2);
     }
-    
+
     public void checkAndRemove ()
     {
         if (getWorld() != null && totalHP <= 0) {
@@ -155,21 +161,24 @@ public class RandomPlanet extends Planet {
             return;
         }
     }
-    
+
+    public void generateFox() {
+        if (Greenfoot.getRandomNumber(1) == 0){
+            Fox fox = new Fox(foxRun, foxFly, foxDig, foxFlyInverted);
+            fox.prepareAnimation(foxRun, "foxRun/run", fox.getImage().getWidth()*4, fox.getImage().getHeight()*4);
+            fox.prepareAnimation(foxFly, "foxFly/fly", fox.getImage().getWidth()*4, fox.getImage().getHeight()*4);
+            fox.prepareAnimation(foxFlyInverted, "foxFly/fly", fox.getImage().getWidth()*4, fox.getImage().getHeight()*4);
+            fox.prepareAnimation(foxDig, "foxDig/dig", fox.getImage().getWidth()*4, fox.getImage().getHeight()*4);
+            fox.flipHorizontally(foxRun);
+            fox.flipHorizontally(foxDig);
+            fox.flipVertically(foxFlyInverted);
+            getWorld().addObject(fox, getX(), getY() - radius);
+        }
+    }
+
     public void generateTrees() {
         for (int i = 0; i < 4; i++) {
-            if (i == 0 && Greenfoot.getRandomNumber(1) == 0 && !hasFox){
-                Fox fox = new Fox(foxRun, foxFly, foxDig, foxFlyInverted);
-                fox.prepareAnimation(foxRun, "foxRun/run", fox.getImage().getWidth()*4, fox.getImage().getHeight()*4);
-                fox.prepareAnimation(foxFly, "foxFly/fly", fox.getImage().getWidth()*4, fox.getImage().getHeight()*4);
-                fox.prepareAnimation(foxFlyInverted, "foxFly/fly", fox.getImage().getWidth()*4, fox.getImage().getHeight()*4);
-                fox.prepareAnimation(foxDig, "foxDig/dig", fox.getImage().getWidth()*4, fox.getImage().getHeight()*4);
-                fox.flipHorizontally(foxRun);
-                fox.flipHorizontally(foxDig);
-                fox.flipVertically(foxFlyInverted);
-                //getWorld().addObject(fox, getX() - radius, getY() - radius);
-                hasFox = true;
-            }else if (Greenfoot.getRandomNumber(2) == 0){
+            if (Greenfoot.getRandomNumber(2) == 0){
                 BaobabTree tree = new BaobabTree(this, i+1);
                 trees.add(tree);
                 switch (i+1){
@@ -189,7 +198,7 @@ public class RandomPlanet extends Planet {
             }
         }
     }
-    
+
     public void removeRanPlanet(){
         getWorld().removeObject(randomHpBar);
         for (int i = 0; i < trees.size(); i++){
