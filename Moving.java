@@ -13,35 +13,36 @@ public class Moving extends Being
     private int speed, index, count = 0, degree;
     private final int COUNT_NUM = 7;
     private Planet targetPlanet;
+    private RandomPlanet randomPlanet;
+    private Planet planet;
+    private HitBox box;
     private boolean rotateDetection = false;
     private double angle = 0;
     private ArrayList<Planet> planets;
     //private Planet targetPlanet;
     protected LittlePrince littlePrince;
     private int mySpeed = 1;
-    private SimpleTimer timer = new SimpleTimer();
     private int passCount = 0;
     private boolean justPassed = false;
-
+    private boolean isStaying = false;
+    
     private GreenfootImage[] walk;
     private GreenfootImage[] fly;
     private GreenfootImage[] dig;
     private GreenfootImage[] flyInverted;
     
-    /**
-     * Act - do whatever the Character wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     public void act()
     {
         /**
          * Add if (energy > 0)
          */
+        /*
         if (checkHitPlanet() && passCount != 3 && !checkHitTree()){
             rotateDetection = true;
             rotate();
             animate(walk);
-        }if (checkHitPlanet() && checkHitTree()){
+        }
+        if (checkHitPlanet() && checkHitTree()){
             animate(dig);
             stay();
         }
@@ -49,6 +50,24 @@ public class Moving extends Being
             passCount = 0;
             rotateDetection = false;
             rotateImage(90); //may need to adjust later
+            moveRandomly();
+            if (getRotation() < 270 && getRotation() > 90){
+                animate(flyInverted);
+            }else animate(fly);
+        }
+        */
+        randomPlanet = (RandomPlanet) getOneIntersectingObject(RandomPlanet.class);
+        planet = (Planet) getOneIntersectingObject(Planet.class); //return true if intersects
+        box = (HitBox) getOneIntersectingObject(HitBox.class);
+
+        if (checkHitPlanet()){
+            rotateDetection = true;
+            rotate();
+        }else {
+            passCount = 0;
+            rotateDetection = false;
+            isStaying = false;
+            rotateImage(90);
             moveRandomly();
             if (getRotation() < 270 && getRotation() > 90){
                 animate(flyInverted);
@@ -67,7 +86,7 @@ public class Moving extends Being
         double distanceBetween = Math.hypot (Math.abs(a.getX() - b.getX()), Math.abs(a.getY() - b.getY()));
         return distanceBetween;
     }
-
+    /*
     private void targetClosestPlanet(){
         double closestTargetDistance = 0;
         double distanceToActor;
@@ -91,6 +110,7 @@ public class Moving extends Being
             turnTowards(targetPlanet.getX(), targetPlanet.getY());
         }
     }
+    */
     /*
     private void moveRandomly(){
         animate(fly);
@@ -171,47 +191,40 @@ public class Moving extends Being
     }
     
     public boolean checkHitPlanet () {
-        RandomPlanet randomPlanet = (RandomPlanet) getOneIntersectingObject(RandomPlanet.class); //return true if intersects
-        RosePlanet rosePlanet = (RosePlanet) getOneIntersectingObject(RosePlanet.class); //return true if intersects
-        HomePlanet homePlanet = (HomePlanet) getOneIntersectingObject(HomePlanet.class); //return true if intersects
-        if ((randomPlanet!= null)||(rosePlanet != null)||(homePlanet != null)){
-            return true;
-        }
-        return false;
+        return planet != null;
     }
     
     public boolean checkHitTree(){
-        BaobabTree baobabTree = (BaobabTree) getOneIntersectingObject(BaobabTree.class);
-        if (baobabTree != null){
+        if (box != null && box.getBaobabTree().getPlanet().equals(randomPlanet)){
             return true;
         }
         return false;
     }
     
     public void stay(){
-        Planet touchingPlanet = (Planet)getOneIntersectingObject(Planet.class);
-        // int radius = touchingPlanet.getRadius();
-        double speed = touchingPlanet.getSpeed();
-        // double radians = Math.toRadians(angle);
-        // angle -= 1.5;
-        // double x = touchingPlanet.getX() + (double) ((radius+30) * Math.cos(radians));
-        // double y = touchingPlanet.getY() + (double) ((radius+30) * Math.sin(radians));
-        // setLocation(x+speed, y);
+        double speed = planet.getSpeed();
         move(speed);
+        isStaying = true;
     }
-
+    
     public void rotate(){
-        Planet touchingPlanet= (Planet)getOneIntersectingObject(Planet.class);
-        int radius = touchingPlanet.getRadius();
-        double speed = touchingPlanet.getSpeed();
-        double radians = Math.toRadians(angle);
-        double x = touchingPlanet.getX() + (double) ((radius+30) * Math.cos(radians));
-        double y = touchingPlanet.getY() + (double) ((radius+30) * Math.sin(radians));
-        angle -= 1.5;
-        turnTowards (touchingPlanet);
+        double speed = planet.getSpeed();
+        turnTowards (planet);
         turn(-90);
-        setLocation(x+speed, y);
-        canFly(touchingPlanet);
+        if (!checkHitTree()){
+            int radius = planet.getRadius();
+            double radians = Math.toRadians(angle);
+            double x = planet.getX() + (double) ((radius+30) * Math.cos(radians));
+            double y = planet.getY() + (double) ((radius+30) * Math.sin(radians));
+            angle -= 1.5;
+            setLocation(x+speed, y);
+            canFly(planet);
+            animate(walk);
+        }else{
+            setLocation(planet.getX() + speed, getY());
+            animate(dig);
+            box.getBaobabTree().removeBaobabTree();
+        }
     }
 
     public void prepareAnimation(GreenfootImage[] imgs, String frameName){
@@ -266,5 +279,13 @@ public class Moving extends Being
             setLocation(getX()-10, getY() - 10);
             setLocation(getX()-200, getY() - 10);
         }
+    }
+    
+    public boolean getRotationDetection(){
+        return rotateDetection;
+    }
+    
+    public void setIsStaying(boolean x){
+        isStaying = x;
     }
 }
