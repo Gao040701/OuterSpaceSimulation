@@ -22,6 +22,7 @@ public class LittlePrince extends Moving
     {
         super.act();
         checkCollision();
+        System.out.println(getX() + ", " + getY());
     }
 
     public LittlePrince(GreenfootImage[] walk, GreenfootImage[] fly, GreenfootImage[] dig, GreenfootImage[] flyInverted){

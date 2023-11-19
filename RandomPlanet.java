@@ -178,23 +178,21 @@ public class RandomPlanet extends Planet {
 
     public void generateTrees() {
         for (int i = 0; i < 4; i++) {
-            if (Greenfoot.getRandomNumber(2) == 0){
-                BaobabTree tree = new BaobabTree(this, i+1);
-                trees.add(tree);
-                switch (i+1){
-                    case 1:
-                        getWorld().addObject (tree, getX(), getY() - radius - tree.getYOffset());
-                        break;
-                    case 2:
-                        getWorld().addObject (tree, getX() + radius + tree.getXOffset(), getY());
-                        break;
-                    case 3:
-                        getWorld().addObject (tree, getX(), getY() + radius + tree.getYOffset());
-                        break;
-                    case 4:
-                        getWorld().addObject (tree, getX() - radius - 3*tree.getXOffset(), getY());
-                        break;
-                }
+            BaobabTree tree = new BaobabTree(this, i+1);
+            trees.add(tree);
+            switch (i+1){
+                case 1:
+                    getWorld().addObject (tree, getX(), getY() - radius - tree.getYOffset());
+                    break;
+                case 2:
+                    getWorld().addObject (tree, getX() + radius + tree.getXOffset(), getY());
+                    break;
+                case 3:
+                    getWorld().addObject (tree, getX(), getY() + radius + tree.getYOffset());
+                    break;
+                case 4:
+                    getWorld().addObject (tree, getX() - radius - 3*tree.getXOffset(), getY());
+                    break;
             }
         }
     }
