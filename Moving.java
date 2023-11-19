@@ -1,6 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 import java.awt.Point;
+import java.util.List;
 
 /**
  * Write a description of class Moving here.
@@ -27,7 +28,7 @@ public class Moving extends Being
     private GreenfootImage[] fly;
     private GreenfootImage[] dig;
     private GreenfootImage[] flyInverted;
-    
+
     /**
      * Act - do whatever the Character wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -93,37 +94,37 @@ public class Moving extends Being
     }
     /*
     private void moveRandomly(){
-        animate(fly);
-        if((getX() > 30 || getX() < 970) && (getY() > 30 || getY() < 540)){
-            if (Greenfoot.getRandomNumber (100) == 50){
-                turn (Greenfoot.getRandomNumber(360));
-            }
-            else{
-                move (mySpeed);
-            }
-        }
-        if (getX() < 30 ){
-            setLocation(getX() + 50, getY());
-            turn (Greenfoot.getRandomNumber(1));
-            move (-mySpeed);
-        }
-        if (getX() > 970 ){
-            setLocation(getX() - 10, getY());
-            turn (Greenfoot.getRandomNumber(180));
-            move (mySpeed);
-        }
-        if (getY() < 30 ){
-            setLocation(getX(), getY() + 10);
-            turn (Greenfoot.getRandomNumber(270));
-            move (mySpeed);
-        }
-        if (getY() >540 ){
-            setLocation(getX(), getY() - 10);
-            turn (Greenfoot.getRandomNumber(90));
-            move (mySpeed);
-        }
+    animate(fly);
+    if((getX() > 30 || getX() < 970) && (getY() > 30 || getY() < 540)){
+    if (Greenfoot.getRandomNumber (100) == 50){
+    turn (Greenfoot.getRandomNumber(360));
     }
-    */
+    else{
+    move (mySpeed);
+    }
+    }
+    if (getX() < 30 ){
+    setLocation(getX() + 50, getY());
+    turn (Greenfoot.getRandomNumber(1));
+    move (-mySpeed);
+    }
+    if (getX() > 970 ){
+    setLocation(getX() - 10, getY());
+    turn (Greenfoot.getRandomNumber(180));
+    move (mySpeed);
+    }
+    if (getY() < 30 ){
+    setLocation(getX(), getY() + 10);
+    turn (Greenfoot.getRandomNumber(270));
+    move (mySpeed);
+    }
+    if (getY() >540 ){
+    setLocation(getX(), getY() - 10);
+    turn (Greenfoot.getRandomNumber(90));
+    move (mySpeed);
+    }
+    }
+     */
     private boolean closeLeft, closeRight, closeTop, closeBottom;
     private void checkPosition(){
         numAtEdge = 0;
@@ -136,7 +137,7 @@ public class Moving extends Being
         if (closeTop) numAtEdge++;
         if (closeBottom) numAtEdge++;
     }
-    
+
     private int numAtEdge, preNumAtEdge;
     public void moveRandomly(){
         checkPosition();
@@ -169,7 +170,7 @@ public class Moving extends Being
         }
         move(mySpeed);
     }
-    
+
     public boolean checkHitPlanet () {
         RandomPlanet randomPlanet = (RandomPlanet) getOneIntersectingObject(RandomPlanet.class); //return true if intersects
         RosePlanet rosePlanet = (RosePlanet) getOneIntersectingObject(RosePlanet.class); //return true if intersects
@@ -179,15 +180,16 @@ public class Moving extends Being
         }
         return false;
     }
-    
+
     public boolean checkHitTree(){
-        BaobabTree baobabTree = (BaobabTree) getOneIntersectingObject(BaobabTree.class);
+        BaobabTree baobabTree = (BaobabTree) getOneObjectAtOffset(getImage().getWidth()/2, 0, BaobabTree.class);
         if (baobabTree != null){
+            System.out.println("touched TREE!");
             return true;
         }
         return false;
     }
-    
+
     public void stay(){
         Planet touchingPlanet = (Planet)getOneIntersectingObject(Planet.class);
         // int radius = touchingPlanet.getRadius();
@@ -197,11 +199,11 @@ public class Moving extends Being
         // double x = touchingPlanet.getX() + (double) ((radius+30) * Math.cos(radians));
         // double y = touchingPlanet.getY() + (double) ((radius+30) * Math.sin(radians));
         // setLocation(x+speed, y);
-        move(speed);
+        setLocation(getX()+speed, getY());
     }
 
     public void rotate(){
-        Planet touchingPlanet= (Planet)getOneIntersectingObject(Planet.class);
+        Planet touchingPlanet = (Planet) getOneIntersectingObject(Planet.class);
         int radius = touchingPlanet.getRadius();
         double speed = touchingPlanet.getSpeed();
         double radians = Math.toRadians(angle);
@@ -219,20 +221,20 @@ public class Moving extends Being
             imgs[i] = new GreenfootImage(frameName+i+".png");
         }
     }
-    
+
     public void prepareAnimation(GreenfootImage[] imgs, String frameName, int width, int height){
         for (int i = 0; i < imgs.length; i++){
             imgs[i] = new GreenfootImage(frameName+i+".png");
             imgs[i].scale(width, height);
         }
     }
-    
+
     public void flipHorizontally(GreenfootImage[] imgs){
         for (int i = 0; i < imgs.length; i++){
             imgs[i].mirrorHorizontally();
         }
     }
-    
+
     public void flipVertically(GreenfootImage[] imgs){
         for (int i = 0; i < imgs.length; i++){
             imgs[i].mirrorVertically();
