@@ -21,11 +21,8 @@ public class RandomPlanet extends Planet {
     private boolean firstGenerated = true;
     private ArrayList<BaobabTree> trees = new ArrayList<BaobabTree>();
 
-    private boolean hasFox = true;
-    private GreenfootImage[] foxRun = new GreenfootImage[8];
-    private GreenfootImage[] foxFly = new GreenfootImage[5];
-    private GreenfootImage[] foxFlyInverted = new GreenfootImage[5];
-    private GreenfootImage[] foxDig = new GreenfootImage[11];
+    
+    
 
     public RandomPlanet() {
         //setLocation(0, Greenfoot.getRandomNumber(276) + 150);
@@ -80,12 +77,6 @@ public class RandomPlanet extends Planet {
         if (appear && firstGenerated){
             generateTrees();
             firstGenerated = false;
-        }
-        if (Greenfoot.getRandomNumber(1600) == 0){
-            if(hasFox == true){
-                generateFox();
-                hasFox = false;
-            }  
         }
     }
 
@@ -159,20 +150,6 @@ public class RandomPlanet extends Planet {
             removeRanPlanet();
             appear=false;
             return;
-        }
-    }
-
-    public void generateFox() {
-        if (Greenfoot.getRandomNumber(1) == 0){
-            Fox fox = new Fox(foxRun, foxFly, foxDig, foxFlyInverted);
-            fox.prepareAnimation(foxRun, "foxRun/run", fox.getImage().getWidth()*4, fox.getImage().getHeight()*4);
-            fox.prepareAnimation(foxFly, "foxFly/fly", fox.getImage().getWidth()*4, fox.getImage().getHeight()*4);
-            fox.prepareAnimation(foxFlyInverted, "foxFly/fly", fox.getImage().getWidth()*4, fox.getImage().getHeight()*4);
-            fox.prepareAnimation(foxDig, "foxDig/dig", fox.getImage().getWidth()*4, fox.getImage().getHeight()*4);
-            fox.flipHorizontally(foxRun);
-            fox.flipHorizontally(foxDig);
-            fox.flipVertically(foxFlyInverted);
-            getWorld().addObject(fox, getX(), getY() - radius);
         }
     }
 
