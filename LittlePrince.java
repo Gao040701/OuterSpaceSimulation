@@ -21,7 +21,7 @@ public class LittlePrince extends Moving
     public void act()
     {
         super.act();
-        checkCollision();
+        checkCollisionAsteriods();
         //System.out.println(getX() + ", " + getY());
     }
 
@@ -33,7 +33,7 @@ public class LittlePrince extends Moving
         princeHpBar = new SuperStatBar(totalHP, totalHP, this, 100, 10, -50, Color.GREEN, Color.RED, false, Color.BLACK, 1);
     }
 
-    public void checkCollision() {
+    public void checkCollisionAsteriods() {
         List<Asteroids> asteroidsList = getWorld().getObjects(Asteroids.class);
         Actor actor = getOneIntersectingObject(Asteroids.class);
         if (actor instanceof Asteroids) {

@@ -71,10 +71,10 @@ public class Galaxy extends World
         TLP.flipVertically(TLPflyInverted);
         addObject(new HomePlanet(), getWidth() / 2, getHeight() / 2);
         addObject(new RandomPlanet(), 0, y);
-        if (Greenfoot.getRandomNumber(50) == 0 && hasFox == true && countFox < 1){
+        if (Greenfoot.getRandomNumber(5) == 0 && hasFox == true && countFox < 1){
             generateFox();
             countFox++;
-            System.out.println("COUNT FOX: " + countFox);
+            //System.out.println("COUNT FOX: " + countFox);
             hasFox = false;
         }else{
             countFox = 1;
