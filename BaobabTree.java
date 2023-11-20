@@ -15,9 +15,10 @@ public class BaobabTree extends Stationary
     private int count;
     private LittlePrince TLP;
     private HitBox box;
+    private SuperStatBar clueBar;
     private boolean firstGenerated = true;
     private boolean isRotated = false;
-    
+    private int clue;
     /**
      * Act - do whatever the BaobabTree wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -54,6 +55,7 @@ public class BaobabTree extends Stationary
                 isRotated = true;
                 break;
         }
+        clueBar = new SuperStatBar(clue, clue, null, 110, 10, 0, Color.RED, Color.GREEN, false, Color.BLACK, 1);
     }
 
     public void checkHitingTLP(){
@@ -80,6 +82,10 @@ public class BaobabTree extends Stationary
     
     public void removeBaobabTree(){
         if (count == COUNT_NUM){
+            if (getWorld() instanceof Galaxy){
+                Galaxy galaxy = (Galaxy)getWorld();
+                galaxy.changeClue(10);
+            }
             getWorld().removeObject(box);
             getWorld().removeObject(this);
             return;
@@ -87,7 +93,12 @@ public class BaobabTree extends Stationary
             count++;
         }
     }
-    
+    /*
+    public void addedToWorld (World w){
+        w.addObject(clueBar, 964, 100);
+        clueBar.update(clue);
+    }
+    */
     public HitBox getBox(){
         return box;
     }
