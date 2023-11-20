@@ -49,8 +49,8 @@ public class Galaxy extends World
         background.scale(1024, 576);
         setBackground(background);
         setPaintOrder (SuperStatBar.class, Asteroids.class, Moving.class, BaobabTree.class, Planet.class); 
-        //clueBar = new SuperStatBar(110, clueCount, null, 110, 10, 0, Color.RED, Color.BLACK, false, Color.BLACK, 1);
-        //addObject(clueBar, getWidth() - 60, 100);
+        clueBar = new SuperStatBar(110, clueCount, null, 110, 10, 0, Color.RED, Color.GREEN, false, Color.BLACK, 1);
+        addObject(clueBar, getWidth() - 60, 100);
         addObject(new Roseicon(), getWidth() - 60, 50);
         prepare();
     }
@@ -130,8 +130,10 @@ public class Galaxy extends World
         return hpPerPlanet;
     }
     
-    public void changeClue(int amount){
-        clueCount += amount;
+    public void changeClue(int amountOfClues){
+        this.amountOfClues=amountOfClues;
+        clueCount += amountOfClues;
         System.out.println(clueCount);
+        clueBar.update(clueCount);
     }
 }

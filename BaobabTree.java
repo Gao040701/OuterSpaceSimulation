@@ -55,7 +55,7 @@ public class BaobabTree extends Stationary
                 isRotated = true;
                 break;
         }
-        clueBar = new SuperStatBar(clue, clue, null, 110, 10, 0, Color.RED, Color.GREEN, false, Color.BLACK, 1);
+        clueBar = new SuperStatBar(110, clue, null, 110, 10, 0, Color.RED, Color.GREEN, false, Color.BLACK, 1);
     }
 
     public void checkHitingTLP(){
@@ -64,6 +64,7 @@ public class BaobabTree extends Stationary
             TLP = (LittlePrince)getOneObjectAtOffset(getImage().getWidth()/6, 0, LittlePrince.class);
         }
     }
+    
     public int getRotation(){
         return rotation;
     }
@@ -84,7 +85,8 @@ public class BaobabTree extends Stationary
         if (count == COUNT_NUM){
             if (getWorld() instanceof Galaxy){
                 Galaxy galaxy = (Galaxy)getWorld();
-                galaxy.changeClue(10);
+                galaxy.changeClue(galaxy.getAmountOfClues());
+                //clueBar.update(clue);
             }
             getWorld().removeObject(box);
             getWorld().removeObject(this);
