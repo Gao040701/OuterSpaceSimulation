@@ -81,11 +81,13 @@ public class RandomPlanet extends Planet {
             generateTrees();
             firstGenerated = false;
         }
-        if (Greenfoot.getRandomNumber(1600) == 0){
+        if (Greenfoot.getRandomNumber(1600) == 0 && hasFox == true){
             if(hasFox == true){
                 generateFox();
                 hasFox = false;
-            }  
+            }else{
+                hasFox = false;
+            }
         }
     }
 
