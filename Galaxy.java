@@ -25,6 +25,15 @@ public class Galaxy extends World
     private GreenfootImage[] TLPflyInverted = new GreenfootImage[6];
     private GreenfootImage[] TLPdig = new GreenfootImage[9];
     
+    private int countFox = 0;
+    private boolean hasFox = true;
+    private GreenfootImage[] foxRun = new GreenfootImage[8];
+    private GreenfootImage[] foxFly = new GreenfootImage[5];
+    private GreenfootImage[] foxFlyInverted = new GreenfootImage[5];
+    private GreenfootImage[] foxDig = new GreenfootImage[11];
+    
+    private int y = Greenfoot.getRandomNumber(276) + 150;
+    
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -61,7 +70,29 @@ public class Galaxy extends World
         TLP.prepareAnimation(TLPflyInverted, "flyAnimation/fly");
         TLP.flipVertically(TLPflyInverted);
         addObject(new HomePlanet(), getWidth() / 2, getHeight() / 2);
-        addObject(new RandomPlanet(), 0, Greenfoot.getRandomNumber(276) + 150);
+        addObject(new RandomPlanet(), 0, y);
+        if (Greenfoot.getRandomNumber(50) == 0 && hasFox == true && countFox < 1){
+            generateFox();
+            countFox++;
+            System.out.println("COUNT FOX: " + countFox);
+            hasFox = false;
+        }else{
+            countFox = 1;
+            hasFox = false;
+        }
+    }
+    public void generateFox() {
+        if (Greenfoot.getRandomNumber(1) == 0){
+            Fox fox = new Fox(foxRun, foxFly, foxDig, foxFlyInverted);
+            fox.prepareAnimation(foxRun, "foxRun/run", fox.getImage().getWidth()*4, fox.getImage().getHeight()*4);
+            fox.prepareAnimation(foxFly, "foxFly/fly", fox.getImage().getWidth()*4, fox.getImage().getHeight()*4);
+            fox.prepareAnimation(foxFlyInverted, "foxFly/fly", fox.getImage().getWidth()*4, fox.getImage().getHeight()*4);
+            fox.prepareAnimation(foxDig, "foxDig/dig", fox.getImage().getWidth()*4, fox.getImage().getHeight()*4);
+            fox.flipHorizontally(foxRun);
+            fox.flipHorizontally(foxDig);
+            fox.flipVertically(foxFlyInverted);
+            addObject(fox, 0, y);
+        }
     }
     
     public int getAsteroidsX(){
