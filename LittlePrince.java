@@ -1,5 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
+import java.util.ArrayList;
 
 /**
  * The little prince will walk around the planet and jump out of the planets
@@ -9,11 +10,31 @@ import java.util.List;
  */
 public class LittlePrince extends Moving
 {
-    
     private SuperStatBar princeHpBar;
     private int totalHP;
     private int decreaseHP;
     private boolean appear;
+
+    private int index, count = 0, degree;
+    private double speed;
+    private final int COUNT_NUM = 7;
+    private Planet targetPlanet;
+    private RandomPlanet randomPlanet;
+    private Planet planet;
+    private HitBox box;
+    protected boolean rotateDetection = false;
+    private double angle = 0;
+    private ArrayList<Planet> planets;
+    protected LittlePrince littlePrince;
+    private int mySpeed = 1;
+    private int passCount = 0;
+    private boolean justPassed = false;
+    private boolean isStaying = false;
+
+    private GreenfootImage[] walk;
+    private GreenfootImage[] fly;
+    private GreenfootImage[] dig;
+    private GreenfootImage[] flyInverted;
     /**
      * Act - do whatever the LittlePrince wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -23,6 +44,51 @@ public class LittlePrince extends Moving
         super.act();
         checkCollisionAsteriods();
         //System.out.println(getX() + ", " + getY());
+        randomPlanet = (RandomPlanet) getOneIntersectingObject(RandomPlanet.class);
+        planet = (Planet) getOneIntersectingObject(Planet.class);
+        box = (HitBox) getOneIntersectingObject(HitBox.class);
+
+        if (checkHitPlanet()){
+            rotateDetection = true;
+            rotate();
+        }else {
+            passCount = 0;
+            rotateDetection = false;
+            isStaying = false;
+            rotateImage(90);
+            moveRandomly();
+            //targetClosestPlanet();
+        }
+    }
+
+    public void setIsStaying(boolean x){
+        isStaying = x;
+    }
+
+    public void canFly(Planet planet){
+        if (planet.getX() - 10 <= getX() && getX() <= planet.getX() + 10 && !justPassed ){
+            passCount++; 
+            justPassed = true;
+        }
+        if (planet.getX() - 10 > getX() || getX() > planet.getX() + 10){
+            justPassed = false;
+        }
+        if(passCount >= 3){
+            rotateDetection = false;
+            setLocation(getX()-10, getY() - 10);
+            setLocation(getX()-200, getY() - 10);
+        }
+    }
+
+    public boolean checkHitTree(){
+        if (box != null && box.getBaobabTree().getPlanet().equals(randomPlanet)){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean checkHitPlanet () {
+        return planet != null;
     }
 
     public LittlePrince(GreenfootImage[] walk, GreenfootImage[] fly, GreenfootImage[] dig, GreenfootImage[] flyInverted){
@@ -31,8 +97,35 @@ public class LittlePrince extends Moving
         decreaseHP=Galaxy.Rdecrease;
         appear=true;
         princeHpBar = new SuperStatBar(totalHP, totalHP, this, 100, 10, -50, Color.GREEN, Color.RED, false, Color.BLACK, 1);
+        this.walk = walk; 
+        this.fly = fly;
+        this.dig = dig;
+        this.flyInverted = flyInverted;
     }
 
+    public void rotate(){
+        speed = planet.getSpeed();
+        turnTowards (planet);
+        turn(-90);
+        if (!checkHitTree()){
+            int radius = planet.getRadius();
+            double radians = Math.toRadians(angle);
+            double x = planet.getX() + (double) ((radius+30) * Math.cos(radians));
+            double y = planet.getY() + (double) ((radius+30) * Math.sin(radians));
+            angle -= 1.5;
+            setLocation(x+speed, y);
+            canFly(planet);
+            animate(walk);
+        }else{
+            setLocation(getX() + speed, getY());
+            animate(dig);
+            box.getBaobabTree().removeBaobabTree();
+        }
+    }
+
+    public boolean getRotationDetection(){
+        return rotateDetection;
+    }
 
     public void checkCollisionAsteriods() {
         List<Asteroids> asteroidsList = getWorld().getObjects(Asteroids.class);

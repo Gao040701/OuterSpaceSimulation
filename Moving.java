@@ -25,37 +25,30 @@ public class Moving extends Being
     private int passCount = 0;
     private boolean justPassed = false;
     private boolean isStaying = false;
-    
+
     private GreenfootImage[] walk;
     private GreenfootImage[] fly;
     private GreenfootImage[] dig;
     private GreenfootImage[] flyInverted;
-    
+
     public void act()
     {
         /**
          * Add if (energy > 0)
          */
-        randomPlanet = (RandomPlanet) getOneIntersectingObject(RandomPlanet.class);
-        planet = (Planet) getOneIntersectingObject(Planet.class);
-        box = (HitBox) getOneIntersectingObject(HitBox.class);
-
         if (checkHitPlanet()){
-            rotateDetection = true;
-            rotate();
-        }else {
-            passCount = 0;
-            rotateDetection = false;
-            isStaying = false;
-            rotateImage(90);
-            moveRandomly();
-            //targetClosestPlanet();
+            animate (walk);
+        }else{
             if (getRotation() < 270 && getRotation() > 90){
                 animate(flyInverted);
             }else animate(fly);
         }
     }
     
+    public boolean checkHitPlanet () {
+        return planet != null;
+    }
+
     public Moving(GreenfootImage[] walk, GreenfootImage[] fly, GreenfootImage[] dig, GreenfootImage[] flyInverted){
         this.walk = walk; 
         this.fly = fly;
@@ -67,31 +60,73 @@ public class Moving extends Being
         double distanceBetween = Math.hypot (Math.abs(a.getX() - b.getX()), Math.abs(a.getY() - b.getY()));
         return distanceBetween;
     }
+
     /*
     private void targetClosestPlanet(){
-        double closestTargetDistance = 0;
-        double distanceToActor;
-        planets = (ArrayList<Planet>)getObjectsInRange(40, Planet.class);
+    double closestTargetDistance = 0;
+    double distanceToActor;
+    planets = (ArrayList<Planet>)getObjectsInRange(40, Planet.class);
 
-        if (planets.size() == 0){
-            planets = (ArrayList<Planet>)getObjectsInRange(140, Planet.class);
-        }
+    if (planets.size() == 0){
+    planets = (ArrayList<Planet>)getObjectsInRange(140, Planet.class);
+    }
 
-        if (planets.size() > 0){
-            targetPlanet = planets.get(0);
-            closestTargetDistance = getDistance (littlePrince, targetPlanet);
+    if (planets.size() > 0){
+    targetPlanet = planets.get(0);
+    closestTargetDistance = getDistance (littlePrince, targetPlanet);
 
-            for (Planet o : planets){
-                distanceToActor = getDistance(littlePrince, o);
-                if (distanceToActor < closestTargetDistance){
-                    targetPlanet = o;
-                    closestTargetDistance = distanceToActor;
-                }
-            }
-            turnTowards(targetPlanet.getX(), targetPlanet.getY());
+    for (Planet o : planets){
+    distanceToActor = getDistance(littlePrince, o);
+    if (distanceToActor < closestTargetDistance){
+    targetPlanet = o;
+    closestTargetDistance = distanceToActor;
+    }
+    }
+    turnTowards(targetPlanet.getX(), targetPlanet.getY());
+    }
+    }
+     */
+
+    public void prepareAnimation(GreenfootImage[] imgs, String frameName){
+        for (int i = 0; i < imgs.length; i++){
+            imgs[i] = new GreenfootImage(frameName+i+".png");
         }
     }
-    */
+
+    public void prepareAnimation(GreenfootImage[] imgs, String frameName, int width, int height){
+        for (int i = 0; i < imgs.length; i++){
+            imgs[i] = new GreenfootImage(frameName+i+".png");
+            imgs[i].scale(width, height);
+        }
+    }
+
+    public void flipHorizontally(GreenfootImage[] imgs){
+        for (int i = 0; i < imgs.length; i++){
+            imgs[i].mirrorHorizontally();
+        }
+    }
+
+    public void flipVertically(GreenfootImage[] imgs){
+        for (int i = 0; i < imgs.length; i++){
+            imgs[i].mirrorVertically();
+        }
+    }
+
+    public void animate(GreenfootImage[] imgs){
+        if (index < imgs.length){
+            if (count == COUNT_NUM){
+                setImage(imgs[index]);
+                index++;
+                count = 0;
+            }else{
+                count++;
+            }
+        }else{
+            index = 0;
+        }
+    }
+    
+    
     private boolean closeLeft, closeRight, closeTop, closeBottom;
     private void checkPosition(){
         numAtEdge = 0;
@@ -104,7 +139,7 @@ public class Moving extends Being
         if (closeTop) numAtEdge++;
         if (closeBottom) numAtEdge++;
     }
-    
+
     private int numAtEdge, preNumAtEdge;
     public void moveRandomly(){
         checkPosition();
@@ -137,96 +172,7 @@ public class Moving extends Being
         }
         move(mySpeed);
     }
-    
-    public boolean checkHitPlanet () {
-        return planet != null;
-    }
-    
-    public boolean checkHitTree(){
-        if (box != null && box.getBaobabTree().getPlanet().equals(randomPlanet)){
-            return true;
-        }
-        return false;
-    }
-    
-    public void rotate(){
-        speed = planet.getSpeed();
-        turnTowards (planet);
-        turn(-90);
-        if (!checkHitTree()){
-            int radius = planet.getRadius();
-            double radians = Math.toRadians(angle);
-            double x = planet.getX() + (double) ((radius+30) * Math.cos(radians));
-            double y = planet.getY() + (double) ((radius+30) * Math.sin(radians));
-            angle -= 1.5;
-            setLocation(x+speed, y);
-            canFly(planet);
-            animate(walk);
-        }else{
-            setLocation(getX() + speed, getY());
-            animate(dig);
-            box.getBaobabTree().removeBaobabTree();
-        }
-    }
 
-    public void prepareAnimation(GreenfootImage[] imgs, String frameName){
-        for (int i = 0; i < imgs.length; i++){
-            imgs[i] = new GreenfootImage(frameName+i+".png");
-        }
-    }
-    
-    public void prepareAnimation(GreenfootImage[] imgs, String frameName, int width, int height){
-        for (int i = 0; i < imgs.length; i++){
-            imgs[i] = new GreenfootImage(frameName+i+".png");
-            imgs[i].scale(width, height);
-        }
-    }
-    
-    public void flipHorizontally(GreenfootImage[] imgs){
-        for (int i = 0; i < imgs.length; i++){
-            imgs[i].mirrorHorizontally();
-        }
-    }
-    
-    public void flipVertically(GreenfootImage[] imgs){
-        for (int i = 0; i < imgs.length; i++){
-            imgs[i].mirrorVertically();
-        }
-    }
-
-    public void animate(GreenfootImage[] imgs){
-        if (index < imgs.length){
-            if (count == COUNT_NUM){
-                setImage(imgs[index]);
-                index++;
-                count = 0;
-            }else{
-                count++;
-            }
-        }else{
-            index = 0;
-        }
-    }
-
-    public void canFly(Planet planet){
-        if (planet.getX() - 10 <= getX() && getX() <= planet.getX() + 10 && !justPassed ){
-            passCount++; 
-            justPassed = true;
-        }
-        if (planet.getX() - 10 > getX() || getX() > planet.getX() + 10){
-            justPassed = false;
-        }
-        if(passCount >= 3){
-            rotateDetection = false;
-            setLocation(getX()-10, getY() - 10);
-            setLocation(getX()-200, getY() - 10);
-        }
-    }
-    
-    public boolean getRotationDetection(){
-        return rotateDetection;
-    }
-    
     public void setIsStaying(boolean x){
         isStaying = x;
     }
