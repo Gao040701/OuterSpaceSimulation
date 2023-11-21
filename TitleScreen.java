@@ -12,23 +12,32 @@ public class TitleScreen extends World
     private int index = 0;
     private final int COUNT_NUM = 9;
     private int count = 0;
+    private GreenfootImage titleText = new GreenfootImage("titleText.png");
+    private GreenfootImage titleStar = new GreenfootImage("textStar.png");
+    private Image star1;
+    private Image star2;
     /**
      * Constructor for objects of class TitleScreen.
      * 
      */
     public TitleScreen()
     {
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 576, 1); 
-        //setBackround(new GreenfootImage("titleScreen.png");
         for (int i = 0; i < 17; i++){
             imgs[i] = new GreenfootImage("introAnimation/ani"+i+".png");
             imgs[i].scale(1024, 576);
         }
+        addObject(new Image(titleText, (int)(titleText.getWidth() * 1.3), (int)(titleText.getHeight() * 1.3)), 300, 200);
+        star1 = new Image(titleStar);
+        star2 = new Image(titleStar);
+        addObject(star1, 125, 130);
+        addObject(star2, 420, 130);
     }
     
     public void act(){
         animate();
+        star1.turn(2);
+        star2.turn(2);
     }
     
     public void animate(){
