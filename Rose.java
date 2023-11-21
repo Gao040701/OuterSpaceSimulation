@@ -21,5 +21,6 @@ public class Rose extends Stationary
     }
     public Rose(){
         setImage(rose);
+        
     }
 }

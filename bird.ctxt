@@ -1,12 +1,14 @@
 #BlueJ class context
 comment0.target=bird
 comment0.text=\n\ Write\ a\ description\ of\ class\ bird\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
-comment1.params=walk\ fly\ dig\ flyInverted
-comment1.target=bird(greenfoot.GreenfootImage[],\ greenfoot.GreenfootImage[],\ greenfoot.GreenfootImage[],\ greenfoot.GreenfootImage[])
+comment1.params=
+comment1.target=bird()
 comment2.params=
 comment2.target=void\ act()
 comment3.params=
 comment3.target=int\ birdX()
 comment4.params=
 comment4.target=int\ birdY()
-numComments=5
+comment5.params=
+comment5.target=LittlePrince\ getLittlePrince()
+numComments=6
