@@ -53,11 +53,14 @@ public class LittlePrince extends Moving
             rotate();
         }else {
             passCount = 0;
-            rotateDetection = false;
+            //rotateDetection = false;
             isStaying = false;
             rotateImage(90);
             moveRandomly();
             //targetClosestPlanet();
+            if (getRotation() < 270 && getRotation() > 90){
+                animate(flyInverted);
+            }else animate(fly);
         }
     }
 

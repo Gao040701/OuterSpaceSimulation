@@ -36,18 +36,12 @@ public class Moving extends Being
         /**
          * Add if (energy > 0)
          */
-        if (checkHitPlanet()){
-            animate (walk);
-        }else{
-            if (getRotation() < 270 && getRotation() > 90){
-                animate(flyInverted);
-            }else animate(fly);
-        }
     }
     
     public boolean checkHitPlanet () {
         return planet != null;
     }
+    
 
     public Moving(GreenfootImage[] walk, GreenfootImage[] fly, GreenfootImage[] dig, GreenfootImage[] flyInverted){
         this.walk = walk; 
