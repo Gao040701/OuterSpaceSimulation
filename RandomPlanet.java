@@ -21,9 +21,6 @@ public class RandomPlanet extends Planet {
     private boolean firstGenerated = true;
     private ArrayList<BaobabTree> trees = new ArrayList<BaobabTree>();
 
-    
-    
-
     public RandomPlanet() {
         //setLocation(0, Greenfoot.getRandomNumber(276) + 150);
         speed = Greenfoot.getRandomNumber(1) + 1;
@@ -73,7 +70,7 @@ public class RandomPlanet extends Planet {
             }
         }
         checkAndRemove();
-
+        
         if (appear && firstGenerated){
             generateTrees();
             firstGenerated = false;

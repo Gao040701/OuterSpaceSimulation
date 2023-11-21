@@ -18,7 +18,7 @@ public class Galaxy extends World
     //public static final int Rhp=hpPerPlanet;
     //final variables should be in all capital letters 
     public static final int Rdecrease=15;
-    
+    private Planet latestPlanet;
     //animations
     private GreenfootImage[] TLPwalk = new GreenfootImage[8];
     private GreenfootImage[] TLPfly = new GreenfootImage[6];
@@ -33,7 +33,7 @@ public class Galaxy extends World
     private GreenfootImage[] foxDig = new GreenfootImage[11];
     
     private int y = Greenfoot.getRandomNumber(276) + 150;
-    
+    private boolean roseAdded = false;    
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -49,7 +49,7 @@ public class Galaxy extends World
         background.scale(1024, 576);
         setBackground(background);
         setPaintOrder (SuperStatBar.class, Asteroids.class, Moving.class, BaobabTree.class, Planet.class); 
-        clueBar = new SuperStatBar(110, clueCount, null, 110, 10, 0, Color.RED, Color.GREEN, false, Color.BLACK, 1);
+        clueBar = new SuperStatBar(120, clueCount, null, 110, 10, 0, Color.RED, Color.GREEN, false, Color.BLACK, 1);
         addObject(clueBar, getWidth() - 60, 100);
         addObject(new Roseicon(), getWidth() - 60, 50);
         prepare();
@@ -69,6 +69,7 @@ public class Galaxy extends World
         TLP.prepareAnimation(TLPdig, "digAnimation/dig");
         TLP.prepareAnimation(TLPflyInverted, "flyAnimation/fly");
         TLP.flipVertically(TLPflyInverted);
+        addObject(new bird(), 100, 200);
         addObject(new HomePlanet(), getWidth() / 2, getHeight() / 2);
         addObject(new RandomPlanet(), 0, y);
         if (Greenfoot.getRandomNumber(1) == 0 && hasFox == true && countFox < 1){
@@ -110,8 +111,23 @@ public class Galaxy extends World
         return distanceBetween;
     }
 
-    public void act(){
-        //clueBar.update(clueCount);
+    public void act() {
+        if (clueCount == 120 && !roseAdded) {
+            if (latestPlanet == null) {
+                latestPlanet = new RosePlanet();
+                addObject(latestPlanet, 0, y);
+            }
+            
+            Rose rose = new Rose();
+            addObject(rose, latestPlanet.getX(), latestPlanet.getY());
+            
+            roseAdded = true;  // Set the flag to true so that you don't add more Roses
+        }
+        // Check if the Rose has been added and move it with the planet
+        if (roseAdded) {
+            Rose rose = (Rose) getObjects(Rose.class).get(0);  // Assuming only one Rose is present
+            rose.setLocation(latestPlanet.getX()+60, latestPlanet.getY()-60);
+        }
     }
     
     public static int getNumOfAsteroids(){
@@ -133,7 +149,6 @@ public class Galaxy extends World
     public void changeClue(int amountOfClues){
         this.amountOfClues=amountOfClues;
         clueCount += amountOfClues;
-        System.out.println(clueCount);
         clueBar.update(clueCount);
     }
 }

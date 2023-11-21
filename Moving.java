@@ -62,6 +62,8 @@ public class Moving extends Being
         this.dig = dig;
         this.flyInverted = flyInverted;
     }
+    
+    public Moving(){}
 
     public static double getDistance (Actor a, Actor b){
         double distanceBetween = Math.hypot (Math.abs(a.getX() - b.getX()), Math.abs(a.getY() - b.getY()));
