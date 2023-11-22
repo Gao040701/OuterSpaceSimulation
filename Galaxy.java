@@ -71,7 +71,7 @@ public class Galaxy extends World
         TLP.flipVertically(TLPflyInverted);
         addObject(new bird(), 100, 200);
         addObject(new HomePlanet(), getWidth() / 2, getHeight() / 2);
-        addObject(new RandomPlanet(), 0, y);
+        addObject(new RandomPlanet(false), 0, y);
         if (Greenfoot.getRandomNumber(1) == 0 && hasFox == true && countFox < 1){
             generateFox();
             countFox++;
@@ -116,6 +116,7 @@ public class Galaxy extends World
             if (latestPlanet == null) {
                 latestPlanet = new RosePlanet();
                 addObject(latestPlanet, 0, y);
+                System.out.println("print");
             }
             
             Rose rose = new Rose();
@@ -126,7 +127,8 @@ public class Galaxy extends World
         // Check if the Rose has been added and move it with the planet
         if (roseAdded) {
             Rose rose = (Rose) getObjects(Rose.class).get(0);  // Assuming only one Rose is present
-            rose.setLocation(latestPlanet.getX()+60, latestPlanet.getY()-60);
+            rose.setLocation(latestPlanet.getX(), latestPlanet.getY()-RosePlanet.length/2-20);
+            //roseAdded=false;
         }
     }
     
@@ -150,5 +152,9 @@ public class Galaxy extends World
         this.amountOfClues=amountOfClues;
         clueCount += amountOfClues;
         clueBar.update(clueCount);
+    }
+    
+    public boolean getRose(){
+        return roseAdded;
     }
 }

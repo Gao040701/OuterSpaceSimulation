@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=HitBox
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ HitBox\ here.\r\n\ \r\n\ @Angela\ Gao\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ HitBox\ here.\n\ \n\ @Angela\ Gao\n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=tree
 comment1.target=HitBox(BaobabTree)
 comment2.params=

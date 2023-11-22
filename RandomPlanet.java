@@ -20,8 +20,9 @@ public class RandomPlanet extends Planet {
     private int ylocation;
     private boolean firstGenerated = true;
     private ArrayList<BaobabTree> trees = new ArrayList<BaobabTree>();
+    private boolean roseAppear = false;
 
-    public RandomPlanet() {
+    public RandomPlanet(boolean roseAppear) {
         //setLocation(0, Greenfoot.getRandomNumber(276) + 150);
         speed = Greenfoot.getRandomNumber(1) + 1;
         canSpawnNext = false;
@@ -34,6 +35,7 @@ public class RandomPlanet extends Planet {
         randomImage();
         randomHpBar = new SuperStatBar(totalHP, totalHP, this, 50, 10, -20, Color.GREEN, Color.RED, false, Color.BLACK, 1);
         appear=true;
+        this.roseAppear = roseAppear;
     }
 
     public void act() {
@@ -55,13 +57,25 @@ public class RandomPlanet extends Planet {
                     return;
                 }else if (!canSpawnNext  ) {
                     canSpawnNext = true;
+                    
                     if(num==2){
                         num=0;
                     }
+                    
                 }else if(getX() > 600 && canSpawnNext && num==0) {
                     num++;
                     canSpawnNext = false;
-                    RandomPlanet newPlanet = new RandomPlanet();
+                    
+                    if(getWorld() instanceof Galaxy){
+                        Galaxy galaxy = (Galaxy)getWorld();
+                        roseAppear = galaxy.getRose();
+                    }
+                    if (!roseAppear){
+                        newPlanet = new RandomPlanet(false);
+                    }else{
+                        newPlanet = new RandomPlanet(true);
+                    }
+                    //RandomPlanet newPlanet = new RandomPlanet(false);
                     ylocation=Greenfoot.getRandomNumber(276) + 150;
                     getWorld().addObject(newPlanet, 0, ylocation);
                     getWorld().addObject(newPlanet.getHpBar(), 0, Greenfoot.getRandomNumber(276) + 150);
@@ -72,7 +86,11 @@ public class RandomPlanet extends Planet {
         checkAndRemove();
         
         if (appear && firstGenerated){
-            generateTrees();
+            if (!roseAppear){
+                generateTrees();
+            }else{
+                generateRose();
+            }
             firstGenerated = false;
         }
     }
@@ -132,16 +150,23 @@ public class RandomPlanet extends Planet {
     public void addedToWorld (World w){
         w.addObject(randomHpBar, getX() / 2, getY() / 2);
     }
-
+    
+    private RandomPlanet newPlanet;
     public void checkAndRemove ()
     {
         if (getWorld() != null && totalHP <= 0) {
             if(getX() <= 600){
                 num++;
                 canSpawnNext = false;
-                RandomPlanet newPlanet = new RandomPlanet();
+                
+                if (!roseAppear){
+                    newPlanet = new RandomPlanet(false);
+                }else{
+                    newPlanet = new RandomPlanet(true);
+                }
                 ylocation=Greenfoot.getRandomNumber(276) + 150;
                 getWorld().addObject(newPlanet, 0, ylocation);
+                
                 getWorld().addObject(newPlanet.getHpBar(), 0, Greenfoot.getRandomNumber(276) + 15);
             }
             removeRanPlanet();
@@ -181,5 +206,9 @@ public class RandomPlanet extends Planet {
         }
         getWorld().removeObject(this); 
         return;
+    }
+    
+    public void generateRose(){
+        getWorld().addObject(new Rose(), getX(), getY() - getRadius());
     }
 }
