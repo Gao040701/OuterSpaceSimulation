@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.target=ImageButton
+comment1.params=normalImageFile\ clickedImageFile\ buttonType
+comment1.target=ImageButton(java.lang.String,\ java.lang.String,\ java.lang.String)
+numComments=2

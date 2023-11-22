@@ -7,5 +7,5 @@ comment2.target=void\ prepare()
 comment3.params=
 comment3.target=void\ act()
 comment4.params=plusButton\ minusButton\ label\ labelText\ value
-comment4.target=void\ updateLabel(TextButton,\ TextButton,\ TextButton,\ java.lang.String,\ int)
+comment4.target=void\ updateLabel(ImageButton,\ ImageButton,\ TextButton,\ java.lang.String,\ int)
 numComments=5
