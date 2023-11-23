@@ -68,19 +68,23 @@ public class LittlePrince extends Moving
         isStaying = x;
     }
 
-    public void canFly(Planet planet){
+    public boolean canFly(Planet planet){
         if (planet.getX() - 10 <= getX() && getX() <= planet.getX() + 10 && !justPassed ){
             passCount++; 
             justPassed = true;
+            return false;
         }
         if (planet.getX() - 10 > getX() || getX() > planet.getX() + 10){
             justPassed = false;
+            return false;
         }
         if(passCount >= 3){
-            rotateDetection = false;
-            setLocation(getX()-10, getY() - 10);
-            setLocation(getX()-200, getY() - 10);
+            //rotateDetection = false;
+            //setLocation(getX()-10, getY() - 10);
+            System.out.println("LP FLY!");
+            return true;
         }
+        return false;
     }
 
     public boolean checkHitTree(){
@@ -88,10 +92,6 @@ public class LittlePrince extends Moving
             return true;
         }
         return false;
-    }
-
-    public boolean checkHitPlanet () {
-        return planet != null;
     }
 
     public LittlePrince(GreenfootImage[] walk, GreenfootImage[] fly, GreenfootImage[] dig, GreenfootImage[] flyInverted){
@@ -105,6 +105,19 @@ public class LittlePrince extends Moving
         this.dig = dig;
         this.flyInverted = flyInverted;
     }
+    
+    public int getPassCount(){
+        return passCount;
+    }
+    
+    public boolean checkHitPlanet () {
+        if (planet != null){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
     public void rotate(){
         speed = planet.getSpeed();
@@ -117,8 +130,11 @@ public class LittlePrince extends Moving
             double y = planet.getY() + (double) ((radius+30) * Math.sin(radians));
             angle -= 1.5;
             setLocation(x+speed, y);
-            canFly(planet);
+            //canFly(planet);
             animate(walk);
+            if(canFly(planet)){
+                setLocation(getX()-150, getY() - 10);
+            }
         }else{
             setLocation(getX() + speed, getY());
             animate(dig);

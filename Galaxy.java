@@ -133,7 +133,7 @@ public class Galaxy extends World
     public void changeClue(int amountOfClues){
         this.amountOfClues=amountOfClues;
         clueCount += amountOfClues;
-        System.out.println(clueCount);
+        //System.out.println(clueCount);
         clueBar.update(clueCount);
     }
 }

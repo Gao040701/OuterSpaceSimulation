@@ -37,11 +37,6 @@ public class Moving extends Being
          * Add if (energy > 0)
          */
     }
-    
-    public boolean checkHitPlanet () {
-        return planet != null;
-    }
-    
 
     public Moving(GreenfootImage[] walk, GreenfootImage[] fly, GreenfootImage[] dig, GreenfootImage[] flyInverted){
         this.walk = walk; 
@@ -55,31 +50,29 @@ public class Moving extends Being
         return distanceBetween;
     }
 
-    /*
-    private void targetClosestPlanet(){
-    double closestTargetDistance = 0;
-    double distanceToActor;
-    planets = (ArrayList<Planet>)getObjectsInRange(40, Planet.class);
+    public void targetClosestPlanet(){
+        double closestTargetDistance = 0;
+        double distanceToActor;
+        planets = (ArrayList<Planet>)getObjectsInRange(40, Planet.class);
 
-    if (planets.size() == 0){
-    planets = (ArrayList<Planet>)getObjectsInRange(140, Planet.class);
-    }
+        if (planets.size() == 0){
+            planets = (ArrayList<Planet>)getObjectsInRange(140, Planet.class);
+        }
 
-    if (planets.size() > 0){
-    targetPlanet = planets.get(0);
-    closestTargetDistance = getDistance (littlePrince, targetPlanet);
+        if (planets.size() > 0){
+            targetPlanet = planets.get(0);
+            closestTargetDistance = getDistance (littlePrince, targetPlanet);
 
-    for (Planet o : planets){
-    distanceToActor = getDistance(littlePrince, o);
-    if (distanceToActor < closestTargetDistance){
-    targetPlanet = o;
-    closestTargetDistance = distanceToActor;
+            for (Planet o : planets){
+                distanceToActor = getDistance(littlePrince, o);
+                if (distanceToActor < closestTargetDistance){
+                    targetPlanet = o;
+                    closestTargetDistance = distanceToActor;
+                }
+            }
+            turnTowards(targetPlanet.getX(), targetPlanet.getY());
+        }
     }
-    }
-    turnTowards(targetPlanet.getX(), targetPlanet.getY());
-    }
-    }
-     */
 
     public void prepareAnimation(GreenfootImage[] imgs, String frameName){
         for (int i = 0; i < imgs.length; i++){
@@ -119,8 +112,7 @@ public class Moving extends Being
             index = 0;
         }
     }
-    
-    
+
     private boolean closeLeft, closeRight, closeTop, closeBottom;
     private void checkPosition(){
         numAtEdge = 0;

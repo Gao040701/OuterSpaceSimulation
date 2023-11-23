@@ -46,12 +46,14 @@ public class Fox extends Moving
         box = (HitBox) getOneIntersectingObject(HitBox.class);
 
         if (checkHitPlanet() && follow == false){
+            System.out.println("ON PLANET");
             setLocation (planet.getPlanetX() + planet.getRadius(), planet.getPlanetY());
             animate (dig);
             turnTowards(planet);
             turn(-90);
         }
         if (!checkHitPlanet() && follow == false){
+            System.out.println("FLOAT ALONE");
             passCount = 0;
             //rotateDetection = false;
             isStaying = false;
@@ -63,29 +65,43 @@ public class Fox extends Moving
         }
         if(checkCollisionLP()){
             follow = true;
-            if (checkHitPlanet()){
-                //System.out.println("FOUND LP!");
-                rotate();
-                animate(walk);
-            }
-            if(!checkHitPlanet()){
+            System.out.println("Follow");
+            
+            if(!littlePrince.checkHitPlanet() && follow == true){
+                passCount = 0;
+                setLocation(littlePrince.getPrinceX(), littlePrince.getPrinceY());
+                setRotation(littlePrince.getRotation());
                 if (getRotation() < 270 && getRotation() > 90){
                     setLocation(littlePrince.getPrinceX(), littlePrince.getPrinceY());
-                    
-                    turnTowards(littlePrince);
-                    animate(flyInverted);
-                }else {
+                    //turnTowards(littlePrince.getPrinceX(), littlePrince.getPrinceY());
+                    //animate(flyInverted);
+                }
+                else {
                     setLocation(littlePrince.getPrinceX(), littlePrince.getPrinceY());
-                    turnTowards(littlePrince);
+                    //turnTowards(littlePrince.getPrinceX(), littlePrince.getPrinceY());
                     animate(fly);
                 }
+                System.out.println("FOLLOW LP FLOAT");
+                //setLocation(littlePrince.getPrinceX(), littlePrince.getPrinceY());
+                //turnTowards(littlePrince);
+                //setRotation(degree);
+                animate(fly);
             }
+        }
+        if(checkHitPlanet() && follow == true){
+            rotate();
+            animate(walk);
         }
         super.act();
     }
 
     public boolean checkHitPlanet () {
-        return planet != null;
+        if (planet != null){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     public boolean checkHitTree(){
@@ -96,38 +112,46 @@ public class Fox extends Moving
     }
 
     public void rotate(){
-        speed = planet.getSpeed();
-        turnTowards (planet);
-        turn(-90);
-        if (!checkHitTree()){
-            int radius = planet.getRadius();
-            double radians = Math.toRadians(angle);
-            double x = planet.getX() + (double) ((radius+30) * Math.cos(radians));
-            double y = planet.getY() + (double) ((radius+30) * Math.sin(radians));
-            angle -= 1.5;
-            setLocation(littlePrince.getX(), littlePrince.getY());
-            //canFly(planet);
-            animate(walk);
-        }else{
-            setLocation(littlePrince.getX(), littlePrince.getY());
-            animate(dig);
-            box.getBaobabTree().removeBaobabTree();
+        if(checkHitPlanet()){
+            speed = planet.getSpeed();
+            turnTowards (planet);
+            turn(-90);
+            if (!checkHitTree()){
+                int radius = planet.getRadius();
+                double radians = Math.toRadians(angle);
+                double x = planet.getX() + (double) ((radius+30) * Math.cos(radians));
+                double y = planet.getY() + (double) ((radius+30) * Math.sin(radians));
+                angle -= 1.5;
+                setLocation(x+speed, y);
+                if(canFly(planet)){
+                    setLocation(getX()-150, getY() - 10);
+                }
+                animate(walk);
+            }else{
+                setLocation(getX() + speed, getY());
+                animate(dig);
+                box.getBaobabTree().removeBaobabTree();
+            }
         }
     }
 
-    public void canFly(Planet planet){
+    public boolean canFly(Planet planet){
         if (planet.getX() - 10 <= getX() && getX() <= planet.getX() + 10 && !justPassed ){
             passCount++; 
             justPassed = true;
+            return false;
         }
         if (planet.getX() - 10 > getX() || getX() > planet.getX() + 10){
             justPassed = false;
+            return false;
         }
         if(passCount >= 3){
-            rotateDetection = false;
-            setLocation(getX()-10, getY() - 10);
-            setLocation(getX()-200, getY() - 10);
+            //rotateDetection = false;
+            //setLocation(getX()-10, getY() - 10);
+            System.out.println("LP FLY!");
+            return true;
         }
+        return false;
     }
 
     public boolean getRotationDetection(){
