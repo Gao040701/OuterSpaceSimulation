@@ -16,7 +16,7 @@ public class Rose extends Stationary
     public void act()
     {
         if (isTouching(LittlePrince.class)){
-            Greenfoot.setWorld(new EndScreen());
+            Greenfoot.setWorld(new EndScreen(true));
         }
     }
     public Rose(){

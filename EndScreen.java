@@ -9,14 +9,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class EndScreen extends World
 {
     private GreenfootImage[] imgs = new GreenfootImage[17];
+    private GreenfootImage fail = new GreenfootImage("EndScreenFailed.png");
     private int index = 0;
     private final int COUNT_NUM = 9;
     private int count = 0;
+    private boolean success;
     /**
      * Constructor for objects of class EndScreen.
      * 
      */
-    public EndScreen()
+    public EndScreen(boolean success)
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 576, 1); 
@@ -24,10 +26,13 @@ public class EndScreen extends World
             imgs[i] = new GreenfootImage("introAnimation/ani"+i+".png");
             imgs[i].scale(1024, 576);
         }
+        fail.scale(1024, 576);
+        this.success = success;
     }
     
     public void act(){
-        animate();
+        if (success)animate();
+        else setBackground(fail);
     }
     
     public void animate(){
