@@ -4,9 +4,11 @@ public class ImageButton extends Actor {
     private GreenfootImage normalImage;
     private GreenfootImage clickedImage;
 
-    public ImageButton(String normalImageFile, String clickedImageFile, String buttonType) {
+    public ImageButton(String normalImageFile, String clickedImageFile, String buttonType, int buttonWidth, int buttonHeight) {
         normalImage = new GreenfootImage(normalImageFile);
         clickedImage = new GreenfootImage(clickedImageFile);
+        normalImage.scale(buttonWidth, buttonHeight);
+        clickedImage.scale(buttonWidth, buttonHeight);
         setImage(normalImage);
 
         // 如果是加号按钮
