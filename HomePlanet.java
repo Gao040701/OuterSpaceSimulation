@@ -38,7 +38,8 @@ public class HomePlanet extends Planet
             totalHP -= decreaseHP;
             homeHpBar.update(totalHP);
             getWorld().removeObject(a);
-
+            Explosion explosion = new Explosion(5);  // Create an explosion object
+            getWorld().addObject(explosion, getX(), getY()); // Add the explosion to the world
             // 在这里添加新的 Asteroids，以保持总数为三个
             int currentAsteroids = asteroidsList.size();
             int asteroidsToAdd = 3 - currentAsteroids;

@@ -15,12 +15,12 @@ public class Rose extends Stationary
      */
     public void act()
     {
+        move(2);
         if (isTouching(LittlePrince.class)){
             Greenfoot.setWorld(new EndScreen());
         }
     }
     public Rose(){
         setImage(rose);
-        
     }
 }

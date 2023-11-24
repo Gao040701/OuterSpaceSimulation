@@ -22,7 +22,7 @@ public class RandomPlanet extends Planet {
     private ArrayList<BaobabTree> trees = new ArrayList<BaobabTree>();
     private boolean roseAppear = false;
 
-    public RandomPlanet(boolean roseAppear) {
+    public RandomPlanet() {
         //setLocation(0, Greenfoot.getRandomNumber(276) + 150);
         speed = Greenfoot.getRandomNumber(1) + 1;
         canSpawnNext = false;
@@ -69,12 +69,11 @@ public class RandomPlanet extends Planet {
                     if(getWorld() instanceof Galaxy){
                         Galaxy galaxy = (Galaxy)getWorld();
                         roseAppear = galaxy.getRose();
+                        //System.out.println(roseAppear);
                     }
-                    if (!roseAppear){
-                        newPlanet = new RandomPlanet(false);
-                    }else{
-                        newPlanet = new RandomPlanet(true);
-                    }
+                    
+                    newPlanet = new RandomPlanet();
+                    
                     //RandomPlanet newPlanet = new RandomPlanet(false);
                     ylocation=Greenfoot.getRandomNumber(276) + 150;
                     getWorld().addObject(newPlanet, 0, ylocation);
@@ -86,13 +85,19 @@ public class RandomPlanet extends Planet {
         checkAndRemove();
         
         if (appear && firstGenerated){
+            if(getWorld() instanceof Galaxy){
+                Galaxy galaxy = (Galaxy)getWorld();
+                roseAppear = galaxy.getRose();
+            }
             if (!roseAppear){
                 generateTrees();
             }else{
                 generateRose();
+                speed=2;
             }
             firstGenerated = false;
         }
+        
     }
 
     public void checkCollision() {
@@ -120,6 +125,8 @@ public class RandomPlanet extends Planet {
             a=(Asteroids) getOneObjectAtOffset((int)(speed+getImage().getWidth()*Math.sqrt(2) / 2),(int)(-getImage().getHeight()*Math.sqrt(2) / 2), Asteroids.class);//westsouth
         }
         if(a!=null){
+            Explosion explosion = new Explosion(5);  // Create an explosion object
+            getWorld().addObject(explosion, getX(), getY()); // Add the explosion to the world
             totalHP -= decreaseHP;
             randomHpBar.update(totalHP);
             getWorld().removeObject(a);
@@ -159,11 +166,8 @@ public class RandomPlanet extends Planet {
                 num++;
                 canSpawnNext = false;
                 
-                if (!roseAppear){
-                    newPlanet = new RandomPlanet(false);
-                }else{
-                    newPlanet = new RandomPlanet(true);
-                }
+                
+                newPlanet = new RandomPlanet();
                 ylocation=Greenfoot.getRandomNumber(276) + 150;
                 getWorld().addObject(newPlanet, 0, ylocation);
                 
@@ -209,6 +213,9 @@ public class RandomPlanet extends Planet {
     }
     
     public void generateRose(){
-        getWorld().addObject(new Rose(), getX(), getY() - getRadius());
+        Rose rose = new Rose();
+        getWorld().addObject(rose, getX(), getY() - getRadius());
+        //rose.setLocation(speed+getX(), getY()-length/2-20);
+        //rose.move(speed);
     }
 }
