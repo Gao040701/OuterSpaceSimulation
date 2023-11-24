@@ -214,7 +214,7 @@ public class RandomPlanet extends Planet {
     
     public void generateRose(){
         Rose rose = new Rose();
-        getWorld().addObject(rose, getX(), getY() - getRadius());
+        getWorld().addObject(rose, getX(), getY() - getRadius()-20);
         //rose.setLocation(speed+getX(), getY()-length/2-20);
         //rose.move(speed);
     }

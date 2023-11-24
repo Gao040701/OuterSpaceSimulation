@@ -22,7 +22,7 @@ public class SetValuePage extends World {
     private TextButton asteroidsLabel;
 
     private GreenfootImage setValueBG = new GreenfootImage("setValuePage.png");
-
+    private GreenfootImage plusImage=new GreenfootImage("plusButton.png");
     public SetValuePage() {
         super(1024, 576, 1);
         setValueBG.scale(1024, 576);
@@ -36,43 +36,44 @@ public class SetValuePage extends World {
         asteroidSpeed = 1;
         hpPerPlanet = 90;
         //plusAsteroidsButton = new ImageButton("plusButton.png", "plusButton.png", "plus");
-        //addObject(plusAsteroidsButton, 849, 171);
+        //addObject(plusAsteroidsButton, 839, 191);
         // 创建显示数量的 TextButton
         asteroidsLabel = new TextButton("Number of Asteroids: " + numOfAsteroids, 40);
-        addObject(asteroidsLabel, 515, 171);
-
+        addObject(asteroidsLabel, 515, 191);
+        
         // 创建加减号按钮和显示数量的 TextButton
-        plusAsteroidsButton = new ImageButton("plusButton.png", "plusButton.png", "plus");
-        addObject(plusAsteroidsButton, 849, 171);
-        minusAsteroidsButton = new ImageButton("minusButton.png", "minusButton.png", "minus");
-        addObject(minusAsteroidsButton, 181, 171);
+        
+        plusAsteroidsButton = new ImageButton("plusButton.png", "plusButton.png", "plus", 80,80);
+        addObject(plusAsteroidsButton, 839, 191);
+        minusAsteroidsButton = new ImageButton("minusButton.png", "minusButton.png", "minus",80,80);
+        addObject(minusAsteroidsButton, 191, 191);
         cluesLabel = new TextButton("Amount of Clues: " + amountOfClues, 40);
-        addObject(cluesLabel, 515, 261);
+        addObject(cluesLabel, 515, 271);
         // ...
         
-        plusCluesButton = new ImageButton("plusButton.png", "plusButton.png", "plus");
-        addObject(plusCluesButton, 849, 261);
-        minusCluesButton = new ImageButton("minusButton.png", "minusButton.png", "minus");
-        addObject(minusCluesButton, 181, 261);
+        plusCluesButton = new ImageButton("plusButton.png", "plusButton.png", "plus",80,80);
+        addObject(plusCluesButton, 839, 271);
+        minusCluesButton = new ImageButton("minusButton.png", "minusButton.png", "minus",80,80);
+        addObject(minusCluesButton, 191, 271);
         speedLabel = new TextButton("Asteroid Speed: " + asteroidSpeed, 40);
         addObject(speedLabel, 515, 351);
         // ...
         
-        plusSpeedButton = new ImageButton("plusButton.png", "plusButton.png", "plus");
-        addObject(plusSpeedButton, 849, 351);
-        minusSpeedButton = new ImageButton("minusButton.png", "minusButton.png", "minus");
-        addObject(minusSpeedButton, 181, 351);
+        plusSpeedButton = new ImageButton("plusButton.png", "plusButton.png", "plus",80,80);
+        addObject(plusSpeedButton, 839, 351);
+        minusSpeedButton = new ImageButton("minusButton.png", "minusButton.png", "minus",80,80);
+        addObject(minusSpeedButton, 191, 351);
         hpLabel = new TextButton("HP per Planet: " + hpPerPlanet, 40);
-        addObject(hpLabel, 515, 441);
+        addObject(hpLabel, 515, 431);
         // ...
         
-        plusHPButton = new ImageButton("plusButton.png", "plusButton.png", "plus");
-        addObject(plusHPButton, 849, 441);
-        minusHPButton = new ImageButton("minusButton.png", "minusButton.png", "minus");
-        addObject(minusHPButton, 181, 441);
+        plusHPButton = new ImageButton("plusButton.png", "plusButton.png", "plus",80,80);
+        addObject(plusHPButton, 839, 431);
+        minusHPButton = new ImageButton("minusButton.png", "minusButton.png", "minus",80,80);
+        addObject(minusHPButton, 191, 431);
 
         // 创建开始按钮
-        startButton = new ImageButton("startButton.png","startButtonPressed.png","start");
+        startButton = new ImageButton("startButton.png","startButtonPressed.png","start",80,50);
         addObject(startButton, getWidth() / 2, 510);
     }
 
