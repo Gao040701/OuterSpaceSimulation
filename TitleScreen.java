@@ -14,8 +14,10 @@ public class TitleScreen extends World
     private int count = 0;
     private GreenfootImage titleText = new GreenfootImage("titleText.png");
     private GreenfootImage titleStar = new GreenfootImage("textStar.png");
+    private GreenfootImage start = new GreenfootImage("startButton.png");
     private Image star1;
     private Image star2;
+    private Image startButton;
     /**
      * Constructor for objects of class TitleScreen.
      * 
@@ -30,14 +32,17 @@ public class TitleScreen extends World
         addObject(new Image(titleText, (int)(titleText.getWidth() * 1.3), (int)(titleText.getHeight() * 1.3)), 300, 200);
         star1 = new Image(titleStar);
         star2 = new Image(titleStar);
+        startButton = new Image(start, start.getWidth() * 2, start.getHeight() * 2);
         addObject(star1, 125, 130);
         addObject(star2, 420, 130);
+        addObject(startButton, 300, 400);
     }
     
     public void act(){
         animate();
         star1.turn(2);
         star2.turn(2);
+        toNextWorld();
     }
     
     public void animate(){
@@ -51,6 +56,12 @@ public class TitleScreen extends World
             }
         }else{
             index = 0;
+        }
+    }
+
+    private void toNextWorld(){
+        if (Greenfoot.mouseClicked(startButton)){
+            Greenfoot.setWorld(new IntroAnimation());
         }
     }
 }

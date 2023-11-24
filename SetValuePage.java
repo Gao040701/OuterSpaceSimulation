@@ -73,8 +73,8 @@ public class SetValuePage extends World {
         addObject(minusHPButton, 191, 431);
 
         // 创建开始按钮
-        startButton = new ImageButton("startButton.png","startButtonPressed.png","start",80,50);
-        addObject(startButton, getWidth() / 2, 510);
+        startButton = new ImageButton("startButton.png","startButtonPressed.png","start",100,60);
+        addObject(startButton, getWidth() / 2, 500);
     }
 
     public void act() {

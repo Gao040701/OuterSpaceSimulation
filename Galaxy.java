@@ -48,7 +48,7 @@ public class Galaxy extends World
         this.hpPerPlanet=hpPerPlanet;
         background.scale(1024, 576);
         setBackground(background);
-        setPaintOrder (SuperStatBar.class, Asteroids.class, Moving.class, BaobabTree.class, Planet.class); 
+        setPaintOrder (SuperStatBar.class, Explosion.class, Asteroids.class, Moving.class, BaobabTree.class, Planet.class); 
         clueBar = new SuperStatBar(120, clueCount, null, 110, 10, 0, Color.RED, Color.GREEN, false, Color.BLACK, 1);
         addObject(clueBar, getWidth() - 60, 100);
         addObject(new Roseicon(), getWidth() - 60, 50);
