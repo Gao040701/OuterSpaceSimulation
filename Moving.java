@@ -5,8 +5,8 @@ import java.awt.Point;
 /**
  * Write a description of class Moving here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Angela Gao
+ * @version November 2023
  */
 public class Moving extends Being
 {
@@ -33,14 +33,24 @@ public class Moving extends Being
     private GreenfootImage[] fly;
     private GreenfootImage[] dig;
     private GreenfootImage[] flyInverted;
-    
+    /**
+     * Act method is called whenever the 'Act' or 'Run' button gets pressed in the environment.
+     * Includes placeholder content. Override this method to define the actor's behavior.
+     */
     public void act()
     {
         /**
          * Add if (energy > 0)
          */
     }
-    
+    /**
+     * Constructor for the Moving class.
+     * 
+     * @param walk Array of walking animation frames.
+     * @param fly Array of flying animation frames.
+     * @param dig Array of digging animation frames.
+     * @param flyInverted Array of inverted flying animation frames.
+     */    
     public Moving(GreenfootImage[] walk, GreenfootImage[] fly, GreenfootImage[] dig, GreenfootImage[] flyInverted){
         this.walk = walk; 
         this.fly = fly;
@@ -49,7 +59,13 @@ public class Moving extends Being
     }
     
     public Moving(){}
-
+    /**
+     * Gets the distance between two actors.
+     * 
+     * @param a The first actor.
+     * @param b The second actor.
+     * @return The distance between the two actors.
+     */
     public static double getDistance (Actor a, Actor b){
         double distanceBetween = Math.hypot (Math.abs(a.getX() - b.getX()), Math.abs(a.getY() - b.getY()));
         return distanceBetween;
@@ -111,13 +127,25 @@ public class Moving extends Being
             }
         }
     }
-
+    /**
+     * Prepares animation frames from image files.
+     * 
+     * @param imgs Array to store the animation frames.
+     * @param frameName The base name of the image files.
+     */
     public void prepareAnimation(GreenfootImage[] imgs, String frameName){
         for (int i = 0; i < imgs.length; i++){
             imgs[i] = new GreenfootImage(frameName+i+".png");
         }
     }
-
+    /**
+     * Prepares scaled animation frames from image files.
+     * 
+     * @param imgs Array to store the animation frames.
+     * @param frameName The base name of the image files.
+     * @param width The width to scale the images to.
+     * @param height The height to scale the images to.
+     */
     public void prepareAnimation(GreenfootImage[] imgs, String frameName, int width, int height){
         for (int i = 0; i < imgs.length; i++){
             imgs[i] = new GreenfootImage(frameName+i+".png");
