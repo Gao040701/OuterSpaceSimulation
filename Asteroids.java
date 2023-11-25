@@ -29,7 +29,8 @@ public class Asteroids extends SuperSmoothMover {
         count = 0; // counter initialized to 0
         asteroid.scale(75 + Greenfoot.getRandomNumber(30), 60 + Greenfoot.getRandomNumber(30));
         setImage(asteroid);
-        explosion = new GreenfootSound("explosion.mp3");
+        explosion = new GreenfootSound("explosion.wav");
+        explosion.setVolume(80);
     }
     
     /**

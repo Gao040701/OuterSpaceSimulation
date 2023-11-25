@@ -27,7 +27,7 @@ public class IntroAnimation extends World
          * Title: Ascending
          */
         introMusic = new GreenfootSound("introAnimationMusic.mp3");
-        introMusic.setVolume(50);
+        introMusic.setVolume(30);
         // Load animation images
         for (int i = 0; i < animation.length; i++){
             animation[i] = new GreenfootImage("introAnimation/ani"+i+".png");
