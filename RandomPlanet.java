@@ -30,6 +30,7 @@ public class RandomPlanet extends Planet {
     private ArrayList<BaobabTree> trees = new ArrayList<BaobabTree>();
     private boolean roseAppear = false;
     private RandomPlanet newPlanet;
+    private double cos45, cos30, cos60; //cos30 = sin60, cos60 = sin30
 
     /**
      * Constructor for the RandomPlanet class.
@@ -59,9 +60,7 @@ public class RandomPlanet extends Planet {
     public void act() {
         if (!appear) {
             return; // If the object should not appear, return
-        }
-
-        if (appear) {
+        }else{
             super.act(); // Call the base class's act() method to implement basic planet movement logic
         }
 
@@ -114,42 +113,41 @@ public class RandomPlanet extends Planet {
             firstGenerated = false;
         }
     }
-
+    
+    //private double cos30 = (double)radius * Math.sq
     /**
      * Checks for collisions with asteroids and updates health points.
      * Triggers an explosion effect and adds new asteroids to the world on collision.
      */
     public void checkCollision() {
         List<Asteroids> asteroidsList = getWorld().getObjects(Asteroids.class);
-        Asteroids a = (Asteroids) getOneObjectAtOffset((int) speed + -getImage().getWidth() / 2, 0, Asteroids.class); // Left
+        Asteroids a = (Asteroids) getOneObjectAtOffset((int)-radius, 0, Asteroids.class); // Left
         if (a == null) {
-            a = (Asteroids) getOneObjectAtOffset((int) speed + getImage().getWidth() / 2, 0, Asteroids.class); // Right
-        }
-        if (a == null) {
-            a = (Asteroids) getOneObjectAtOffset((int) speed, -getImage().getWidth() / 2, Asteroids.class); // North
-        }
-        if (a == null) {
-            a = (Asteroids) getOneObjectAtOffset((int) speed, getImage().getWidth() / 2, Asteroids.class); // South
-        }
-        if (a == null) {
-            a = (Asteroids) getOneObjectAtOffset((int) (speed - getImage().getWidth() * Math.sqrt(2) / 2),
-                    (int) (-getImage().getHeight() * Math.sqrt(2) / 2), Asteroids.class); // WestNorth
-        }
-        if (a == null) {
-            a = (Asteroids) getOneObjectAtOffset((int) (speed + getImage().getWidth() * Math.sqrt(2) / 2),
-                    (int) (getImage().getHeight() * Math.sqrt(2) / 2), Asteroids.class); // WestSouth
-        }
-        if (a == null) {
-            a = (Asteroids) getOneObjectAtOffset((int) (speed - getImage().getWidth() * Math.sqrt(2) / 2),
-                    (int) (getImage().getHeight() * Math.sqrt(2) / 2), Asteroids.class); // WestSouth
-        }
-        if (a == null) {
-            a = (Asteroids) getOneObjectAtOffset((int) (speed + getImage().getWidth() * Math.sqrt(2) / 2),
-                    (int) (-getImage().getHeight() * Math.sqrt(2) / 2), Asteroids.class); // WestSouth
+            a = (Asteroids) getOneObjectAtOffset((int) radius, 0, Asteroids.class); // Right
+        }else if (a == null) {
+            a = (Asteroids) getOneObjectAtOffset(0, -radius, Asteroids.class); // North
+        }else if(a == null) {
+            a = (Asteroids) getOneObjectAtOffset(0, radius, Asteroids.class); // South
+        }else if (a == null) {
+            a = (Asteroids) getOneObjectAtOffset((int) (-cos45), (int) (-cos45), Asteroids.class); // WestNorth
+            getWorld().addObject(new Rose(), getX()-(int)cos45, getY() - (int)cos45);
+        }else if (a == null) {
+            a = (Asteroids) getOneObjectAtOffset((int) (cos45), (int) (cos45), Asteroids.class); // WestSouth
+        }else if (a == null) {
+            a = (Asteroids) getOneObjectAtOffset((int) (-cos45), (int) (cos45), Asteroids.class); // WestSouth
+        }else if (a == null) {
+            a = (Asteroids) getOneObjectAtOffset((int) (cos45),(int) (-cos45), Asteroids.class); // WestSouth
+        }else if (a == null){
+            a = (Asteroids) getOneObjectAtOffset((int) (-cos30),(int) (cos60), Asteroids.class);
+        }else if (a == null){
+            a = (Asteroids) getOneObjectAtOffset((int) (-cos30),(int) (-cos60), Asteroids.class);
+        }else if (a == null){
+            a = (Asteroids) getOneObjectAtOffset((int) (-cos60),(int) (cos30), Asteroids.class);
+        }else if (a == null){
+            a = (Asteroids) getOneObjectAtOffset((int) (-cos60),(int) (-cos30), Asteroids.class);
         }
         if (a != null) {
-            Explosion explosion = new Explosion(5); // Create an explosion object
-            getWorld().addObject(explosion, getX(), getY()); // Add the explosion to the world
+            a.explode();
             totalHP -= decreaseHP;
             randomHpBar.update(totalHP);
             getWorld().removeObject(a);
@@ -175,6 +173,9 @@ public class RandomPlanet extends Planet {
         img.scale(length, length);
         setImage(img);
         radius = length / 2;
+        cos45 = (double)radius * Math.sqrt(2.0) / 2.0;
+        cos30 = (double)radius * Math.sqrt(3.0) / 2.0;
+        cos60 = (double)radius * 0.5;
     }
 
     /**

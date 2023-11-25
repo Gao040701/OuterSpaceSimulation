@@ -10,7 +10,6 @@ import java.util.ArrayList;
  */
 public class LittlePrince extends Moving
 {
-    
     private SuperStatBar princeHpBar;
     private int totalHP;
     private int decreaseHP;

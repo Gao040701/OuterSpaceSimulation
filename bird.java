@@ -14,7 +14,6 @@ public class bird extends Moving
     private GreenfootImage birdImageInverted = new GreenfootImage("birds.png");
     private static int x;
     private static int y;
-    private int i;
     /**
      * Constructor for objects of class bird.
      * Initializes the bird with its default image and inverted image.
@@ -34,8 +33,6 @@ public class bird extends Moving
         LittlePrince littlePrince = getLittlePrince();
         if(littlePrince.getRotationDetection() == false){
             if(littlePrince != null){
-                System.out.println(i);
-                i++;
                 getImage().setTransparency(255);
                 int rotation=littlePrince.getRotation();
                 x = littlePrince.getX()-(int) (50 * Math.sin(Math.toRadians(littlePrince.getRotation())));

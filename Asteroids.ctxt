@@ -19,4 +19,6 @@ comment5.text=\r\n\ Checks\ if\ the\ asteroid\ is\ at\ the\ screen\ edge.\r\n\ \
 comment6.params=
 comment6.target=void\ randomSpeed()
 comment6.text=\r\n\ Changes\ the\ speed\ of\ the\ asteroid\ periodically.\r\n
-numComments=7
+comment7.params=
+comment7.target=void\ explode()
+numComments=8

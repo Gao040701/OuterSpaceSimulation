@@ -46,12 +46,14 @@ public class Fox extends Moving
         box = (HitBox) getOneIntersectingObject(HitBox.class);
 
         if (checkHitPlanet() && follow == false){
+            //System.out.println("ON PLANET");
             setLocation (planet.getPlanetX() + planet.getRadius(), planet.getPlanetY());
             animate (dig);
             turnTowards(planet);
             turn(-90);
         }
         if (!checkHitPlanet() && follow == false){
+            //System.out.println("FLOAT ALONE");
             passCount = 0;
             //rotateDetection = false;
             isStaying = false;
@@ -63,6 +65,7 @@ public class Fox extends Moving
         }
         if(checkCollisionLP()){
             follow = true;
+
             if(!littlePrince.checkHitPlanet() && follow == true){
                 passCount = 0;
                 //setLocation(littlePrince.getPrinceX(), littlePrince.getPrinceY());
@@ -80,6 +83,7 @@ public class Fox extends Moving
                     //turnTowards(littlePrince.getPrinceX(), littlePrince.getPrinceY());
                     animate(fly);
                 }
+                //System.out.println("FOLLOW LP FLOAT");
                 //setLocation(littlePrince.getPrinceX(), littlePrince.getPrinceY());
                 //turnTowards(littlePrince);
                 //setRotation(degree);
@@ -152,6 +156,9 @@ public class Fox extends Moving
             return false;
         }
         if(passCount >= 3){
+            //rotateDetection = false;
+            //setLocation(getX()-10, getY() - 10);
+            //System.out.println("LP FLY!");
             return true;
         }
         return false;

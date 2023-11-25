@@ -86,4 +86,9 @@ public class Asteroids extends SuperSmoothMover {
             count++;
         }
     }
+    
+    public void explode(){
+        Explosion explosion = new Explosion(5); // Create an explosion object
+        getWorld().addObject(explosion, getX(), getY()); // Add the explosion to the world
+    }
 }
