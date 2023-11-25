@@ -1,5 +1,19 @@
 #BlueJ class context
 comment0.target=ImageButton
+comment0.text=\n\ The\ ImageButton\ represents\ a\ clickable\ button\ with\ different\ images\ for\ normal\ and\ clicked\ states.\n\ It\ provides\ basic\ button\ functionality\ such\ as\ handling\ mouse\ clicks\ and\ changing\ the\ button's\ appearance\ accordingly.\n\ This\ class\ can\ be\ extended\ to\ create\ various\ types\ of\ buttons\ with\ custom\ logic.\n\ \n\ Usage\:\n\ -\ Create\ an\ instance\ by\ providing\ the\ file\ paths\ for\ normal\ and\ clicked\ images,\ button\ type,\ width,\ and\ height.\n\ -\ Optionally,\ add\ specific\ logic\ for\ different\ button\ types\ by\ checking\ the\ buttonType\ parameter.\n\ \n\ @author\ Jiayi\ Li\n\ @version\ November\ 2023\n
 comment1.params=normalImageFile\ clickedImageFile\ buttonType\ buttonWidth\ buttonHeight
 comment1.target=ImageButton(java.lang.String,\ java.lang.String,\ java.lang.String,\ int,\ int)
-numComments=2
+comment1.text=\n\ Constructs\ an\ {@code\ ImageButton}\ with\ specified\ images\ and\ dimensions.\n\ \n\ @param\ normalImageFile\ The\ file\ path\ for\ the\ normal\ state\ image.\n\ @param\ clickedImageFile\ The\ file\ path\ for\ the\ clicked\ state\ image.\n\ @param\ buttonType\ The\ type\ of\ the\ button\ (e.g.,\ "plus",\ "minus",\ "start").\n\ @param\ buttonWidth\ The\ width\ of\ the\ button.\n\ @param\ buttonHeight\ The\ height\ of\ the\ button.\n
+comment2.params=buttonType
+comment2.target=void\ handleButtonLogic(java.lang.String)
+comment2.text=\n\ Handles\ button-specific\ logic\ based\ on\ the\ button\ type.\n\ \n\ @param\ buttonType\ The\ type\ of\ the\ button\ (e.g.,\ "plus",\ "minus",\ "start").\n
+comment3.params=
+comment3.target=void\ handlePlusButtonLogic()
+comment3.text=\n\ Handles\ logic\ specific\ to\ the\ plus\ button.\n
+comment4.params=
+comment4.target=void\ handleMinusButtonLogic()
+comment4.text=\n\ Handles\ logic\ specific\ to\ the\ minus\ button.\n
+comment5.params=
+comment5.target=void\ handleStartButtonLogic()
+comment5.text=\n\ Handles\ logic\ specific\ to\ the\ start\ button.\n
+numComments=6

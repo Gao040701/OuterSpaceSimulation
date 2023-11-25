@@ -1,9 +1,16 @@
-import greenfoot.*; 
+import greenfoot.*;
+
 /**
- * Write a description of class MyWorld here.
+ * The Asteroids class represents asteroids in the game world. 
+ * Asteroids move with a random speed in both x and y directions, and their 
+ * appearance and size are randomized. They also have a periodic change in speed
+ * and rotation.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Usage:
+ * - Create an instance of Asteroids in the world to represent asteroids.
+ * 
+ * @author Jiayi Li
+ * @version November 2023
  */
 public class Asteroids extends SuperSmoothMover {
     private int xSpeed;
@@ -11,56 +18,67 @@ public class Asteroids extends SuperSmoothMover {
     private int count;
     private GreenfootImage asteroid = new GreenfootImage("asteroid.png");
     private int worldWidth = 1024, worldHeight = 576;
+
+    /**
+     * Constructs an Asteroids object.
+     * The initial x and y speeds, as well as the image size, are randomized.
+     */
     public Asteroids() {
-        xSpeed = Greenfoot.getRandomNumber(4) + Galaxy.asteroidSpeed(); // x 方向的速度范围在 1 到 3 之间
-        ySpeed = Greenfoot.getRandomNumber(3) - Galaxy.asteroidSpeed(); // y 方向的速度范围在 -1 到 1 之间
-        count = 0; // 计数器初始化为 0
-        asteroid.scale(75+Greenfoot.getRandomNumber(30), 60+Greenfoot.getRandomNumber(30));
+        xSpeed = Greenfoot.getRandomNumber(4) + Galaxy.asteroidSpeed(); // x-direction speed between 1 and 3
+        ySpeed = Greenfoot.getRandomNumber(3) - Galaxy.asteroidSpeed(); // y-direction speed between -1 and 1
+        count = 0; // counter initialized to 0
+        asteroid.scale(75 + Greenfoot.getRandomNumber(30), 60 + Greenfoot.getRandomNumber(30));
         setImage(asteroid);
     }
-    
+
+    /**
+     * Act method is called whenever the 'Act' or 'Run' button gets pressed in the environment.
+     * Handles the movement, relocation, and periodic speed change of asteroids.
+     */
     public void act() {
-        // 根据 x 和 y 方向的速度移动星球
+        // Move the asteroid based on x and y speeds
         setLocation(getX() + xSpeed, getY() + ySpeed);
 
-        // 如果星球移动到屏幕外边缘，将其放置在屏幕的另一侧
+        // If the asteroid moves to the screen edge, relocate it to the other side
         reLocation();
-        // 每隔一段时间改变一次速度
+
+        // Change speed periodically
         randomSpeed();
     }
+
+    /**
+     * Sets a random rotation for the asteroid.
+     */
     private void setRandomRotation() {
-        double rotation = Greenfoot.getRandomNumber(360); // 生成 0 到 359 之间的随机角度
+        double rotation = Greenfoot.getRandomNumber(360); // Generate a random angle between 0 and 359
         setRotation(rotation);
     }
-    
-    private void reLocation(){
-        /*
-        if (getX() >= getWorld().getWidth()) {
-            setLocation(0, Greenfoot.getRandomNumber(getWorld().getHeight()));
-        }else if (getX() < 0){
-            setLocation(getWorld().getWidth(), Greenfoot.getRandomNumber(getWorld().getHeight()));
-        }else if (getY() >= getWorld().getHeight()) {
-            setLocation(Greenfoot.getRandomNumber(getWorld().getWidth()), 0);
-        }else if (getY() < 0) {
-            setLocation(Greenfoot.getRandomNumber(getWorld().getWidth()), getWorld().getHeight());
-        }
-        */
-        if (atEdge()){
-            setLocation(-10, Greenfoot.getRandomNumber(400)+100);
+
+    /**
+     * Relocates the asteroid to the opposite side if it reaches the screen edge.
+     */
+    private void reLocation() {
+        if (atEdge()) {
+            setLocation(-10, Greenfoot.getRandomNumber(400) + 100);
         }
     }
-    
-    public boolean atEdge(){
-        if (getX() > worldWidth || getY() > worldHeight || getY() < 0){
-            return true;
-        }
-        return false;
+
+    /**
+     * Checks if the asteroid is at the screen edge.
+     * 
+     * @return true if the asteroid is at the edge, false otherwise.
+     */
+    public boolean atEdge() {
+        return getX() > worldWidth || getY() > worldHeight || getY() < 0;
     }
-    
-    private void randomSpeed(){
+
+    /**
+     * Changes the speed of the asteroid periodically.
+     */
+    private void randomSpeed() {
         if (count == 100) {
-            xSpeed = Greenfoot.getRandomNumber(4) + 1; // x 方向的速度范围在 1 到 3 之间
-            ySpeed = Greenfoot.getRandomNumber(3) - 1; // y 方向的速度范围在 -1 到 1 之间
+            xSpeed = Greenfoot.getRandomNumber(4) + 1; // x-direction speed between 1 and 3
+            ySpeed = Greenfoot.getRandomNumber(3) - 1; // y-direction speed between -1 and 1
             setRandomRotation();
             count = 0;
         }

@@ -42,10 +42,12 @@ public class LittlePrince extends Moving
             totalHP -= decreaseHP;
             princeHpBar.update(totalHP);
             getWorld().removeObject(a);
-
+            if(totalHP==0){
+                Greenfoot.setWorld(new EndScreen(true));
+            }
             // 在这里添加新的 Asteroids，以保持总数为三个
             int currentAsteroids = asteroidsList.size();
-            int asteroidsToAdd = 3 - currentAsteroids;
+            int asteroidsToAdd = Galaxy.getNumOfAsteroids() - currentAsteroids;
 
             for (int i = 0; i < asteroidsToAdd+1; i++) {
                 int x = Greenfoot.getRandomNumber(getWorld().getWidth());

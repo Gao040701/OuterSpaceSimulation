@@ -1,16 +1,22 @@
 #BlueJ class context
 comment0.target=Planet
-comment0.text=\n\ Write\ a\ description\ of\ class\ Planet\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ The\ abstract\ class\ Planet\ represents\ planets\ in\ the\ game\ world.\n\ Planets\ rotate\ on\ their\ own\ and\ move\ to\ the\ right.\n\ Specific\ types\ of\ planets\ should\ extend\ this\ class\ and\ implement\ the\ abstract\n\ methods\ for\ collision\ checking.\n\ \n\ Usage\:\n\ -\ Create\ subclasses\ of\ Planet\ for\ different\ types\ of\ planets.\n\ -\ Override\ checkCollision()\ method\ to\ implement\ collision\ logic\ for\ each\ planet\ type.\n\ \n\ @author\ Jiayi\ Li\n\ @version\ November\ 2023\n
 comment1.params=
 comment1.target=void\ act()
+comment1.text=\n\ Act\ method\ is\ called\ whenever\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n\ Moves\ the\ planet\ to\ the\ right\ if\ it\ has\ appeared\ and\ calls\ the\ checkCollision()\ method.\n
 comment2.params=
 comment2.target=Planet()
+comment2.text=\n\ Constructor\ for\ the\ Planet\ class.\n\ Initializes\ the\ appear\ flag\ to\ true.\n
 comment3.params=
 comment3.target=void\ checkCollision()
+comment3.text=\n\ Abstract\ method\ to\ be\ implemented\ by\ subclasses.\n\ Checks\ for\ collisions\ with\ other\ objects.\n
 comment4.params=
 comment4.target=int\ getRadius()
+comment4.text=\n\ Gets\ the\ radius\ of\ the\ planet.\n\ \n\ @return\ The\ radius\ of\ the\ planet.\n
 comment5.params=
 comment5.target=double\ getSpeed()
+comment5.text=\n\ Gets\ the\ speed\ of\ the\ planet.\n\ \n\ @return\ The\ speed\ of\ the\ planet.\n
 comment6.params=
 comment6.target=boolean\ hasVisited()
+comment6.text=\n\ Checks\ if\ the\ planet\ has\ been\ visited.\n\ \n\ @return\ true\ if\ the\ planet\ has\ been\ visited,\ false\ otherwise.\n
 numComments=7

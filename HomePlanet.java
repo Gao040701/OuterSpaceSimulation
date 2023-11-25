@@ -1,22 +1,31 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 import java.util.List;
 
 /**
- * Write a description of class HomePlanet here.
+ * The class HomePlanet represents the home planet in the game.
+ * It extends the abstract class Planet and implements specific behavior for the home planet.
+ * The home planet has health points, a health bar, and interacts with asteroids in the world.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Usage:
+ * - Create an instance of HomePlanet in the game world.
+ * - The home planet has a health bar that decreases when colliding with asteroids.
+ * - When the health points reach zero, the home planet is removed from the world.
+ * - An explosion effect is triggered on collision with asteroids.
+ * - New asteroids are added to the world to maintain the total number.
+ * 
+ * @author Jiayi Li
+ * @version November 2023
  */
-public class HomePlanet extends Planet
-{
-    /**
-     * Act - do whatever the HomePlanet wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+public class HomePlanet extends Planet {
     private GreenfootImage img;
     private int planetImgIndex, length;
     private SuperStatBar homeHpBar;
-    public HomePlanet(){
+
+    /**
+     * Constructor for the HomePlanet class.
+     * Initializes the home planet's image, size, health, speed, and health bar.
+     */
+    public HomePlanet() {
         planetImgIndex = 1; // Assuming you want to use planet1.png as the image
         img = new GreenfootImage("planets/planet" + planetImgIndex + ".png");
 
@@ -30,6 +39,10 @@ public class HomePlanet extends Planet
         homeHpBar = new SuperStatBar(totalHP, totalHP, this, 50, 10, -20, Color.GREEN, Color.RED, false, Color.BLACK, 1);
     }
 
+    /**
+     * Checks for collisions with asteroids and updates health points.
+     * Triggers an explosion effect and adds new asteroids to the world on collision.
+     */
     public void checkCollision() {
         List<Asteroids> asteroidsList = getWorld().getObjects(Asteroids.class);
         Actor actor = getOneIntersectingObject(Asteroids.class);
@@ -40,11 +53,12 @@ public class HomePlanet extends Planet
             getWorld().removeObject(a);
             Explosion explosion = new Explosion(5);  // Create an explosion object
             getWorld().addObject(explosion, getX(), getY()); // Add the explosion to the world
-            // 在这里添加新的 Asteroids，以保持总数为三个
+            
+            // Add new Asteroids to the world to maintain the total number
             int currentAsteroids = asteroidsList.size();
-            int asteroidsToAdd = 3 - currentAsteroids;
+            int asteroidsToAdd = Galaxy.getNumOfAsteroids() - currentAsteroids;
 
-            for (int i = 0; i < asteroidsToAdd+1; i++) {
+            for (int i = 0; i < asteroidsToAdd + 1; i++) {
                 int x = Greenfoot.getRandomNumber(getWorld().getWidth());
                 int y = Greenfoot.getRandomNumber(getWorld().getHeight());
                 getWorld().addObject(new Asteroids(), x, y);
@@ -52,38 +66,41 @@ public class HomePlanet extends Planet
         }
     }
 
-    public void addedToWorld (World w){
+    /**
+     * Adds the health bar to the world when the HomePlanet is added.
+     */
+    public void addedToWorld(World w) {
         w.addObject(homeHpBar, getX() / 2, getY() / 2);
     }
 
-    public void checkAndRemove ()
-    {
+    /**
+     * Checks if the HomePlanet should be removed from the world.
+     */
+    public void checkAndRemove() {
         if (getWorld() != null && totalHP <= 0 && appear) {
             getWorld().removeObject(homeHpBar);
-            getWorld().removeObject(this); // 从世界中移除我
-            appear=false;
+            getWorld().removeObject(this); // Remove the HomePlanet from the world
+            appear = false;
         }
     }
 
-    public void act()
-    {
-        if(appear){
+    /**
+     * Act method is called whenever the 'Act' or 'Run' button gets pressed in the environment.
+     * Moves the home planet, checks for collisions, updates the health bar, and checks if
+     * the home planet should be removed.
+     */
+    public void act() {
+        if (appear) {
             super.act();
         }
-        // Add your action code here.
-        if(appear){
 
+        if (appear) {
             if (getX() > getWorld().getWidth()) {
-                getWorld().removeObject(this); // 移除当前星球对象
+                getWorld().removeObject(this); // Remove the current planet object
             }
             homeHpBar.moveMe();
         }
         checkAndRemove();
-        /*
-        LittlePrince littlePrince = (LittlePrince) getOneIntersectingObject(LittlePrince.class); //return true if intersects
-        if(littlePrince != null){
-            visited = false;
-        }
-        */
     }
 }
+

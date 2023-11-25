@@ -1,9 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
- * Write a description of class MyWorld here.
+ * The {@code Galaxy} class represents the game world in which the Little Prince
+ * explores and interacts. It includes asteroids, planets, characters, and other elements.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Angela Gao, Jiayi Li, Jennifer Zhou 
+ * @version November 24
  */
 public class Galaxy extends World
 {
@@ -15,16 +16,15 @@ public class Galaxy extends World
     private SuperStatBar clueBar;
     private int clueCount = 0;
     private GreenfootImage background = new GreenfootImage("galaxyBackground.png");
-    //public static final int Rhp=hpPerPlanet;
-    //final variables should be in all capital letters 
     public static final int Rdecrease=15;
-    private Planet latestPlanet;
-    //animations
+    
+    // Arrays for Little Prince animation frames
     private GreenfootImage[] TLPwalk = new GreenfootImage[8];
     private GreenfootImage[] TLPfly = new GreenfootImage[6];
     private GreenfootImage[] TLPflyInverted = new GreenfootImage[6];
     private GreenfootImage[] TLPdig = new GreenfootImage[9];
     
+    // Fox animation frames and related variables
     private int countFox = 0;
     private boolean hasFox = true;
     private GreenfootImage[] foxRun = new GreenfootImage[8];
@@ -32,11 +32,16 @@ public class Galaxy extends World
     private GreenfootImage[] foxFlyInverted = new GreenfootImage[5];
     private GreenfootImage[] foxDig = new GreenfootImage[11];
     
+    // Initial y-coordinate for planet placement
     private int y = Greenfoot.getRandomNumber(276) + 150;
     private boolean roseAdded = false;    
     /**
-     * Constructor for objects of class MyWorld.
+     * Constructor for objects of class Galaxy.
      * 
+     * @param numOfAsteroids The number of asteroids in the world.
+     * @param amountOfClues The initial amount of clues.
+     * @param asteroidSpeed The speed of asteroids.
+     * @param hpPerPlanet The initial HP (health points) per planet.
      */
     public Galaxy(int numOfAsteroids, int amountOfClues, int asteroidSpeed, int hpPerPlanet)
     {    
@@ -75,7 +80,6 @@ public class Galaxy extends World
         if (Greenfoot.getRandomNumber(1) == 0 && hasFox == true && countFox < 1){
             generateFox();
             countFox++;
-            //System.out.println("COUNT FOX: " + countFox);
             hasFox = false;
         }else{
             countFox = 1;
@@ -106,6 +110,13 @@ public class Galaxy extends World
         return getAsteroidsY;
     }
     
+    /**
+     * Calculates the distance between two actors.
+     * 
+     * @param a The first actor.
+     * @param b The second actor.
+     * @return The distance between the two actors.
+     */
     public static double getDistance (Actor a, Actor b){
         double distanceBetween = Math.hypot (a.getX() - b.getX(), a.getY() - b.getY());
         return distanceBetween;
@@ -113,32 +124,19 @@ public class Galaxy extends World
 
     public void act() {
         if (clueCount == 120 && !roseAdded) {
-            /*
-            if (latestPlanet == null) {
-                latestPlanet = new RosePlanet();
-                addObject(latestPlanet, 0, y);
-                System.out.println("print");
-            }
-            
-            Rose rose = new Rose();
-            addObject(rose, latestPlanet.getX(), latestPlanet.getY());
-            */
             roseAdded = true;  // Set the flag to true so that you don't add more Roses
         }
-        // Check if the Rose has been added and move it with the planet
-        /*
-        if (roseAdded) {
-            Rose rose = (Rose) getObjects(Rose.class).get(0);  // Assuming only one Rose is present
-            rose.setLocation(latestPlanet.getX(), latestPlanet.getY()-RosePlanet.length/2-20);
-            //roseAdded=false;
-        }
-        */
     }
     
     public static int getNumOfAsteroids(){
         return numOfAsteroids;
     }
     
+    /**
+     * Gets the initial amount of clues configured for the world.
+     * 
+     * @return The initial amount of clues.
+     */
     public static int getAmountOfClues(){
         return amountOfClues;
     }
@@ -151,12 +149,22 @@ public class Galaxy extends World
         return hpPerPlanet;
     }
     
+    /**
+     * Changes the amount of clues and updates the clue count.
+     * 
+     * @param amountOfClues The amount of clues to add or subtract.
+     */
     public void changeClue(int amountOfClues){
         this.amountOfClues=amountOfClues;
         clueCount += amountOfClues;
         clueBar.update(clueCount);
     }
     
+    /**
+     * Checks if a rose has been added to the world.
+     * 
+     * @return True if a rose has been added, false otherwise.
+     */
     public boolean getRose(){
         return roseAdded;
     }

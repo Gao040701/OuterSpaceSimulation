@@ -1,48 +1,75 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-//only have xSpeed and it can be random every 400 count
-//there is a distance of 700 bewtween them
+import greenfoot.*;
+
 /**
- * Write a description of class Planet here.
+ * The abstract class Planet represents planets in the game world.
+ * Planets rotate on their own and move to the right.
+ * Specific types of planets should extend this class and implement the abstract
+ * methods for collision checking.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Usage:
+ * - Create subclasses of Planet for different types of planets.
+ * - Override checkCollision() method to implement collision logic for each planet type.
+ * 
+ * @author Jiayi Li
+ * @version November 2023
  */
-public abstract class Planet extends SuperSmoothMover
-{
+public abstract class Planet extends SuperSmoothMover {
+    protected int radius;       // Radius of the planet
+    protected double speed;     // Speed at which the planet moves
+    protected int totalHP;      // Total health points of the planet
+    protected int decreaseHP;   // Amount of health points to decrease on collision
+    protected boolean appear;   // Flag indicating if the planet should appear in the world
+    protected boolean visited;  // Flag indicating if the planet has been visited
+
     /**
-     * The planets will rotate on its own and move to the right
+     * Act method is called whenever the 'Act' or 'Run' button gets pressed in the environment.
+     * Moves the planet to the right if it has appeared and calls the checkCollision() method.
      */
-    protected int radius;
-    protected double speed;
-    protected int totalHP;
-    protected int decreaseHP;
-    protected boolean appear;
-    protected boolean visited;
     public void act() {
-       if(appear){
-           move(speed); 
-        /*{
-            radius = 20;
-        */
-       checkCollision();
-       //checkAndRemove();
-    }
-    }
-    public Planet() {
-        appear=true;
+        if (appear) {
+            move(speed);
+            checkCollision();
+        }
     }
 
-    public abstract void checkCollision();
-    //public abstract void checkAndRemove();
-    public int getRadius(){
-        return getImage().getHeight()/2;
+    /**
+     * Constructor for the Planet class.
+     * Initializes the appear flag to true.
+     */
+    public Planet() {
+        appear = true;
     }
-    
-    public double getSpeed(){
+
+    /**
+     * Abstract method to be implemented by subclasses.
+     * Checks for collisions with other objects.
+     */
+    public abstract void checkCollision();
+
+    /**
+     * Gets the radius of the planet.
+     * 
+     * @return The radius of the planet.
+     */
+    public int getRadius() {
+        return getImage().getHeight() / 2;
+    }
+
+    /**
+     * Gets the speed of the planet.
+     * 
+     * @return The speed of the planet.
+     */
+    public double getSpeed() {
         return speed;
     }
-    
-    public boolean hasVisited(){
+
+    /**
+     * Checks if the planet has been visited.
+     * 
+     * @return true if the planet has been visited, false otherwise.
+     */
+    public boolean hasVisited() {
         return visited;
     }
 }

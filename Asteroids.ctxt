@@ -1,16 +1,22 @@
 #BlueJ class context
 comment0.target=Asteroids
-comment0.text=\n\ Write\ a\ description\ of\ class\ MyWorld\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ The\ Asteroids\ class\ represents\ asteroids\ in\ the\ game\ world.\ \n\ Asteroids\ move\ with\ a\ random\ speed\ in\ both\ x\ and\ y\ directions,\ and\ their\ \n\ appearance\ and\ size\ are\ randomized.\ They\ also\ have\ a\ periodic\ change\ in\ speed\n\ and\ rotation.\n\ \n\ Usage\:\n\ -\ Create\ an\ instance\ of\ Asteroids\ in\ the\ world\ to\ represent\ asteroids.\n\ \n\ @author\ Jiayi\ Li\n\ @version\ November\ 2023\n
 comment1.params=
 comment1.target=Asteroids()
+comment1.text=\n\ Constructs\ an\ Asteroids\ object.\n\ The\ initial\ x\ and\ y\ speeds,\ as\ well\ as\ the\ image\ size,\ are\ randomized.\n
 comment2.params=
 comment2.target=void\ act()
+comment2.text=\n\ Act\ method\ is\ called\ whenever\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n\ Handles\ the\ movement,\ relocation,\ and\ periodic\ speed\ change\ of\ asteroids.\n
 comment3.params=
 comment3.target=void\ setRandomRotation()
+comment3.text=\n\ Sets\ a\ random\ rotation\ for\ the\ asteroid.\n
 comment4.params=
 comment4.target=void\ reLocation()
+comment4.text=\n\ Relocates\ the\ asteroid\ to\ the\ opposite\ side\ if\ it\ reaches\ the\ screen\ edge.\n
 comment5.params=
 comment5.target=boolean\ atEdge()
+comment5.text=\n\ Checks\ if\ the\ asteroid\ is\ at\ the\ screen\ edge.\n\ \n\ @return\ true\ if\ the\ asteroid\ is\ at\ the\ edge,\ false\ otherwise.\n
 comment6.params=
 comment6.target=void\ randomSpeed()
+comment6.text=\n\ Changes\ the\ speed\ of\ the\ asteroid\ periodically.\n
 numComments=7

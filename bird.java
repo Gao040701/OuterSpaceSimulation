@@ -1,32 +1,38 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class bird here.
+ * The bird class represents a bird actor in the world.
+ * It follows the movement of the LittlePrince actor and changes its appearance based on the rotation.
+ * The bird is transparent when the rotation detection of LittlePrince is active.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Jiayi Li 
+ * @version November 2023
  */
 public class bird extends Moving
 {
-    /**
-     * Act - do whatever the bird wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     private GreenfootImage birdImage = new GreenfootImage("birds.png");
     private GreenfootImage birdImageInverted = new GreenfootImage("birds.png");
     private static int x;
     private static int y;
+
+    /**
+     * Constructor for objects of class bird.
+     * Initializes the bird with its default image and inverted image.
+     */
     public bird(){
-        //birdImage.mirrorVertically();
         setImage(birdImage);
         birdImageInverted.mirrorVertically();
     }
+
+    /**
+     * Act - do whatever the bird wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
     public void act()
     {
         // Add your action code here.
         LittlePrince littlePrince = getLittlePrince();
         if(littlePrince.getRotationDetection() == false){
-            //LittlePrince TLP=(LittlePrince) getOneIntersectingObject(LittlePrince.class);
             if(littlePrince != null){
                 getImage().setTransparency(255);
                 int rotation=littlePrince.getRotation();
@@ -44,12 +50,11 @@ public class bird extends Moving
             getImage().setTransparency(0);
         }
     }
-    public static int birdX(){
-        return x;
-    }
-    public static int birdY(){
-        return y;
-    }
+
+    /**
+     * Gets the instance of LittlePrince in the world.
+     * @return The LittlePrince instance if found, otherwise null.
+     */
     private LittlePrince getLittlePrince() {
         // Try to get an instance of LittlePrince in the world
         LittlePrince littlePrince = (LittlePrince) getWorld().getObjects(LittlePrince.class).get(0);
