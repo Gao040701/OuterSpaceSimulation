@@ -53,7 +53,7 @@ public class LittlePrince extends Moving
             rotate();
         }else {
             passCount = 0;
-            //rotateDetection = false;
+            rotateDetection = false;
             isStaying = false;
             rotateImage(90);
             moveRandomly();
@@ -83,7 +83,7 @@ public class LittlePrince extends Moving
             return false;
         }
         if(passCount >= 3){
-            //rotateDetection = false;
+            rotateDetection = false;
             //setLocation(getX()-10, getY() - 10);
             return true;
         }
