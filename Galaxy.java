@@ -34,6 +34,7 @@ public class Galaxy extends World
     
     // Initial y-coordinate for planet placement
     private int y = Greenfoot.getRandomNumber(276) + 150;
+    private GreenfootSound galaxyMusic;
     private boolean roseAdded = false;    
     /**
      * Constructor for objects of class Galaxy.
@@ -57,7 +58,17 @@ public class Galaxy extends World
         clueBar = new SuperStatBar(120, clueCount, null, 110, 10, 0, Color.RED, Color.GREEN, false, Color.BLACK, 1);
         addObject(clueBar, getWidth() - 60, 100);
         addObject(new Roseicon(), getWidth() - 60, 50);
+        galaxyMusic = new GreenfootSound("galaxyMusic.mp3");
+        galaxyMusic.setVolume(50);
         prepare();
+    }
+    
+    public void started(){
+        galaxyMusic.playLoop(); 
+    }
+
+    public void stopped(){
+        galaxyMusic.pause();
     }
     
     /**
@@ -126,6 +137,7 @@ public class Galaxy extends World
         if (clueCount == 120 && !roseAdded) {
             roseAdded = true;  // Set the flag to true so that you don't add more Roses
         }
+        started();
     }
     
     public static int getNumOfAsteroids(){

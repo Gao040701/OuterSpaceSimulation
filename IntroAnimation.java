@@ -11,10 +11,18 @@ public class IntroAnimation extends World
     private int index = 0;
     private final int COUNT_NUM = 9;
     private int count = 0;
+    private GreenfootSound introMusic;
+    
     public IntroAnimation()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 576, 1); 
+        /**
+         * Music credit: Hans Zimmer
+         * Title: Ascending
+         */
+        introMusic = new GreenfootSound("introAnimationMusic.mp3");
+        introMusic.setVolume(50);
         for (int i = 0; i < animation.length; i++){
             animation[i] = new GreenfootImage("introAnimation/ani"+i+".png");
             animation[i].scale(1024, 576);
@@ -23,6 +31,14 @@ public class IntroAnimation extends World
     
     public void act(){
         animate();
+    }
+    
+    public void started(){
+        introMusic.playLoop(); 
+    }
+
+    public void stopped(){
+        introMusic.pause();
     }
     
     public void animate(){
@@ -36,6 +52,7 @@ public class IntroAnimation extends World
             }
         }else{
             Greenfoot.setWorld(new SetValuePage());
+            stopped();
         }
     }
 }

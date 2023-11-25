@@ -55,6 +55,14 @@ public abstract class Planet extends SuperSmoothMover {
         return getImage().getHeight() / 2;
     }
 
+    public int getPlanetX(){
+        return getX();
+    }
+
+    public int getPlanetY(){
+        return getY();
+    }
+    
     /**
      * Gets the speed of the planet.
      * 

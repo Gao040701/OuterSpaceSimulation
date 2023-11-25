@@ -35,6 +35,9 @@ public class SetValuePage extends World {
     private TextButton hpLabel;
     private TextButton asteroidsLabel;
 
+    private GreenfootSound setValueMusic;
+    private int musicCount = 0;
+    
     // Background image
     private GreenfootImage setValueBG = new GreenfootImage("setValuePage.png");
 
@@ -45,6 +48,12 @@ public class SetValuePage extends World {
         super(1024, 576, 1);
         setValueBG.scale(1024, 576);
         setBackground(setValueBG);
+        /**
+         * Music credit: Hans Zimmer
+         * Title: Ascending
+         */
+        setValueMusic = new GreenfootSound("setValueMusic.mp3");
+        setValueMusic.setVolume(50);
         prepare();
     }
 
@@ -96,10 +105,19 @@ public class SetValuePage extends World {
         addObject(startButton, getWidth() / 2, 510);
     }
 
+    public void started(){
+        setValueMusic.playLoop(); 
+    }
+
+    public void stopped(){
+        setValueMusic.pause();
+    }
+    
     /**
      * Handles user input and updates the values accordingly.
      */
     public void act() {
+        started();
         // Increment or decrement values based on button clicks  
         if (Greenfoot.mousePressed(plusAsteroidsButton)) {
             if (numOfAsteroids < 6) {
@@ -144,6 +162,7 @@ public class SetValuePage extends World {
         } else if (Greenfoot.mousePressed(startButton)) {
             Galaxy galaxy = new Galaxy(numOfAsteroids, amountOfClues, asteroidSpeed, hpPerPlanet);
             Greenfoot.setWorld(galaxy);
+            stopped();
         }
     }   
 
