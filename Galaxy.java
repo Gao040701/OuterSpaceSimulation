@@ -34,6 +34,8 @@ public class Galaxy extends World
     
     private int y = Greenfoot.getRandomNumber(276) + 150;
     
+    private GreenfootSound galaxyMusic;
+    
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -52,7 +54,17 @@ public class Galaxy extends World
         clueBar = new SuperStatBar(110, clueCount, null, 110, 10, 0, Color.RED, Color.GREEN, false, Color.BLACK, 1);
         addObject(clueBar, getWidth() - 60, 100);
         addObject(new Roseicon(), getWidth() - 60, 50);
+        galaxyMusic = new GreenfootSound("galaxyMusic.mp3");
+        galaxyMusic.setVolume(50);
         prepare();
+    }
+    
+    public void started(){
+        galaxyMusic.playLoop(); 
+    }
+
+    public void stopped(){
+        galaxyMusic.pause();
     }
     
     /**
@@ -81,6 +93,7 @@ public class Galaxy extends World
             hasFox = false;
         }
     }
+    
     public void generateFox() {
         if (Greenfoot.getRandomNumber(1) == 0){
             Fox fox = new Fox(foxRun, foxFly, foxDig, foxFlyInverted);
@@ -111,6 +124,7 @@ public class Galaxy extends World
     }
 
     public void act(){
+        started();
         //clueBar.update(clueCount);
     }
     

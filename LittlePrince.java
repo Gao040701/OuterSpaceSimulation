@@ -47,7 +47,7 @@ public class LittlePrince extends Moving
         randomPlanet = (RandomPlanet) getOneIntersectingObject(RandomPlanet.class);
         planet = (Planet) getOneIntersectingObject(Planet.class);
         box = (HitBox) getOneIntersectingObject(HitBox.class);
-
+        targetClosestPlanet();
         if (checkHitPlanet()){
             rotateDetection = true;
             rotate();
@@ -62,6 +62,10 @@ public class LittlePrince extends Moving
                 animate(flyInverted);
             }else animate(fly);
         }
+    }
+    
+    public int getDegree(){
+        return degree;
     }
 
     public void setIsStaying(boolean x){
@@ -81,7 +85,7 @@ public class LittlePrince extends Moving
         if(passCount >= 3){
             //rotateDetection = false;
             //setLocation(getX()-10, getY() - 10);
-            System.out.println("LP FLY!");
+            //System.out.println("LP FLY!");
             return true;
         }
         return false;
@@ -133,7 +137,7 @@ public class LittlePrince extends Moving
             //canFly(planet);
             animate(walk);
             if(canFly(planet)){
-                setLocation(getX()-150, getY() - 10);
+                setLocation(getX()-200, getY() - 10);
             }
         }else{
             setLocation(getX() + speed, getY());

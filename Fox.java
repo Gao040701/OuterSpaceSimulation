@@ -46,14 +46,14 @@ public class Fox extends Moving
         box = (HitBox) getOneIntersectingObject(HitBox.class);
 
         if (checkHitPlanet() && follow == false){
-            System.out.println("ON PLANET");
+            //System.out.println("ON PLANET");
             setLocation (planet.getPlanetX() + planet.getRadius(), planet.getPlanetY());
             animate (dig);
             turnTowards(planet);
             turn(-90);
         }
         if (!checkHitPlanet() && follow == false){
-            System.out.println("FLOAT ALONE");
+            //System.out.println("FLOAT ALONE");
             passCount = 0;
             //rotateDetection = false;
             isStaying = false;
@@ -65,23 +65,26 @@ public class Fox extends Moving
         }
         if(checkCollisionLP()){
             follow = true;
-            System.out.println("Follow");
-            
+            //System.out.println("Follow");
+
             if(!littlePrince.checkHitPlanet() && follow == true){
                 passCount = 0;
-                setLocation(littlePrince.getPrinceX(), littlePrince.getPrinceY());
+                //setLocation(littlePrince.getPrinceX(), littlePrince.getPrinceY());
+                targetClosestLP();
                 setRotation(littlePrince.getRotation());
                 if (getRotation() < 270 && getRotation() > 90){
-                    setLocation(littlePrince.getPrinceX(), littlePrince.getPrinceY());
+                    targetClosestLP();
+                    //setLocation(littlePrince.getPrinceX(), littlePrince.getPrinceY());
                     //turnTowards(littlePrince.getPrinceX(), littlePrince.getPrinceY());
                     //animate(flyInverted);
                 }
                 else {
-                    setLocation(littlePrince.getPrinceX(), littlePrince.getPrinceY());
+                    targetClosestLP();
+                    //setLocation(littlePrince.getPrinceX(), littlePrince.getPrinceY());
                     //turnTowards(littlePrince.getPrinceX(), littlePrince.getPrinceY());
                     animate(fly);
                 }
-                System.out.println("FOLLOW LP FLOAT");
+                //System.out.println("FOLLOW LP FLOAT");
                 //setLocation(littlePrince.getPrinceX(), littlePrince.getPrinceY());
                 //turnTowards(littlePrince);
                 //setRotation(degree);
@@ -89,8 +92,12 @@ public class Fox extends Moving
             }
         }
         if(checkHitPlanet() && follow == true){
+            //targetClosestLP();
             rotate();
             animate(walk);
+        }
+        if(!checkHitPlanet() && follow == true){
+            targetClosestLP();
         }
         super.act();
     }
@@ -122,15 +129,19 @@ public class Fox extends Moving
                 double x = planet.getX() + (double) ((radius+30) * Math.cos(radians));
                 double y = planet.getY() + (double) ((radius+30) * Math.sin(radians));
                 angle -= 1.5;
+                //targetClosestLP();
                 setLocation(x+speed, y);
                 if(canFly(planet)){
-                    setLocation(getX()-150, getY() - 10);
+                    setLocation(getX()-200, getY() - 10);
                 }
                 animate(walk);
-            }else{
+            }else if(follow == true){
                 setLocation(getX() + speed, getY());
                 animate(dig);
                 box.getBaobabTree().removeBaobabTree();
+                if(canFly(planet)){
+                    setLocation(getX()-200, getY() - 10);
+                }
             }
         }
     }
@@ -148,7 +159,7 @@ public class Fox extends Moving
         if(passCount >= 3){
             //rotateDetection = false;
             //setLocation(getX()-10, getY() - 10);
-            System.out.println("LP FLY!");
+            //System.out.println("LP FLY!");
             return true;
         }
         return false;
