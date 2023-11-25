@@ -17,7 +17,7 @@ public class HitBox extends Stationary
         img.setColor(Color.RED);
         img.fill();
         setImage(img);
-        //img.setTransparency(0);
+        img.setTransparency(0);
     }
     
     public void act(){

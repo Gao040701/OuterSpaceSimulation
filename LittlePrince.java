@@ -44,7 +44,6 @@ public class LittlePrince extends Moving
     {
         super.act();
         checkCollisionAsteriods();
-        //System.out.println(getX() + ", " + getY());
         randomPlanet = (RandomPlanet) getOneIntersectingObject(RandomPlanet.class);
         planet = (Planet) getOneIntersectingObject(Planet.class);
         box = (HitBox) getOneIntersectingObject(HitBox.class);
@@ -86,7 +85,6 @@ public class LittlePrince extends Moving
         if(passCount >= 3){
             //rotateDetection = false;
             //setLocation(getX()-10, getY() - 10);
-            //System.out.println("LP FLY!");
             return true;
         }
         return false;
