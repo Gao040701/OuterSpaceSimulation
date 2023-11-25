@@ -2,10 +2,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 
 /**
- * Write a description of class Fox here.
+ * The Fox class represents a fox actor in the game that can move, interact with other objects,
+ * and follow the Little Prince.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Jennifer Zhou
+ * @version November 2023
  */
 
 public class Fox extends Moving
@@ -35,6 +36,10 @@ public class Fox extends Moving
     private GreenfootImage[] dig;
     private GreenfootImage[] flyInverted;
     private boolean follow = false;
+    /**
+     * Act method is called whenever the 'Act' or 'Run' button gets pressed in the environment.
+     * Includes the behavior of the fox, such as movement and interaction with other objects.
+     */
     public void act()
     {
         // if (getWorld().getObjects(LittlePrince.class) != null){
@@ -96,7 +101,11 @@ public class Fox extends Moving
         }
         super.act();
     }
-
+    /**
+     * Checks if the Fox hits a planet.
+     * 
+     * @return True if the Fox hits a planet, otherwise false.
+     */
     public boolean checkHitPlanet () {
         if (planet != null){
             return true;
@@ -105,7 +114,11 @@ public class Fox extends Moving
             return false;
         }
     }
-
+    /**
+     * Checks if the Fox hits a tree.
+     * 
+     * @return True if the Fox hits a tree, otherwise false.
+     */
     public boolean checkHitTree(){
         if (box != null && box.getBaobabTree().getPlanet().equals(randomPlanet)){
             return true;
@@ -140,7 +153,12 @@ public class Fox extends Moving
             }
         }
     }
-
+    /**
+     * Checks if the Fox can fly over the planet.
+     * 
+     * @param planet The planet to check.
+     * @return True if the Fox can fly over the planet, otherwise false.
+     */
     public boolean canFly(Planet planet){
         if (planet.getX() - 10 <= getX() && getX() <= planet.getX() + 10 && !justPassed ){
             passCount++; 
@@ -160,7 +178,14 @@ public class Fox extends Moving
     public boolean getRotationDetection(){
         return rotateDetection;
     }
-
+    /**
+     * Constructor for the Fox class.
+     * 
+     * @param walk Array of walking animation frames.
+     * @param fly Array of flying animation frames.
+     * @param dig Array of digging animation frames.
+     * @param flyInverted Array of inverted flying animation frames.
+     */
     public Fox(GreenfootImage[] walk, GreenfootImage[] fly, GreenfootImage[] dig, GreenfootImage[] flyInverted){
         super(walk, fly, dig, flyInverted);
         this.walk = walk; 
@@ -168,7 +193,11 @@ public class Fox extends Moving
         this.dig = dig;
         this.flyInverted = flyInverted;
     }
-
+    /**
+     * Checks if the Fox collides with the Little Prince.
+     * 
+     * @return True if the Fox collides with the Little Prince, otherwise false.
+     */
     public boolean checkCollisionLP(){
         LittlePrince lp = (LittlePrince) getOneIntersectingObject(LittlePrince.class);
         if (lp != null){

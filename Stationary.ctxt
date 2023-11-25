@@ -1,9 +1,10 @@
 #BlueJ class context
 comment0.target=Stationary
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Stationary\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ The\ Stationary\ class\ represents\ a\ stationary\ actor\ in\ the\ game.\n\ It\ extends\ the\ Being\ class\ and\ provides\ a\ method\ to\ check\ for\ intersection\ with\ the\ Little\ Prince.\n\ \n\ @Author\ Angela\ Gao\n\ @version\ November\ 2023\n
 comment1.params=
 comment1.target=void\ act()
-comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ Stationary\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment1.text=\n\ Act\ method\ is\ called\ whenever\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n\ No\ specific\ action\ is\ performed\ in\ this\ class.\n
 comment2.params=
 comment2.target=boolean\ checkHitLittlePrince()
+comment2.text=\n\ Checks\ if\ the\ Stationary\ actor\ is\ hitting\ the\ Little\ Prince.\n\ \n\ @return\ True\ if\ the\ Stationary\ actor\ intersects\ with\ the\ Little\ Prince,\ false\ otherwise.\n
 numComments=3

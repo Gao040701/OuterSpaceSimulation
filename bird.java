@@ -34,7 +34,6 @@ public class bird extends Moving
         LittlePrince littlePrince = getLittlePrince();
         if(littlePrince.getRotationDetection() == false){
             if(littlePrince != null){
-                System.out.println(i);
                 i++;
                 getImage().setTransparency(255);
                 int rotation=littlePrince.getRotation();
