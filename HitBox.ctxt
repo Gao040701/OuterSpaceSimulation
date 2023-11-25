@@ -1,13 +1,13 @@
 #BlueJ class context
 comment0.target=HitBox
-comment0.text=\r\n\ The\ HitBox\ class\ represents\ a\ hitbox\ associated\ with\ a\ BaobabTree\ in\ the\ game.\ \r\n\ It\ allows\ for\ collision\ detection\ and\ tracking\ of\ the\ BaobabTree's\ position.\r\n\ \r\n\ @author\ Angela\ Gao\r\n\ @version\ November\ 2023\r\n
+comment0.text=\n\ The\ HitBox\ class\ represents\ a\ hitbox\ associated\ with\ a\ BaobabTree\ in\ the\ game.\ \n\ It\ allows\ for\ collision\ detection\ and\ tracking\ of\ the\ BaobabTree's\ position.\n\ \n\ @author\ Angela\ Gao\n\ @version\ November\ 2023\n
 comment1.params=tree
 comment1.target=HitBox(BaobabTree)
-comment1.text=\r\n\ Constructor\ for\ the\ HitBox\ class.\r\n\ \r\n\ @param\ tree\ The\ BaobabTree\ associated\ with\ the\ hitbox.\r\n
+comment1.text=\n\ Constructor\ for\ the\ HitBox\ class.\n\ \n\ @param\ tree\ The\ BaobabTree\ associated\ with\ the\ hitbox.\n
 comment2.params=
 comment2.target=void\ act()
-comment2.text=\r\n\ Act\ method\ is\ called\ whenever\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n\ Updates\ the\ hitbox's\ position\ based\ on\ the\ associated\ BaobabTree's\ speed.\r\n\ Removes\ the\ hitbox\ if\ the\ associated\ BaobabTree\ no\ longer\ exists.\r\n
+comment2.text=\n\ Act\ method\ is\ called\ whenever\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n\ Updates\ the\ hitbox's\ position\ based\ on\ the\ associated\ BaobabTree's\ speed.\n\ Removes\ the\ hitbox\ if\ the\ associated\ BaobabTree\ no\ longer\ exists.\n
 comment3.params=
 comment3.target=BaobabTree\ getBaobabTree()
-comment3.text=\r\n\ Gets\ the\ associated\ BaobabTree.\r\n\ \r\n\ @return\ The\ BaobabTree\ associated\ with\ the\ hitbox.\r\n
+comment3.text=\n\ Gets\ the\ associated\ BaobabTree.\n\ \n\ @return\ The\ BaobabTree\ associated\ with\ the\ hitbox.\n
 numComments=4
