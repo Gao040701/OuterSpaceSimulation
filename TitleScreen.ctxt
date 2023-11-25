@@ -1,11 +1,13 @@
 #BlueJ class context
 comment0.target=TitleScreen
-comment0.text=\n\ Write\ a\ description\ of\ class\ TitleScreen\ here.\n\ \n\ @Angela\ Gao\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ TitleScreen\ here.\r\n\ \r\n\ @Angela\ Gao\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
 comment1.target=TitleScreen()
-comment1.text=\n\ Constructor\ for\ objects\ of\ class\ TitleScreen.\n\ \n
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ TitleScreen.\r\n\ \r\n
 comment2.params=
 comment2.target=void\ act()
 comment3.params=
 comment3.target=void\ animate()
-numComments=4
+comment4.params=
+comment4.target=void\ toNextWorld()
+numComments=5

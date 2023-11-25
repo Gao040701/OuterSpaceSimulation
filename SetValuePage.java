@@ -1,7 +1,7 @@
 import greenfoot.*;
 
 /**
- * SetValuePage class represents the configuration page where the player can set
+ * The {@code SetValuePage} class represents the configuration page where the player can set
  * initial values for the game, such as the number of asteroids, amount of clues, asteroid speed,
  * and HP per planet.
  * 
@@ -12,11 +12,12 @@ import greenfoot.*;
  * @version November 2023
  */
 public class SetValuePage extends World {
+    // Instance variables for initial game settings
     private int numOfAsteroids;
     private int amountOfClues;
     private int asteroidSpeed;
     private int hpPerPlanet;
-    
+
     // Buttons for setting values
     private ImageButton plusAsteroidsButton;
     private ImageButton minusAsteroidsButton;
@@ -27,16 +28,16 @@ public class SetValuePage extends World {
     private ImageButton plusHPButton;
     private ImageButton minusHPButton;
     private ImageButton startButton;
-    
+
     // Labels to display the current values
     private TextButton cluesLabel;
     private TextButton speedLabel;
     private TextButton hpLabel;
     private TextButton asteroidsLabel;
-    
+
     // Background image
     private GreenfootImage setValueBG = new GreenfootImage("setValuePage.png");
-    private GreenfootImage plusImage=new GreenfootImage("plusButton.png");
+
     /**
      * Constructor for objects of class SetValuePage.
      */
@@ -46,7 +47,7 @@ public class SetValuePage extends World {
         setBackground(setValueBG);
         prepare();
     }
-    
+
     /**
      * Prepares the initial state of the world by setting up buttons, labels, and default values.
      */
@@ -99,7 +100,7 @@ public class SetValuePage extends World {
      * Handles user input and updates the values accordingly.
      */
     public void act() {
-        // Increment or decrement values based on button clicks
+        // Increment or decrement values based on button clicks  
         if (Greenfoot.mousePressed(plusAsteroidsButton)) {
             if (numOfAsteroids < 6) {
                 numOfAsteroids++;
@@ -141,13 +142,13 @@ public class SetValuePage extends World {
                 updateLabel(plusHPButton, minusHPButton, hpLabel, "HP per Planet: ", hpPerPlanet);
             }
         } else if (Greenfoot.mousePressed(startButton)) {
-            // Start the game with the configured settings
             Galaxy galaxy = new Galaxy(numOfAsteroids, amountOfClues, asteroidSpeed, hpPerPlanet);
             Greenfoot.setWorld(galaxy);
         }
-    }
-    
-     /**
+    }   
+
+
+    /**
      * Updates the displayed label text with the current value.
      * 
      * @param plusButton The button to increment the value.
@@ -160,4 +161,3 @@ public class SetValuePage extends World {
         label.updateMe(labelText + value);
     }
 }
-

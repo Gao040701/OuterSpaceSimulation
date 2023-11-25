@@ -27,6 +27,7 @@ public class Explosion extends Actor {
         animation = new GreenfootImage[32];
         for (int i = 0; i < 32; i++) {
             animation[i] = new GreenfootImage("explosion/1_" + (i) + ".png");
+            animation[i].scale(getImage().getWidth()*25, getImage().getHeight()*25);
         }
     }
 
