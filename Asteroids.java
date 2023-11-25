@@ -18,7 +18,7 @@ public class Asteroids extends SuperSmoothMover {
     private int count;
     private GreenfootImage asteroid = new GreenfootImage("asteroid.png");
     private int worldWidth = 1024, worldHeight = 576;
-
+    private GreenfootSound explosion;
     /**
      * Constructs an Asteroids object.
      * The initial x and y speeds, as well as the image size, are randomized.
@@ -29,8 +29,25 @@ public class Asteroids extends SuperSmoothMover {
         count = 0; // counter initialized to 0
         asteroid.scale(75 + Greenfoot.getRandomNumber(30), 60 + Greenfoot.getRandomNumber(30));
         setImage(asteroid);
+        explosion = new GreenfootSound("explosion.mp3");
+    }
+    
+    /**
+     * Method called when the world is started. 
+     * Starts playing the intro music.
+     */
+    public void started(){
+        explosion.playLoop(); 
     }
 
+    /**
+     * Method called when the world is stopped. 
+     * Pauses the intro music.
+     */
+    public void stopped(){
+        explosion.pause();
+    }
+    
     /**
      * Act method is called whenever the 'Act' or 'Run' button gets pressed in the environment.
      * Handles the movement, relocation, and periodic speed change of asteroids.
@@ -88,7 +105,9 @@ public class Asteroids extends SuperSmoothMover {
     }
     
     public void explode(){
+        started();
         Explosion explosion = new Explosion(5); // Create an explosion object
         getWorld().addObject(explosion, getX(), getY()); // Add the explosion to the world
+        stopped();
     }
 }

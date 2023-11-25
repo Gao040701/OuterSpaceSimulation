@@ -51,22 +51,20 @@ public class Fox extends Moving
         box = (HitBox) getOneIntersectingObject(HitBox.class);
 
         if (checkHitPlanet() && follow == false){
-            //System.out.println("ON PLANET");
             setLocation (planet.getPlanetX() + planet.getRadius(), planet.getPlanetY());
             animate (dig);
             turnTowards(planet);
             turn(-90);
         }
         if (!checkHitPlanet() && follow == false){
-            //System.out.println("FLOAT ALONE");
             passCount = 0;
             //rotateDetection = false;
             isStaying = false;
             rotateImage(90);
             moveRandomly();
             if (getRotation() < 270 && getRotation() > 90){
-                animate(flyInverted);
-            }else animate(fly);
+                animate(fly);
+            }else animate(flyInverted);
         }
         if(checkCollisionLP()){
             follow = true;
