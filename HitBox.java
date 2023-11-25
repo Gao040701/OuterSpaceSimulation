@@ -1,16 +1,22 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;  
 
 /**
- * Write a description of class HitBox here.
+ * The HitBox class represents a hitbox associated with a BaobabTree in the game. 
+ * It allows for collision detection and tracking of the BaobabTree's position.
  * 
- * @Angela Gao
- * @version (a version number or a date)
+ * @author Angela Gao
+ * @version November 2023
  */
-
 public class HitBox extends Stationary
 {
-    private BaobabTree tree;
-    private GreenfootImage img;
+    private BaobabTree tree;  // The associated BaobabTree
+    private GreenfootImage img;  // The image used for the hitbox
+
+    /**
+     * Constructor for the HitBox class.
+     * 
+     * @param tree The BaobabTree associated with the hitbox.
+     */
     public HitBox(BaobabTree tree){
         this.tree = tree;
         img = new GreenfootImage(tree.getImage().getWidth()/3, tree.getImage().getHeight());
@@ -20,6 +26,11 @@ public class HitBox extends Stationary
         img.setTransparency(0);
     }
     
+    /**
+     * Act method is called whenever the 'Act' or 'Run' button gets pressed in the environment.
+     * Updates the hitbox's position based on the associated BaobabTree's speed.
+     * Removes the hitbox if the associated BaobabTree no longer exists.
+     */
     public void act(){
         setLocation(getX() + tree.getPlanet().getSpeed(), getY());
         if (getBaobabTree() == null){
@@ -27,6 +38,11 @@ public class HitBox extends Stationary
         }
     }
     
+    /**
+     * Gets the associated BaobabTree.
+     * 
+     * @return The BaobabTree associated with the hitbox.
+     */
     public BaobabTree getBaobabTree(){
         return tree;
     }

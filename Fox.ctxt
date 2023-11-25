@@ -1,20 +1,26 @@
 #BlueJ class context
 comment0.target=Fox
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Fox\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ The\ Fox\ class\ represents\ a\ fox\ actor\ in\ the\ game\ that\ can\ move,\ interact\ with\ other\ objects,\n\ and\ follow\ the\ Little\ Prince.\n\ \n\ @author\ Jennifer\ Zhou\n\ @version\ November\ 2023\n
 comment1.params=
 comment1.target=void\ act()
+comment1.text=\n\ Act\ method\ is\ called\ whenever\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n\ Includes\ the\ behavior\ of\ the\ fox,\ such\ as\ movement\ and\ interaction\ with\ other\ objects.\n
 comment2.params=
 comment2.target=boolean\ checkHitPlanet()
+comment2.text=\n\ Checks\ if\ the\ Fox\ hits\ a\ planet.\n\ \n\ @return\ True\ if\ the\ Fox\ hits\ a\ planet,\ otherwise\ false.\n
 comment3.params=
 comment3.target=boolean\ checkHitTree()
+comment3.text=\n\ Checks\ if\ the\ Fox\ hits\ a\ tree.\n\ \n\ @return\ True\ if\ the\ Fox\ hits\ a\ tree,\ otherwise\ false.\n
 comment4.params=
 comment4.target=void\ rotate()
 comment5.params=planet
 comment5.target=boolean\ canFly(Planet)
+comment5.text=\n\ Checks\ if\ the\ Fox\ can\ fly\ over\ the\ planet.\n\ \n\ @param\ planet\ The\ planet\ to\ check.\n\ @return\ True\ if\ the\ Fox\ can\ fly\ over\ the\ planet,\ otherwise\ false.\n
 comment6.params=
 comment6.target=boolean\ getRotationDetection()
 comment7.params=walk\ fly\ dig\ flyInverted
 comment7.target=Fox(greenfoot.GreenfootImage[],\ greenfoot.GreenfootImage[],\ greenfoot.GreenfootImage[],\ greenfoot.GreenfootImage[])
+comment7.text=\n\ Constructor\ for\ the\ Fox\ class.\n\ \n\ @param\ walk\ Array\ of\ walking\ animation\ frames.\n\ @param\ fly\ Array\ of\ flying\ animation\ frames.\n\ @param\ dig\ Array\ of\ digging\ animation\ frames.\n\ @param\ flyInverted\ Array\ of\ inverted\ flying\ animation\ frames.\n
 comment8.params=
 comment8.target=boolean\ checkCollisionLP()
+comment8.text=\n\ Checks\ if\ the\ Fox\ collides\ with\ the\ Little\ Prince.\n\ \n\ @return\ True\ if\ the\ Fox\ collides\ with\ the\ Little\ Prince,\ otherwise\ false.\n
 numComments=9
