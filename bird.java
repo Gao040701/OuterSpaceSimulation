@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Jiayi Li 
  * @version November 2023
  */
-public class bird extends Moving
+public class Bird extends Moving
 {
     private GreenfootImage birdImage = new GreenfootImage("birds.png");
     private GreenfootImage birdImageInverted = new GreenfootImage("birds.png");
@@ -18,7 +18,7 @@ public class bird extends Moving
      * Constructor for objects of class bird.
      * Initializes the bird with its default image and inverted image.
      */
-    public bird(){
+    public Bird(){
         setImage(birdImage);
         birdImageInverted.mirrorVertically();
     }

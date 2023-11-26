@@ -85,7 +85,7 @@ public class Galaxy extends World
         TLP.prepareAnimation(TLPdig, "digAnimation/dig");
         TLP.prepareAnimation(TLPflyInverted, "flyAnimation/fly");
         TLP.flipVertically(TLPflyInverted);
-        addObject(new bird(), 100, 200);
+        addObject(new Bird(), 100, 200);
         addObject(new HomePlanet(), getWidth() / 2, getHeight() / 2);
         addObject(new RandomPlanet(), 0, y);
         if (Greenfoot.getRandomNumber(1) == 0 && hasFox == true && countFox < 1){

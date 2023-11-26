@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Fox
-comment0.text=\n\ The\ Fox\ class\ represents\ a\ fox\ actor\ in\ the\ game\ that\ can\ move,\ interact\ with\ other\ objects,\n\ and\ follow\ the\ Little\ Prince.\n\ \n\ @author\ Jennifer\ Zhou\n\ @version\ November\ 2023\n
+comment0.text=\n\ The\ Fox\ class\ represents\ a\ fox\ actor\ in\ the\ game\ that\ can\ move,\ interact\ with\ other\ objects,\n\ and\ follow\ the\ Little\ Prince.\n\ \n\ @author\ Jennifer\ Zhou\n\ @version\ v1.0\n
 comment1.params=
 comment1.target=void\ act()
 comment1.text=\n\ Act\ method\ is\ called\ whenever\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n\ Includes\ the\ behavior\ of\ the\ fox,\ such\ as\ movement\ and\ interaction\ with\ other\ objects.\n

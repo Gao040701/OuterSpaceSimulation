@@ -1,8 +1,8 @@
 #BlueJ class context
-comment0.target=bird
+comment0.target=Bird
 comment0.text=\n\ The\ bird\ class\ represents\ a\ bird\ actor\ in\ the\ world.\n\ It\ follows\ the\ movement\ of\ the\ LittlePrince\ actor\ and\ changes\ its\ appearance\ based\ on\ the\ rotation.\n\ The\ bird\ is\ transparent\ when\ the\ rotation\ detection\ of\ LittlePrince\ is\ active.\n\ \n\ @author\ Jiayi\ Li\ \n\ @version\ November\ 2023\n
 comment1.params=
-comment1.target=bird()
+comment1.target=Bird()
 comment1.text=\n\ Constructor\ for\ objects\ of\ class\ bird.\n\ Initializes\ the\ bird\ with\ its\ default\ image\ and\ inverted\ image.\n
 comment2.params=
 comment2.target=void\ act()

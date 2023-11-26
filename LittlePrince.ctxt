@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=LittlePrince
-comment0.text=\n\ The\ LittlePrince\ class\ represents\ the\ character\ that\ walks\ around\ planets\ and\ jumps\ out\ of\ planets\n\ when\ all\ the\ baobab\ trees\ are\ destroyed.\ It\ extends\ the\ Moving\ class\ and\ has\ additional\ behavior\n\ related\ to\ health\ points,\ collision\ detection,\ and\ rotation.\n\ \n\ @Authors\ Zhiyu\ (Jennifer)\ Zhou\ &\ Angela\ Gao\ \n\ @Version\ Jan\ 7,\ 2022\ -\ v1.0\n
+comment0.text=\n\ The\ LittlePrince\ class\ represents\ the\ character\ that\ walks\ around\ planets\ and\ jumps\ out\ of\ planets\n\ when\ all\ the\ baobab\ trees\ are\ destroyed.\ It\ extends\ the\ Moving\ class\ and\ has\ additional\ behavior\n\ related\ to\ health\ points,\ collision\ detection,\ and\ rotation.\n\ \n\ @Author\:\ Zhiyu\ (Jennifer)\ Zhou\n\ @Editor\:\ Angela\ Gao\n\ @Version\:\ v1.0\n
 comment1.params=
 comment1.target=void\ act()
 comment1.text=\n\ Act\ -\ do\ whatever\ the\ LittlePrince\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n

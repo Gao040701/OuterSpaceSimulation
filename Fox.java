@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * and follow the Little Prince.
  * 
  * @author Jennifer Zhou
- * @version November 2023
+ * @version v1.0
  */
 
 public class Fox extends Moving
@@ -68,7 +68,6 @@ public class Fox extends Moving
         }
         if(checkCollisionLP()){
             follow = true;
-
             if(!littlePrince.checkHitPlanet() && follow == true){
                 passCount = 0;
                 //setLocation(littlePrince.getPrinceX(), littlePrince.getPrinceY());

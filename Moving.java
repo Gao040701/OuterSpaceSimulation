@@ -5,8 +5,9 @@ import java.awt.Point;
 /**
  * Write a description of class Moving here.
  * 
- * @author Angela Gao
- * @version November 2023
+ * @author Zhiyu (Jennifer) Zhou
+ * @editor Angela Gao
+ * @version 1.0
  */
 public class Moving extends Being
 {
@@ -43,6 +44,7 @@ public class Moving extends Being
          * Add if (energy > 0)
          */
     }
+    
     /**
      * Constructor for the Moving class.
      * 
@@ -59,6 +61,7 @@ public class Moving extends Being
     }
     
     public Moving(){}
+    
     /**
      * Gets the distance between two actors.
      * 
@@ -66,6 +69,7 @@ public class Moving extends Being
      * @param b The second actor.
      * @return The distance between the two actors.
      */
+    
     public static double getDistance (Actor a, Actor b){
         double distanceBetween = Math.hypot (Math.abs(a.getX() - b.getX()), Math.abs(a.getY() - b.getY()));
         return distanceBetween;
@@ -127,6 +131,7 @@ public class Moving extends Being
             }
         }
     }
+    
     /**
      * Prepares animation frames from image files.
      * 
@@ -138,6 +143,7 @@ public class Moving extends Being
             imgs[i] = new GreenfootImage(frameName+i+".png");
         }
     }
+    
     /**
      * Prepares scaled animation frames from image files.
      * 

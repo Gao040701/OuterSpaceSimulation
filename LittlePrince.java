@@ -7,8 +7,9 @@ import java.util.ArrayList;
  * when all the baobab trees are destroyed. It extends the Moving class and has additional behavior
  * related to health points, collision detection, and rotation.
  * 
- * @Authors Zhiyu (Jennifer) Zhou & Angela Gao 
- * @Version Jan 7, 2022 - v1.0
+ * @Author: Zhiyu (Jennifer) Zhou
+ * @Editor: Angela Gao
+ * @Version: v1.0
  */
 public class LittlePrince extends Moving
 {
@@ -161,7 +162,7 @@ public class LittlePrince extends Moving
             if(totalHP==0){
                 Greenfoot.setWorld(new EndScreen(true));
             }
-            // 在这里添加新的 Asteroids，以保持总数为三个
+            // Added Asteroids to keep the amounts as three.
             int currentAsteroids = asteroidsList.size();
             int asteroidsToAdd = Galaxy.getNumOfAsteroids() - currentAsteroids;
 
