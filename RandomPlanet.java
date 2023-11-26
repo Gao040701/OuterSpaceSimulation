@@ -31,7 +31,7 @@ public class RandomPlanet extends Planet {
     private boolean roseAppear = false;
     private RandomPlanet newPlanet;
     private double cos45, cos30, cos60; //cos30 = sin60, cos60 = sin30
-    private boolean oneRose=false;
+    private static boolean oneRose;
     
     /**
      * Constructor for the RandomPlanet class.
@@ -108,7 +108,7 @@ public class RandomPlanet extends Planet {
 
             if (!roseAppear) {
                 generateTrees();
-            } else if(roseAppear && !oneRose){
+            } else if(roseAppear && oneRose != true){
                 generateRose();
                 speed = 1;
                 oneRose=true;
@@ -266,7 +266,6 @@ public class RandomPlanet extends Planet {
         if (!oneRose) {
             Rose rose = new Rose();
             getWorld().addObject(rose, getX(), getY() - getRadius() - 20);
-            oneRose = true; 
         }
     }
 }

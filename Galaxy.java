@@ -167,9 +167,9 @@ public class Galaxy extends World
      * 
      * @param amountOfClues The amount of clues to add or subtract.
      */
-    public void changeClue(int amountOfClues){
-        this.amountOfClues=amountOfClues;
-        clueCount += amountOfClues;
+    public void changeClue(int amount){
+        //this.amountOfClues=amountOfClues;
+        clueCount += amount;
         clueBar.update(clueCount);
     }
     
