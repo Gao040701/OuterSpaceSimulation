@@ -81,24 +81,24 @@ public class SetValuePage extends World {
 
         // Create buttons to increment or decrement values
         plusAsteroidsButton = new ImageButton("plusButton.png", "plusButton.png", "plus", 80, 80);
-        addObject(plusAsteroidsButton, 839, 191);
+        addObject(plusAsteroidsButton, 819, 191);
         minusAsteroidsButton = new ImageButton("minusButton.png", "minusButton.png", "minus", 80, 80);
-        addObject(minusAsteroidsButton, 191, 191);
+        addObject(minusAsteroidsButton, 211, 191);
 
         plusCluesButton = new ImageButton("plusButton.png", "plusButton.png", "plus", 80, 80);
-        addObject(plusCluesButton, 839, 271);
+        addObject(plusCluesButton, 819, 271);
         minusCluesButton = new ImageButton("minusButton.png", "minusButton.png", "minus", 80, 80);
-        addObject(minusCluesButton, 191, 271);
+        addObject(minusCluesButton, 211, 271);
 
         plusSpeedButton = new ImageButton("plusButton.png", "plusButton.png", "plus", 80, 80);
-        addObject(plusSpeedButton, 839, 351);
+        addObject(plusSpeedButton, 819, 351);
         minusSpeedButton = new ImageButton("minusButton.png", "minusButton.png", "minus", 80, 80);
-        addObject(minusSpeedButton, 191, 351);
+        addObject(minusSpeedButton, 211, 351);
 
         plusHPButton = new ImageButton("plusButton.png", "plusButton.png", "plus", 80, 80);
-        addObject(plusHPButton, 839, 431);
+        addObject(plusHPButton, 819, 431);
         minusHPButton = new ImageButton("minusButton.png", "minusButton.png", "minus", 80, 80);
-        addObject(minusHPButton, 191, 431);
+        addObject(minusHPButton, 211, 431);
 
         // Create the start button
         startButton = new ImageButton("startButton.png", "startButtonPressed.png", "start", 80, 50);
