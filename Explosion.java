@@ -13,7 +13,7 @@ public class Explosion extends Actor {
     private int duration, count;
     private SimpleTimer animationTimer;
     private GreenfootImage[] animation;
-
+    private GreenfootSound explosion;
     /**
      * Constructs an explosion with the specified duration.
      * 
@@ -29,6 +29,8 @@ public class Explosion extends Actor {
             animation[i] = new GreenfootImage("explosion/1_" + (i) + ".png");
             animation[i].scale(getImage().getWidth()*25, getImage().getHeight()*25);
         }
+        explosion = new GreenfootSound("explosion.wav");
+        explosion.setVolume(70);
     }
 
     /**
@@ -39,13 +41,30 @@ public class Explosion extends Actor {
         duration--;
         explode();
     }
+    
+    /**
+     * Method called when the world is started. 
+     * Starts playing the intro music.
+     */
+    public void started(){
+        explosion.playLoop(); 
+    }
+
+    /**
+     * Method called when the world is stopped. 
+     * Pauses the intro music.
+     */
+    public void stopped(){
+        explosion.pause();
+    }
 
     /**
      * Displays the explosion animation.
      * The animation is updated based on a timer, and the explosion object is removed after completion.
      */
-    public void explode() {
+    private void explode() {
         // Check if it's time to update the animation
+        started();
         if (animationTimer.millisElapsed() < 25) {
             return;
         } else if (animationTimer.millisElapsed() >= 25) {
@@ -55,6 +74,7 @@ public class Explosion extends Actor {
             // Check if the end of the animation is reached
             if (count == 20) {
                 count = 0;
+                stopped();
                 getWorld().removeObject(this);
             }
             

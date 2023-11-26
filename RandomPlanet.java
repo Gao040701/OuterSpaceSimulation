@@ -51,6 +51,7 @@ public class RandomPlanet extends Planet {
         randomHpBar = new SuperStatBar(totalHP, totalHP, this, 50, 10, -20, Color.GREEN, Color.RED, false, Color.BLACK, 1);
         appear = true;
         this.roseAppear = roseAppear;
+
     }
 
     /**
