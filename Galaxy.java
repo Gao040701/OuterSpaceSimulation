@@ -134,10 +134,11 @@ public class Galaxy extends World
     }
 
     public void act() {
+        started();
         if (clueCount == 120 && !roseAdded) {
             roseAdded = true;  // Set the flag to true so that you don't add more Roses
+            stopped();
         }
-        started();
     }
     
     public static int getNumOfAsteroids(){

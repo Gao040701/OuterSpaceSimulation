@@ -14,16 +14,14 @@ public class Moving extends Being
     private int index, count = 0, degree;
     private double speed;
     private final int COUNT_NUM = 7;
-    private Planet targetPlanet;
-    private LittlePrince targetLP;
     private RandomPlanet randomPlanet;
     private Planet planet;
     private Fox fox;
     private HitBox box;
     protected boolean rotateDetection = false;
     private double angle = 0;
-    private ArrayList<Planet> planets;
-    private ArrayList<LittlePrince> littlePrinces;
+    
+    
     protected LittlePrince littlePrince;
     private int mySpeed = 1;
     private int passCount = 0;
@@ -73,63 +71,6 @@ public class Moving extends Being
     public static double getDistance (Actor a, Actor b){
         double distanceBetween = Math.hypot (Math.abs(a.getX() - b.getX()), Math.abs(a.getY() - b.getY()));
         return distanceBetween;
-    }
-
-    public void targetClosestPlanet(){
-        double closestTargetDistance = 0;
-        double distanceToActor;
-        planets = (ArrayList<Planet>)getObjectsInRange(40, Planet.class);
-
-        if (planets.size() == 0){
-            planets = (ArrayList<Planet>)getObjectsInRange(140, Planet.class);
-        }
-
-        if (planets.size() > 0){
-            targetPlanet = planets.get(0);
-            closestTargetDistance = getDistance (this, targetPlanet);
-
-            for (Planet o : planets){
-                distanceToActor = getDistance(this, o);
-                if (distanceToActor < closestTargetDistance){
-                    targetPlanet = o;
-                    closestTargetDistance = distanceToActor;
-                }
-            }
-            turnTowards(targetPlanet.getX(), targetPlanet.getY());
-        }
-    }
-    
-    public void targetClosestLP(){
-        double closestTargetDistance = 0;
-        double distanceToActor;
-        littlePrinces = (ArrayList<LittlePrince>)getObjectsInRange(40, LittlePrince.class);
-
-        if (littlePrinces.size() == 0){
-            littlePrinces = (ArrayList<LittlePrince>)getObjectsInRange(150, LittlePrince.class);
-        }
-
-        if (littlePrinces.size() > 0){
-            targetLP = littlePrinces.get(0);
-            closestTargetDistance = getDistance (this, targetLP);
-
-            for (LittlePrince o : littlePrinces){
-                distanceToActor = getDistance(this, o);
-                if (distanceToActor < closestTargetDistance){
-                    targetLP = o;
-                    closestTargetDistance = distanceToActor;
-                }
-            }
-            setLocation(targetLP.getX(), targetLP.getY());
-            //setRotation(targetLP.getDegree());
-            if(targetLP.getDegree() > 90 && targetLP.getDegree() < 360){
-                animate(flyInverted);
-                turn(targetLP.getDegree());
-            }
-            if(targetLP.getDegree() > 0 && targetLP.getDegree() < 90){
-                animate(flyInverted);
-                turn(targetLP.getDegree());
-            }
-        }
     }
     
     /**

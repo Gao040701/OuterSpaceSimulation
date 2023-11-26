@@ -17,7 +17,7 @@ public class LittlePrince extends Moving
     private int totalHP;
     private int decreaseHP;
     private boolean appear;
-    
+
     private int index, count = 0, degree;
     private double speed;
     private final int COUNT_NUM = 7;
@@ -49,7 +49,15 @@ public class LittlePrince extends Moving
         randomPlanet = (RandomPlanet) getOneIntersectingObject(RandomPlanet.class);
         planet = (Planet) getOneIntersectingObject(Planet.class);
         box = (HitBox) getOneIntersectingObject(HitBox.class);
-        targetClosestPlanet();
+        //System.out.println("PRINT!");
+        
+        if (targetPlanet != null && targetPlanet.getWorld() == null){
+                targetPlanet = null;
+        }
+        if (targetPlanet == null || Galaxy.getDistance (this, targetPlanet) > 20){
+            targetClosestPlanet();
+        }
+        
         if (checkHitPlanet()){
             rotateDetection = true;
             rotate();
@@ -58,12 +66,53 @@ public class LittlePrince extends Moving
             rotateDetection = false;
             isStaying = false;
             rotateImage(90);
-            moveRandomly();
+            if (targetPlanet != null){
+                moveTowardPlanet();
+                System.out.println("TOWARDS!");
+                if (getRotation() < 270 && getRotation() > 90){
+                    animate(flyInverted);
+                }else animate(fly);
+            }else{
+                moveRandomly();
+                if (getRotation() < 270 && getRotation() > 90){
+                    animate(flyInverted);
+                }else animate(fly);
+            }
             //targetClosestPlanet();
-            if (getRotation() < 270 && getRotation() > 90){
-                animate(flyInverted);
-            }else animate(fly);
         }
+    }
+
+    private void targetClosestPlanet(){
+        double closestTargetDistance = 0;
+        double distanceToActor;
+        planets = (ArrayList<Planet>)getObjectsInRange(60, Planet.class);
+
+        if (planets.size() == 0){
+            planets = (ArrayList<Planet>)getObjectsInRange(160, Planet.class);
+        }
+
+        if (planets.size() > 0){
+            targetPlanet = planets.get(0);
+            closestTargetDistance = getDistance (this, targetPlanet);
+
+            for (Planet o : planets){
+                distanceToActor = getDistance(this, o);
+                if (distanceToActor < closestTargetDistance){
+                    targetPlanet = o;
+                    closestTargetDistance = distanceToActor;
+                }
+            }
+            turnTowards(targetPlanet.getX(), targetPlanet.getY());
+            System.out.println("TARGET P!");
+        }
+    }
+
+    private void moveTowardPlanet(){
+        // if (Galaxy.getDistance(this, targetPlanet) < 30){
+
+        // }
+        move(mySpeed);
+        System.out.println("Move towards P!");
     }
 
     public int getDegree(){
@@ -150,7 +199,7 @@ public class LittlePrince extends Moving
     public boolean getRotationDetection(){
         return rotateDetection;
     }
-    
+
     public void checkCollisionAsteriods() {
         List<Asteroids> asteroidsList = getWorld().getObjects(Asteroids.class);
         Actor actor = getOneIntersectingObject(Asteroids.class);
