@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=EndScreen
+comment0.text=\n\ The\ EndScreen\ class\ represents\ the\ end\ screen\ of\ the\ game,\ displaying\ either\ a\ success\ or\ failure\ message.\n\ It\ includes\ an\ animation\ for\ successful\ completion\ and\ a\ restart\ button.\n\ \n\ @author\ Angela\ Gao\n\ @version\ November\ 2023\n
+comment1.params=success
+comment1.target=EndScreen(boolean)
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ EndScreen.\n\ \n\ @param\ success\ Indicates\ whether\ the\ game\ was\ successful\ or\ not.\n
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\n\ Act\ method\ for\ the\ EndScreen.\ \n\ Handles\ animation\ and\ restart\ button\ events.\n
+comment3.params=
+comment3.target=void\ animate()
+comment3.text=\n\ Animates\ the\ background\ images\ for\ successful\ completion.\n
+comment4.params=
+comment4.target=void\ senseButton()
+comment4.text=\n\ Checks\ if\ the\ restart\ button\ is\ clicked\ and\ restarts\ the\ game\ accordingly.\n
+numComments=5

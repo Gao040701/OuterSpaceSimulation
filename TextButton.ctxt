@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=TextButton
+comment0.text=\n\ The\ TextButton\ class\ represents\ a\ button\ with\ text\ in\ the\ Greenfoot\ environment.\n\ It\ can\ be\ used\ to\ create\ buttons\ with\ different\ functionalities,\ such\ as\ plus\ and\ minus\ buttons.\n\ \n\ @author\ Jiayi\ Li\n\ @version\ November\ 2023\n
+comment1.params=text\ textSize\ buttonType
+comment1.target=TextButton(java.lang.String,\ int,\ java.lang.String)
+comment1.text=\n\ Construct\ a\ TextButton\ given\ only\ a\ String.\n\ \n\ @param\ text\ \ \ \ \ \ \ String\ to\ be\ displayed\ on\ the\ button.\n\ @param\ textSize\ \ \ Size\ of\ the\ text.\n\ @param\ buttonType\ Type\ of\ the\ button,\ e.g.,\ "plus"\ or\ "minus".\n
+comment2.params=text\ textSize
+comment2.target=TextButton(java.lang.String,\ int)
+comment2.text=\n\ Construct\ a\ TextButton\ given\ a\ String\ and\ a\ text\ size.\n\ \n\ @param\ text\ \ \ \ \ String\ to\ be\ displayed\ on\ the\ button.\n\ @param\ textSize\ Size\ of\ the\ text.\n
+comment3.params=
+comment3.target=void\ act()
+comment3.text=\n\ Act\ -\ do\ whatever\ the\ TextButton\ wants\ to\ do.\n\ This\ method\ is\ called\ whenever\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+comment4.params=text
+comment4.target=void\ updateMe(java.lang.String)
+comment4.text=\n\ Update\ current\ TextButton\ text.\n\ \n\ @param\ text\ New\ text\ to\ be\ displayed\ on\ the\ button.\n
+numComments=5
