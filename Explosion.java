@@ -20,6 +20,8 @@ public class Explosion extends Actor {
      * Link: https://pixabay.com/sound-effects/russianmeteorite-sfx-76195/
      */
     public static final GreenfootSound explosion = new GreenfootSound("explosion.wav");
+    private LittlePrince TLP;
+    private boolean damaged = false;
     /**
      * Constructs an explosion with the specified duration.
      * 
@@ -70,6 +72,7 @@ public class Explosion extends Actor {
     private void explode() {
         // Check if it's time to update the animation
         started();
+        causeDamage();
         if (animationTimer.millisElapsed() < 25) {
             return;
         } else if (animationTimer.millisElapsed() >= 25) {
@@ -81,8 +84,17 @@ public class Explosion extends Actor {
                 count = 0;
                 stopped();
                 getWorld().removeObject(this);
+                return;
             }
             animationTimer.mark();  // Reset the timer for the next frame
+        }
+    }
+    
+    public void causeDamage(){
+        if (isTouching(LittlePrince.class) && !damaged){
+            TLP = (LittlePrince)getOneIntersectingObject(LittlePrince.class);
+            TLP.changeHP(-5);
+            damaged = true;
         }
     }
 }

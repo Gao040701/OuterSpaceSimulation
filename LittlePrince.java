@@ -239,4 +239,12 @@ public class LittlePrince extends Moving
     public int getPrinceY(){
         return getY();
     }
+    
+    public void changeHP(int amount){
+        totalHP += amount;
+        princeHpBar.update(totalHP);
+        if(totalHP==0){
+            Greenfoot.setWorld(new EndScreen(false));
+        }
+    }
 }
