@@ -68,7 +68,7 @@ public class LittlePrince extends Moving
             rotateImage(90);
             if (targetPlanet != null){
                 moveTowardPlanet();
-                //System.out.println("TOWARDS!");
+                System.out.println("TOWARDS!");
                 if (getRotation() < 270 && getRotation() > 90){
                     animate(flyInverted);
                 }else animate(fly);
@@ -188,11 +188,17 @@ public class LittlePrince extends Moving
             animate(walk);
             if(canFly(planet)){
                 setLocation(getX()-200, getY() - 10);
+                targetPlanet = null;
             }
         }else{
             setLocation(getX() + speed, getY());
             animate(dig);
             box.getBaobabTree().removeBaobabTree();
+        }
+        
+        if (isTouching(Rose.class)){
+            Greenfoot.setWorld(new EndScreen(true));
+            Galaxy.galaxyMusic.stop();
         }
     }
 
