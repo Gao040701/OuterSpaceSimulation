@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Galaxy
-comment0.text=\n\ The\ {@code\ Galaxy}\ class\ represents\ the\ game\ world\ in\ which\ the\ Little\ Prince\n\ explores\ and\ interacts.\ It\ includes\ asteroids,\ planets,\ characters,\ and\ other\ elements.\n\ \n\ @author\ Angela\ Gao,\ Jiayi\ Li,\ Jennifer\ Zhou\ \n\ @version\ November\ 24\n
+comment0.text=\n\ The\ {@code\ Galaxy}\ class\ represents\ the\ game\ world\ in\ which\ the\ Little\ Prince\n\ explores\ and\ interacts.\ It\ includes\ asteroids,\ planets,\ characters,\ and\ other\ elements.\n\ \n\ @authors\:\ Angela\ Gao,\ Jiayi\ Li,\ Jennifer\ Zhou\ \n\ @version\:\ November\ 24\n
 comment1.params=numOfAsteroids\ amountOfClues\ asteroidSpeed\ hpPerPlanet
 comment1.target=Galaxy(int,\ int,\ int,\ int)
 comment1.text=\n\ Constructor\ for\ objects\ of\ class\ Galaxy.\n\ \n\ @param\ numOfAsteroids\ The\ number\ of\ asteroids\ in\ the\ world.\n\ @param\ amountOfClues\ The\ initial\ amount\ of\ clues.\n\ @param\ asteroidSpeed\ The\ speed\ of\ asteroids.\n\ @param\ hpPerPlanet\ The\ initial\ HP\ (health\ points)\ per\ planet.\n

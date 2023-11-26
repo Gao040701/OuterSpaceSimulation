@@ -3,8 +3,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * The {@code Galaxy} class represents the game world in which the Little Prince
  * explores and interacts. It includes asteroids, planets, characters, and other elements.
  * 
- * @author Angela Gao, Jiayi Li, Jennifer Zhou 
- * @version November 24
+ * @authors: Angela Gao, Jiayi Li, Jennifer Zhou 
+ * @version: November 24
  */
 public class Galaxy extends World
 {
@@ -34,7 +34,8 @@ public class Galaxy extends World
     
     // Initial y-coordinate for planet placement
     private int y = Greenfoot.getRandomNumber(276) + 150;
-    private GreenfootSound galaxyMusic;
+    public static final GreenfootSound galaxyMusic = new GreenfootSound("galaxyMusic.mp3");
+    
     private boolean roseAdded = false;    
     /**
      * Constructor for objects of class Galaxy.
@@ -58,7 +59,6 @@ public class Galaxy extends World
         clueBar = new SuperStatBar(120, clueCount, null, 110, 10, 0, Color.RED, Color.GREEN, false, Color.BLACK, 1);
         addObject(clueBar, getWidth() - 60, 100);
         addObject(new Roseicon(), getWidth() - 60, 50);
-        galaxyMusic = new GreenfootSound("galaxyMusic.mp3");
         galaxyMusic.setVolume(50);
         prepare();
     }
@@ -97,6 +97,7 @@ public class Galaxy extends World
             hasFox = false;
         }
     }
+    
     public void generateFox() {
         if (Greenfoot.getRandomNumber(1) == 0){
             Fox fox = new Fox(foxRun, foxFly, foxDig, foxFlyInverted);
@@ -137,7 +138,6 @@ public class Galaxy extends World
         started();
         if (clueCount == 120 && !roseAdded) {
             roseAdded = true;  // Set the flag to true so that you don't add more Roses
-            stopped();
         }
     }
     

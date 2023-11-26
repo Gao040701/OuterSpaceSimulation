@@ -18,6 +18,7 @@ public class Rose extends Stationary
         move(2);
         if (isTouching(LittlePrince.class)){
             Greenfoot.setWorld(new EndScreen(true));
+            Galaxy.galaxyMusic.stop();
         }
     }
     public Rose(){

@@ -20,6 +20,7 @@ public class EndScreen extends World
     private boolean success;
     private Image text;
     private Image restartButton;
+    public static final GreenfootSound failedMusic = new GreenfootSound("failedMusic.mp3");
 
     /**
      * Constructor for objects of class EndScreen.
@@ -43,6 +44,7 @@ public class EndScreen extends World
             text = new Image(congradulation);
             addObject(text, 400, 200);
         } else {
+            startedFailed();
             setBackground(fail);
             text = new Image(waiting);
             addObject(text, 400, 150);
@@ -61,6 +63,14 @@ public class EndScreen extends World
             animate();
         }
         senseButton();
+    }
+    
+    public void startedFailed(){
+        failedMusic.playLoop(); 
+    }
+
+    public void stoppedFailed(){
+        failedMusic.pause();
     }
     
     /**
@@ -85,6 +95,7 @@ public class EndScreen extends World
      */
     public void senseButton(){
         if (Greenfoot.mouseClicked(restartButton)){
+            stoppedFailed();
             Greenfoot.setWorld(new TitleScreen());
         }
     }
