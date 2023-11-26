@@ -1,16 +1,16 @@
 #BlueJ class context
 comment0.target=TitleScreen
-comment0.text=\n\ The\ TitleScreen\ class\ represents\ the\ title\ screen\ of\ the\ game.\n\ It\ displays\ an\ animation,\ title\ text,\ stars,\ and\ a\ start\ button.\n\ \n\ @author\ Angela\ Gao\n\ @version\ November\ 2023\n
+comment0.text=\r\n\ The\ TitleScreen\ class\ represents\ the\ title\ screen\ of\ the\ game.\r\n\ It\ displays\ an\ animation,\ title\ text,\ stars,\ and\ a\ start\ button.\r\n\ \r\n\ @author\ Angela\ Gao\r\n\ @version\ November\ 2023\r\n
 comment1.params=
 comment1.target=TitleScreen()
-comment1.text=\n\ Constructor\ for\ objects\ of\ class\ TitleScreen.\n
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ TitleScreen.\r\n
 comment2.params=
 comment2.target=void\ act()
-comment2.text=\n\ Act\ method\ for\ the\ TitleScreen.\ \n\ Handles\ animation\ and\ clicking\ on\ the\ start\ button.\n
+comment2.text=\r\n\ Act\ method\ for\ the\ TitleScreen.\ \r\n\ Handles\ animation\ and\ clicking\ on\ the\ start\ button.\r\n
 comment3.params=
 comment3.target=void\ animate()
-comment3.text=\n\ Animates\ the\ background\ images.\n
+comment3.text=\r\n\ Animates\ the\ background\ images.\r\n
 comment4.params=
 comment4.target=void\ toNextWorld()
-comment4.text=\n\ Checks\ if\ the\ start\ button\ is\ clicked\ and\ transitions\ to\ the\ next\ world.\n
+comment4.text=\r\n\ Checks\ if\ the\ start\ button\ is\ clicked\ and\ transitions\ to\ the\ next\ world.\r\n
 numComments=5

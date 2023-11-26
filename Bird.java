@@ -20,9 +20,11 @@ public class Bird extends Moving
      */
     public Bird(){
         setImage(birdImage);
+        birdImage.mirrorHorizontally();
+        birdImageInverted.mirrorVertically();
         birdImageInverted.mirrorVertically();
     }
-
+    
     /**
      * Act - do whatever the bird wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -35,15 +37,17 @@ public class Bird extends Moving
             if(littlePrince != null){
                 getImage().setTransparency(255);
                 int rotation=littlePrince.getRotation();
-                x = littlePrince.getX()-(int) (50 * Math.sin(Math.toRadians(littlePrince.getRotation())));
-                y = littlePrince.getY()-(int) Math.abs(80 * Math.cos(Math.toRadians(littlePrince.getRotation())));
+                if (littlePrince.getRotation() < 270 && littlePrince.getRotation() > 90){
+                    x = littlePrince.getX()-(int) (50 * Math.sin(Math.toRadians(littlePrince.getRotation())));
+                    y = littlePrince.getY()-(int) Math.abs(80 * Math.cos(Math.toRadians(littlePrince.getRotation())));
+                    setImage(birdImage);
+                }else{
+                    x = littlePrince.getX()-(int) (50 * Math.sin(Math.toRadians(littlePrince.getRotation())));
+                    y = littlePrince.getY()-(int) Math.abs(80 * Math.cos(Math.toRadians(littlePrince.getRotation())));
+                    setImage(birdImageInverted);
+                }
                 setLocation(x,y);
                 setRotation(rotation);
-                if(littlePrince.getRotation() < 270 && littlePrince.getRotation() > 90){
-                    setImage(birdImageInverted);
-                }else{
-                    setImage(birdImage);
-                }
             }
         }else{
             getImage().setTransparency(0);
