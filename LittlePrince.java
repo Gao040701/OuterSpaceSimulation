@@ -198,7 +198,6 @@ public class LittlePrince extends Moving
         
         if (isTouching(Rose.class)){
             Greenfoot.setWorld(new EndScreen(true));
-            Galaxy.galaxyMusic.stop();
         }
     }
 

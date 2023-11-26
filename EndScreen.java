@@ -59,6 +59,8 @@ public class EndScreen extends World
      * Handles animation and restart button events.
      */
     public void act(){
+        Galaxy.galaxyMusic.stop();
+        Explosion.explosion.stop();
         if (success){
             animate();
         }

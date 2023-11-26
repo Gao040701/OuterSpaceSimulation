@@ -63,6 +63,7 @@ public class IntroAnimation extends World
      * Animates the background images and transitions to the next world when animation is complete.
      */
     public void animate(){
+        started();
         if (index < animation.length){
             if (count == COUNT_NUM){
                 setBackground(animation[index]);
