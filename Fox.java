@@ -73,15 +73,16 @@ public class Fox extends Moving
                 moveTowardPlanet();
                 //System.out.println("TOWARDS!");
                 if (getRotation() < 270 && getRotation() > 90){
-                    animate(fly);
-                }else animate(flyInverted);
+                    animate(flyInverted);
+                }else animate(fly);
             }else{
                 moveRandomly();
                 if (getRotation() < 270 && getRotation() > 90){
-                    animate(fly);
-                }else animate(flyInverted);
+                    animate(flyInverted);
+                }else animate(fly);
             }
         }
+        
         if(checkCollisionLP()){
             follow = true;
             if(littlePrince != null){
@@ -94,7 +95,7 @@ public class Fox extends Moving
                         targetClosestLP();
                         //setLocation(littlePrince.getPrinceX(), littlePrince.getPrinceY());
                         //turnTowards(littlePrince.getPrinceX(), littlePrince.getPrinceY());
-                        //animate(flyInverted);
+                        animate(flyInverted);
                     }
                     else {
                         targetClosestLP();
@@ -106,7 +107,7 @@ public class Fox extends Moving
                     //setLocation(littlePrince.getPrinceX(), littlePrince.getPrinceY());
                     //turnTowards(littlePrince);
                     //setRotation(degree);
-                    animate(fly);
+                    //animate(fly);
                 }
             }
         }
