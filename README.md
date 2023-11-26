@@ -1,3 +1,0 @@
-# OuterSpaceSimulation
-
-hello
