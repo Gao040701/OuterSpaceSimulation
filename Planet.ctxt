@@ -23,4 +23,6 @@ comment7.text=\r\n\ Gets\ the\ speed\ of\ the\ planet.\r\n\ \r\n\ @return\ The\ 
 comment8.params=
 comment8.target=boolean\ hasVisited()
 comment8.text=\r\n\ Checks\ if\ the\ planet\ has\ been\ visited.\r\n\ \r\n\ @return\ true\ if\ the\ planet\ has\ been\ visited,\ false\ otherwise.\r\n
-numComments=9
+comment9.params=x
+comment9.target=void\ setVisited(boolean)
+numComments=10

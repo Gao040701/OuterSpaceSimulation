@@ -85,7 +85,13 @@ public class LittlePrince extends Moving
     private void targetClosestPlanet(){
         double closestTargetDistance = 0;
         double distanceToActor;
-        planets = (ArrayList<Planet>)getObjectsInRange(60, Planet.class);
+        planets = (ArrayList<Planet>)getObjectsInRange(250, Planet.class);
+        
+        for (int i = 0; i < planets.size(); i++){
+            if (planets.get(i).hasVisited()){
+                planets.remove(i);
+            }
+        }
 
         if (planets.size() == 0){
             planets = (ArrayList<Planet>)getObjectsInRange(160, Planet.class);
@@ -174,6 +180,7 @@ public class LittlePrince extends Moving
     }
 
     public void rotate(){
+        planet.setVisited(false);
         speed = planet.getSpeed();
         turnTowards (planet);
         turn(-90);
@@ -243,7 +250,7 @@ public class LittlePrince extends Moving
     public void changeHP(int amount){
         totalHP += amount;
         princeHpBar.update(totalHP);
-        if(totalHP==0){
+        if (totalHP==0){
             Greenfoot.setWorld(new EndScreen(false));
         }
     }
