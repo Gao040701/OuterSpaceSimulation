@@ -68,7 +68,7 @@ public class LittlePrince extends Moving
             rotateImage(90);
             if (targetPlanet != null){
                 moveTowardPlanet();
-                System.out.println("TOWARDS!");
+                //System.out.println("TOWARDS!");
                 if (getRotation() < 270 && getRotation() > 90){
                     animate(flyInverted);
                 }else animate(fly);
@@ -103,7 +103,7 @@ public class LittlePrince extends Moving
                 }
             }
             turnTowards(targetPlanet.getX(), targetPlanet.getY());
-            System.out.println("TARGET P!");
+            //System.out.println("TARGET P!");
         }
     }
 
@@ -112,7 +112,7 @@ public class LittlePrince extends Moving
 
         // }
         move(mySpeed);
-        System.out.println("Move towards P!");
+        //System.out.println("Move towards P!");
     }
 
     public int getDegree(){

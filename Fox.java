@@ -71,7 +71,7 @@ public class Fox extends Moving
             rotateImage(90);
             if (targetPlanet != null){
                 moveTowardPlanet();
-                System.out.println("TOWARDS!");
+                //System.out.println("TOWARDS!");
                 if (getRotation() < 270 && getRotation() > 90){
                     animate(fly);
                 }else animate(flyInverted);
@@ -142,7 +142,7 @@ public class Fox extends Moving
                 }
             }
             turnTowards(targetPlanet.getX(), targetPlanet.getY());
-            System.out.println("TARGET P!");
+            //System.out.println("TARGET P!");
         }
     }
 
