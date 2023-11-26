@@ -14,6 +14,8 @@ public class Explosion extends Actor {
     private SimpleTimer animationTimer;
     private GreenfootImage[] animation;
     public static final GreenfootSound explosion = new GreenfootSound("explosion.wav");
+    private LittlePrince TLP;
+    private boolean damaged = false;
     /**
      * Constructs an explosion with the specified duration.
      * 
@@ -39,6 +41,7 @@ public class Explosion extends Actor {
     public void act() {
         duration--;
         explode();
+        causeDamage();
     }
     
     /**
@@ -77,6 +80,14 @@ public class Explosion extends Actor {
                 getWorld().removeObject(this);
             }
             animationTimer.mark();  // Reset the timer for the next frame
+        }
+    }
+    
+    public void causeDamage(){
+        if (isTouching(LittlePrince.class) && !damaged){
+            TLP = (LittlePrince)getOneIntersectingObject(LittlePrince.class);
+            TLP.changeHP(-5);
+            damaged = true;
         }
     }
 }
