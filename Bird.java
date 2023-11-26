@@ -19,10 +19,11 @@ public class Bird extends Moving
      * Initializes the bird with its default image and inverted image.
      */
     public Bird(){
+        //birdImage.mirrorHorizontally();
+        birdImage.scale((int)(birdImage.getWidth()*0.9), (int)(birdImage.getHeight()*0.9));
+        birdImageInverted.scale((int)(birdImage.getWidth()*0.9), (int)(birdImage.getHeight()*0.9));
+        birdImageInverted.mirrorVertically();
         setImage(birdImage);
-        birdImage.mirrorHorizontally();
-        birdImageInverted.mirrorVertically();
-        birdImageInverted.mirrorVertically();
     }
     
     /**
@@ -38,15 +39,15 @@ public class Bird extends Moving
                 getImage().setTransparency(255);
                 int rotation=littlePrince.getRotation();
                 if (littlePrince.getRotation() < 270 && littlePrince.getRotation() > 90){
-                    x = littlePrince.getX()-(int) (50 * Math.sin(Math.toRadians(littlePrince.getRotation())));
-                    y = littlePrince.getY()-(int) Math.abs(80 * Math.cos(Math.toRadians(littlePrince.getRotation())));
-                    setImage(birdImage);
-                }else{
-                    x = littlePrince.getX()-(int) (50 * Math.sin(Math.toRadians(littlePrince.getRotation())));
-                    y = littlePrince.getY()-(int) Math.abs(80 * Math.cos(Math.toRadians(littlePrince.getRotation())));
+                    //x = littlePrince.getX()-(int) (50 * Math.sin(Math.toRadians(littlePrince.getRotation())));
+                    //y = littlePrince.getY()-(int) Math.abs(80 * Math.cos(Math.toRadians(littlePrince.getRotation())));
                     setImage(birdImageInverted);
+                }else{
+                    //x = littlePrince.getX()-(int) (50 * Math.sin(Math.toRadians(littlePrince.getRotation())));
+                    //y = littlePrince.getY()-(int) Math.abs(80 * Math.cos(Math.toRadians(littlePrince.getRotation())));
+                    setImage(birdImage);
                 }
-                setLocation(x,y);
+                setLocation(littlePrince.getX(),littlePrince.getY());
                 setRotation(rotation);
             }
         }else{
