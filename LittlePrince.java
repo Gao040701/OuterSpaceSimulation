@@ -215,7 +215,7 @@ public class LittlePrince extends Moving
             princeHpBar.update(totalHP);
             getWorld().removeObject(a);
             if(totalHP==0){
-                Greenfoot.setWorld(new EndScreen(true));
+                Greenfoot.setWorld(new EndScreen(false));
             }
             // Added Asteroids to keep the amounts as three.
             int currentAsteroids = asteroidsList.size();
