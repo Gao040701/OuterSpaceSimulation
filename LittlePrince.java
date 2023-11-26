@@ -68,7 +68,7 @@ public class LittlePrince extends Moving
             rotateImage(90);
             if (targetPlanet != null){
                 moveTowardPlanet();
-                System.out.println("TOWARDS!");
+                //System.out.println("TOWARDS!");
                 if (getRotation() < 270 && getRotation() > 90){
                     animate(flyInverted);
                 }else animate(fly);
