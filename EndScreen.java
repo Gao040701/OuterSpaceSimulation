@@ -20,7 +20,14 @@ public class EndScreen extends World
     private boolean success;
     private Image text;
     private Image restartButton;
-    public static final GreenfootSound failedMusic = new GreenfootSound("failedMusic.mp3");
+    /**
+     * Music credit
+     * Artists: Hans Zimmer, Richard Harvey
+     * Title: Farewell
+     * Link: https://youtu.be/wMprqGYGP2c?si=PBd2JGwk8DZBxAD6
+     */
+    private GreenfootSound failedMusic;
+    private GreenfootSound successMusic;
 
     /**
      * Constructor for objects of class EndScreen.
@@ -52,6 +59,10 @@ public class EndScreen extends World
         // Add a restart button
         restartButton = new Image(restart, restart.getWidth() * 2, restart.getHeight() * 2);
         addObject(restartButton, 300, 400);
+        failedMusic = new GreenfootSound("failedMusic.mp3");
+        successMusic = new GreenfootSound("successMusic.mp3");
+        failedMusic.setVolume(80);
+        successMusic.setVolume(80);
     }
     
     /**
@@ -62,6 +73,7 @@ public class EndScreen extends World
         Galaxy.galaxyMusic.stop();
         Explosion.explosion.stop();
         if (success){
+            startedSuccess();
             animate();
         }
         senseButton();
@@ -73,6 +85,14 @@ public class EndScreen extends World
 
     public void stoppedFailed(){
         failedMusic.pause();
+    }
+    
+    public void startedSuccess(){
+        successMusic.playLoop(); 
+    }
+
+    public void stoppedSuccess(){
+        successMusic.pause();
     }
     
     /**
@@ -98,6 +118,7 @@ public class EndScreen extends World
     public void senseButton(){
         if (Greenfoot.mouseClicked(restartButton)){
             stoppedFailed();
+            stoppedSuccess();
             Greenfoot.setWorld(new TitleScreen());
         }
     }

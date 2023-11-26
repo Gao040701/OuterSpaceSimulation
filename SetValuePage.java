@@ -49,8 +49,10 @@ public class SetValuePage extends World {
         setValueBG.scale(1024, 576);
         setBackground(setValueBG);
         /**
-         * Music credit: Hans Zimmer
+         * Music credit 
+         * Artists: Hans Zimmer, Richard Harvey
          * Title: Ascending
+         * Link: https://youtu.be/h1TsXfLDHrA?si=R4ghgY3tGaTa4Xw4
          */
         setValueMusic = new GreenfootSound("setValueMusic.mp3");
         setValueMusic.setVolume(50);

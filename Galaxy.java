@@ -17,13 +17,13 @@ public class Galaxy extends World
     private int clueCount = 0;
     private GreenfootImage background = new GreenfootImage("galaxyBackground.png");
     public static final int Rdecrease=15;
-    
+
     // Arrays for Little Prince animation frames
     private GreenfootImage[] TLPwalk = new GreenfootImage[8];
     private GreenfootImage[] TLPfly = new GreenfootImage[6];
     private GreenfootImage[] TLPflyInverted = new GreenfootImage[6];
     private GreenfootImage[] TLPdig = new GreenfootImage[9];
-    
+
     // Fox animation frames and related variables
     private int countFox = 0;
     private boolean hasFox = true;
@@ -31,11 +31,18 @@ public class Galaxy extends World
     private GreenfootImage[] foxFly = new GreenfootImage[5];
     private GreenfootImage[] foxFlyInverted = new GreenfootImage[5];
     private GreenfootImage[] foxDig = new GreenfootImage[11];
-    
+
     // Initial y-coordinate for planet placement
     private int y = Greenfoot.getRandomNumber(276) + 150;
+
+    /**
+     * Music credit
+     * Artists: Hans Zimmer, Richard Harvey
+     * Title: Trapped Stars
+     * Link: https://youtu.be/afSOoPjDIaU?si=M_GgNh61WUnML8Mt
+     */
     public static final GreenfootSound galaxyMusic = new GreenfootSound("galaxyMusic.mp3");
-    
+
     private boolean roseAdded = false;    
     /**
      * Constructor for objects of class Galaxy.
@@ -62,7 +69,7 @@ public class Galaxy extends World
         galaxyMusic.setVolume(50);
         prepare();
     }
-    
+
     public void started(){
         galaxyMusic.playLoop(); 
     }
@@ -70,7 +77,7 @@ public class Galaxy extends World
     public void stopped(){
         galaxyMusic.pause();
     }
-    
+
     /**
      * Credit: Method created by Jiayi Li, modified by Zhiyu (Jennifer) Zhou
      */
@@ -97,7 +104,7 @@ public class Galaxy extends World
             hasFox = false;
         }
     }
-    
+
     public void generateFox() {
         if (Greenfoot.getRandomNumber(1) == 0){
             Fox fox = new Fox(foxRun, foxFly, foxDig, foxFlyInverted);
@@ -111,17 +118,17 @@ public class Galaxy extends World
             addObject(fox, 0, y);
         }
     }
-    
+
     public int getAsteroidsX(){
         int getAsteroidsX = Greenfoot.getRandomNumber(getWidth());
         return getAsteroidsX;
     }
-    
+
     public int getAsteroidsY(){
         int getAsteroidsY = Greenfoot.getRandomNumber(getHeight());
         return getAsteroidsY;
     }
-    
+
     /**
      * Calculates the distance between two actors.
      * 
@@ -140,11 +147,11 @@ public class Galaxy extends World
             roseAdded = true;  // Set the flag to true so that you don't add more Roses
         }
     }
-    
+
     public static int getNumOfAsteroids(){
         return numOfAsteroids;
     }
-    
+
     /**
      * Gets the initial amount of clues configured for the world.
      * 
@@ -153,15 +160,15 @@ public class Galaxy extends World
     public static int getAmountOfClues(){
         return amountOfClues;
     }
-    
+
     public static int asteroidSpeed(){
         return asteroidSpeed;
     }
-    
+
     public static int hpPerPlanet(){
         return hpPerPlanet;
     }
-    
+
     /**
      * Changes the amount of clues and updates the clue count.
      * 
@@ -172,7 +179,7 @@ public class Galaxy extends World
         clueCount += amount;
         clueBar.update(clueCount);
     }
-    
+
     /**
      * Checks if a rose has been added to the world.
      * 
