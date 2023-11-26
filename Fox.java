@@ -184,7 +184,7 @@ public class Fox extends Moving
 
         // }
         move(mySpeed);
-        System.out.println("Move towards P!");
+        //System.out.println("Move towards P!");
     }
 
     /**

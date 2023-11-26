@@ -15,9 +15,10 @@ public class Rose extends Stationary
      */
     public void act()
     {
-        move(2);
+        move(1);
         if (isTouching(LittlePrince.class)){
             Greenfoot.setWorld(new EndScreen(true));
+            Galaxy.galaxyMusic.stop();
         }
     }
     public Rose(){
