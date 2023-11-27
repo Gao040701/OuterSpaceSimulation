@@ -7,7 +7,7 @@ import greenfoot.*;
  * and rotation.
  * 
  * Usage:
- * - Create an instance of Asteroids in the world to represent asteroids.
+ * <li>Create an instance of Asteroids in the world to represent asteroids.</li>
  * 
  * @author Jiayi Li
  * @version November 2023

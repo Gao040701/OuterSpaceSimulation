@@ -1,19 +1,19 @@
 #BlueJ class context
 comment0.target=HomePlanet
-comment0.text=\r\n\ The\ class\ HomePlanet\ represents\ the\ home\ planet\ in\ the\ game.\r\n\ It\ extends\ the\ abstract\ class\ Planet\ and\ implements\ specific\ behavior\ for\ the\ home\ planet.\r\n\ The\ home\ planet\ has\ health\ points,\ a\ health\ bar,\ and\ interacts\ with\ asteroids\ in\ the\ world.\r\n\ \r\n\ Usage\:\r\n\ -\ Create\ an\ instance\ of\ HomePlanet\ in\ the\ game\ world.\r\n\ -\ The\ home\ planet\ has\ a\ health\ bar\ that\ decreases\ when\ colliding\ with\ asteroids.\r\n\ -\ When\ the\ health\ points\ reach\ zero,\ the\ home\ planet\ is\ removed\ from\ the\ world.\r\n\ -\ An\ explosion\ effect\ is\ triggered\ on\ collision\ with\ asteroids.\r\n\ -\ New\ asteroids\ are\ added\ to\ the\ world\ to\ maintain\ the\ total\ number.\r\n\ \r\n\ @author\ Jiayi\ Li\r\n\ @version\ November\ 2023\r\n
+comment0.text=\n\ The\ class\ HomePlanet\ represents\ the\ home\ planet\ in\ the\ game.\n\ It\ extends\ the\ abstract\ class\ Planet\ and\ implements\ specific\ behavior\ for\ the\ home\ planet.\n\ The\ home\ planet\ has\ health\ points,\ a\ health\ bar,\ and\ interacts\ with\ asteroids\ in\ the\ world.\n\ \n\ Usage\:\n\ <li>Create\ an\ instance\ of\ HomePlanet\ in\ the\ game\ world.</li>\n\ <li>The\ home\ planet\ has\ a\ health\ bar\ that\ decreases\ when\ colliding\ with\ asteroids.</li>\n\ <li>When\ the\ health\ points\ reach\ zero,\ the\ home\ planet\ is\ removed\ from\ the\ world.</li>\n\ <li>An\ explosion\ effect\ is\ triggered\ on\ collision\ with\ asteroids.</li>\n\ <li>New\ asteroids\ are\ added\ to\ the\ world\ to\ maintain\ the\ total\ number.\n\ \n\ @author\ Jiayi\ Li\n\ @version\ November\ 2023\n
 comment1.params=
 comment1.target=HomePlanet()
-comment1.text=\r\n\ Constructor\ for\ the\ HomePlanet\ class.\r\n\ Initializes\ the\ home\ planet's\ image,\ size,\ health,\ speed,\ and\ health\ bar.\r\n
+comment1.text=\n\ Constructor\ for\ the\ HomePlanet\ class.\n\ Initializes\ the\ home\ planet's\ image,\ size,\ health,\ speed,\ and\ health\ bar.\n
 comment2.params=
 comment2.target=void\ checkCollision()
-comment2.text=\r\n\ Checks\ for\ collisions\ with\ asteroids\ and\ updates\ health\ points.\r\n\ Triggers\ an\ explosion\ effect\ and\ adds\ new\ asteroids\ to\ the\ world\ on\ collision.\r\n
+comment2.text=\n\ Checks\ for\ collisions\ with\ asteroids\ and\ updates\ health\ points.\n\ Triggers\ an\ explosion\ effect\ and\ adds\ new\ asteroids\ to\ the\ world\ on\ collision.\n
 comment3.params=w
 comment3.target=void\ addedToWorld(greenfoot.World)
-comment3.text=\r\n\ Adds\ the\ health\ bar\ to\ the\ world\ when\ the\ HomePlanet\ is\ added.\r\n
+comment3.text=\n\ Adds\ the\ health\ bar\ to\ the\ world\ when\ the\ HomePlanet\ is\ added.\n
 comment4.params=
 comment4.target=void\ checkAndRemove()
-comment4.text=\r\n\ Checks\ if\ the\ HomePlanet\ should\ be\ removed\ from\ the\ world.\r\n
+comment4.text=\n\ Checks\ if\ the\ HomePlanet\ should\ be\ removed\ from\ the\ world.\n
 comment5.params=
 comment5.target=void\ act()
-comment5.text=\r\n\ Act\ method\ is\ called\ whenever\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n\ Moves\ the\ home\ planet,\ checks\ for\ collisions,\ updates\ the\ health\ bar,\ and\ checks\ if\r\n\ the\ home\ planet\ should\ be\ removed.\r\n
+comment5.text=\n\ Act\ method\ is\ called\ whenever\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n\ Moves\ the\ home\ planet,\ checks\ for\ collisions,\ updates\ the\ health\ bar,\ and\ checks\ if\n\ the\ home\ planet\ should\ be\ removed.\n
 numComments=6

@@ -7,11 +7,11 @@ import java.util.List;
  * The home planet has health points, a health bar, and interacts with asteroids in the world.
  * 
  * Usage:
- * - Create an instance of HomePlanet in the game world.
- * - The home planet has a health bar that decreases when colliding with asteroids.
- * - When the health points reach zero, the home planet is removed from the world.
- * - An explosion effect is triggered on collision with asteroids.
- * - New asteroids are added to the world to maintain the total number.
+ * <li>Create an instance of HomePlanet in the game world.</li>
+ * <li>The home planet has a health bar that decreases when colliding with asteroids.</li>
+ * <li>When the health points reach zero, the home planet is removed from the world.</li>
+ * <li>An explosion effect is triggered on collision with asteroids.</li>
+ * <li>New asteroids are added to the world to maintain the total number.</li>
  * 
  * @author Jiayi Li
  * @version November 2023
