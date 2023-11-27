@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=LittlePrince
-comment0.text=\n\ The\ LittlePrince\ class\ represents\ the\ character\ that\ walks\ around\ planets\ and\ jumps\ out\ of\ planets\n\ when\ all\ the\ baobab\ trees\ are\ destroyed.\ It\ extends\ the\ Moving\ class\ and\ has\ additional\ behavior\n\ related\ to\ health\ points,\ collision\ detection,\ and\ rotation.\n\ <p>\n\ @author\ Zhiyu\ (Jennifer)\ Zhou\n\ @modified\ by\ Angela\ Gao\n\ @version\ v1.0\n
+comment0.text=\n\ The\ LittlePrince\ class\ represents\ the\ character\ that\ walks\ around\ planets\ and\ jumps\ out\ of\ planets\n\ when\ all\ the\ baobab\ trees\ are\ destroyed.\ It\ extends\ the\ Moving\ class\ and\ has\ additional\ behavior\n\ related\ to\ health\ points,\ collision\ detection,\ and\ rotation.\n\ <p>\n\ -\ The\ Little\ Prince\ will\ first\ appear\ on\ the\ right\ screen,\ floating\ in\ space\ while\ targeting\ the\ closest\ planet.\n\ <p>\n\ -\ Once\ he\ collects\ enough\ clues\ while\ still\ alive,\ he\ will\ be\ able\ to\ go\ to\ his\ rose\ planet\ and\ finally\ finds\ his\ rose\!\n\ <p>\n\ -\ If\ the\ Little\ Prince\ dies,\ the\ mission\ will\ be\ incomplete\ and\ the\ screen\ will\ switch\ to\ the\ failed\ screen.\n\ @author\ Zhiyu\ (Jennifer)\ Zhou\n\ @modified\ by\ Angela\ Gao\n\ @version\ v1.0\n
 comment1.params=
 comment1.target=void\ act()
 comment1.text=\n\ Act\ -\ do\ whatever\ the\ LittlePrince\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n

@@ -7,6 +7,11 @@ import java.util.ArrayList;
  * when all the baobab trees are destroyed. It extends the Moving class and has additional behavior
  * related to health points, collision detection, and rotation.
  * <p>
+ * - The Little Prince will first appear on the right screen, floating in space while targeting the closest planet.
+ * <p>
+ * - Once he collects enough clues while still alive, he will be able to go to his rose planet and finally finds his rose!
+ * <p>
+ * - If the Little Prince dies, the mission will be incomplete and the screen will switch to the failed screen.
  * @author Zhiyu (Jennifer) Zhou
  * @modified by Angela Gao
  * @version v1.0

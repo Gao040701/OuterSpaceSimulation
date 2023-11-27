@@ -4,11 +4,13 @@ import java.util.ArrayList;
 /**
  * The Fox class represents a fox actor in the game that can move, interact with other objects,
  * and follow the Little Prince:
+ * <p>
  * - The fox will initially wait on a planet or floast in space by itself. During floatinng, it will target the Little Prince
  * and move closer and closer to him.
  * <p>
- * - Once the the Little Fox touches the Little Prince, the fox will follow him forever as his companion.
+ * - Once the Little Fox touches the Little Prince, the fox will follow him forever as his companion.
  * <p>
+ * - When the fox helps the prince to remove the baobab trees together, they will be removing them at a faster rate.
  * @author Zhiyu (Jennifer) Zhou
  * @version v1.0
  */
@@ -172,9 +174,6 @@ public class Fox extends Moving
     }
 
     private void moveTowardPlanet(){
-        // if (Galaxy.getDistance(this, targetPlanet) < 30){
-
-        // }
         move(mySpeed);
         //System.out.println("Move towards P!");
     }
@@ -250,9 +249,6 @@ public class Fox extends Moving
             return false;
         }
         if(passCount >= 3){
-            //rotateDetection = false;
-            //setLocation(getX()-10, getY() - 10);
-            //System.out.println("LP FLY!");
             return true;
         }
         return false;
