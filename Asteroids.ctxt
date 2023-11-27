@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Asteroids
-comment0.text=\n\ The\ Asteroids\ class\ represents\ asteroids\ in\ the\ game\ world.\ \n\ Asteroids\ move\ with\ a\ random\ speed\ in\ both\ x\ and\ y\ directions,\ and\ their\ \n\ appearance\ and\ size\ are\ randomized.\ They\ also\ have\ a\ periodic\ change\ in\ speed\n\ and\ rotation.\n\ \n\ Usage\:\n\ <li>Create\ an\ instance\ of\ Asteroids\ in\ the\ world\ to\ represent\ asteroids.</li>\n\ \n\ @author\ Jiayi\ Li\n\ @version\ November\ 2023\n
+comment0.text=\n\ The\ Asteroids\ class\ represents\ asteroids\ in\ the\ game\ world.\ \n\ Asteroids\ move\ with\ a\ random\ speed\ in\ both\ x\ and\ y\ directions,\ and\ their\ \n\ appearance\ and\ size\ are\ randomized.\ They\ also\ have\ a\ periodic\ change\ in\ speed\n\ and\ rotation.\n\ \n\ Usage\:\n\ -\ Create\ an\ instance\ of\ Asteroids\ in\ the\ world\ to\ represent\ asteroids.\n\ \n\ @author\ Jiayi\ Li\n\ @version\ November\ 2023\n
 comment1.params=
 comment1.target=Asteroids()
 comment1.text=\n\ Constructs\ an\ Asteroids\ object.\n\ The\ initial\ x\ and\ y\ speeds,\ as\ well\ as\ the\ image\ size,\ are\ randomized.\n
