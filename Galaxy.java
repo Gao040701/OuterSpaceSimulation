@@ -86,7 +86,7 @@ public class Galaxy extends World
             addObject(new Asteroids(), getAsteroidsX(), getAsteroidsY());
         }
         LittlePrince TLP = new LittlePrince(TLPwalk, TLPfly, TLPdig, TLPflyInverted);
-        addObject(TLP, 947, 250);
+        addObject(TLP, 512, 300);
         TLP.prepareAnimation(TLPwalk, "walkAnimation/walk");
         TLP.prepareAnimation(TLPfly, "flyAnimation/fly");
         TLP.prepareAnimation(TLPdig, "digAnimation/dig");
