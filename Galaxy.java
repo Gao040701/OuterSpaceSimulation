@@ -7,9 +7,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * <p>List of features: </p>
  * <ol>
  *  <li> User can set values for the number of asteroids exist, amount of clues the little prince can get from removing a baobab tree, the speed of aseroid, and HP per planet. </li>
- *  <li> The little prince can target to the closest palnet, go around a planet, and remove baobab trees to gain clues. </li>
- *  <li> The fox will be randomly generated on RandomPalnet and follow the fox. </li>
- *  <li> When the littl fox follows the little prince, the speed of removing baobabd tree will be twice faster 
+ *  <li> The little prince can target to the closest planet, go around a planet, remove baobab trees to gain clues, and fly out of the planet once he completed a full circle and removed all baobab trees, or when the planets disappear from the world. </li>
+ *  <li> The fox will be randomly generated on a RandomPlanet; stay at rest or float in space until it touches the little prince and follows him forever. </li>
+ *  <li> When the little fox follows the little prince, the speed of removing baobab tree will be as twice as fast as the original speed.
+ *  <li> The little fox and the little prince will together do the movements as what the little prince was doing before.
  *  <li> The end screen will present different texts based on the result of the simulation. The user can choose to restart the simulation and reset the values. </li>
  *  <li> The asteroid can cause harm to the planet and little pricnce by directly hitting them. The explosion caused by an asteroid hitting a planet can also cuase harm to little prince. </li>
  * </ol>
@@ -18,32 +19,44 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * <ul>
  *  <li>Sound and music: </li>
  *   <ul>
- *    <li> <p>Artists: Hans Zimmer, Richard Harvey</p>
- *    <p> Title: Ascending</p>
- *    <p> Link: https://youtu.be/h1TsXfLDHrA?si=R4ghgY3tGaTa4Xw4</p></li>
+ *    <li> 
+ *    <p>Galaxy Music
+ *    <p>Artists: Hans Zimmer, Richard Harvey</p>
+ *    <p>Title: Trapped Star</p>
+ *    <p>Link: https://youtu.be/afSOoPjDIaU?si=M_GgNh61WUnML8Mt</p></li>
  *   </ul> 
  *   <ul> 
- *    <li> <p> Artists: Hans Zimmer, Richard Harvey </p>
+ *    <li> 
+ *    <p>Failing Page Music
+ *    <p>Artists: Hans Zimmer, Richard Harvey </p>
  *    <p>Title: Farewell</p>
  *    <p>Link: https://youtu.be/wMprqGYGP2c?si=PBd2JGwk8DZBxAD6</p></li>
  *   </ul>
  *   <ul>
- *    <li><p>Artists: Hans Zimmer, Richard Harvey</p>
+ *    <li>
+ *    <p>Set Value Page Music
+ *    <p>Artists: Hans Zimmer, Richard Harvey</p>
  *    <p>Title: Ascending</p>
  *    <p>Link: https://youtu.be/h1TsXfLDHrA?si=R4ghgY3tGaTa4Xw4</p></li>
  *   </ul>
  *   <ul>
- *    <li><p>Artists: Hans Zimmer, Richard Harvey</p>
+ *    <li>
+ *    <p>Intro Animation Music
+ *    <p>Artists: Hans Zimmer, Richard Harvey</p>
  *    <p>Title: Ascending</p>
  *    <p>Link: https://youtu.be/h1TsXfLDHrA?si=R4ghgY3tGaTa4Xw4</p></li>
  *   </ul>
  *   <ul> 
- *    <li><p>Artist: Pixabay</p>
+ *    <li>
+ *    <p>Explosion Music
+ *    <p>Artist: Pixabay</p>
  *    <p>Title: RussianMeteorite_SFX</p>
  *    <p>Link: https://pixabay.com/sound-effects/russianmeteorite-sfx-76195/</p></li>
  *   </ul>
  *   <ul>
- *    <li><p>Artists: Hans Zimmer, Richard Harvey
+ *    <li>
+ *    <p>Success Page Music
+ *    <p>Artists: Hans Zimmer, Richard Harvey
  *    <p>Title: Recovery</p>
  *    <p>Link: https://youtu.be/KjUYaIxuz_Y?si=ZT8GiagzczfGzXp8</p></li>
  *   </ul>
