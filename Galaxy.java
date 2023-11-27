@@ -3,12 +3,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * The {@code Galaxy} class represents the game world in which the Little Prince
  * explores and interacts. It includes asteroids, planets, characters, and other elements.
  * 
- * <b>The Little Prince Simulation</b>
+ * <p><b>The Little Prince Simulation</b></p>
  * <p>List of features: </p>
  * <ol>
  *  <li> User can set values for the number of asteroids exist, amount of clues the little prince can get from removing a baobab tree, the speed of aseroid, and HP per planet. </li>
  *  <li> The little prince can target to the closest palnet, go around a planet, and remove baobab trees to gain clues. </li>
  *  <li> The fox will be randomly generated on RandomPalnet and follow the fox. </li>
+ *  <li> When the littl fox follows the little prince, the speed of removing baobabd tree will be twice faster 
  *  <li> The end screen will present different texts based on the result of the simulation. The user can choose to restart the simulation and reset the values. </li>
  *  <li> The asteroid can cause harm to the planet and little pricnce by directly hitting them. The explosion caused by an asteroid hitting a planet can also cuase harm to little prince. </li>
  * </ol>
@@ -41,10 +42,35 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  *    <p>Title: RussianMeteorite_SFX</p>
  *    <p>Link: https://pixabay.com/sound-effects/russianmeteorite-sfx-76195/</p></li>
  *   </ul>
+ *   <ul>
+ *    <li><p>Artists: Hans Zimmer, Richard Harvey
+ *    <p>Title: Recovery</p>
+ *    <p>Link: https://youtu.be/KjUYaIxuz_Y?si=ZT8GiagzczfGzXp8</p></li>
+ *   </ul>
  *  <li>Art and graphic: </li>
+ *   <ul>
+ *    <li><p>Artist: Elthen</p>
+ *    <p>Title: 2D Pixel Art Fox Sprites</p>
+ *    <p>Link: https://elthen.itch.io/2d-pixel-art-fox-spritesM</p></li>
+ *   </ul>
+ *   <ul>
+ *    <li><p>Artist: FoozleCC</p>
+ *    <p>Title: Void - Environment Pack (1.0)</p>
+ *    <p>Link: https://foozlecc.itch.io/void-environment-pack</p></li>
+ *   </ul>
  *  <li>Code: </li>
+ *   <ul>
+ *    <li><p> Programmer: Jordan Cohen </p>
+ *    <p>classes: SuperSmoothMover, SuperStatBar</p>
+ *    <p>methods: targetClosestPlanet</p></li>
+ *   </ul>
  * </ul>
- * 
+ * <p></p>
+ * <p>Known bug£º</p>
+ * <ol>
+ *  <li>Asteroids sometimes hit the planet without exploding.</li>
+ *  <li>After clicking the start button on the title screen, it will take a while to load to the introAnimation.</li>
+ * </ol>
  * @authors: Angela Gao, Jiayi Li, Zhiyu (Jennifer) Zhou 
  * @version: November 24
  * 
