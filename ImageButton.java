@@ -36,6 +36,7 @@ public class ImageButton extends Actor {
         handleButtonLogic(buttonType);
     }
 
+    
     /**
      * Handles button-specific logic based on the button type.
      * 
@@ -89,6 +90,7 @@ public class ImageButton extends Actor {
             setImage(normalImage);
         }
     }
+    
 }
 
 

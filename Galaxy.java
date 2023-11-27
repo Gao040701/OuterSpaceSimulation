@@ -154,7 +154,6 @@ public class Galaxy extends World
 
     /**
      * Prepares the initial configuration of the game world, including asteroids, characters, and planets.
-     * 
      * Credit: Method created by Jiayi Li, modified by Zhiyu (Jennifer) Zhou
      */
     private void prepare() { 

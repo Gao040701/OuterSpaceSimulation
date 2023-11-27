@@ -11,6 +11,8 @@ import java.util.ArrayList;
  * - Once the Little Fox touches the Little Prince, the fox will follow him forever as his companion.
  * <p>
  * - When the fox helps the prince to remove the baobab trees together, they will be removing them at a faster rate.
+ * <p>
+ * - the Little Fox uses similar rotation and fly mechanism as the Little Prince
  * @author Zhiyu (Jennifer) Zhou
  * @version v1.0
  */
@@ -47,6 +49,10 @@ public class Fox extends Moving
     /**
      * Act method is called whenever the 'Act' or 'Run' button gets pressed in the environment.
      * Includes the behavior of the fox, such as movement and interaction with other objects.
+     * <p>
+     * - As along as the fox doesn't touches the LP, it wiill move by itself
+     * <p>
+     * - Once the fox touches LP, it will follow LP forever.
      */
     public void act()
     {
@@ -140,6 +146,11 @@ public class Fox extends Moving
         }
     }
 
+    
+    /**
+     * This method allows the Little Fox to target closest LP and move towards it, which works 
+     * well for the following mechanism.
+     */
     private void targetClosestLP(){
         double closestTargetDistance = 0;
         double distanceToActor;
