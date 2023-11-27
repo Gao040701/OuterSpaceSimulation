@@ -4,6 +4,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * Write a description of class Rose here.
  * 
  * @author (your name) 
+ * @Editor: Jennifer Zhou
  * @version (a version number or a date)
  */
 public class Rose extends Stationary
