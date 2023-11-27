@@ -51,7 +51,6 @@ public class EndScreen extends World
             text = new Image(congradulation);
             addObject(text, 400, 200);
         } else {
-            startedFailed();
             setBackground(fail);
             text = new Image(waiting);
             addObject(text, 400, 150);
@@ -75,6 +74,8 @@ public class EndScreen extends World
         if (success){
             startedSuccess();
             animate();
+        }else{
+            startedFailed();
         }
         senseButton();
     }

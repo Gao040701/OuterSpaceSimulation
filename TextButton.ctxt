@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=TextButton
-comment0.text=\r\n\ <p>The\ TextButton\ class\ represents\ a\ button\ with\ text\ in\ the\ Greenfoot\ environment.</p>\r\n\ It\ can\ be\ used\ to\ create\ buttons\ with\ different\ functionalities,\ such\ as\ plus\ and\ minus\ buttons.\r\n\ \r\n\ @author\ Jiayi\ Li\r\n\ @version\ November\ 2023\r\n
+comment0.text=\r\n\ <p>The\ TextButton\ class\ represents\ a\ button\ with\ text\ in\ the\ Greenfoot\ environment.</p>\r\n\ <p>It\ can\ be\ used\ to\ create\ buttons\ with\ different\ functionalities,\ such\ as\ plus\ and\ minus\ buttons.</p>\r\n\ \r\n\ @author\ Jiayi\ Li\r\n\ @version\ November\ 2023\r\n
 comment1.params=text\ textSize\ buttonType
 comment1.target=TextButton(java.lang.String,\ int,\ java.lang.String)
 comment1.text=\r\n\ Construct\ a\ TextButton\ given\ only\ a\ String.\r\n\ \r\n\ @param\ text\ \ \ \ \ \ \ String\ to\ be\ displayed\ on\ the\ button.\r\n\ @param\ textSize\ \ \ Size\ of\ the\ text.\r\n\ @param\ buttonType\ Type\ of\ the\ button,\ e.g.,\ "plus"\ or\ "minus".\r\n

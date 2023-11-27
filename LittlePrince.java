@@ -85,7 +85,7 @@ public class LittlePrince extends Moving
     private void targetClosestPlanet(){
         double closestTargetDistance = 0;
         double distanceToActor;
-        planets = (ArrayList<Planet>)getObjectsInRange(250, Planet.class);
+        planets = (ArrayList<Planet>)getObjectsInRange(500, Planet.class);
         
         for (int i = 0; i < planets.size(); i++){
             if (planets.get(i).hasVisited()){
