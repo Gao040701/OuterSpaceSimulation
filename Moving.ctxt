@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Moving
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Moving\ here.\r\n\ \r\n\ @author\ Zhiyu\ (Jennifer)\ Zhou\r\n\ @editor\ Angela\ Gao\r\n\ @version\ 1.0\r\n
+comment0.text=\r\n\ The\ Moving\ class\ consists\ of\ all\ the\ main\ characters\ in\ the\ game\ that\ are\ moving\ relative\ to\ the\ planets,\ including\ Bird,\ LittlePrince,\ and\ Fox\ subclasses.\ \r\n\ <p>\r\n\ @author\ Zhiyu\ (Jennifer)\ Zhou\r\n\ @modified\ by\ Angela\ Gao\r\n\ @version\ 1.0\r\n
 comment1.params=
 comment1.target=void\ act()
 comment1.text=\r\n\ Act\ method\ is\ called\ whenever\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n\ Includes\ placeholder\ content.\ Override\ this\ method\ to\ define\ the\ actor's\ behavior.\r\n

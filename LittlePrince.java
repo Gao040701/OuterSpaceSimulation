@@ -200,7 +200,11 @@ public class LittlePrince extends Moving
         }else{
             setLocation(getX() + speed, getY());
             animate(dig);
-            box.getBaobabTree().removeBaobabTree();
+            if (isTouching(Fox.class)){
+                box.getBaobabTree().removeBaobabTree(50);
+            }else{
+                box.getBaobabTree().removeBaobabTree(100);
+            }
         }
         
         if (isTouching(Rose.class)){

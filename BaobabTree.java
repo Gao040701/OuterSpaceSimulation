@@ -12,7 +12,6 @@ public class BaobabTree extends Stationary
     private GreenfootImage baobabTree= new GreenfootImage("baobabTree.png");  // Image of the BaobabTree
     private Planet planet;  // The associated Planet
     private int rotation;  // Rotation of the BaobabTree
-    private final int COUNT_NUM = 100;  // Count number for removal delay
     private int count;  // Counter for removal delay
     private LittlePrince TLP;  // Reference to the Little Prince
     private HitBox box;  // Hitbox associated with the BaobabTree
@@ -118,8 +117,8 @@ public class BaobabTree extends Stationary
     /**
      * Removes the BaobabTree after a delay, updating the clue count in the Galaxy.
      */
-    public void removeBaobabTree(){
-        if (count == COUNT_NUM){
+    public void removeBaobabTree(int countNum){
+        if (count == countNum){
             if (getWorld() instanceof Galaxy){
                 Galaxy galaxy = (Galaxy)getWorld();
                 galaxy.changeClue(galaxy.getAmountOfClues());

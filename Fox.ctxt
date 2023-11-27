@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Fox
-comment0.text=\r\n\ The\ Fox\ class\ represents\ a\ fox\ actor\ in\ the\ game\ that\ can\ move,\ interact\ with\ other\ objects,\r\n\ and\ follow\ the\ Little\ Prince.\r\n\ \r\n\ @author\ Jennifer\ Zhou\r\n\ @version\ v1.0\r\n
+comment0.text=\r\n\ The\ Fox\ class\ represents\ a\ fox\ actor\ in\ the\ game\ that\ can\ move,\ interact\ with\ other\ objects,\r\n\ and\ follow\ the\ Little\ Prince\:\r\n\ -\ The\ fox\ will\ initially\ wait\ on\ a\ planet\ or\ floast\ in\ space\ by\ itself.\ During\ floatinng,\ it\ will\ target\ the\ Little\ Prince\r\n\ and\ move\ closer\ and\ closer\ to\ him.\r\n\ <p>\r\n\ -\ Once\ the\ the\ Little\ Fox\ touches\ the\ Little\ Prince,\ the\ fox\ will\ follow\ him\ forever\ as\ his\ companion.\r\n\ <p>\r\n\ @author\ Zhiyu\ (Jennifer)\ Zhou\r\n\ @version\ v1.0\r\n
 comment1.params=
 comment1.target=void\ act()
 comment1.text=\r\n\ Act\ method\ is\ called\ whenever\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n\ Includes\ the\ behavior\ of\ the\ fox,\ such\ as\ movement\ and\ interaction\ with\ other\ objects.\r\n
