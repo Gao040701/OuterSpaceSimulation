@@ -74,6 +74,10 @@ public class RandomPlanet extends Planet {
         }
 
         if (appear) {
+            if (getWorld() instanceof Galaxy) {
+                Galaxy galaxy = (Galaxy) getWorld();
+                roseAppear = galaxy.getRose();
+            }
             // Check if the planet is beyond the right edge of the world
             if (getX() > getWorld().getWidth()) {
                 removeRanPlanet();// Remove the random planet if it's beyond the right edge
@@ -89,10 +93,7 @@ public class RandomPlanet extends Planet {
                 canSpawnNext = false;
                 
                 // Check if the world is an instance of Galaxy to access Galaxy-specific functionality
-                if (getWorld() instanceof Galaxy) {
-                    Galaxy galaxy = (Galaxy) getWorld();
-                    roseAppear = galaxy.getRose();
-                }
+                
 
                 newPlanet = new RandomPlanet();
                 ylocation = Greenfoot.getRandomNumber(276) + 150;
@@ -269,10 +270,8 @@ public class RandomPlanet extends Planet {
      * Generates a rose at the top of the random planet when roses are enabled in the game.
      */
     public void generateRose() {
-        if (!oneRose) {
-            Rose rose = new Rose();
-            getWorld().addObject(rose, getX(), getY() - getRadius() - 20);
-        }
+        Rose rose = new Rose();
+        getWorld().addObject(rose, getX(), getY() - getRadius() - 20);
     }
 }
 

@@ -92,16 +92,16 @@ public class LittlePrince extends Moving
         double distanceToActor;
         planets = (ArrayList<Planet>)getObjectsInRange(500, Planet.class);
         
+        if (planets.size() == 0){
+            planets = (ArrayList<Planet>)getObjectsInRange(160, Planet.class);
+        }
+        
         for (int i = 0; i < planets.size(); i++){
             if (planets.get(i).hasVisited()){
                 planets.remove(i);
             }
         }
-
-        if (planets.size() == 0){
-            planets = (ArrayList<Planet>)getObjectsInRange(160, Planet.class);
-        }
-
+        
         if (planets.size() > 0){
             targetPlanet = planets.get(0);
             closestTargetDistance = getDistance (this, targetPlanet);
@@ -114,7 +114,6 @@ public class LittlePrince extends Moving
                 }
             }
             turnTowards(targetPlanet.getX(), targetPlanet.getY());
-            //System.out.println("TARGET P!");
         }
     }
 
