@@ -15,6 +15,7 @@ import java.util.List;
  * <li>Random planets can generate trees or roses based on game conditions.</li>
  * 
  * @author Jiayi Li
+ * @Editor: Angela Gao
  * @version November 2023
  */
 public class RandomPlanet extends Planet {

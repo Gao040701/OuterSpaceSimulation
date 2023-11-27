@@ -4,7 +4,7 @@ import greenfoot.*;
  * The BaobabTree class represents a stationary tree in the game that provides clues to the player.
  * It includes methods for tree generation, positioning, and interaction with the Little Prince.
  * 
- * @Angela Gao
+ * @author Angela Gao
  * @version November 2023
  */
 public class BaobabTree extends Stationary

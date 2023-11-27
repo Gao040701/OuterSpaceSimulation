@@ -4,7 +4,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, GreenfootSound)
  * The IntroAnimation class represents the introduction animation of the game.
  * It displays a sequence of images with background music.
  * 
- * @author Gao
+ * @author Angela Gao
  * @version 11/12/2023
  */
 public class IntroAnimation extends World

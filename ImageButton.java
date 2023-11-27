@@ -6,8 +6,8 @@ import greenfoot.*;
  * This class can be extended to create various types of buttons with custom logic.
  * 
  * Usage:
- * - Create an instance by providing the file paths for normal and clicked images, button type, width, and height.
- * - Optionally, add specific logic for different button types by checking the buttonType parameter.
+ * <li>Create an instance by providing the file paths for normal and clicked images, button type, width, and height.</li>
+ * <li>Optionally, add specific logic for different button types by checking the buttonType parameter.</li>
  * 
  * @author Jiayi Li
  * @version November 2023
