@@ -1,8 +1,8 @@
 import greenfoot.*;
 
 /**
- * The TextButton class represents a button with text in the Greenfoot environment.
- * It can be used to create buttons with different functionalities, such as plus and minus buttons.
+ * <p>The TextButton class represents a button with text in the Greenfoot environment.</p>
+ * <p>It can be used to create buttons with different functionalities, such as plus and minus buttons.</p>
  * 
  * @author Jiayi Li
  * @version November 2023

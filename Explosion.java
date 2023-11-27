@@ -90,6 +90,9 @@ public class Explosion extends Actor {
         }
     }
     
+    /**
+     * Cause damage to the little prince if touching 
+     */
     public void causeDamage(){
         if (isTouching(LittlePrince.class) && !damaged){
             TLP = (LittlePrince)getOneIntersectingObject(LittlePrince.class);

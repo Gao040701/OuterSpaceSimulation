@@ -8,11 +8,11 @@ import java.util.List;
  * Random planets can have different images, health points, and interact with asteroids in the world.
  * 
  * Usage:
- * - Create instances of RandomPlanet in the game world.
- * - Random planets move to the right and may spawn new planets at a certain distance.
- * - They have health points and a health bar that decreases on collision with asteroids.
- * - On reaching zero health points, they may spawn a new planet and are removed from the world.
- * - Random planets can generate trees or roses based on game conditions.
+ * <li>Create instances of RandomPlanet in the game world.</li>
+ * <li>Random planets move to the right and may spawn new planets at a certain distance.</li>
+ * <li>They have health points and a health bar that decreases on collision with asteroids.</li>
+ * <li>On reaching zero health points, they may spawn a new planet and are removed from the world.</li>
+ * <li>Random planets can generate trees or roses based on game conditions.</li>
  * 
  * @author Jiayi Li
  * @version November 2023
