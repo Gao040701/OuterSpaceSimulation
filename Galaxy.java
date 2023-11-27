@@ -45,7 +45,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  *  <li>Code: </li>
  * </ul>
  * 
- * @authors: Angela Gao, Jiayi Li, Jennifer Zhou 
+ * @authors: Angela Gao, Jiayi Li, Zhiyu (Jennifer) Zhou 
  * @version: November 24
  * 
  */
@@ -172,6 +172,12 @@ public class Galaxy extends World
     public void generateFox() {
         if (Greenfoot.getRandomNumber(1) == 0){
             Fox fox = new Fox(foxRun, foxFly, foxDig, foxFlyInverted);
+            /**
+             * Image credit
+             * Artist: Elthen
+             * Title: 2D Pixel Art Fox Sprites
+             * Link: https://elthen.itch.io/2d-pixel-art-fox-sprites
+             */
             fox.prepareAnimation(foxRun, "foxRun/run", fox.getImage().getWidth()*4, fox.getImage().getHeight()*4);
             fox.prepareAnimation(foxFly, "foxFly/fly", fox.getImage().getWidth()*4, fox.getImage().getHeight()*4);
             fox.prepareAnimation(foxFlyInverted, "foxFly/fly", fox.getImage().getWidth()*4, fox.getImage().getHeight()*4);

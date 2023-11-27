@@ -6,7 +6,7 @@ import java.awt.Point;
  * Write a description of class Moving here.
  * 
  * @author Zhiyu (Jennifer) Zhou
- * @editor Angela Gao
+ * @modified by Angela Gao
  * @version 1.0
  */
 public class Moving extends Being

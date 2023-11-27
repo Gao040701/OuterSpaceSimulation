@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * related to health points, collision detection, and rotation.
  * 
  * @Author: Zhiyu (Jennifer) Zhou
- * @Editor: Angela Gao
+ * @modiefied by Angela Gao
  * @Version: v1.0
  */
 public class LittlePrince extends Moving

@@ -27,6 +27,12 @@ public class HomePlanet extends Planet {
      */
     public HomePlanet() {
         planetImgIndex = 1; // Assuming you want to use planet1.png as the image
+        /**
+         * Image credit
+         * Artist: diluck
+         * Title: Pixel planets set, pixel art solar system.
+         * Link: https://img.freepik.com/premium-vector/pixel-planets-set-pixel-art-solar-system_158677-386.jpg
+         */
         img = new GreenfootImage("planets/planet" + planetImgIndex + ".png");
 
         length = 200 + Greenfoot.getRandomNumber(41); // 200 + 0 to 40
