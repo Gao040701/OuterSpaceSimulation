@@ -27,6 +27,12 @@ public class EndScreen extends World
      * Link: https://youtu.be/wMprqGYGP2c?si=PBd2JGwk8DZBxAD6
      */
     private GreenfootSound failedMusic;
+    /**
+     * Music credit
+     * Artists: Hans Zimmer, Richard Harvey
+     * Title: Recovery
+     * Link: https://youtu.be/KjUYaIxuz_Y?si=ZT8GiagzczfGzXp8
+     */
     private GreenfootSound successMusic;
 
     /**

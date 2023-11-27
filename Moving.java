@@ -3,8 +3,8 @@ import java.util.ArrayList;
 import java.awt.Point;
 
 /**
- * Write a description of class Moving here.
- * 
+ * The Moving class consists of all the main characters in the game that are moving relative to the planets, including Bird, LittlePrince, and Fox subclasses. 
+ * <p>
  * @author Zhiyu (Jennifer) Zhou
  * @modified by Angela Gao
  * @version 1.0

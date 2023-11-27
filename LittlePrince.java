@@ -6,10 +6,10 @@ import java.util.ArrayList;
  * The LittlePrince class represents the character that walks around planets and jumps out of planets
  * when all the baobab trees are destroyed. It extends the Moving class and has additional behavior
  * related to health points, collision detection, and rotation.
- * 
- * @Author: Zhiyu (Jennifer) Zhou
- * @modiefied by Angela Gao
- * @Version: v1.0
+ * <p>
+ * @author Zhiyu (Jennifer) Zhou
+ * @modified by Angela Gao
+ * @version v1.0
  */
 public class LittlePrince extends Moving
 {
