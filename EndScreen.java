@@ -50,7 +50,7 @@ public class EndScreen extends World
         if (success){
             text = new Image(congradulation);
             addObject(text, 400, 200);
-        } else {
+        }else {
             startedFailed();
             setBackground(fail);
             text = new Image(waiting);
