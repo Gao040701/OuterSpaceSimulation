@@ -5,7 +5,7 @@ import java.util.ArrayList;
  * The Fox class represents a fox actor in the game that can move, interact with other objects,
  * and follow the Little Prince.
  * 
- * @author Jennifer Zhou
+ * @author Zhiyu (Jennifer) Zhou
  * @version v1.0
  */
 

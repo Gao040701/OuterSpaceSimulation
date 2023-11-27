@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Moving
-comment0.text=\n\ Write\ a\ description\ of\ class\ Moving\ here.\n\ \n\ @author\ Zhiyu\ (Jennifer)\ Zhou\n\ @editor\ Angela\ Gao\n\ @version\ 1.0\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ Moving\ here.\n\ \n\ @author\ Zhiyu\ (Jennifer)\ Zhou\n\ @modified\ by\ Angela\ Gao\n\ @version\ 1.0\n
 comment1.params=
 comment1.target=void\ act()
 comment1.text=\n\ Act\ method\ is\ called\ whenever\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n\ Includes\ placeholder\ content.\ Override\ this\ method\ to\ define\ the\ actor's\ behavior.\n

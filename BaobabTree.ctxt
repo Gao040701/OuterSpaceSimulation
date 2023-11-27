@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=BaobabTree
-comment0.text=\n\ The\ BaobabTree\ class\ represents\ a\ stationary\ tree\ in\ the\ game\ that\ provides\ clues\ to\ the\ player.\n\ It\ includes\ methods\ for\ tree\ generation,\ positioning,\ and\ interaction\ with\ the\ Little\ Prince.\n\ \n\ @Angela\ Gao\n\ @version\ November\ 2023\n
+comment0.text=\n\ The\ BaobabTree\ class\ represents\ a\ stationary\ tree\ in\ the\ game\ that\ provides\ clues\ to\ the\ player.\n\ It\ includes\ methods\ for\ tree\ generation,\ positioning,\ and\ interaction\ with\ the\ Little\ Prince.\n\ \n\ @author\ Angela\ Gao\n\ @version\ November\ 2023\n
 comment1.params=
 comment1.target=void\ act()
 comment1.text=\n\ Act\ method\ is\ called\ whenever\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n\ Updates\ the\ BaobabTree's\ position\ based\ on\ the\ associated\ Planet's\ speed.\n\ Generates\ the\ hitbox\ for\ the\ BaobabTree\ upon\ first\ generation.\n\ Counts\ down\ and\ removes\ the\ BaobabTree\ after\ a\ delay.\n

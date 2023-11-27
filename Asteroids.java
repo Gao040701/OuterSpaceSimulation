@@ -16,6 +16,12 @@ public class Asteroids extends SuperSmoothMover {
     private int xSpeed;
     private int ySpeed;
     private int count;
+    /**
+     * Image credit
+     * Artist: FoozleCC
+     * Title: Void - Environment Pack (1.0)
+     * Link: https://foozlecc.itch.io/void-environment-pack
+     */
     private GreenfootImage asteroid = new GreenfootImage("asteroid.png");
     private int worldWidth = 1024, worldHeight = 576;
 
