@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Rose here.
  * 
- * @author Jiayi Li 
+ * @author Angela Gao, Jiayi Li 
  * @version November 2023
  */
 public class Rose extends Stationary
