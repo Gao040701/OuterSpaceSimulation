@@ -86,18 +86,30 @@ public class EndScreen extends World
         senseButton();
     }
     
+    /**
+     * Starts playing the music for a failed game.
+     */
     public void startedFailed(){
         failedMusic.playLoop(); 
     }
 
+    /**
+     * Pauses the music for a failed game.
+     */
     public void stoppedFailed(){
         failedMusic.pause();
     }
     
+    /**
+     * Starts playing the music for a successful game.
+     */
     public void startedSuccess(){
         successMusic.playLoop(); 
     }
 
+    /**
+     * Pauses the music for a successful game.
+     */
     public void stoppedSuccess(){
         successMusic.pause();
     }

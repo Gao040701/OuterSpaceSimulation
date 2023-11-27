@@ -107,13 +107,20 @@ public class SetValuePage extends World {
         addObject(startButton, getWidth() / 2, 510);
     }
 
+    /**
+     * Starts playing the background music.
+     */
     public void started(){
         setValueMusic.playLoop(); 
     }
-
+    
+    /**
+     * Pauses the background music.
+     */
     public void stopped(){
         setValueMusic.pause();
     }
+
     
     /**
      * Handles user input and updates the values accordingly.
