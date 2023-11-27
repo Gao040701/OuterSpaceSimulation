@@ -19,39 +19,40 @@ import java.util.List;
  * @version November 2023
  */
 public class RandomPlanet extends Planet {
-    private static boolean canSpawnNext;
-    private GreenfootImage[] planets = new GreenfootImage[7];
-    private int planetImgIndex, length;
-    private GreenfootImage img;
-    private int distance;
-    private int num = 0;
-    private SuperStatBar randomHpBar;
-    private int ylocation;
-    private boolean firstGenerated = true;
-    private ArrayList<BaobabTree> trees = new ArrayList<BaobabTree>();
-    private boolean roseAppear = false;
-    private RandomPlanet newPlanet;
-    private double cos45, cos30, cos60; //cos30 = sin60, cos60 = sin30
-    private static boolean oneRose;
+    private static boolean canSpawnNext; // Flag indicating whether a new RandomPlanet can be spawned
+    private GreenfootImage[] planets = new GreenfootImage[7]; // Array to store different planet images
+    private int planetImgIndex, length; // Index for the current planet image and its length
+    private GreenfootImage img; // Image of the RandomPlanet
+    private int distance; // Distance variable (unused)
+    private int num = 0; // Counter for planet spawning
+    private SuperStatBar randomHpBar; // Health bar for the RandomPlanet
+    private int ylocation; // Y-coordinate for planet placement
+    private boolean firstGenerated = true; // Flag to track if the planet has been initially generated
+    private ArrayList<BaobabTree> trees = new ArrayList<BaobabTree>(); // List to store BaobabTree objects
+    private boolean roseAppear = false; // Flag indicating if roses appear in the game
+    private RandomPlanet newPlanet; // Reference to the newly spawned RandomPlanet
+    private double cos45, cos30, cos60; // Trigonometric constants for calculations (cosine values)
+    private static boolean oneRose; // Flag indicating whether a rose has been generated
     
     /**
      * Constructor for the RandomPlanet class.
      * Initializes the random planet's image, size, health, speed, and health bar.
      */
     public RandomPlanet() {
-        speed = Greenfoot.getRandomNumber(1) + 1;
-        canSpawnNext = false;
-        totalHP = Galaxy.hpPerPlanet();
-        decreaseHP = Galaxy.Rdecrease;
+        speed = Greenfoot.getRandomNumber(1) + 1;// Set random speed between 1 and 2
+        canSpawnNext = false;// Initialize flag to prevent immediate spawning
+        totalHP = Galaxy.hpPerPlanet();// Set total health points based on Galaxy configuration
+        decreaseHP = Galaxy.Rdecrease;// Set health decrease amount
 
+        // Load planet images into the array
         for (int i = 0; i < 7; i++) {
             planets[i] = new GreenfootImage("planets/planet" + i + ".png");
         }
 
-        randomImage();
+        randomImage();// Set a random image for the RandomPlanet
         randomHpBar = new SuperStatBar(totalHP, totalHP, this, 50, 10, -20, Color.GREEN, Color.RED, false, Color.BLACK, 1);
-        appear = true;
-        this.roseAppear = roseAppear;
+        appear = true;// Set appear flag to true
+        this.roseAppear = roseAppear;// Initialize rose appearance flag
 
     }
 
@@ -73,8 +74,9 @@ public class RandomPlanet extends Planet {
         }
 
         if (appear) {
+            // Check if the planet is beyond the right edge of the world
             if (getX() > getWorld().getWidth()) {
-                removeRanPlanet();
+                removeRanPlanet();// Remove the random planet if it's beyond the right edge
                 return;
             } else if (!canSpawnNext) {
                 canSpawnNext = true;
@@ -85,7 +87,8 @@ public class RandomPlanet extends Planet {
             } else if (getX() > 600 && canSpawnNext && num == 0) {
                 num++;
                 canSpawnNext = false;
-
+                
+                // Check if the world is an instance of Galaxy to access Galaxy-specific functionality
                 if (getWorld() instanceof Galaxy) {
                     Galaxy galaxy = (Galaxy) getWorld();
                     roseAppear = galaxy.getRose();
@@ -96,25 +99,27 @@ public class RandomPlanet extends Planet {
                 getWorld().addObject(newPlanet, 0, ylocation);
                 getWorld().addObject(newPlanet.getHpBar(), 0, Greenfoot.getRandomNumber(276) + 150);
             }
-            randomHpBar.moveMe();
+            randomHpBar.moveMe();// Move the health bar with the planet
         }
 
-        checkAndRemove();
+        checkAndRemove();// Check if the planet should be removed based on health points
 
         if (appear && firstGenerated) {
+            // Check if the world is an instance of Galaxy to access Galaxy-specific functionality
             if (getWorld() instanceof Galaxy) {
                 Galaxy galaxy = (Galaxy) getWorld();
                 roseAppear = galaxy.getRose();
             }
 
+            // Generate trees or roses based on game configuration
             if (!roseAppear) {
                 generateTrees();
             } else if(roseAppear && oneRose != true){
                 generateRose();
-                speed = 1;
-                oneRose=true;
+                speed = 1;// Set speed to 1 when roses appear
+                oneRose=true;// Set the flag to true to indicate that a rose has been generated
             }
-            firstGenerated = false;
+            firstGenerated = false;// Set the flag to false after initial generation
         }
     }
     
