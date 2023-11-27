@@ -1,19 +1,19 @@
 #BlueJ class context
 comment0.target=IntroAnimation
-comment0.text=\n\ The\ IntroAnimation\ class\ represents\ the\ introduction\ animation\ of\ the\ game.\n\ It\ displays\ a\ sequence\ of\ images\ with\ background\ music.\n\ \n\ @author\ Angela\ Gao\n\ @version\ 11/12/2023\n
+comment0.text=\r\n\ The\ IntroAnimation\ class\ represents\ the\ introduction\ animation\ of\ the\ game.\r\n\ It\ displays\ a\ sequence\ of\ images\ with\ background\ music.\r\n\ \r\n\ @author\ Angela\ Gao\r\n\ @version\ 11/12/2023\r\n
 comment1.params=
 comment1.target=IntroAnimation()
-comment1.text=\n\ Constructor\ for\ objects\ of\ class\ IntroAnimation.\n
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ IntroAnimation.\r\n
 comment2.params=
 comment2.target=void\ act()
-comment2.text=\n\ Act\ method\ for\ the\ IntroAnimation.\ \n\ Handles\ animation\ and\ music\ playback.\n
+comment2.text=\r\n\ Act\ method\ for\ the\ IntroAnimation.\ \r\n\ Handles\ animation\ and\ music\ playback.\r\n
 comment3.params=
 comment3.target=void\ started()
-comment3.text=\n\ Method\ called\ when\ the\ world\ is\ started.\ \n\ Starts\ playing\ the\ intro\ music.\n
+comment3.text=\r\n\ Method\ called\ when\ the\ world\ is\ started.\ \r\n\ Starts\ playing\ the\ intro\ music.\r\n
 comment4.params=
 comment4.target=void\ stopped()
-comment4.text=\n\ Method\ called\ when\ the\ world\ is\ stopped.\ \n\ Pauses\ the\ intro\ music.\n
+comment4.text=\r\n\ Method\ called\ when\ the\ world\ is\ stopped.\ \r\n\ Pauses\ the\ intro\ music.\r\n
 comment5.params=
 comment5.target=void\ animate()
-comment5.text=\n\ Animates\ the\ background\ images\ and\ transitions\ to\ the\ next\ world\ when\ animation\ is\ complete.\n
+comment5.text=\r\n\ Animates\ the\ background\ images\ and\ transitions\ to\ the\ next\ world\ when\ animation\ is\ complete.\r\n
 numComments=6

@@ -224,7 +224,8 @@ public class Fox extends Moving
             }else if(follow == true){
                 setLocation(getX() + speed, getY());
                 animate(dig);
-                box.getBaobabTree().removeBaobabTree();
+                if (isTouching(LittlePrince.class)) box.getBaobabTree().removeBaobabTree(50);
+                else box.getBaobabTree().removeBaobabTree(100);
                 if(canFly(planet)){
                     setLocation(getX()-200, getY() - 10);
                 }

@@ -3,9 +3,53 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * The {@code Galaxy} class represents the game world in which the Little Prince
  * explores and interacts. It includes asteroids, planets, characters, and other elements.
  * 
+ * <b>The Little Prince Simulation</b>
+ * <p>List of features: </p>
+ * <ol>
+ *  <li> User can set values for the number of asteroids exist, amount of clues the little prince can get from removing a baobab tree, the speed of aseroid, and HP per planet. </li>
+ *  <li> The little prince can target to the closest palnet, go around a planet, and remove baobab trees to gain clues. </li>
+ *  <li> The fox will be randomly generated on RandomPalnet and follow the fox. </li>
+ *  <li> The end screen will present different texts based on the result of the simulation. The user can choose to restart the simulation and reset the values. </li>
+ *  <li> The asteroid can cause harm to the planet and little pricnce by directly hitting them. The explosion caused by an asteroid hitting a planet can also cuase harm to little prince. </li>
+ * </ol>
+ * <p></p>
+ * <p>Credits: </p>
+ * <ul>
+ *  <li>Sound and music: </li>
+ *   <ul>
+ *    <li> <p>Artists: Hans Zimmer, Richard Harvey</p>
+ *    <p> Title: Ascending</p>
+ *    <p> Link: https://youtu.be/h1TsXfLDHrA?si=R4ghgY3tGaTa4Xw4</p></li>
+ *   </ul> 
+ *   <ul> 
+ *    <li> <p> Artists: Hans Zimmer, Richard Harvey </p>
+ *    <p>Title: Farewell</p>
+ *    <p>Link: https://youtu.be/wMprqGYGP2c?si=PBd2JGwk8DZBxAD6</p></li>
+ *   </ul>
+ *   <ul>
+ *    <li><p>Artists: Hans Zimmer, Richard Harvey</p>
+ *    <p>Title: Ascending</p>
+ *    <p>Link: https://youtu.be/h1TsXfLDHrA?si=R4ghgY3tGaTa4Xw4</p></li>
+ *   </ul>
+ *   <ul>
+ *    <li><p>Artists: Hans Zimmer, Richard Harvey</p>
+ *    <p>Title: Ascending</p>
+ *    <p>Link: https://youtu.be/h1TsXfLDHrA?si=R4ghgY3tGaTa4Xw4</p></li>
+ *   </ul>
+ *   <ul> 
+ *    <li><p>Artist: Pixabay</p>
+ *    <p>Title: RussianMeteorite_SFX</p>
+ *    <p>Link: https://pixabay.com/sound-effects/russianmeteorite-sfx-76195/</p></li>
+ *   </ul>
+ *  <li>Art and graphic: </li>
+ *  <li>Code: </li>
+ * </ul>
+ * 
  * @authors: Angela Gao, Jiayi Li, Zhiyu (Jennifer) Zhou 
  * @version: November 24
+ * 
  */
+
 public class Galaxy extends World
 {
     private static int numOfAsteroids;
