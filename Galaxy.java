@@ -43,7 +43,7 @@ public class Galaxy extends World
      */
     public static final GreenfootSound galaxyMusic = new GreenfootSound("galaxyMusic.mp3");
 
-    private boolean roseAdded = false;    
+    private boolean roseAdded = false;// Flag to track whether a rose has been added 
     /**
      * Constructor for objects of class Galaxy.
      * 
@@ -69,42 +69,62 @@ public class Galaxy extends World
         galaxyMusic.setVolume(50);
         prepare();
     }
-
+    /**
+     * Method called when the simulation starts, plays background music.
+     */
     public void started(){
         galaxyMusic.playLoop(); 
     }
-
+    /**
+     * Method called when the simulation stops, pauses background music.
+     */
     public void stopped(){
         galaxyMusic.pause();
     }
 
     /**
+     * Prepares the initial configuration of the game world, including asteroids, characters, and planets.
+     * 
      * Credit: Method created by Jiayi Li, modified by Zhiyu (Jennifer) Zhou
      */
     private void prepare() { 
+        // Add asteroids to the world
         for (int i = 0; i < this.numOfAsteroids; i++) {
             addObject(new Asteroids(), getAsteroidsX(), getAsteroidsY());
         }
+    
+        // Initialize the Little Prince character
         LittlePrince TLP = new LittlePrince(TLPwalk, TLPfly, TLPdig, TLPflyInverted);
-        addObject(TLP, 947, 250);
+        addObject(TLP, 512, 300); // Set initial position for the Little Prince
         TLP.prepareAnimation(TLPwalk, "walkAnimation/walk");
         TLP.prepareAnimation(TLPfly, "flyAnimation/fly");
         TLP.prepareAnimation(TLPdig, "digAnimation/dig");
         TLP.prepareAnimation(TLPflyInverted, "flyAnimation/fly");
         TLP.flipVertically(TLPflyInverted);
+    
+        // Add a bird character to the world
         addObject(new Bird(), 100, 200);
+    
+        // Add a home planet to the center of the world
         addObject(new HomePlanet(), getWidth() / 2, getHeight() / 2);
+    
+        // Add a random planet to the left side of the world
         addObject(new RandomPlanet(), 0, y);
+    
+        // Generate a fox character based on random conditions
         if (Greenfoot.getRandomNumber(1) == 0 && hasFox == true && countFox < 1){
             generateFox();
             countFox++;
             hasFox = false;
-        }else{
+        } else {
             countFox = 1;
             hasFox = false;
         }
     }
-
+    
+    /**
+     * Generates a fox character in the world based on random conditions.
+     */
     public void generateFox() {
         if (Greenfoot.getRandomNumber(1) == 0){
             Fox fox = new Fox(foxRun, foxFly, foxDig, foxFlyInverted);
@@ -118,12 +138,22 @@ public class Galaxy extends World
             addObject(fox, 0, y);
         }
     }
-
+    
+    /**
+     * Retrieves a random X-coordinate within the world boundaries.
+     * 
+     * @return A random X-coordinate.
+     */
     public int getAsteroidsX(){
         int getAsteroidsX = Greenfoot.getRandomNumber(getWidth());
         return getAsteroidsX;
     }
-
+    
+    /**
+     * Retrieves a random Y-coordinate within the world boundaries.
+     * 
+     * @return A random Y-coordinate.
+     */
     public int getAsteroidsY(){
         int getAsteroidsY = Greenfoot.getRandomNumber(getHeight());
         return getAsteroidsY;
@@ -140,14 +170,20 @@ public class Galaxy extends World
         double distanceBetween = Math.hypot (a.getX() - b.getX(), a.getY() - b.getY());
         return distanceBetween;
     }
-
+    /**
+     * Method called during each frame update.
+     */
     public void act() {
         started();
         if (clueCount == 120 && !roseAdded) {
             roseAdded = true;  // Set the flag to true so that you don't add more Roses
         }
     }
-
+    /**
+     * Retrieves the number of asteroids in the world.
+     * 
+     * @return The number of asteroids.
+     */
     public static int getNumOfAsteroids(){
         return numOfAsteroids;
     }
@@ -160,11 +196,19 @@ public class Galaxy extends World
     public static int getAmountOfClues(){
         return amountOfClues;
     }
-
+    /**
+     * Retrieves the speed of asteroids in the world.
+     * 
+     * @return The speed of asteroids.
+     */
     public static int asteroidSpeed(){
         return asteroidSpeed;
     }
-
+    /**
+     * Retrieves the initial health points per planet configured for the world.
+     * 
+     * @return The initial health points per planet.
+     */
     public static int hpPerPlanet(){
         return hpPerPlanet;
     }

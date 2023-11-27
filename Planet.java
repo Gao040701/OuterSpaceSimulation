@@ -80,4 +80,8 @@ public abstract class Planet extends SuperSmoothMover {
     public boolean hasVisited() {
         return visited;
     }
+    
+    public void setVisited(boolean x){
+        visited = x;
+    }
 }
