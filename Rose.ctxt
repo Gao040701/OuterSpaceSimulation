@@ -1,9 +1,10 @@
 #BlueJ class context
 comment0.target=Rose
-comment0.text=\n\ Write\ a\ description\ of\ class\ Rose\ here.\n\ \n\ @author\ Angela\ Gao,\ Jiayi\ Li\ \n\ @version\ November\ 2023\n
+comment0.text=\ The\ Rose\ class\ represents\ fixed\ objects\ in\ the\ game,\ specifically\ roses.\n\ Roses\ are\ decorative\ elements\ and\ do\ not\ interact\ with\ other\ objects\ in\ the\ game.\nThe\ purpose\ of\ simulation\ is\ to\ let\ the\ little\ prince\ find\ the\ rose.\ When\ the\ clue\ bar\ is\ full,\ the\ rose\ will\ appear\ on\ the\ planet.\n\n\ Usage\:\n\ <li>Create\ Rose\ instances\ in\ the\ game\ world\ for\ decoration\ purposes.\ </li>\n\ <li>The\ rose\ is\ stationary\ and\ does\ not\ perform\ any\ specific\ action.\ </li>\n\ \n\ @author\ Angela\ Gao,\ Jiayi\ Li\ \n\ @version\ November\ 2023\n
 comment1.params=
 comment1.target=void\ act()
-comment1.text=\n\ Act\ -\ do\ whatever\ the\ Rose\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+comment1.text=\n\ Act\ -\ rose\ moves\ on\ planet\ with\ the\ speed\ of\ one\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
 comment2.params=
 comment2.target=Rose()
+comment2.text=\n\ Constructor\ for\ the\ Rose\ class.\n\ Sets\ the\ image\ for\ the\ rose\ using\ the\ provided\ GreenfootImage.\n
 numComments=3
