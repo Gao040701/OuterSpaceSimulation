@@ -86,7 +86,10 @@ public class LittlePrince extends Moving
             //targetClosestPlanet();
         }
     }
-
+    
+    /**
+     * target the closest planet when LP is searching for planets
+     */
     private void targetClosestPlanet(){
         double closestTargetDistance = 0;
         double distanceToActor;
@@ -117,11 +120,11 @@ public class LittlePrince extends Moving
             //System.out.println("TARGET P!");
         }
     }
-
+    
+    /**
+     * Move towards the planet
+     */
     private void moveTowardPlanet(){
-        // if (Galaxy.getDistance(this, targetPlanet) < 30){
-
-        // }
         move(mySpeed);
         //System.out.println("Move towards P!");
     }
@@ -133,7 +136,11 @@ public class LittlePrince extends Moving
     public void setIsStaying(boolean x){
         isStaying = x;
     }
-
+    
+    /**
+     * Once LP reaches one ccircl and has successfully removed all baobab trees while the planets are in the world, 
+     * the LP will fly out of his current planet.
+     */
     public boolean canFly(Planet planet){
         if (planet.getX() - 10 <= getX() && getX() <= planet.getX() + 10 && !justPassed ){
             passCount++; 
@@ -152,6 +159,9 @@ public class LittlePrince extends Moving
         return false;
     }
 
+    /**
+     * Check if the LP hits the tree
+     */
     public boolean checkHitTree(){
         if (box != null && box.getBaobabTree().getPlanet().equals(randomPlanet)){
             return true;
@@ -175,6 +185,9 @@ public class LittlePrince extends Moving
         return passCount;
     }
 
+    /**
+     * Check if the LP hits the planet
+     */
     public boolean checkHitPlanet () {
         if (planet != null){
             return true;
@@ -184,6 +197,13 @@ public class LittlePrince extends Moving
         }
     }
 
+    /**
+     * Rotate method is for LP's rotation mechanism, which is the main and most complex movement involved in the game.
+     * <p>
+     * - The method uses trig (cosine and sinne) to locate the X and Y coordinates.
+     * <p>
+     * - When the LP to rotating, he will remove any trees he touches.
+     */
     public void rotate(){
         planet.setVisited(false);
         speed = planet.getSpeed();
@@ -196,7 +216,6 @@ public class LittlePrince extends Moving
             double y = planet.getY() + (double) ((radius+30) * Math.sin(radians));
             angle -= 1.5;
             setLocation(x+speed, y);
-            //canFly(planet);
             animate(walk);
             if(canFly(planet)){
                 setLocation(getX()-200, getY() - 10);
@@ -211,7 +230,7 @@ public class LittlePrince extends Moving
                 box.getBaobabTree().removeBaobabTree(100);
             }
         }
-        
+        //If LP touches the rose, the world will switch to the EndScreen's success page.       
         if (isTouching(Rose.class)){
             Greenfoot.setWorld(new EndScreen(true));
         }
@@ -220,7 +239,10 @@ public class LittlePrince extends Moving
     public boolean getRotationDetection(){
         return rotateDetection;
     }
-
+    
+    /**
+     * Check if the asteriods collide with the LP, which decreases LP's hP bar.
+     */
     public void checkCollisionAsteriods() {
         List<Asteroids> asteroidsList = getWorld().getObjects(Asteroids.class);
         Actor actor = getOneIntersectingObject(Asteroids.class);
