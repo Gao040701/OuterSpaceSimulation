@@ -3,8 +3,12 @@ import java.util.ArrayList;
 
 /**
  * The Fox class represents a fox actor in the game that can move, interact with other objects,
- * and follow the Little Prince.
- * 
+ * and follow the Little Prince:
+ * - The fox will initially wait on a planet or floast in space by itself. During floatinng, it will target the Little Prince
+ * and move closer and closer to him.
+ * <p>
+ * - Once the the Little Fox touches the Little Prince, the fox will follow him forever as his companion.
+ * <p>
  * @author Zhiyu (Jennifer) Zhou
  * @version v1.0
  */
