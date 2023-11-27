@@ -13,6 +13,12 @@ public class Explosion extends Actor {
     private int duration, count;
     private SimpleTimer animationTimer;
     private GreenfootImage[] animation;
+    /**
+     * Music credit
+     * Artist: Pixabay
+     * Title: RussianMeteorite_SFX
+     * Link: https://pixabay.com/sound-effects/russianmeteorite-sfx-76195/
+     */
     public static final GreenfootSound explosion = new GreenfootSound("explosion.wav");
     private LittlePrince TLP;
     private boolean damaged = false;

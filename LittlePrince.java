@@ -68,7 +68,7 @@ public class LittlePrince extends Moving
             rotateImage(90);
             if (targetPlanet != null){
                 moveTowardPlanet();
-                System.out.println("TOWARDS!");
+                //System.out.println("TOWARDS!");
                 if (getRotation() < 270 && getRotation() > 90){
                     animate(flyInverted);
                 }else animate(fly);
@@ -220,7 +220,7 @@ public class LittlePrince extends Moving
             totalHP -= decreaseHP;
             princeHpBar.update(totalHP);
             getWorld().removeObject(a);
-            if(totalHP==0){
+            if(totalHP<=0){
                 Greenfoot.setWorld(new EndScreen(false));
             }
             // Added Asteroids to keep the amounts as three.
@@ -250,7 +250,7 @@ public class LittlePrince extends Moving
     public void changeHP(int amount){
         totalHP += amount;
         princeHpBar.update(totalHP);
-        if (totalHP==0){
+        if(totalHP<=0){
             Greenfoot.setWorld(new EndScreen(false));
         }
     }

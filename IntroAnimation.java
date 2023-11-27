@@ -23,8 +23,10 @@ public class IntroAnimation extends World
         // Create a new world with 1024x576 cells and a cell size of 1x1 pixels.
         super(1024, 576, 1); 
         /**
-         * Music credit: Hans Zimmer
+         * Music credit
+         * Artists: Hans Zimmer, Richard Harvey
          * Title: Ascending
+         * Link: https://youtu.be/h1TsXfLDHrA?si=R4ghgY3tGaTa4Xw4
          */
         introMusic = new GreenfootSound("introAnimationMusic.mp3");
         introMusic.setVolume(30);
