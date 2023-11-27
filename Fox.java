@@ -44,9 +44,6 @@ public class Fox extends Moving
      */
     public void act()
     {
-        // if (getWorld().getObjects(LittlePrince.class) != null){
-        // //turnTowards(littlePrince);
-        // }
         littlePrince = (LittlePrince) getOneIntersectingObject(LittlePrince.class);
         randomPlanet = (RandomPlanet) getOneIntersectingObject(RandomPlanet.class);
         planet = (Planet) getOneIntersectingObject(Planet.class);
@@ -88,35 +85,25 @@ public class Fox extends Moving
             if(littlePrince != null){
                 if(!littlePrince.checkHitPlanet() && follow == true){
                     passCount = 0;
-                    //setLocation(littlePrince.getPrinceX(), littlePrince.getPrinceY());
                     targetClosestLP();
                     setRotation(littlePrince.getRotation());
                     if (getRotation() < 270 && getRotation() > 90){
                         targetClosestLP();
-                        //setLocation(littlePrince.getPrinceX(), littlePrince.getPrinceY());
-                        //turnTowards(littlePrince.getPrinceX(), littlePrince.getPrinceY());
                         animate(flyInverted);
                     }
                     else {
                         targetClosestLP();
-                        //setLocation(littlePrince.getPrinceX(), littlePrince.getPrinceY());
-                        //turnTowards(littlePrince.getPrinceX(), littlePrince.getPrinceY());
                         animate(fly);
                     }
-                    //System.out.println("FOLLOW LP FLOAT");
-                    //setLocation(littlePrince.getPrinceX(), littlePrince.getPrinceY());
-                    //turnTowards(littlePrince);
-                    //setRotation(degree);
-                    //animate(fly);
                 }
             }
         }
         if(checkHitPlanet() && follow == true){
-            //targetClosestLP();
             rotate();
             animate(walk);
         }
         if(!checkHitPlanet() && follow == true){
+            //setLocation(littlePrince.getX(), littlePrince.getY());
             targetClosestLP();
         }
         super.act();
@@ -150,10 +137,10 @@ public class Fox extends Moving
     private void targetClosestLP(){
         double closestTargetDistance = 0;
         double distanceToActor;
-        littlePrinces = (ArrayList<LittlePrince>)getObjectsInRange(40, LittlePrince.class);
+        littlePrinces = (ArrayList<LittlePrince>)getObjectsInRange(80, LittlePrince.class);
 
         if (littlePrinces.size() == 0){
-            littlePrinces = (ArrayList<LittlePrince>)getObjectsInRange(150, LittlePrince.class);
+            littlePrinces = (ArrayList<LittlePrince>)getObjectsInRange(180, LittlePrince.class);
         }
 
         if (littlePrinces.size() > 0){
