@@ -1,9 +1,9 @@
 #BlueJ class context
 comment0.target=Fox
-comment0.text=\r\n\ The\ Fox\ class\ represents\ a\ fox\ actor\ in\ the\ game\ that\ can\ move,\ interact\ with\ other\ objects,\r\n\ and\ follow\ the\ Little\ Prince\:\r\n\ <p>\r\n\ -\ The\ fox\ will\ initially\ wait\ on\ a\ planet\ or\ floast\ in\ space\ by\ itself.\ During\ floatinng,\ it\ will\ target\ the\ Little\ Prince\r\n\ and\ move\ closer\ and\ closer\ to\ him.\r\n\ <p>\r\n\ -\ Once\ the\ Little\ Fox\ touches\ the\ Little\ Prince,\ the\ fox\ will\ follow\ him\ forever\ as\ his\ companion.\r\n\ <p>\r\n\ -\ When\ the\ fox\ helps\ the\ prince\ to\ remove\ the\ baobab\ trees\ together,\ they\ will\ be\ removing\ them\ at\ a\ faster\ rate.\r\n\ @author\ Zhiyu\ (Jennifer)\ Zhou\r\n\ @version\ v1.0\r\n
+comment0.text=\r\n\ The\ Fox\ class\ represents\ a\ fox\ actor\ in\ the\ game\ that\ can\ move,\ interact\ with\ other\ objects,\r\n\ and\ follow\ the\ Little\ Prince\:\r\n\ <p>\r\n\ -\ The\ fox\ will\ initially\ wait\ on\ a\ planet\ or\ floast\ in\ space\ by\ itself.\ During\ floatinng,\ it\ will\ target\ the\ Little\ Prince\r\n\ and\ move\ closer\ and\ closer\ to\ him.\r\n\ <p>\r\n\ -\ Once\ the\ Little\ Fox\ touches\ the\ Little\ Prince,\ the\ fox\ will\ follow\ him\ forever\ as\ his\ companion.\r\n\ <p>\r\n\ -\ When\ the\ fox\ helps\ the\ prince\ to\ remove\ the\ baobab\ trees\ together,\ they\ will\ be\ removing\ them\ at\ a\ faster\ rate.\r\n\ <p>\r\n\ -\ the\ Little\ Fox\ uses\ similar\ rotation\ and\ fly\ mechanism\ as\ the\ Little\ Prince\r\n\ @author\ Zhiyu\ (Jennifer)\ Zhou\r\n\ @version\ v1.0\r\n
 comment1.params=
 comment1.target=void\ act()
-comment1.text=\r\n\ Act\ method\ is\ called\ whenever\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n\ Includes\ the\ behavior\ of\ the\ fox,\ such\ as\ movement\ and\ interaction\ with\ other\ objects.\r\n
+comment1.text=\r\n\ Act\ method\ is\ called\ whenever\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n\ Includes\ the\ behavior\ of\ the\ fox,\ such\ as\ movement\ and\ interaction\ with\ other\ objects.\r\n\ <p>\r\n\ -\ As\ along\ as\ the\ fox\ doesn't\ touches\ the\ LP,\ it\ wiill\ move\ by\ itself\r\n\ <p>\r\n\ -\ Once\ the\ fox\ touches\ LP,\ it\ will\ follow\ LP\ forever.\r\n
 comment10.params=walk\ fly\ dig\ flyInverted
 comment10.target=Fox(greenfoot.GreenfootImage[],\ greenfoot.GreenfootImage[],\ greenfoot.GreenfootImage[],\ greenfoot.GreenfootImage[])
 comment10.text=\r\n\ Constructor\ for\ the\ Fox\ class.\r\n\ \r\n\ @param\ walk\ Array\ of\ walking\ animation\ frames.\r\n\ @param\ fly\ Array\ of\ flying\ animation\ frames.\r\n\ @param\ dig\ Array\ of\ digging\ animation\ frames.\r\n\ @param\ flyInverted\ Array\ of\ inverted\ flying\ animation\ frames.\r\n
@@ -14,6 +14,7 @@ comment2.params=
 comment2.target=void\ targetClosestPlanet()
 comment3.params=
 comment3.target=void\ targetClosestLP()
+comment3.text=\r\n\ This\ method\ allows\ the\ Little\ Fox\ to\ target\ closest\ LP\ and\ move\ towards\ it,\ which\ works\ \r\n\ well\ for\ the\ following\ mechanism.\r\n
 comment4.params=
 comment4.target=void\ moveTowardPlanet()
 comment5.params=

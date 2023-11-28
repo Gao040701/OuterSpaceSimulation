@@ -140,7 +140,7 @@ public class RandomPlanet extends Planet {
             a = (Asteroids) getOneObjectAtOffset(0, radius, Asteroids.class); // South
         }else if (a == null) {
             a = (Asteroids) getOneObjectAtOffset((int) (-cos45), (int) (-cos45), Asteroids.class); // WestNorth
-            getWorld().addObject(new Rose(), getX()-(int)cos45, getY() - (int)cos45);
+            //getWorld().addObject(new Rose(), getX()-(int)cos45, getY() - (int)cos45);
         }else if (a == null) {
             a = (Asteroids) getOneObjectAtOffset((int) (cos45), (int) (cos45), Asteroids.class); // WestSouth
         }else if (a == null) {
