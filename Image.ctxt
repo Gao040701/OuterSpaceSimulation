@@ -1,13 +1,13 @@
 #BlueJ class context
 comment0.target=Image
-comment0.text=\n\ The\ Image\ class\ represents\ an\ actor\ that\ displays\ a\ GreenfootImage.\n\ It\ provides\ constructors\ to\ set\ the\ image\ with\ or\ without\ specifying\ dimensions.\n\ \n\ Usage\:\n\ <li>Create\ an\ instance\ of\ Image\ with\ a\ GreenfootImage\ and\ optional\ width\ and\ height.</li>\n\ <li>The\ act\ method\ sets\ the\ image\ for\ display.</li>\n\ \n\ @author\ Angela\ Gao\n\ @version\ November\ 2023\n
+comment0.text=\r\n\ The\ Image\ class\ represents\ an\ actor\ that\ displays\ a\ GreenfootImage.\r\n\ It\ provides\ constructors\ to\ set\ the\ image\ with\ or\ without\ specifying\ dimensions.\r\n\ \r\n\ Usage\:\r\n\ <li>Create\ an\ instance\ of\ Image\ with\ a\ GreenfootImage\ and\ optional\ width\ and\ height.</li>\r\n\ <li>The\ act\ method\ sets\ the\ image\ for\ display.</li>\r\n\ \r\n\ @author\ Angela\ Gao\r\n\ @version\ November\ 2023\r\n
 comment1.params=
 comment1.target=void\ act()
-comment1.text=\n\ Act\ method\ for\ the\ Image\ class.\n\ Sets\ the\ image\ for\ display.\n
+comment1.text=\r\n\ Act\ method\ for\ the\ Image\ class.\r\n\ Sets\ the\ image\ for\ display.\r\n
 comment2.params=img\ width\ height
 comment2.target=Image(greenfoot.GreenfootImage,\ int,\ int)
-comment2.text=\n\ Constructor\ for\ Image\ with\ specified\ dimensions.\n\ \n\ @param\ img\ The\ GreenfootImage\ to\ be\ displayed.\n\ @param\ width\ The\ width\ of\ the\ displayed\ image.\n\ @param\ height\ The\ height\ of\ the\ displayed\ image.\n
+comment2.text=\r\n\ Constructor\ for\ Image\ with\ specified\ dimensions.\r\n\ \r\n\ @param\ img\ The\ GreenfootImage\ to\ be\ displayed.\r\n\ @param\ width\ The\ width\ of\ the\ displayed\ image.\r\n\ @param\ height\ The\ height\ of\ the\ displayed\ image.\r\n
 comment3.params=img
 comment3.target=Image(greenfoot.GreenfootImage)
-comment3.text=\n\ Constructor\ for\ Image\ without\ specified\ dimensions.\n\ \n\ @param\ img\ The\ GreenfootImage\ to\ be\ displayed.\n
+comment3.text=\r\n\ Constructor\ for\ Image\ without\ specified\ dimensions.\r\n\ \r\n\ @param\ img\ The\ GreenfootImage\ to\ be\ displayed.\r\n
 numComments=4
