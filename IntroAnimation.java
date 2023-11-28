@@ -29,7 +29,7 @@ public class IntroAnimation extends World
          * Link: https://youtu.be/h1TsXfLDHrA?si=R4ghgY3tGaTa4Xw4
          */
         introMusic = new GreenfootSound("introAnimationMusic.mp3");
-        introMusic.setVolume(30);
+        introMusic.setVolume(80);
         // Load animation images
         for (int i = 0; i < animation.length; i++){
             animation[i] = new GreenfootImage("introAnimation/ani"+i+".png");
