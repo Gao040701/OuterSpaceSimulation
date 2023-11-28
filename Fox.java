@@ -67,13 +67,13 @@ public class Fox extends Moving
             targetClosestPlanet();
         }
         
-        if (checkHitPlanet() && follow == false){
+        if (checkHitPlanet() && !follow){
             setLocation (planet.getPlanetX() + planet.getRadius(), planet.getPlanetY());
             animate (dig);
             turnTowards(planet);
             turn(-90);
         }
-        if (!checkHitPlanet() && follow == false){
+        if (!checkHitPlanet() && !follow){
             passCount = 0;
             //rotateDetection = false;
             isStaying = false;
@@ -95,7 +95,7 @@ public class Fox extends Moving
         if(checkCollisionLP()){
             follow = true;
             if(littlePrince != null){
-                if(!littlePrince.checkHitPlanet() && follow == true){
+                if(!littlePrince.checkHitPlanet() && follow){
                     passCount = 0;
                     targetClosestLP();
                     setRotation(littlePrince.getRotation());
@@ -110,11 +110,11 @@ public class Fox extends Moving
                 }
             }
         }
-        if(checkHitPlanet() && follow == true){
+        if(checkHitPlanet() && follow){
             rotate();
             animate(walk);
         }
-        if(!checkHitPlanet() && follow == true){
+        if(!checkHitPlanet() && follow){
             //setLocation(littlePrince.getX(), littlePrince.getY());
             targetClosestLP();
         }
@@ -154,10 +154,43 @@ public class Fox extends Moving
     private void targetClosestLP(){
         double closestTargetDistance = 0;
         double distanceToActor;
-        littlePrinces = (ArrayList<LittlePrince>)getObjectsInRange(80, LittlePrince.class);
+        littlePrinces = (ArrayList<LittlePrince>)getObjectsInRange(70, LittlePrince.class);
 
         if (littlePrinces.size() == 0){
-            littlePrinces = (ArrayList<LittlePrince>)getObjectsInRange(180, LittlePrince.class);
+            littlePrinces = (ArrayList<LittlePrince>)getObjectsInRange(170, LittlePrince.class);
+        }
+
+        if (littlePrinces.size() > 0){
+            targetLP = littlePrinces.get(0);
+            closestTargetDistance = getDistance (this, targetLP);
+
+            for (LittlePrince o : littlePrinces){
+                distanceToActor = getDistance(this, o);
+                if (distanceToActor < closestTargetDistance){
+                    targetLP = o;
+                    closestTargetDistance = distanceToActor;
+                }
+            }
+            setLocation(targetLP.getX(), targetLP.getY());
+            //setRotation(targetLP.getDegree());
+            if(targetLP.getDegree() > 90 && targetLP.getDegree() < 360){
+                animate(flyInverted);
+                turn(targetLP.getDegree());
+            }
+            if(targetLP.getDegree() > 0 && targetLP.getDegree() < 90){
+                animate(flyInverted);
+                turn(targetLP.getDegree());
+            }
+        }
+    }
+    
+    private void targetFlyLP(){
+        double closestTargetDistance = 0;
+        double distanceToActor;
+        littlePrinces = (ArrayList<LittlePrince>)getObjectsInRange(300, LittlePrince.class);
+
+        if (littlePrinces.size() == 0){
+            littlePrinces = (ArrayList<LittlePrince>)getObjectsInRange(300, LittlePrince.class);
         }
 
         if (littlePrinces.size() > 0){
@@ -227,19 +260,20 @@ public class Fox extends Moving
                 double y = planet.getY() + (double) ((radius+30) * Math.sin(radians));
                 angle -= 1.5;
                 //targetClosestLP();
-                setLocation(x+speed, y);
-                if(canFly(planet)){
-                    setLocation(getX()-200, getY() - 10);
-                }
+                //setLocation(x+speed, y);
+                targetFlyLP();
                 animate(walk);
-            }else if(follow == true){
+            }else if(follow){
+                
                 setLocation(getX() + speed, getY());
                 animate(dig);
                 if (isTouching(LittlePrince.class)) box.getBaobabTree().removeBaobabTree(50);
                 else box.getBaobabTree().removeBaobabTree(100);
-                if(canFly(planet)){
-                    setLocation(getX()-200, getY() - 10);
-                }
+                // if(canFly(planet)){
+                    // //setLocation(getX()-200, getY() - 10);
+                    // targetClosestLP();
+                // }
+                targetFlyLP();
             }
         }
     }
@@ -261,7 +295,9 @@ public class Fox extends Moving
             return false;
         }
         if(passCount >= 3){
+            angle = 0;
             return true;
+            
         }
         return false;
     }

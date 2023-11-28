@@ -55,14 +55,14 @@ public class LittlePrince extends Moving
         planet = (Planet) getOneIntersectingObject(Planet.class);
         box = (HitBox) getOneIntersectingObject(HitBox.class);
         //System.out.println("PRINT!");
-        
+
         if (targetPlanet != null && targetPlanet.getWorld() == null){
-                targetPlanet = null;
+            targetPlanet = null;
         }
         if (targetPlanet == null || Galaxy.getDistance (this, targetPlanet) > 20){
             targetClosestPlanet();
         }
-        
+
         if (checkHitPlanet()){
             rotateDetection = true;
             rotate();
@@ -86,7 +86,7 @@ public class LittlePrince extends Moving
             //targetClosestPlanet();
         }
     }
-    
+
     /**
      * target the closest planet when LP is searching for planets
      */
@@ -94,17 +94,17 @@ public class LittlePrince extends Moving
         double closestTargetDistance = 0;
         double distanceToActor;
         planets = (ArrayList<Planet>)getObjectsInRange(500, Planet.class);
-        
+
         if (planets.size() == 0){
             planets = (ArrayList<Planet>)getObjectsInRange(160, Planet.class);
         }
-        
+
         for (int i = 0; i < planets.size(); i++){
             if (planets.get(i).hasVisited()){
                 planets.remove(i);
             }
         }
-        
+
         if (planets.size() > 0){
             targetPlanet = planets.get(0);
             closestTargetDistance = getDistance (this, targetPlanet);
@@ -119,7 +119,7 @@ public class LittlePrince extends Moving
             turnTowards(targetPlanet.getX(), targetPlanet.getY());
         }
     }
-    
+
     /**
      * Move towards the planet
      */
@@ -135,7 +135,7 @@ public class LittlePrince extends Moving
     public void setIsStaying(boolean x){
         isStaying = x;
     }
-    
+
     /**
      * Once LP reaches one ccircl and has successfully removed all baobab trees while the planets are in the world, 
      * the LP will fly out of his current planet.
@@ -152,6 +152,7 @@ public class LittlePrince extends Moving
         }
         if(passCount >= 3){
             rotateDetection = false;
+            angle = 0;
             //setLocation(getX()-10, getY() - 10);
             return true;
         }
@@ -206,6 +207,7 @@ public class LittlePrince extends Moving
     public void rotate(){
         planet.setVisited(false);
         speed = planet.getSpeed();
+        boolean justStartedRotating = false;
         turnTowards (planet);
         turn(-90);
         if (!checkHitTree()){
@@ -221,6 +223,7 @@ public class LittlePrince extends Moving
                 targetPlanet = null;
             }
         }else{
+      
             setLocation(getX() + speed, getY());
             animate(dig);
             if (isTouching(Fox.class)){
@@ -238,7 +241,7 @@ public class LittlePrince extends Moving
     public boolean getRotationDetection(){
         return rotateDetection;
     }
-    
+
     /**
      * Check if the asteriods collide with the LP, which decreases LP's hP bar.
      */
@@ -276,7 +279,7 @@ public class LittlePrince extends Moving
     public int getPrinceY(){
         return getY();
     }
-    
+
     public void changeHP(int amount){
         totalHP += amount;
         princeHpBar.update(totalHP);

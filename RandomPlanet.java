@@ -15,7 +15,7 @@ import java.util.List;
  * <li>Random planets can generate trees or roses based on game conditions.</li>
  * 
  * @author Jiayi Li
- * @Editor: Angela Gao
+ * @Editors: Zhiyu (Jennifer) Zhou, Angela Gao
  * @version November 2023
  */
 public class RandomPlanet extends Planet {
@@ -33,7 +33,7 @@ public class RandomPlanet extends Planet {
     private RandomPlanet newPlanet; // Reference to the newly spawned RandomPlanet
     private double cos45, cos30, cos60; // Trigonometric constants for calculations (cosine values)
     private static boolean oneRose; // Flag indicating whether a rose has been generated
-    
+
     /**
      * Constructor for the RandomPlanet class.
      * Initializes the random planet's image, size, health, speed, and health bar.
@@ -91,9 +91,8 @@ public class RandomPlanet extends Planet {
             } else if (getX() > 600 && canSpawnNext && num == 0) {
                 num++;
                 canSpawnNext = false;
-                
+
                 // Check if the world is an instance of Galaxy to access Galaxy-specific functionality
-                
 
                 newPlanet = new RandomPlanet();
                 ylocation = Greenfoot.getRandomNumber(276) + 150;
@@ -123,7 +122,7 @@ public class RandomPlanet extends Planet {
             firstGenerated = false;// Set the flag to false after initial generation
         }
     }
-    
+
     //private double cos30 = (double)radius * Math.sq
     /**
      * Checks for collisions with asteroids and updates health points.
@@ -131,32 +130,16 @@ public class RandomPlanet extends Planet {
      */
     public void checkCollision() {
         List<Asteroids> asteroidsList = getWorld().getObjects(Asteroids.class);
-        Asteroids a = (Asteroids) getOneObjectAtOffset((int)-radius, 0, Asteroids.class); // Left
-        if (a == null) {
-            a = (Asteroids) getOneObjectAtOffset((int) radius, 0, Asteroids.class); // Right
-        }else if (a == null) {
-            a = (Asteroids) getOneObjectAtOffset(0, -radius, Asteroids.class); // North
-        }else if(a == null) {
-            a = (Asteroids) getOneObjectAtOffset(0, radius, Asteroids.class); // South
-        }else if (a == null) {
-            a = (Asteroids) getOneObjectAtOffset((int) (-cos45), (int) (-cos45), Asteroids.class); // WestNorth
-            //getWorld().addObject(new Rose(), getX()-(int)cos45, getY() - (int)cos45);
-        }else if (a == null) {
-            a = (Asteroids) getOneObjectAtOffset((int) (cos45), (int) (cos45), Asteroids.class); // WestSouth
-        }else if (a == null) {
-            a = (Asteroids) getOneObjectAtOffset((int) (-cos45), (int) (cos45), Asteroids.class); // WestSouth
-        }else if (a == null) {
-            a = (Asteroids) getOneObjectAtOffset((int) (cos45),(int) (-cos45), Asteroids.class); // WestSouth
-        }else if (a == null){
-            a = (Asteroids) getOneObjectAtOffset((int) (-cos30),(int) (cos60), Asteroids.class);
-        }else if (a == null){
-            a = (Asteroids) getOneObjectAtOffset((int) (-cos30),(int) (-cos60), Asteroids.class);
-        }else if (a == null){
-            a = (Asteroids) getOneObjectAtOffset((int) (-cos60),(int) (cos30), Asteroids.class);
-        }else if (a == null){
-            a = (Asteroids) getOneObjectAtOffset((int) (-cos60),(int) (-cos30), Asteroids.class);
-        }
-        if (a != null) {
+
+        // Define the range for checking collisions
+        int collisionRange = (int) radius; 
+
+        List<Asteroids> asteroidsInRange = getObjectsInRange(collisionRange, Asteroids.class);
+
+        if (!asteroidsInRange.isEmpty()) {
+            // Select the first asteroid in the range
+            Asteroids a = asteroidsInRange.get(0);
+
             a.explode();
             totalHP -= decreaseHP;
             randomHpBar.update(totalHP);
@@ -171,6 +154,49 @@ public class RandomPlanet extends Planet {
             }
         }
     }
+
+    // public void checkCollision() {
+        // List<Asteroids> asteroidsList = getWorld().getObjects(Asteroids.class);
+        // Asteroids a = (Asteroids) getOneObjectAtOffset((int)-radius, 0, Asteroids.class); // Left
+        // if (a == null) {
+            // a = (Asteroids) getOneObjectAtOffset((int) radius, 0, Asteroids.class); // Right
+        // }else if (a == null) {
+            // a = (Asteroids) getOneObjectAtOffset(0, -radius, Asteroids.class); // North
+        // }else if(a == null) {
+            // a = (Asteroids) getOneObjectAtOffset(0, radius, Asteroids.class); // South
+        // }else if (a == null) {
+            // a = (Asteroids) getOneObjectAtOffset((int) (-cos45), (int) (-cos45), Asteroids.class); // WestNorth
+            // //getWorld().addObject(new Rose(), getX()-(int)cos45, getY() - (int)cos45);
+        // }else if (a == null) {
+            // a = (Asteroids) getOneObjectAtOffset((int) (cos45), (int) (cos45), Asteroids.class); // WestSouth
+        // }else if (a == null) {
+            // a = (Asteroids) getOneObjectAtOffset((int) (-cos45), (int) (cos45), Asteroids.class); // WestSouth
+        // }else if (a == null) {
+            // a = (Asteroids) getOneObjectAtOffset((int) (cos45),(int) (-cos45), Asteroids.class); // WestSouth
+        // }else if (a == null){
+            // a = (Asteroids) getOneObjectAtOffset((int) (-cos30),(int) (cos60), Asteroids.class);
+        // }else if (a == null){
+            // a = (Asteroids) getOneObjectAtOffset((int) (-cos30),(int) (-cos60), Asteroids.class);
+        // }else if (a == null){
+            // a = (Asteroids) getOneObjectAtOffset((int) (-cos60),(int) (cos30), Asteroids.class);
+        // }else if (a == null){
+            // a = (Asteroids) getOneObjectAtOffset((int) (-cos60),(int) (-cos30), Asteroids.class);
+        // }
+        // if (a != null) {
+            // a.explode();
+            // totalHP -= decreaseHP;
+            // randomHpBar.update(totalHP);
+            // getWorld().removeObject(a);
+
+            // int currentAsteroids = asteroidsList.size();
+            // int asteroidsToAdd = Galaxy.getNumOfAsteroids() - currentAsteroids;
+            // for (int i = 0; i < asteroidsToAdd + 1; i++) {
+                // int x = Greenfoot.getRandomNumber(getWorld().getWidth());
+                // int y = Greenfoot.getRandomNumber(getWorld().getHeight());
+                // getWorld().addObject(new Asteroids(), x, y);
+            // }
+        // }
+    // }
 
     /**
      * Sets a random image for the random planet.
@@ -244,6 +270,7 @@ public class RandomPlanet extends Planet {
             }
         }
     }
+
     /**
      * Checks if the random planet should be removed based on its health points.
      * If health points are less than or equal to zero, the planet is removed.
@@ -254,7 +281,7 @@ public class RandomPlanet extends Planet {
             if (getX() <= 600) {
                 num++;
                 canSpawnNext = false;
-    
+
                 newPlanet = new RandomPlanet();
                 ylocation = Greenfoot.getRandomNumber(276) + 150;
                 getWorld().addObject(newPlanet, 0, ylocation);
