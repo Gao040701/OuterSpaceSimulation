@@ -79,11 +79,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  *   </ul>
  * </ul>
  * <p></p>
- * <p>Known bug£º</p>
- * <ol>
- *  <li>Asteroids sometimes hit the planet without exploding.</li>
- *  <li>After clicking the start button on the title screen, it will take a while to load to the introAnimation.</li>
- * </ol>
  * @authors: Angela Gao, Jiayi Li, Zhiyu (Jennifer) Zhou 
  * @version: November 24
  * 
